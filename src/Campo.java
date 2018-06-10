@@ -4,7 +4,7 @@ public class Campo {
 		
 	}
 	
-	public tieneCartas() {
+	public Bolean tieneCartas() {
 		return false;
 	}
 }
