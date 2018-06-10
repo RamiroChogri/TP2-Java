@@ -3,8 +3,8 @@ import org.junit.Test;
 
 public CampoTest {
 	
-	//La carta tiene 5 estados: En mazo, en mano, en campo ataque,
-	//en campo defensa y cementerio (muerta).
+	//La carta tiene 6 estados: En mazo, en mano, en campo ataque,
+	//en campo defensa boca arriba, en campo defensa boca abajo y en cementerio (muerta).
 	
 	@Test
 	public void testColocarMonstruoEnCampoEnAtaque() {
@@ -14,6 +14,14 @@ public CampoTest {
 		carta.colocarEnPosicionAtaque();
 		
 		assertEquals(true, carta.estaColocadaEnModoAtaque());
+	}
+	
+	@Test
+	public void testColocarMonstruoEnCampoEnDefensaNoEstaEnAtaque() {
+		
+		Carta carta = new CartaMonstruo();
+		carta.colocarEnPosicionDefensaBocaArriba();
+		assertEquals(false, carta.estaColocadaEnModoAtaque());
 	}
 	
 }
