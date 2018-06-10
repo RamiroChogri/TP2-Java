@@ -11,7 +11,7 @@ public CampoTest {
 		
 		//Por defecto el estado inicial es "En mazo"
 		Carta carta = new CartaMonstruo();
-		carta.colocarEnPosicionAtaque();
+		carta.colocarEnModoAtaque();
 		
 		assertEquals(true, carta.estaColocadaEnModoAtaque());
 	}
@@ -20,7 +20,7 @@ public CampoTest {
 	public void testColocarMonstruoEnCampoEnDefensaNoEstaEnAtaque() {
 		
 		Carta carta = new CartaMonstruo();
-		carta.colocarEnPosicionDefensaBocaArriba();
+		carta.colocarEnModoDefensaBocaArriba();
 		assertEquals(false, carta.estaColocadaEnModoAtaque());
 	}
 	

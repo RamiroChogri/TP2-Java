@@ -10,16 +10,16 @@ public class CartaMonstruo {
 		
 	}
 	
-	public void colocarEnPosicionAtaque() {
-		estado = new CartaColocadaEnAtaque();
+	public void colocarEnModoAtaque() {
+		estado = new CartaColocadaEnModoAtaque();
 	}
 	
-	public void colocarEnPosicionDefensaBocaArriba() {
-		estado = new CartaColocadaEnDefensaBocaArriba();
+	public void colocarEnModoDefensaBocaArriba() {
+		estado = new CartaColocadaEnModoDefensaBocaArriba();
 	}
 	
-	public void colocarEnPosicionDefensaBocaAbajo() {
-		estado = new CartaColocadaEnDefensaBocaAbajo();
+	public void colocarEnModoDefensaBocaAbajo() {
+		estado = new CartaColocadaEnModoDefensaBocaAbajo();
 	}
 	
 	public boolean estaColocadaEnModoAtaque() {
