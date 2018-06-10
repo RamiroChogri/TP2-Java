@@ -6,7 +6,7 @@ public class Campo {
 
 	public boolean tieneCartas() {
 
-		return true;
+		return false;
 
 	}
 }
