@@ -1,3 +1,4 @@
+package carta;
 public class CartaMonstruo {
 	
 	private Estado estado;
