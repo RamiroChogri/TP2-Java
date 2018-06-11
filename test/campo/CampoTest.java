@@ -1,3 +1,4 @@
+package campo;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -28,33 +29,33 @@ public class CampoTest {
 	@Test
 	public void testColocarUnMonstruoBocaArribaEnZonaCorrecta() {
 		Campo campoTest = new Campo();
-		Carta cartaTest = new CartaMonstruo();
-		campoTest.colocarCartaEnZonaMonstruo(cartaTest);
+		Carta cartaTestMonstruo = new CartaMonstruo();
+		campoTest.colocarCarta(cartaTestMonstruo);
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
 	}
 	
 	@Test
 	public void testColocarUnaCartaMagicaEnZonaCorrecta() {
 		Campo campoTest = new Campo();
-		Carta cartaTest = new CartaMagica();
-		campoTest.colocarCartaEnZonaMagica(cartaTest);
+		Carta cartaTestMagica = new CartaMagica();
+		campoTest.colocarCarta(cartaTestMagica);
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad());
 	}
 	
 	@Test
 	public void testColocarUnaCartaTrampaEnZonaCorrecta() {
 		Campo campoTest = new Campo();
-		Carta cartaTest = new CartaTrampa();
-		campoTest.colocarCartaEnZonaMagica(cartaTest);
+		Carta cartaTestTrampa = new CartaTrampa();
+		campoTest.colocarCarta(cartaTestTrampa);
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad());
 	}
 	
 	@Test
 	public void testColocarUnaCartaCampoEnZonaCorrecta() {
 		Campo campoTest = new Campo();
-		Carta cartaTest = new CartaCampo();
-		campoTest.colocarCartaCartaCampo(cartaTest);
-		assertEquals(true, campoTest.tieneCartaCampo());
+		Carta cartaTestCampo = new CartaCampo();
+		campoTest.colocarCarta(cartaTestCampo);
+		assertEquals(true, campoTest.obtenerCantidadDeCartasEnZonaCampo());
 	}
 	
 }

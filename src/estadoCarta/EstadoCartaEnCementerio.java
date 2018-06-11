@@ -1,3 +1,4 @@
+package estadoCarta;
 
 public class EstadoCartaEnCementerio extends EstadoCarta {
 	

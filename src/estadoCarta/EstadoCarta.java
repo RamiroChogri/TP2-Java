@@ -1,3 +1,4 @@
+package estadoCarta;
 public abstract class EstadoCarta {
 	
 	//La carta por defecto esta en el mazo y no deberia volver, por lo que
