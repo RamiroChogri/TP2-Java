@@ -38,14 +38,23 @@ public class CampoTest {
 		Campo campoTest = new Campo();
 		Carta cartaTest = new CartaMagica();
 		campoTest.colocarCartaEnZonaMagica(cartaTest);
-		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaMagica());
+		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad());
 	}
 	
 	@Test
-	public void testColocarUnaCartaTrampaEnZonaCorrecte() {
+	public void testColocarUnaCartaTrampaEnZonaCorrecta() {
 		Campo campoTest = new Campo();
-		Carta cartaTest = new Carta();
+		Carta cartaTest = new CartaTrampa();
 		campoTest.colocarCartaEnZonaMagica(cartaTest);
-		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaMagica());
+		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad());
 	}
+	
+	@Test
+	public void testColocarUnaCartaCampoEnZonaCorrecta() {
+		Campo campoTest = new Campo();
+		Carta cartaTest = new CartaCampo();
+		campoTest.colocarCartaCartaCampo(cartaTest);
+		assertEquals(true, campoTest.tieneCartaCampo());
+	}
+	
 }
