@@ -1,4 +1,12 @@
 
-public class EstadoCartaBocaArriba implements EstadoCarta {
+public class EstadoCartaBocaArriba extends EstadoCarta {
+
+	public EstadoCartaBocaArriba colocarCartaBocaArriba() {
+		return this;
+	}
+		
+	public boolean estaBocaArriba() {
+		return true;
+	}
 
 }

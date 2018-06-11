@@ -1,4 +1,12 @@
 
-public class EstadoCartaBocaAbajoEnModoDefensa implements EstadoCarta {
+public class EstadoCartaBocaAbajoEnModoDefensa extends EstadoCarta {
 
+	public EstadoCartaBocaAbajoEnModoDefensa colocarCartaBocaAbajoEnModoDefensa() {
+		return this;
+	}
+		
+	public boolean estaBocaAbajoEnModoDefensa() {
+		return true;
+	}
+	
 }

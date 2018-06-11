@@ -1,33 +1,67 @@
-public interface EstadoCarta {
+public abstract class EstadoCarta {
 	
-	public EstadoCarta colocarCartaEnMano();
+	//La carta por defecto esta en el mazo y no deberia volver, por lo que
+	//un metodo que coloque la carta en el mazo es absurdo
 	
-	public EstadoCarta colocarCartaEnCementerio();
-	
-	public EstadoCarta colocarCartaEnModoAtaque();
-	
-	public EstadoCarta colocarCartaBocaArribaEnModoDefensa();
-	
-	public EstadoCarta colocarCartaBocaAbajoEnModoDefensa();
-	
-	public EstadoCarta colocarCartaBocaArriba();
-	
-	public EstadoCarta colocarCartaBocaAbajo();
 
-	public boolean estaEnMazo();
+	public EstadoCartaEnMano colocarCartaEnMano() {
+		return new EstadoCartaEnMano();
+	}
 	
-	public boolean estaEnMano();
+	public EstadoCartaEnCementerio colocarCartaEnCementerio() {
+		return new EstadoCartaEnCementerio();
+	}
 	
-	public boolean estaEnCementerio();
+	public EstadoCartaEnModoAtaque colocarCartaEnModoAtaque() {
+		return new EstadoCartaEnModoAtaque();
+	}
 	
-	public boolean estaEnAtaque();
+	public EstadoCartaBocaArribaEnModoDefensa colocarCartaBocaArribaEnModoDefensa() {
+		return new EstadoCartaBocaArribaEnModoDefensa();
+	}
 	
-	public boolean estaEnDefensaBocaArriba();
+	public EstadoCartaBocaAbajoEnModoDefensa colocarCartaBocaAbajoEnModoDefensa() {
+		return new EstadoCartaBocaAbajoEnModoDefensa();
+	}
 	
-	public boolean estaEnDefensaBocaAbajo();
+	public EstadoCartaBocaArriba colocarCartaBocaArriba() {
+		return new EstadoCartaBocaArriba();
+	}
 	
-	public boolean estaBocaArriba();
+	public EstadoCartaBocaAbajo colocarCartaBocaAbajo() {
+		return new EstadoCartaBocaAbajo();
+	}
+
+	public boolean estaEnMazo() {
+		return false;
+	}
 	
-	public boolean estaBocaAbajo();
+	public boolean estaEnMano() {
+		return false;
+	}
+	
+	public boolean estaEnCementerio() { 
+		return false;
+	}
+	
+	public boolean estaEnModoAtaque() {
+		return false;
+	}
+	
+	public boolean estaBocaArribaEnModoDefensa() {
+		return false;
+	}
+	
+	public boolean estaBocaAbajoEnModoDefensa() {
+		return false;
+	}
+	
+	public boolean estaBocaArriba() {
+		return false;
+	}
+	
+	public boolean estaBocaAbajo() {
+		return false;
+	}
 	
 }
