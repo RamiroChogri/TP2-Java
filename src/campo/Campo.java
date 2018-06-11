@@ -28,7 +28,7 @@ public class Campo {
 			System.out.println("No se puede invocar el monstruo, el campo esta lleno");
 			throw new ZonaMonstruoLlenaException();
 		}
-		
+	
 	}
 	
 	public void colocarCarta(CartaMagica cartaMagicaAColocar) {
