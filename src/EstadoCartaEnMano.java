@@ -1,4 +1,12 @@
 
-public class EstadoCartaEnMano implements EstadoCarta {
+public class EstadoCartaEnMano extends EstadoCarta {
 
+	public EstadoCartaEnMano colocarCartaEnMano() {
+		return this;
+	}
+
+	public boolean estaEnMano() {
+		return true;
+	}
+	
 }

@@ -1,4 +1,12 @@
 
-public class EstadoCartaEnCementerio implements EstadoCarta {
+public class EstadoCartaEnCementerio extends EstadoCarta {
+	
+	public EstadoCartaEnCementerio colocarCartaEnCementerio() {
+		return this;
+	}
+
+	public boolean estaEnCementerio() { 
+		return true;
+	}
 
 }
