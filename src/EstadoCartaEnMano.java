@@ -1,4 +1,4 @@
 
-public class EstadoCartaEnMano {
+public class EstadoCartaEnMano implements EstadoCarta {
 
 }

@@ -1,4 +1,4 @@
 
-public class EstadoCartaBocaAbajoEnModoDefensa {
+public class EstadoCartaBocaAbajoEnModoDefensa implements EstadoCarta {
 
 }

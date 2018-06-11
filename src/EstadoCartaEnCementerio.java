@@ -1,4 +1,4 @@
 
-public class EstadoCartaEnCementerio {
+public class EstadoCartaEnCementerio implements EstadoCarta {
 
 }
