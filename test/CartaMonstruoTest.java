@@ -4,6 +4,7 @@ import org.junit.Test;
 import carta.*;
 
 public class CartaMonstruoTest {
+	
 	@Test
 	public void colocarCartaMonstruoEnModoAtaqueEstaEnModoAtaque() {
 		Carta cartaMonstruo = new CartaMonstruo();
@@ -14,6 +15,7 @@ public class CartaMonstruoTest {
 		assertEquals(true, cartaMonstruo.estaEnModoAtaque());
 	}
 	
+	@Test
 	public void colocarCartaMonstruoBocaAbajoEnModoDefensaNoEstaEnModoAtaque() {
 		Carta cartaMonstruo = new CartaMonstruo();
 		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
