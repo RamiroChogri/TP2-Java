@@ -85,4 +85,6 @@ public class Campo {
 		return ((this.obtenerCantidadDeCartasEnZonaMonstruo() + this.obtenerCantidadDeCartasEnZonaUtilidad() + this.obtenerCantidadDeCartasEnZonaCampo()) > 0);
 
 	}
+	
+	
 }

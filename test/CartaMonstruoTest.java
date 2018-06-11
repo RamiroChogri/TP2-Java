@@ -15,5 +15,7 @@ public class CartaMonstruoTest {
 		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
 		assertEquals(false, cartaMonstruo.estaEnModoAtaque());
 	}
+
+	
 	
 }
