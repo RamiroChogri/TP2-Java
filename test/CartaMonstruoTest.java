@@ -24,4 +24,10 @@ public CampoTest {
 		assertEquals(false, carta.estaColocadaEnModoAtaque());
 	}
 	
+	@Test
+	public void testColocarMonstruoEnCampoEnAtaqueNoEstaEnDefensa() {
+		Carta carta = new CartaMonstruo();
+		carta.colocarEnModoAtaque();
+		assertEquals(false, carta.estaColocadaEnModoDefensa());
+	}
 }
