@@ -6,6 +6,7 @@ public class CampoTest {
 	//La carta tiene 6 estados: En mazo, en mano, en campo ataque,
 	//en campo defensa boca arriba, en campo defensa boca abajo y en cementerio (muerta).
 	
+	
 	@Test
 	public void testComienzaLaPartidaCon40CartasEnElMazo() {
 		Campo campoTest = new Campo();
