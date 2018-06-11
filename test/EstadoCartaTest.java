@@ -126,7 +126,7 @@ public class EstadoCartaTest {
 	@Test
 	public void testEstadoCartaEnCementerioNoEstaEnModoAtaque() {
 		EstadoCarta estado = new EstadoCartaEnCementerio();
-		assertEquals(false, estado.estaEnModoDefensa());
+		assertEquals(false, estado.estaEnModoAtaque());
 	}
 	
 	@Test
@@ -342,7 +342,7 @@ public class EstadoCartaTest {
 	@Test
 	public void testEstadoCartaBocaArribaNoEstaBocaArribaEnModoDefensa() {
 		EstadoCarta estado = new EstadoCartaBocaArriba();
-		assertEquals(false, estado.estaBocaArribaEnModoDefesa());
+		assertEquals(false, estado.estaBocaArribaEnModoDefensa());
 	}
 	
 	@Test
@@ -360,7 +360,7 @@ public class EstadoCartaTest {
 	@Test
 	public void testEstadoCartaBocaArribaNoEstaBocaAbajo() {
 		EstadoCarta estado = new EstadoCartaBocaArriba();
-		assertEquals(false, estado.estaBocaAbajo();
+		assertEquals(false, estado.estaBocaAbajo());
 	}
 	
 	//EstadoCartaBocaAbajo
