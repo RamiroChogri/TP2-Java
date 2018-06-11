@@ -107,49 +107,49 @@ public class EstadoCartaTest {
 	
 	@Test
 	public void testEstadoCartaEnCementerioNoEstaEnMazo() {
-		EstadoCarta = new EstadoCartaEnCementerio();
+		EstadoCarta estado = new EstadoCartaEnCementerio();
 		assertEquals(false, estado.estaEnMazo());
 	}
 	
 	@Test
 	public void testEstadoCartaEnCementerioNoEstaEnMano() {
-		EstadoCarta = new EstadoCartaEnCementerio();
+		EstadoCarta estado = new EstadoCartaEnCementerio();
 		assertEquals(false, estado.estaEnMano());
 	}
 	
 	@Test
 	public void testEstadoCartaEnCementerioEstaEnCementerio() {
-		EstadoCarta = new EstadoCartaEnCementerio();
+		EstadoCarta estado = new EstadoCartaEnCementerio();
 		assertEquals(true, estado.estaEnCementerio());
 	}
 	
 	@Test
 	public void testEstadoCartaEnCementerioNoEstaEnModoAtaque() {
-		EstadoCarta = new EstadoCartaEnCementerio();
+		EstadoCarta estado = new EstadoCartaEnCementerio();
 		assertEquals(false, estado.estaEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaEnCementerioNoEstaBocaArribaEnModoDefensa() {
-		EstadoCarta = new EstadoCartaEnCementerio();
+		EstadoCarta estado = new EstadoCartaEnCementerio();
 		assertEquals(false, estado.estaBocaArribaEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaEnCementerioNoEstaBocaAbajoEnModoDefensa() {
-		EstadoCarta = new EstadoCartaEnCementerio();
+		EstadoCarta estado = new EstadoCartaEnCementerio();
 		assertEquals(false, estado.estaBocaAbajoEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaEnCementerioNoEstaBajoArriba() {
-		EstadoCarta = new EstadoCartaEnCementerio();
+		EstadoCarta estado = new EstadoCartaEnCementerio();
 		assertEquals(false, estado.estaBocaArriba());
 	}
 	
 	@Test
 	public void testEstadoCartaEnCementerioNoEstaBocaAbajo() {
-		EstadoCarta = new EstadoCartaEnCementerio();
+		EstadoCarta estado = new EstadoCartaEnCementerio();
 		assertEquals(false, estado.estaBocaAbajo());
 	}
 	
@@ -157,49 +157,49 @@ public class EstadoCartaTest {
 	
 	@Test
 	public void testEstadoCartaEnModoAtaqueNoEstaEnMazo() {
-		EstadoCarta = new EstadoCartaEnModoAtaque();
+		EstadoCarta estado = new EstadoCartaEnModoAtaque();
 		assertEquals(false, estado.estaEnMazo());
 	}
 	
 	@Test
 	public void testEstadoCartaEnModoAtaqueNoEstaEnMano() {
-		EstadoCarta = new EstadoCartaEnModoAtaque();
+		EstadoCarta estado = new EstadoCartaEnModoAtaque();
 		assertEquals(false, estado.estaEnMano());
 	}
 	
 	@Test
 	public void testEstadoCartaEnModoAtaqueNoEstaEnCementerio() {
-		EstadoCarta = new EstadoCartaEnModoAtaque();
+		EstadoCarta estado = new EstadoCartaEnModoAtaque();
 		assertEquals(false, estado.estaEnCementerio());
 	}
 	
 	@Test
 	public void testEstadoCartaEnModoAtaqueEstaEnModoAtaque() {
-		EstadoCarta = new EstadoCartaEnModoAtaque();
+		EstadoCarta estado = new EstadoCartaEnModoAtaque();
 		assertEquals(true, estado.estaEnModoAtaque());
 	}
 	
 	@Test
 	public void testEstadoCartaEnModoAtaqueNoEstaBocaArribaEnModoDefensa() {
-		EstadoCarta = new EstadoCartaEnModoAtaque();
+		EstadoCarta estado = new EstadoCartaEnModoAtaque();
 		assertEquals(false, estado.estaBocaArribaEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaEnModoAtaqueNoEstaBocaAbajoEnModoDefensa() {
-		EstadoCarta = new EstadoCartaEnModoAtaque();
+		EstadoCarta estado = new EstadoCartaEnModoAtaque();
 		assertEquals(false, estado.estaBocaAbajoEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaEnModoAtaqueNoEstaBocaArriba() {
-		EstadoCarta = new EstadoCartaEnModoAtaque();
+		EstadoCarta estado = new EstadoCartaEnModoAtaque();
 		assertEquals(false, estado.estaBocaArriba());
 	}
 	
 	@Test
 	public void testEstadoCartaEnModoAtaqueNoEstaBocaAbajo() {
-		EstadoCarta = new EstadoCartaEnModoAtaque();
+		EstadoCarta estado = new EstadoCartaEnModoAtaque();
 		assertEquals(false, estado.estaBocaAbajo());
 	}
 	
@@ -207,37 +207,37 @@ public class EstadoCartaTest {
 	
 	@Test
 	public void testEstadoCartaBocaArribaEnModoDefensaNoEstaEnMazo() {
-		EstadoCarta = new EstadoCartaBocaArribaEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaArribaEnModoDefensa();
 		assertEquals(false, estado.estaEnMazo());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaEnModoDefensaNoEstaEnMano() {
-		EstadoCarta = new EstadoCartaBocaArribaEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaArribaEnModoDefensa();
 		assertEquals(false, estado.estaEnMano());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaEnModoDefensaNoEstaEnCementerio() {
-		EstadoCarta = new EstadoCartaBocaArribaEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaArribaEnModoDefensa();
 		assertEquals(false, estado.estaEnCementerio());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaEnModoDefensaNoEstaEnModoAtaque() {
-		EstadoCarta = new EstadoCartaBocaArribaEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaArribaEnModoDefensa();
 		assertEquals(false, estado.estaEnModoAtaque());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaEnModoDefensaEstaBocaArribaEnModoDefensa() {
-		EstadoCarta = new EstadoCartaBocaArribaEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaArribaEnModoDefensa();
 		assertEquals(true, estado.estaBocaArribaEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaEnModoDefensaNoEstaBocaAbajoEnModoDefensa() {
-		EstadoCarta = new EstadoCartaBocaArribaEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaArribaEnModoDefensa();
 		assertEquals(false, estado.estaBocaAbajoEnModoDefensa());
 	}
 	
@@ -248,7 +248,7 @@ public class EstadoCartaTest {
 	
 	@Test
 	public void testEstadoCartaBocaArribaEnModoDefensaNoEstaBocaArriba() {
-		EstadoCarta = new EstadoCartaBocaArribaEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaArribaEnModoDefensa();
 		assertEquals(false, estado.estaBocaArriba());
 	}
 	
@@ -259,7 +259,7 @@ public class EstadoCartaTest {
 	
 	@Test
 	public void testEstadoCartaBocaArribaEnModoDefensaNoEstaBocaAbajo() {
-		EstadoCarta = new EstadoCartaBocaArribaEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaArribaEnModoDefensa();
 		assertEquals(false, estado.estaBocaAbajo());
 	}
 	
@@ -267,49 +267,49 @@ public class EstadoCartaTest {
 	
 	@Test
 	public void testEstadoCartaBocaAbajoEnModoDefensaNoEstaEnMazo() {
-		EstadoCarta = new EstadoCartaBocaAbajoEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaAbajoEnModoDefensa();
 		assertEquals(false, estado.estaEnMazo());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoEnModoDefensaNoEstaEnMano() {
-		EstadoCarta = new EstadoCartaBocaAbajoEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaAbajoEnModoDefensa();
 		assertEquals(false, estado.estaEnMano());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoEnModoDefensaNoEstaEnCementerio() {
-		EstadoCarta = new EstadoCartaBocaAbajoEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaAbajoEnModoDefensa();
 		assertEquals(false, estado.estaEnCementerio());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoEnModoDefensaNoEstaEnModoAtaque() {
-		EstadoCarta = new EstadoCartaBocaAbajoEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaAbajoEnModoDefensa();
 		assertEquals(false, estado.estaEnModoAtaque());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoEnModoDefensaNoEstaBocaArribaEnModoDefensa() {
-		EstadoCarta = new EstadoCartaBocaAbajoEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaAbajoEnModoDefensa();
 		assertEquals(false, estado.estaBocaArribaEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoEnModoDefensaEstaBocaAbajoEnModoDefensa() {
-		EstadoCarta = new EstadoCartaBocaAbajoEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaAbajoEnModoDefensa();
 		assertEquals(true, estado.estaBocaAbajoEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoEnModoDefensaNoEstaBocaArriba() {
-		EstadoCarta = new EstadoCartaBocaAbajoEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaAbajoEnModoDefensa();
 		assertEquals(false, estado.estaBocaArriba());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoEnModoDefensaNoEstaBocaAbajo() {
-		EstadoCarta = new EstadoCartaBocaAbajoEnModoDefensa();
+		EstadoCarta estado = new EstadoCartaBocaAbajoEnModoDefensa();
 		assertEquals(false, estado.estaBocaAbajo());
 	}
 	
@@ -317,49 +317,49 @@ public class EstadoCartaTest {
 	
 	@Test
 	public void testEstadoCartaBocaArribaNoEstaEnMazo() {
-		EstadoCarta = new EstadoCartaBocaArriba();
+		EstadoCarta estado = new EstadoCartaBocaArriba();
 		assertEquals(false, estado.estaEnMazo());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaNoEstaEnMano() {
-		EstadoCarta = new EstadoCartaBocaArriba();
+		EstadoCarta estado = new EstadoCartaBocaArriba();
 		assertEquals(false, estado.estaEnMano());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaNoEstaEnCementerio() {
-		EstadoCarta = new EstadoCartaBocaArriba();
+		EstadoCarta estado = new EstadoCartaBocaArriba();
 		assertEquals(false, estado.estaEnCementerio());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaNoEstaEnModoAtaque() {
-		EstadoCarta = new EstadoCartaBocaArriba();
+		EstadoCarta estado = new EstadoCartaBocaArriba();
 		assertEquals(false, estado.estaEnModoAtaque());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaNoEstaBocaArribaEnModoDefensa() {
-		EstadoCarta = new EstadoCartaBocaArriba();
+		EstadoCarta estado = new EstadoCartaBocaArriba();
 		assertEquals(false, estado.estaBocaArribaEnModoDefesa());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaNoEstaBocaAbajoEnModoDefensa() {
-		EstadoCarta = new EstadoCartaBocaArriba();
+		EstadoCarta estado = new EstadoCartaBocaArriba();
 		assertEquals(false, estado.estaBocaAbajoEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaEstaBocaArriba() {
-		EstadoCarta = new EstadoCartaBocaArriba();
+		EstadoCarta estado = new EstadoCartaBocaArriba();
 		assertEquals(true, estado.estaBocaArriba());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaArribaNoEstaBocaAbajo() {
-		EstadoCarta = new EstadoCartaBocaArriba();
+		EstadoCarta estado = new EstadoCartaBocaArriba();
 		assertEquals(false, estado.estaBocaAbajo();
 	}
 	
@@ -367,49 +367,49 @@ public class EstadoCartaTest {
 	
 	@Test
 	public void testEstadoCartaBocaAbajoNoEstaEnMazo() {
-		EstadoCarta = new EstadoCartaBocaAbajo();
+		EstadoCarta estado = new EstadoCartaBocaAbajo();
 		assertEquals(false, estado.estaEnMazo());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoNoEstaEnMano() {
-		EstadoCarta = new EstadoCartaBocaAbajo();
+		EstadoCarta estado = new EstadoCartaBocaAbajo();
 		assertEquals(false, estado.estaEnMano());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoNoEstaEnCementerio() {
-		EstadoCarta = new EstadoCartaBocaAbajo();
+		EstadoCarta estado = new EstadoCartaBocaAbajo();
 		assertEquals(false, estado.estaEnCementerio());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoNoEstaEnModoAtaque() {
-		EstadoCarta = new EstadoCartaBocaAbajo();
+		EstadoCarta estado = new EstadoCartaBocaAbajo();
 		assertEquals(false, estado.estaEnModoAtaque());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoNoEstaBocaArribaEnModoDefensa() {
-		EstadoCarta = new EstadoCartaBocaAbajo();
+		EstadoCarta estado = new EstadoCartaBocaAbajo();
 		assertEquals(false, estado.estaBocaArribaEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoNoEstaBocaAbajoEnModoDefensa() {
-		EstadoCarta = new EstadoCartaBocaAbajo();
+		EstadoCarta estado = new EstadoCartaBocaAbajo();
 		assertEquals(false, estado.estaBocaAbajoEnModoDefensa());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoNoEstaBocaArriba() {
-		EstadoCarta = new EstadoCartaBocaAbajo();
-		assertEquals(false, estado.estaBocaArriba();
+		EstadoCarta estado = new EstadoCartaBocaAbajo();
+		assertEquals(false, estado.estaBocaArriba());
 	}
 	
 	@Test
 	public void testEstadoCartaBocaAbajoEstaBocaAbajo() {
-		EstadoCarta = new EstadoCartaBocaAbajo();
+		EstadoCarta estado = new EstadoCartaBocaAbajo();
 		assertEquals(true, estado.estaBocaAbajo());
 	}
 	
