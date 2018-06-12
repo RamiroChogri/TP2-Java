@@ -1,30 +1,34 @@
 package carta;
-public class CartaMonstruo {
+import estadoCarta.*;
+public class CartaMonstruo implements CartaAtacable{
 	
-	private Estado estado;
+	private EstadoCarta estado;
 	
 	
 	public CartaMonstruo() {
 		
 		//por defecto en el mazo
-		estado = new CartaEnMazo(); 
-		
+		this.estado = new EstadoCartaEnMazo(); 
 	}
 	
 	public void colocarEnModoAtaque() {
-		estado = new CartaColocadaEnModoAtaque();
+		this.estado = new EstadoCartaEnModoAtaque();
 	}
 	
 	public void colocarEnModoDefensaBocaArriba() {
-		estado = new CartaColocadaEnModoDefensaBocaArriba();
+		this.estado = new EstadoCartaBocaArribaEnModoDefensa();
 	}
 	
 	public void colocarEnModoDefensaBocaAbajo() {
-		estado = new CartaColocadaEnModoDefensaBocaAbajo();
+		this.estado = new EstadoCartaBocaAbajoEnModoDefensa();
 	}
 	
 	public boolean estaColocadaEnModoAtaque() {
-		return (estado.estaColocadaEnModoAtaque());
+		return (this.estado.estaEnModoAtaque());
+	}
+
+	public void destruirCarta() {
+		
 	}
 	
 }

@@ -33,6 +33,7 @@ public abstract class EstadoCarta {
 		return new EstadoCartaBocaAbajo();
 	}
 
+//	------------------------------MetodosParaSobreescribir-------------------------
 	public boolean estaEnMazo() {
 		return false;
 	}
