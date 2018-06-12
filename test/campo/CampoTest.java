@@ -1,7 +1,7 @@
 package campo;
+import carta.*;
 
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class CampoTest {
@@ -25,7 +25,7 @@ public class CampoTest {
 	@Test
 	public void testCampoComienzaVacio() {
 		Campo campoTest = new Campo();
-		assertEquals(false, campoTest.tieneCartas());
+		assertFalse(campoTest.tieneCartas());
 	}
 	
 	@Test

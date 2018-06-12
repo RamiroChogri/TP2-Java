@@ -6,17 +6,17 @@ public class Campo {
 	private ZonaUtilidad zonaUtilidad;
 	private ZonaCampo zonaCampo;
 	private Cementerio cementerio;
-	private Mazo mazo;
+	private Mazo mazoDelJugador;
 	
 	
 	public Campo() {
 		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
 		//ordenadas aleatoriamente
-		zonaMonstruo = new ZonaMonstruo();
-		zonaUtilidad = new ZonaUtilidad();
-		zonaCampo = new ZonaCampo();
-		cementerio = new Cementerio();
-		mazo = new Mazo();
+		this.zonaMonstruo = new ZonaMonstruo();
+		this.zonaUtilidad = new ZonaUtilidad();
+		this.zonaCampo = new ZonaCampo();
+		this.cementerio = new Cementerio();
+		this.mazoDelJugador = new Mazo();
 	}
 
 	//Seguir con la excepcion

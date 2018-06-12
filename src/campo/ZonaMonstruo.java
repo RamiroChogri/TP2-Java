@@ -34,4 +34,8 @@ public class ZonaMonstruo {
 	public boolean hayEspacioDisponible() {	
 		return (posiciones.size() < 5);
 	}
+
+	public int obtenerCantidadDeCartas() {
+		return (this.posiciones.size());
+	}
 }
