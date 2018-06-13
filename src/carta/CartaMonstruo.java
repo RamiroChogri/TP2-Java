@@ -36,16 +36,16 @@ public class CartaMonstruo implements Atacable{
 	
 	public void recibirAtaque(CartaMonstruo cartaEnemiga, int puntosDeAtaqueMonstruoEnemigo) {
 		
-		int dañoAlJugador = 0;
+		int danioAlJugador = 0;
 		
-		dañoAlJugador = estado.recibirAtaque(puntosDeAtaqueMonstruoEnemigo);
+		danioAlJugador = estado.recibirAtaque(puntosDeAtaqueMonstruoEnemigo);
 		
-		if (dañoAlJugador >= 0) {
-			this.destruirCarta(dañoAlJugador);
+		if (danioAlJugador >= 0) {
+			this.destruirCarta(danioAlJugador);
 		}
 		
-		if (estado.estaEnModoAtaque() && (dañoAlJugador <= 0)) {
-			cartaEnemiga.destruirCarta(dañoAlJugador);
+		if (estado.estaEnModoAtaque() && (danioAlJugador <= 0)) {
+			cartaEnemiga.destruirCarta(danioAlJugador);
 		}
 	}
 	
@@ -82,8 +82,8 @@ public class CartaMonstruo implements Atacable{
 		this.estado = new EstadoCartaEnCementerio();
 	}
 	
-	public void destruirCarta(int dañoAlJugador) {
-		this.estado = new EstadoCartaEnCementerio(dañoAlJugador);
+	public void destruirCarta(int danioAlJugador) {
+		this.estado = new EstadoCartaEnCementerio(danioAlJugador);
 	}
 	
 }
