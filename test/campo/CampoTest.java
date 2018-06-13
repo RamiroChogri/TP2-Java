@@ -61,6 +61,12 @@ public class CampoTest {
 	}
 	
 	@Test
+	public void testObtenerVidaRestanteFunciona() {
+		Campo campo = new Campo();
+		int vidaEsperada = 8000;
+		assertEquals( vidaEsperada , campo.obtenerVidaRestante() );
+	}
+	@Test
 	public void testColocarUnaCartaMonstruoEnModoAtaqueQuedaColocado() {
 		Campo campo = new Campo();
 		CartaMonstruo cartaMonstruo = new CartaMonstruo();
