@@ -6,5 +6,8 @@ public class CartaCampo implements Utilizable{
 		
 	}
 
-	
+	public Boolean estaDestruida() {
+		//return this.estado.estaEnCementerio();
+		return false;
+	}
 }

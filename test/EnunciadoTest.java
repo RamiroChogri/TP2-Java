@@ -111,51 +111,51 @@ de los puntos de ataque de los monstruos*/
 	}
 
 
- 	@Test
-	public void test06MonstruoAtacaAOtroMonstruoConMenorAtaque() {
- 		
- 	}
- 	
-	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueConMenorAtaque() {
-		
-	}
- 
-	@Test
-	public void test07MonstruoAtacaAOtroMonstruoEnModoAtaqueConMayorAtaque() {
-	
-	}
-	
-	@Test
-	public void test08MonstruoAtacaAOtroMonstruoEnModoAtaqueConIgualAtaque() {
-	
-	}
-	
-	@Test
-	public void test09MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMayorAtaqueQueSuDefensa() {
-	
-	}
-
-	@Test
-	public void test07MonstruoAtacaAOtroMonstruoConMayorAtaque(){
-		
-	}
-	
-	public void test10MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMenorAtaqueQueSuDefensa() {
-	
-	}
-	
-	@Test
-	public void test11MonstruosDelCampoSeDestruyenAlColocarAgujeroNegro() {
-	
-	}
-	
-	@Test
-	public void test12ColocarMonstruoQueRequiereUnSacrificioDestruyeElMonstruoAnterior() {
-	
-	}
-
-	@Test
-	public void test13ColocarMonstruoQueRequiereDosSacrificiosDestruyeLosDosMonstruosAnteriores() {
-	
-	}
+// 	@Test
+//	public void test06MonstruoAtacaAOtroMonstruoConMenorAtaque() {
+// 		
+// 	}
+// 	
+//	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueConMenorAtaque() {
+//		
+//	}
+// 
+//	@Test
+//	public void test07MonstruoAtacaAOtroMonstruoEnModoAtaqueConMayorAtaque() {
+//	
+//	}
+//	
+//	@Test
+//	public void test08MonstruoAtacaAOtroMonstruoEnModoAtaqueConIgualAtaque() {
+//	
+//	}
+//	
+//	@Test
+//	public void test09MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMayorAtaqueQueSuDefensa() {
+//	
+//	}
+//
+//	@Test
+//	public void test07MonstruoAtacaAOtroMonstruoConMayorAtaque(){
+//		
+//	}
+//	
+//	public void test10MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMenorAtaqueQueSuDefensa() {
+//	
+//	}
+//	
+//	@Test
+//	public void test11MonstruosDelCampoSeDestruyenAlColocarAgujeroNegro() {
+//	
+//	}
+//	
+//	@Test
+//	public void test12ColocarMonstruoQueRequiereUnSacrificioDestruyeElMonstruoAnterior() {
+//	
+//	}
+//
+//	@Test
+//	public void test13ColocarMonstruoQueRequiereDosSacrificiosDestruyeLosDosMonstruosAnteriores() {
+//	
+//	}
 }

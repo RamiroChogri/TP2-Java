@@ -3,7 +3,6 @@ import java.util.*;
 import carta.*;
 import exceptions.NoHayLugarVacioException;
 import exceptions.ZonaMonstruoLlenaException;
-import fiuba.algo3.tp1.Servicio;
 
 public class ZonaMonstruo {
 	
@@ -40,17 +39,18 @@ public class ZonaMonstruo {
 		return (this.posiciones.size());
 	}
 	
-	public Collection<Carta> recolectarCartasDestruidas() {
+	public LinkedList<Carta> recolectarCartasDestruidas() {
 		LinkedList<Carta>cartasDestruidas = new LinkedList<Carta>();
-		LinkedList<Carta>cartasEnCampo = this.posiciones;
-		Iterator<Carta> posicionesIterador = this.posiciones.iterator();		
-	    Servicio servicioActual;
-	    double costoTotal=costoActual;
-	    while (serviciosIterador.hasNext()) {
-	    	servicioActual = serviciosIterador.next();
-	    	costoTotal = servicioActual.agregarCostoEnVuelos(costoActual);
-	    	costoActual=costoTotal;
+		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
+	    CartaMonstruo cartaMonstruoActual;
+	    while (posicionesIterador.hasNext()) {
+	    	cartaMonstruoActual = posicionesIterador.next();
+	    	if(cartaMonstruoActual.estaDestruida()) {
+	    		Carta cartaActual = cartaMonstruoActual;
+	    		cartasDestruidas.add(cartaActual);
+	    		posicionesIterador.remove();
+	    	}
 	    }
-	    return costoTotal;
+	    return cartasDestruidas;
 	}
 }

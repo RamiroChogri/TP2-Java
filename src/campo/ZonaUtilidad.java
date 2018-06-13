@@ -1,8 +1,12 @@
 package campo;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 
+import carta.Carta;
 import carta.CartaMagica;
+import carta.CartaMonstruo;
 import exceptions.NoHayLugarVacioException;
 
 public class ZonaUtilidad {
@@ -33,6 +37,21 @@ public class ZonaUtilidad {
 		
 	public int obtenerCantidadDeCartas() {
 		return this.posiciones.size();
+	}
+
+	public LinkedList<Carta> recolectarCartasDestruidas() {
+		LinkedList<Carta>cartasDestruidas = new LinkedList<Carta>();
+		Iterator<CartaMagica> posicionesIterador = this.posiciones.iterator();		
+	    CartaMagica cartaMagicaActual;
+	    while (posicionesIterador.hasNext()) {
+	    	cartaMagicaActual = posicionesIterador.next();
+	    	if(cartaMagicaActual.estaDestruida()) {
+	    		Carta cartaActual = cartaMagicaActual;
+	    		cartasDestruidas.add(cartaActual);
+	    		posicionesIterador.remove();
+	    	}
+	    }
+	    return cartasDestruidas;
 	}
 
 }

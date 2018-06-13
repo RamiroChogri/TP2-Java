@@ -1,5 +1,7 @@
 package campo;
 
+import java.util.LinkedList;
+import carta.Carta;
 import carta.CartaCampo;
 import carta.CartaMagica;
 import carta.CartaMonstruo;
@@ -141,7 +143,12 @@ public class Campo {
 	}
 
 	public void enviarCartasDestruidasAlCementerio() {
-		
+		LinkedList<Carta> cartasAEnterrar = new LinkedList<Carta>();
+		cartasAEnterrar.addAll(this.zonaMonstruo.recolectarCartasDestruidas());
+		cartasAEnterrar.addAll(this.zonaUtilidad.recolectarCartasDestruidas());
+		// this.enterrarCartaCampo(); Error, me agrega null a la lista y para ahorrar if lo comentamos por ahora
+		this.cementerio.agregarCartasAlCementerio(cartasAEnterrar);
 	}
+
 }
 	
