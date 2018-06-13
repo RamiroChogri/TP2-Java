@@ -1,25 +1,25 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
-
+import campo.*;
 import carta.*;
 
 public class CartaMonstruoTest {
 	
 	@Test
 	public void colocarCartaMonstruoEnModoAtaqueEstaEnModoAtaque() {
-		Carta cartaMonstruo = new CartaMonstruo();
+		CartaMonstruo cartaMonstruo = new CartaMonstruo();
 		ZonaMonstruo zona = new ZonaMonstruo();
-		zona.colocar(cartaMonstruo);
+		zona.colocarCarta(cartaMonstruo);
 		
 		cartaMonstruo.colocarEnModoAtaque();
-		assertEquals(true, cartaMonstruo.estaEnModoAtaque());
+		assertEquals(true, cartaMonstruo.estaColocadaEnModoAtaque());
 	}
 	
 	@Test
 	public void colocarCartaMonstruoBocaAbajoEnModoDefensaNoEstaEnModoAtaque() {
-		Carta cartaMonstruo = new CartaMonstruo();
-		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
-		assertFalse(cartaMonstruo.estaEnModoAtaque());
+		CartaMonstruo cartaMonstruo = new CartaMonstruo();
+		cartaMonstruo.colocarEnModoDefensaBocaAbajo();
+		assertFalse(cartaMonstruo.estaColocadaEnModoAtaque());
 	}
 	
 

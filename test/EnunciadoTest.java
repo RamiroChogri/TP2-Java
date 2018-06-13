@@ -61,7 +61,7 @@ public class EnunciadoTest {
 		Campo campo = new Campo();
 		campo.colocarCarta( cartaTrampa );
 		
-		cartaTrampa.destruir();
+		cartaTrampa.destruirCarta();
 		
 		campo.enviarCartasDestruidasAlCementerio();
 		
@@ -93,7 +93,7 @@ de los puntos de ataque de los monstruos*/
 	}
 
 	@Test
-	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueLoDestruyeYRestaVidaAJugadorQueA() {
+	public void test07MonstruoAtacaAOtroMonstruoEnModoAtaqueLoDestruyeYRestaVidaAJugadorQueA() {
 		CartaMonstruo unaCartaMonstruo = new CartaMonstruo();
 		CartaMonstruo otraCartaMonstruo = new CartaMonstruo();
 		
