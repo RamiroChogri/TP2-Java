@@ -21,13 +21,13 @@ public class EnunciadoTest {
 	}
 	
 	@Test
-	public void test02ColocarMonstruoEnModoDefensa() {
+	public void test02ColocarMonstruoBocaAbajoEnModoDefensa() {
 		
 		CartaMonstruo cartaMonstruo = new CartaMonstruo();
 		
 		cartaMonstruo.colocarEnModoDefensaBocaAbajo();
 		
-		assertTrue( cartaMonstruo.estaColocadaEnModoDefensa() );
+		assertTrue( cartaMonstruo.estaColocadaBocaAbajoEnModoDefensa() );
 		
 	}
 	
