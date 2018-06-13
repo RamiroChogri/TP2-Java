@@ -10,6 +10,7 @@ import exceptions.*;
 
 public class Campo {
 
+	private int vidaDelJugador;
 	private ZonaMonstruo zonaMonstruo;
 	private ZonaUtilidad zonaUtilidad;
 	private ZonaCampo zonaCampo;
@@ -20,6 +21,7 @@ public class Campo {
 	public Campo() {
 		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
 		//ordenadas aleatoriamente
+		this.vidaDelJugador = 8000;
 		this.zonaMonstruo = new ZonaMonstruo();
 		this.zonaUtilidad = new ZonaUtilidad();
 		this.zonaCampo = new ZonaCampo();

@@ -2,7 +2,6 @@ package jugador;
 import campo.*;
 public class Jugador {
 
-		private int puntosDeVida;
 		private Campo campoPropio;
 		private Campo campoEnemigo;
 		private Mano mano;
@@ -10,7 +9,6 @@ public class Jugador {
 
 	public Jugador() {
 		
-		this.puntosDeVida = 8000;
 		this.campoPropio = new Campo();
 		this.mano = new Mano();	
 	}

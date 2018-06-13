@@ -1,10 +1,7 @@
 package campo;
-import java.util.Iterator;
-import java.util.LinkedList;
 
 import carta.Carta;
 import carta.CartaCampo;
-import carta.CartaMonstruo;
 
 public class ZonaCampo {
 
