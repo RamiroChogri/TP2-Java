@@ -9,8 +9,8 @@ public class EstadoCartaEnModoAtaque extends EstadoCarta {
 	}
 	
 	public int recibirAtaque(int puntosAtaqueEnemigo) {
-		int diferenciaDaño = puntosAtaqueEnemigo - puntosDeAtaque;
-		return diferenciaDaño;
+		int diferenciaDanio = puntosAtaqueEnemigo - puntosDeAtaque;
+		return diferenciaDanio;
 	}
 	
 	public EstadoCartaEnModoAtaque colocarCartaEnModoAtaque() {

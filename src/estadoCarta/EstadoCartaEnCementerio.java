@@ -2,18 +2,18 @@ package estadoCarta;
 
 public class EstadoCartaEnCementerio extends EstadoCarta {
 	
-	int diferenciaDeDaño;
+	int diferenciaDeDanio;
 	
 	public EstadoCartaEnCementerio() {
-		diferenciaDeDaño = 0;
+		diferenciaDeDanio = 0;
 	}
 	
-	public EstadoCartaEnCementerio(int dañoAlJugador) {
-		diferenciaDeDaño = dañoAlJugador;
+	public EstadoCartaEnCementerio(int danioAlJugador) {
+		diferenciaDeDanio = danioAlJugador;
 	}
 	
-	public int obtenerDiferenciaDeDaño() {
-		return diferenciaDeDaño;
+	public int obtenerDiferenciaDeDanio() {
+		return diferenciaDeDanio;
 	}
 	
 	public EstadoCartaEnCementerio colocarCartaEnCementerio() {
