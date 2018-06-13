@@ -156,5 +156,10 @@ public class Campo {
 		// this.enterrarCartaCampo(); Error, me agrega null a la lista y para ahorrar if lo comentamos por ahora
 		this.cementerio.agregarCartasAlCementerio(cartasAEnterrar);
 	}
+	
+	public void vaciarZonaMonstruos() {
+		this.zonaMonstruo.vaciar();
+		this.enviarCartasDestruidasAlCementerio();
+	}
 
 }
