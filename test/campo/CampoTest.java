@@ -137,4 +137,18 @@ public class CampoTest {
 		
 		assertTrue( carta.estaColocadaBocaArriba() );
 	}
+	
+	@Test
+	public void testVaciarZonaMonstruosDelCampo() {
+		Campo campo = new Campo();
+		CartaMonstruo carta1 = new CartaMonstruo();
+		CartaMonstruo carta2 = new CartaMonstruo();
+		CartaMonstruo carta3 = new CartaMonstruo();
+		campo.colocarMonstruoBocaArribaEnModoDefensa(carta1);
+		campo.colocarMonstruoEnModoAtaque(carta2);
+		campo.colocarMonstruoBocaAbajoEnModoDefensa(carta3);
+	
+		campo.vaciarZonaMonstruos();
+		assertTrue ( campo.obtenerCantidadDeCartasEnZonaMonstruo() == 0 );
+	}
 }
