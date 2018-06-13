@@ -26,6 +26,14 @@ public class CartaMonstruo implements CartaAtacable{
 	public boolean estaColocadaEnModoAtaque() {
 		return (this.estado.estaEnModoAtaque());
 	}
+	
+	public boolean estaColocadaBocaArribaEnModoDefensa() {
+		return ( this.estado.estaBocaArribaEnModoDefensa() );
+	}
+	
+	public boolean estaColocadaBocaAbajoEnModoDefensa() {
+		return (this.estado.estaBocaAbajoEnModoDefensa() );
+	}
 
 	public void destruirCarta() {
 		
