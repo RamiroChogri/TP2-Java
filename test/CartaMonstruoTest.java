@@ -120,4 +120,27 @@ public class CartaMonstruoTest {
 		assertTrue(cartaMonstruo2.estaColocadaBocaArribaEnModoDefensa());					
 	}
 	
+	@Test
+	public void monstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYLoDestruye() {
+		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
+		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(1000, 400);
+		cartaMonstruo1.colocarEnModoAtaque();
+		cartaMonstruo2.colocarEnModoAtaque();
+		cartaMonstruo1.atacar(cartaMonstruo2);
+		
+		assertTrue(cartaMonstruo2.estaDestruida());
+	}
+	
+	@Test
+	public void monstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYSeDestruye() {
+		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
+		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(1000, 400);
+		cartaMonstruo1.colocarEnModoAtaque();
+		cartaMonstruo2.colocarEnModoAtaque();
+		cartaMonstruo1.atacar(cartaMonstruo2);
+		
+		assertTrue(cartaMonstruo1.estaDestruida());
+	}
+	
+	
 }
