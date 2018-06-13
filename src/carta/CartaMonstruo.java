@@ -21,8 +21,37 @@ public class CartaMonstruo implements Atacable{
 		this.puntosDeDefensa = puntosDeDefensaAColocar;
 	}
 	
+	//Esto deberia comprobarse en campo si la carta que ataca esta en modo ataque y que la
+	//que reciba el ataque este en modo ataque o en modo defensa.
+	
+	public void atacar(CartaMonstruo otraCartaMonstruo) {
+		
+		if (otraCartaMonstruo.estaColocadaBocaAbajoEnModoDefensa()) {
+			otraCartaMonstruo.colocarBocaArribaEnModoDefensa();
+		}
+		
+		otraCartaMonstruo.recibirAtaque(this, this.puntosDeAtaque);
+		
+	}
+	
+	public void recibirAtaque(CartaMonstruo cartaEnemiga, int puntosDeAtaqueMonstruoEnemigo) {
+		
+		int dañoAlJugador = 0;
+		
+		dañoAlJugador = estado.recibirAtaque(puntosDeAtaqueMonstruoEnemigo);
+		
+		if (dañoAlJugador >= 0) {
+			this.destruirCarta(dañoAlJugador);
+		}
+		
+		if (estado.estaEnModoAtaque() && (dañoAlJugador <= 0)) {
+			cartaEnemiga.destruirCarta(dañoAlJugador);
+		}
+	}
+	
+	
 	public void colocarEnModoAtaque() {
-		this.estado = new EstadoCartaEnModoAtaque();
+		this.estado = new EstadoCartaEnModoAtaque(this.puntosDeAtaque);
 	}
 	
 	public void colocarBocaArribaEnModoDefensa() {
@@ -51,6 +80,10 @@ public class CartaMonstruo implements Atacable{
 	
 	public void destruirCarta() {
 		this.estado = new EstadoCartaEnCementerio();
+	}
+	
+	public void destruirCarta(int dañoAlJugador) {
+		this.estado = new EstadoCartaEnCementerio(dañoAlJugador);
 	}
 	
 }

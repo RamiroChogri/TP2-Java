@@ -13,8 +13,12 @@ public abstract class EstadoCarta {
 		return new EstadoCartaEnCementerio();
 	}
 	
-	public EstadoCartaEnModoAtaque colocarCartaEnModoAtaque() {
-		return new EstadoCartaEnModoAtaque();
+	public EstadoCartaEnModoAtaque colocarCartaEnModoAtaque(int puntosDeAtaqueMonstruo) {
+		return new EstadoCartaEnModoAtaque(puntosDeAtaqueMonstruo);
+	}
+	
+	public int recibirAtaque(int puntosDeAtaqueMonstruoEnemigo) {
+		return 0;
 	}
 	
 	public EstadoCartaBocaArribaEnModoDefensa colocarCartaBocaArribaEnModoDefensa() {
