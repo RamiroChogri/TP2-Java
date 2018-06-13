@@ -134,16 +134,36 @@ de los puntos de ataque de los monstruos*/
 	}
 	
 	
-//	
-//	@Test
-//	public void test08MonstruoAtacaAOtroMonstruoEnModoAtaqueConIgualAtaque() {
-//	
-//	}
-//	
-//	@Test
-//	public void test09MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMayorAtaqueQueSuDefensa() {
-//	
-//	}
+	
+	@Test
+	public void test08MonstruoAtacaAOtroMonstruoEnModoAtaqueConIgualAtaque() {
+		CartaMonstruo unMonstruoConMilAtaque = new CartaMonstruo(1000, 3000);
+ 		CartaMonstruo otroMonstruoConMilAtaque = new CartaMonstruo(1000, 2000);
+ 		Campo campoTest = new Campo();
+ 		Campo campoTestEnemigo = new Campo(); 
+ 		
+ 		campoTest.colocarMonstruoEnModoAtaque(unMonstruoConMilAtaque);
+ 		campoTestEnemigo.colocarMonstruoEnModoAtaque(otroMonstruoConMilAtaque);
+ 		unMonstruoConMilAtaque.atacar(otroMonstruoConMilAtaque);
+ 		
+ 		assertTrue(unMonstruoConMilAtaque.estaDestruida());
+ 		assertTrue(otroMonstruoConMilAtaque.estaDestruida());
+	}
+	
+	@Test
+	public void test09MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMayorAtaqueQueSuDefensa() {
+		CartaMonstruo monstruoAtacante = new CartaMonstruo(3000, 3000);
+ 		CartaMonstruo monstruoDefensor = new CartaMonstruo(1000, 2000);
+ 		Campo campoTest = new Campo();
+ 		Campo campoTestEnemigo = new Campo(); 
+ 		
+ 		campoTest.colocarMonstruoEnModoAtaque(monstruoAtacante);
+ 		campoTestEnemigo.colocarMonstruoBocaArribaEnModoDefensa(monstruoDefensor);
+ 		monstruoAtacante.atacar(monstruoDefensor);
+ 		
+ 		assertFalse(monstruoAtacante.estaDestruida());
+ 		assertTrue(monstruoDefensor.estaDestruida());
+	}
 //
 //	@Test
 //	public void test07MonstruoAtacaAOtroMonstruoConMayorAtaque(){

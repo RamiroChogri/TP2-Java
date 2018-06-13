@@ -23,6 +23,6 @@ public class Jugador {
 	
 	public int cantidadDeCartasEnLaMano() {
 		
-		return 0;
+		return mano.obtenerCantidadDeCartas();
 	}
 }
