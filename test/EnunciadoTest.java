@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import campo.Campo;
 import carta.*;
+import efectos.EfectoAgujeroNegro;
 
 
 public class EnunciadoTest {
@@ -111,11 +112,15 @@ de los puntos de ataque de los monstruos*/
 //		assertTrue( otraCartaMonstruo.estaDestruida() );
 //	}
 
- 	
+ 	@Test
 	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueConMenorAtaque() {
 		CartaMonstruo monstruoConMayorAtaque = new CartaMonstruo(2000, 3000);
 		CartaMonstruo monstruoConMenorAtaque = new CartaMonstruo(1000, 2000);
+		Campo campoTest = new Campo();
+ 		Campo campoTestEnemigo = new Campo(); 
  		
+ 		campoTest.colocarMonstruoEnModoAtaque(monstruoConMayorAtaque);
+ 		campoTestEnemigo.colocarMonstruoEnModoAtaque(monstruoConMenorAtaque);
 		monstruoConMenorAtaque.atacar(monstruoConMayorAtaque);
 		
 		assertFalse(monstruoConMayorAtaque.estaDestruida());
@@ -169,20 +174,38 @@ de los puntos de ataque de los monstruos*/
  		assertFalse(monstruoAtacante.estaDestruida());
  		assertTrue(monstruoDefensor.estaDestruida());
 	}
-//
-//	@Test
-//	public void test07MonstruoAtacaAOtroMonstruoConMayorAtaque(){
-//		
-//	}
-//	
-//	public void test10MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMenorAtaqueQueSuDefensa() {
-//	
-//	}
-//	
-//	@Test
-//	public void test11MonstruosDelCampoSeDestruyenAlColocarAgujeroNegro() {
-//	
-//	}
+
+	@Test
+	public void test10MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMenorAtaqueQueSuDefensa() {
+		CartaMonstruo monstruoAtacante = new CartaMonstruo(1000, 3000);
+		CartaMonstruo monstruoDefensor = new CartaMonstruo(1000, 2000);
+ 		Campo campoTest = new Campo();
+ 		Campo campoTestEnemigo = new Campo(); 
+ 		
+ 		campoTest.colocarMonstruoEnModoAtaque(monstruoAtacante);
+ 		campoTestEnemigo.colocarMonstruoBocaArribaEnModoDefensa(monstruoDefensor);
+ 		monstruoAtacante.atacar(monstruoDefensor);
+ 		
+ 		assertFalse(monstruoAtacante.estaDestruida());
+ 		assertFalse(monstruoDefensor.estaDestruida());
+	}
+	
+	@Test
+	public void test11MonstruosDelCampoSeDestruyenAlColocarAgujeroNegro() {
+		CartaMonstruo monstruoAtacante = new CartaMonstruo(1000, 3000);
+		CartaMonstruo monstruoDefensor = new CartaMonstruo(1000, 2000);
+ 		Campo campoTest = new Campo();
+ 		Campo campoTestEnemigo = new Campo(); 
+ 		EfectoAgujeroNegro agujeroNegroEfecto = new EfectoAgujeroNegro();
+ 		
+ 		campoTest.colocarMonstruoEnModoAtaque(monstruoAtacante);
+ 		campoTestEnemigo.colocarMonstruoBocaArribaEnModoDefensa(monstruoDefensor);
+ 		
+ 		agujeroNegroEfecto.aplicarEfecto(campoTest, campoTestEnemigo);
+ 		
+ 		assertFalse(campoTest.tieneCartas());
+ 		assertFalse(campoTestEnemigo.tieneCartas());
+	}
 //	
 //	@Test
 //	public void test12ColocarMonstruoQueRequiereUnSacrificioDestruyeElMonstruoAnterior() {

@@ -5,17 +5,32 @@ import estadoCarta.EstadoCartaBocaAbajo;
 import estadoCarta.EstadoCartaBocaArriba;
 import estadoCarta.EstadoCartaEnCementerio;
 import estadoCarta.EstadoCartaEnMazo;
+import efectos.*;
 
 public class CartaMagica implements Utilizable{
 	
 	private EstadoCarta estado;
+	private Efecto efecto;
+	
 	
 	public CartaMagica() {
-		estado = new EstadoCartaEnMazo();
+		
+		this.estado = new EstadoCartaEnMazo();
+		Efecto efectoNulo = new EfectoNulo();
+		this.efecto = efectoNulo;
+	}
+	
+	public CartaMagica(Efecto efectoAColocar) {
+		
+		this.estado = new EstadoCartaEnMazo();
+		this.efecto = efectoAColocar;
+	
 	}
 	
 	public void destruirCarta() {
+	
 		this.estado = new EstadoCartaEnCementerio();
+
 	}
 
 	public void colocarBocaAbajo() {
@@ -24,9 +39,10 @@ public class CartaMagica implements Utilizable{
 		
 	}
 
-	public void colocarBocaArriba() {
+	public Efecto colocarBocaArriba() {
 		
 		this.estado = new EstadoCartaBocaArriba();
+		return this.efecto;
 		
 	}
 
@@ -38,7 +54,11 @@ public class CartaMagica implements Utilizable{
 		return ( this.estado.estaBocaArriba() );
 	}
 	
-	public Boolean estaDestruida() {
+	public boolean estaDestruida() {
 		return this.estado.estaEnCementerio();
+	}
+	
+	public Efecto obtenerEfecto() {
+		return this.efecto;
 	}
 }
