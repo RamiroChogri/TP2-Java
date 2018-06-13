@@ -65,7 +65,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYSeDestruyeLaQueAtaco() {
+	public void monstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYNoSeDestruyeLaQueAtaco() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
 		cartaMonstruo1.colocarEnModoAtaque();
