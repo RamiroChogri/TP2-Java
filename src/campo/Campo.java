@@ -96,6 +96,11 @@ public class Campo {
 
 	}
 	
+	public int obtenerCantidadDeCartasJugadas() {
+		
+		return (this.obtenerCantidadDeCartasEnZonaMonstruo() + this.obtenerCantidadDeCartasEnZonaUtilidad() + this.obtenerCantidadDeCartasEnZonaCampo());
+	}
+	
 	public int obtenerVidaRestante() {
 		
 		return this.vidaDelJugador;
