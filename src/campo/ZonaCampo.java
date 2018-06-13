@@ -8,11 +8,20 @@ public class ZonaCampo {
 	
 	public ZonaCampo() {
 		this.cartaCampo = new CartaCampo();
-		this.hayCartaCampo = true;
+		this.hayCartaCampo = false;
+	}
+	
+	public void activarEfectoDeCampo() {
+		//this.cartaCampo.activarEfecto();
+	}
+	
+	public void colocarCartaCampo(CartaCampo cartaAColocar) {
+		this.cartaCampo = cartaAColocar;
 	}
 	
 	public int obtenerCantidadDeCartas() {
-		return 0;
+		int cantidadDeCartaCampo = hayCartaCampo ? 1 : 0;
+		return cantidadDeCartaCampo;
 	}
 
 }
