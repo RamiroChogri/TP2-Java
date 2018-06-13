@@ -6,21 +6,21 @@ import carta.*;
 public class CartaMonstruoTest {
 	
 	@Test
-	public void colocarCartaMonstruoEnModoAtaqueEstaEnModoAtaque() {
+	public void testColocarCartaMonstruoEnModoAtaqueEstaEnModoAtaque() {
 		CartaMonstruo cartaMonstruo = new CartaMonstruo(9000, 5);
 		cartaMonstruo.colocarEnModoAtaque();
 		assertEquals(true, cartaMonstruo.estaColocadaEnModoAtaque());
 	}
 	
 	@Test
-	public void colocarCartaMonstruoBocaAbajoEnModoDefensaNoEstaEnModoAtaque() {
+	public void testColocarCartaMonstruoBocaAbajoEnModoDefensaNoEstaEnModoAtaque() {
 		CartaMonstruo cartaMonstruo = new CartaMonstruo(9000, 5);
 		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
 		assertFalse(cartaMonstruo.estaColocadaEnModoAtaque());
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroEnModoAtaqueConMenosAtaqueYLoDestruye() {
+	public void testMonstruoAtacaAOtroEnModoAtaqueConMenosAtaqueYLoDestruye() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 400);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -31,7 +31,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroEnModoAtaqueConMenosAtaqueYNoSeDestruyeLaCartaQueAtaca() {
+	public void testMonstruoAtacaAOtroEnModoAtaqueConMenosAtaqueYNoSeDestruyeLaCartaQueAtaca() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 400);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -43,7 +43,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMenosDefensaYLoDestruye() {
+	public void testMonstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMenosDefensaYLoDestruye() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 400);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -54,7 +54,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYNoLoDestruye() {
+	public void testMonstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYNoLoDestruye() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -65,7 +65,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYNoSeDestruyeLaQueAtaco() {
+	public void testMonstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYNoSeDestruyeLaQueAtaco() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -77,7 +77,7 @@ public class CartaMonstruoTest {
 	
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMenosDefensaYLoDestruye() {
+	public void testMonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMenosDefensaYLoDestruye() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 400);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -88,7 +88,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYNoLoDestruye() {
+	public void testMonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYNoLoDestruye() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -99,7 +99,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYSeDestruyeLaQueAtaco() {
+	public void testMonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYSeDestruyeLaQueAtaco() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -110,7 +110,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYLoDaVuelta() {
+	public void testMonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYLoDaVuelta() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -121,7 +121,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYLoDestruye() {
+	public void testMonstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYLoDestruye() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(1000, 400);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -132,7 +132,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYSeDestruye() {
+	public void testMonstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYSeDestruye() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(1000, 400);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -143,7 +143,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void monstruoAtacaAOtroMonstruoEnModoDefensaConMismoAtaqueQueDefensaYNoSeDestruye() {
+	public void testMonstruoAtacaAOtroMonstruoEnModoDefensaConMismoAtaqueQueDefensaYNoSeDestruye() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(2000, 1000);
 		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(0, 2000);
 		cartaMonstruo1.colocarEnModoAtaque();
@@ -153,13 +153,13 @@ public class CartaMonstruoTest {
 		assertFalse(cartaMonstruo1.estaDestruida());
 	}
 	@Test
-	public void monstruoAtacaAOtroMonstruoEnModoDefensaConMismoAtaqueQueDefensaYNoLoDestruye() {
+	public void testMonstruoAtacaAOtroMonstruoEnModoAtaqueLaDestruyeYDejaElDanioCorrespondiente() {
 		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(2000, 1000);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(0, 2000);
+		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(100, 2000);
 		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarBocaAbajoEnModoDefensa();
+		cartaMonstruo2.colocarEnModoAtaque();
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
-		assertFalse(cartaMonstruo2.estaDestruida());
+		assertEquals(2000 - 100 ,cartaMonstruo2.obtenerDanioAlHaberSidoDestruida());
 	}
 }
