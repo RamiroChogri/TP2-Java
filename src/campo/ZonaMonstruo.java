@@ -53,4 +53,13 @@ public class ZonaMonstruo {
 	    }
 	    return cartasDestruidas;
 	}
+
+	public void vaciar() {
+		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
+	    CartaMonstruo cartaMonstruoActual;
+	    while (posicionesIterador.hasNext()) {
+	    	cartaMonstruoActual = posicionesIterador.next();
+	    	cartaMonstruoActual.destruirCarta();
+	    }
+	}
 }

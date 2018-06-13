@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
@@ -12,21 +13,22 @@ public class EnunciadoTest {
 	//Colocar una carta de monstruo en posición de ataque.
 	@Test
 	public void test01ColocarCartaMonstruoEnModoAtaque() {
-		
+		Campo campoTest = new Campo();
 		CartaMonstruo cartaMonstruo = new CartaMonstruo();
 		
-		cartaMonstruo.colocarEnModoAtaque();
-		
+		campoTest.colocarMonstruoEnModoAtaque(cartaMonstruo);
+		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
 		assertTrue( cartaMonstruo.estaColocadaEnModoAtaque() );
 	}
 	
 	@Test
 	public void test02ColocarMonstruoBocaAbajoEnModoDefensa() {
-		
+		Campo campoTest = new Campo();
 		CartaMonstruo cartaMonstruo = new CartaMonstruo();
 		
-		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
+		campoTest.colocarMonstruoBocaAbajoEnModoDefensa(cartaMonstruo);
 		
+		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
 		assertTrue( cartaMonstruo.estaColocadaBocaAbajoEnModoDefensa() );
 		
 	}
@@ -37,21 +39,20 @@ public class EnunciadoTest {
 		CartaMagica cartaMagica = new CartaMagica();
 		Campo campo = new Campo();
 		cartaMagica.colocarBocaAbajo();
-		campo.colocarCarta( cartaMagica );
-		
+		campo.colocarCartaMagicaBocaAbajo(cartaMagica);
 		assertEquals(1, campo.obtenerCantidadDeCartasEnZonaUtilidad() );
+		assertTrue(cartaMagica.estaColocadaBocaAbajo());
 	}
 	
 	@Test
 	public void test04ColocarCartaTrampaEnCampoBocaAbajo() {
 		
 		CartaTrampa cartaTrampa = new CartaTrampa();
-		Campo campo = new Campo();
-		cartaTrampa.colocarBocaAbajo();
-		campo.colocarCarta( cartaTrampa );
+		Campo campoTest = new Campo();
+		campoTest.colocarCartaTrampaBocaAbajo(cartaTrampa);
 		
-		assertEquals(1, campo.obtenerCantidadDeCartasEnZonaUtilidad() );
-		
+		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad() );
+		assertTrue(cartaTrampa.estaColocadaBocaAbajo());
 	}
 	
 	@Test
@@ -59,10 +60,9 @@ public class EnunciadoTest {
 		
 		CartaTrampa cartaTrampa = new CartaTrampa();
 		Campo campo = new Campo();
+
 		campo.colocarCarta( cartaTrampa );
-		
 		cartaTrampa.destruirCarta();
-		
 		campo.enviarCartasDestruidasAlCementerio();
 		
 		assertEquals( 1, campo.obtenerCantidadDeCartasEnCementerio() );
@@ -111,20 +111,29 @@ de los puntos de ataque de los monstruos*/
 //		assertTrue( otraCartaMonstruo.estaDestruida() );
 //	}
 
-
-// 	@Test
-//	public void test06MonstruoAtacaAOtroMonstruoConMenorAtaque() {
-// 		
-// 	}
-// 	
-//	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueConMenorAtaque() {
-//		
-//	}
-// 
-//	@Test
-//	public void test07MonstruoAtacaAOtroMonstruoEnModoAtaqueConMayorAtaque() {
-//	
-//	}
+ 	
+	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueConMenorAtaque() {
+		CartaMonstruo monstruoConMayorAtaque = new CartaMonstruo(2000, 3000);
+		CartaMonstruo monstruoConMenorAtaque = new CartaMonstruo(1000, 2000);
+ 		
+		monstruoConMenorAtaque.atacar(monstruoConMayorAtaque);
+		
+		assertFalse(monstruoConMayorAtaque.estaDestruida());
+		assertTrue(monstruoConMenorAtaque.estaDestruida());
+	}
+ 
+	@Test
+	public void test07MonstruoAtacaAOtroMonstruoEnModoAtaqueConMayorAtaque() {
+		CartaMonstruo monstruoConMayorAtaque = new CartaMonstruo(2000, 3000);
+ 		CartaMonstruo monstruoConMenorAtaque = new CartaMonstruo(1000, 2000);
+ 		
+ 		monstruoConMayorAtaque.atacar(monstruoConMenorAtaque);
+ 		
+ 		assertFalse(monstruoConMayorAtaque.estaDestruida());
+ 		assertTrue(monstruoConMenorAtaque.estaDestruida());
+	}
+	
+	
 //	
 //	@Test
 //	public void test08MonstruoAtacaAOtroMonstruoEnModoAtaqueConIgualAtaque() {

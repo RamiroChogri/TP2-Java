@@ -140,6 +140,7 @@ public class CampoTest {
 	}
 	
 	@Test
+
 	public void testColocarUnaCartaMagicaYUnaTrampaQudanColocadas() {
 		Campo campo = new Campo();
 		CartaMagica carta1 = new CartaMagica();
@@ -178,5 +179,19 @@ public class CampoTest {
 		int cartasEnCampoEsperadas = 3;
 		
 		assertEquals( cartasEnCampoEsperadas, campo.obtenerCantidadDeCartasJugadas() );
+	}
+
+	@Test
+	public void testVaciarZonaMonstruosDelCampo() {
+		Campo campo = new Campo();
+		CartaMonstruo carta1 = new CartaMonstruo();
+		CartaMonstruo carta2 = new CartaMonstruo();
+		CartaMonstruo carta3 = new CartaMonstruo();
+		campo.colocarMonstruoBocaArribaEnModoDefensa(carta1);
+		campo.colocarMonstruoEnModoAtaque(carta2);
+		campo.colocarMonstruoBocaAbajoEnModoDefensa(carta3);
+	
+		campo.vaciarZonaMonstruos();
+		assertTrue ( campo.obtenerCantidadDeCartasEnZonaMonstruo() == 0 );
 	}
 }
