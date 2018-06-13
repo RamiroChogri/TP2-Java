@@ -38,4 +38,7 @@ public class CartaMagica implements Utilizable{
 		return ( this.estado.estaBocaArriba() );
 	}
 	
+	public Boolean estaDestruida() {
+		return this.estado.estaEnCementerio();
+	}
 }

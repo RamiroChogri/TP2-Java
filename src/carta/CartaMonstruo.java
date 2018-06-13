@@ -35,6 +35,10 @@ public class CartaMonstruo implements Atacable{
 		return (this.estado.estaBocaAbajoEnModoDefensa() );
 	}
 
+	public Boolean estaDestruida() {
+		return this.estado.estaEnCementerio();
+	}
+	
 	public void destruirCarta() {
 		this.estado = new EstadoCartaEnCementerio();
 	}
