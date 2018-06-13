@@ -126,6 +126,11 @@ de los puntos de ataque de los monstruos*/
 	public void test07MonstruoAtacaAOtroMonstruoEnModoAtaqueConMayorAtaque() {
 		CartaMonstruo monstruoConMayorAtaque = new CartaMonstruo(2000, 3000);
  		CartaMonstruo monstruoConMenorAtaque = new CartaMonstruo(1000, 2000);
+ 		Campo campoTest = new Campo();
+ 		Campo campoTestEnemigo = new Campo(); 
+ 		
+ 		campoTest.colocarMonstruoEnModoAtaque(monstruoConMayorAtaque);
+ 		campoTestEnemigo.colocarMonstruoEnModoAtaque(monstruoConMenorAtaque);
  		
  		monstruoConMayorAtaque.atacar(monstruoConMenorAtaque);
  		
