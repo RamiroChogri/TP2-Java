@@ -107,7 +107,7 @@ public class CampoTest {
 		Campo campo = new Campo();
 		CartaMagica carta = new CartaMagica();
 		
-		campo.colocarCartaMagicaBocaAbajo(carta);
+		campo.colocarCartaMagicaBocaArriba(carta);
 		
 		assertTrue( carta.estaColocadaBocaArriba());
 	}
