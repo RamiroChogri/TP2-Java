@@ -15,11 +15,11 @@ public class CartaMonstruo implements Atacable{
 		this.estado = new EstadoCartaEnModoAtaque();
 	}
 	
-	public void colocarEnModoDefensaBocaArriba() {
+	public void colocarBocaArribaEnModoDefensa() {
 		this.estado = new EstadoCartaBocaArribaEnModoDefensa();
 	}
 	
-	public void colocarEnModoDefensaBocaAbajo() {
+	public void colocarBocaAbajoEnModoDefensa() {
 		this.estado = new EstadoCartaBocaAbajoEnModoDefensa();
 	}
 	

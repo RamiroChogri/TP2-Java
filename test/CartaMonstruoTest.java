@@ -18,7 +18,7 @@ public class CartaMonstruoTest {
 	@Test
 	public void colocarCartaMonstruoBocaAbajoEnModoDefensaNoEstaEnModoAtaque() {
 		CartaMonstruo cartaMonstruo = new CartaMonstruo();
-		cartaMonstruo.colocarEnModoDefensaBocaAbajo();
+		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
 		assertFalse(cartaMonstruo.estaColocadaEnModoAtaque());
 	}
 	

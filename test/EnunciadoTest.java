@@ -25,7 +25,7 @@ public class EnunciadoTest {
 		
 		CartaMonstruo cartaMonstruo = new CartaMonstruo();
 		
-		cartaMonstruo.colocarEnModoDefensaBocaAbajo();
+		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
 		
 		assertTrue( cartaMonstruo.estaColocadaBocaAbajoEnModoDefensa() );
 		
