@@ -111,4 +111,24 @@ public class CampoTest {
 		
 		assertTrue( carta.estaColocadaBocaArriba());
 	}
+	
+	@Test
+	public void testColocarUnaCartaTrampaBocaAbajoQuedaColocada() {
+		Campo campo = new Campo();
+		CartaTrampa carta = new CartaTrampa();
+		
+		campo.colocarCartaTrampaBocaAbajo(carta);
+		
+		assertTrue( carta.estaColocadaBocaAbajo() );
+	}
+	
+	@Test
+	public void testColocarUnaCartaTrampaBocaArribaQuedaColocada() {
+		Campo campo = new Campo();
+		CartaTrampa carta = new CartaTrampa();
+		
+		campo.colocarCartaTrampaBocaArriba(carta);
+		
+		assertTrue( carta.estaColocadaBocaArriba() );
+	}
 }

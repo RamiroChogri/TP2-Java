@@ -1,6 +1,8 @@
 package campo;
 
+import carta.CartaMagica;
 import carta.CartaMonstruo;
+import carta.CartaTrampa;
 
 public class Campo {
 
@@ -104,6 +106,34 @@ public class Campo {
 	public void colocarMonstruoBocaAbajoEnModoDefensa(CartaMonstruo cartaAColocar) {
 		
 		cartaAColocar.colocarEnModoDefensaBocaAbajo();
+		this.colocarCarta(cartaAColocar);
+		
+	}
+
+	public void colocarCartaMagicaBocaAbajo(CartaMagica cartaAColocar) {
+		
+		cartaAColocar.colocarBocaAbajo();
+		this.colocarCarta(cartaAColocar);
+		
+	}
+
+	public void colocarCartaMagicaBocaArriba(CartaMagica cartaAColocar) {
+		
+		cartaAColocar.colocarBocaArriba();
+		this.colocarCarta(cartaAColocar);
+		
+	}
+
+	public void colocarCartaTrampaBocaAbajo(CartaTrampa cartaAColocar) {
+		
+		cartaAColocar.colocarBocaAbajo();
+		this.colocarCarta(cartaAColocar);
+		
+	}
+
+	public void colocarCartaTrampaBocaArriba(CartaTrampa cartaAColocar) {
+		
+		cartaAColocar.colocarBocaArriba();
 		this.colocarCarta(cartaAColocar);
 		
 	}
