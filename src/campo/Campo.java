@@ -95,7 +95,12 @@ public class Campo {
 		return ((this.obtenerCantidadDeCartasEnZonaMonstruo() + this.obtenerCantidadDeCartasEnZonaUtilidad() + this.obtenerCantidadDeCartasEnZonaCampo()) > 0);
 
 	}
-
+	
+	public int obtenerVidaRestante() {
+		
+		return this.vidaDelJugador;
+	}
+	
 	public void colocarMonstruoEnModoAtaque(CartaMonstruo cartaAColocar) {
 		
 		cartaAColocar.colocarEnModoAtaque();
@@ -122,7 +127,7 @@ public class Campo {
 		this.colocarCarta(cartaAColocar);
 		
 	}
-
+	
 	public void colocarCartaMagicaBocaArriba(CartaMagica cartaAColocar) {
 		
 		cartaAColocar.colocarBocaArriba();
