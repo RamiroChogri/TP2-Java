@@ -1,6 +1,6 @@
 package carta;
 import estadoCarta.*;
-public class CartaMonstruo implements CartaAtacable{
+public class CartaMonstruo implements Atacable{
 	
 	private EstadoCarta estado;
 	

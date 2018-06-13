@@ -1,6 +1,6 @@
 package carta;
 
-public class CartaMagica implements CartaUtilizable{
+public class CartaMagica implements Utilizable{
 	
 	public CartaMagica() {
 	
