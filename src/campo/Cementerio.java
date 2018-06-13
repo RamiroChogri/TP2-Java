@@ -15,6 +15,10 @@ public class Cementerio {
 		this.cementerio.add(cartaDestruida);
 	}
 	
+	public void agregarCartasAlCementerio(LinkedList<Carta> cartasAEnterrar) {
+		this.cementerio.addAll(cartasAEnterrar);
+	}
+	
 	public int obtenerCantidadDeCartas() {
 		return this.cementerio.size();
 	}
