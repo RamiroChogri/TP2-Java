@@ -1,5 +1,5 @@
 package carta;
 
-public interface Utilizable extends Carta {
+public interface Utilizable extends Carta{
 
 }

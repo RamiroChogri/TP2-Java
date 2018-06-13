@@ -1,5 +1,5 @@
 package carta;
 
-public interface Atacable extends Carta {
+public interface Atacable extends Carta{
 
 }

@@ -139,5 +139,9 @@ public class Campo {
 		this.colocarCarta(cartaAColocar);
 		
 	}
+
+	public void enviarCartasDestruidasAlCementerio() {
+		
+	}
 }
 	
