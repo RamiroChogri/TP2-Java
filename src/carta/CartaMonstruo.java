@@ -3,23 +3,33 @@ import estadoCarta.*;
 public class CartaMonstruo implements Atacable{
 	
 	private EstadoCarta estado;
-	
+	private int puntosDeAtaque;
+	private int puntosDeDefensa;
 	
 	public CartaMonstruo() {
 		
 		//por defecto en el mazo
 		this.estado = new EstadoCartaEnMazo(); 
+		this.puntosDeAtaque = 1000;
+		this.puntosDeDefensa = 700;
+		
+	}
+	
+	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar) {
+		this.estado = new EstadoCartaEnMazo();
+		this.puntosDeAtaque = puntosDeAtaqueAColocar;
+		this.puntosDeDefensa = puntosDeDefensaAColocar;
 	}
 	
 	public void colocarEnModoAtaque() {
 		this.estado = new EstadoCartaEnModoAtaque();
 	}
 	
-	public void colocarEnModoDefensaBocaArriba() {
+	public void colocarBocaArribaEnModoDefensa() {
 		this.estado = new EstadoCartaBocaArribaEnModoDefensa();
 	}
 	
-	public void colocarEnModoDefensaBocaAbajo() {
+	public void colocarBocaAbajoEnModoDefensa() {
 		this.estado = new EstadoCartaBocaAbajoEnModoDefensa();
 	}
 	
@@ -35,7 +45,7 @@ public class CartaMonstruo implements Atacable{
 		return (this.estado.estaBocaAbajoEnModoDefensa() );
 	}
 
-	public Boolean estaDestruida() {
+	public boolean estaDestruida() {
 		return this.estado.estaEnCementerio();
 	}
 	
