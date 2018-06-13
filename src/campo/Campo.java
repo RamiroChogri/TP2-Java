@@ -1,5 +1,7 @@
 package campo;
 
+import carta.CartaMonstruo;
+
 public class Campo {
 
 	private ZonaMonstruo zonaMonstruo;
@@ -23,7 +25,7 @@ public class Campo {
 	
 	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {
 		try {
-			zonaMonstruo.colocar(cartaMonstruoAColocar);
+			zonaMonstruo.colocarCarta(cartaMonstruoAColocar);
 		} catch (ZonaMonstruoLlenaException estaLlena) {
 			System.out.println("No se puede invocar el monstruo, el campo esta lleno");
 			throw new ZonaMonstruoLlenaException();
@@ -33,7 +35,7 @@ public class Campo {
 	
 	public void colocarCarta(CartaMagica cartaMagicaAColocar) {
 		try {
-			zonaUtilidad.colocar(cartaMagicaAColocar);
+			zonaUtilidad.colocarCarta(cartaMagicaAColocar);
 		} catch (ZonaUtilidadLlenaException estaLlena) {
 			System.out.println("No se puede invocar la carta magica, el campo esta lleno");
 			throw new ZonaUtilidadLlenaException();
@@ -42,7 +44,7 @@ public class Campo {
 	
 	public void colocarCarta(CartaTrampa cartaTrampaAColocar) {
 		try {
-			zonaUtilidad.colocar(cartaTrampaAColocar);
+			zonaUtilidad.colocarCarta(cartaTrampaAColocar);
 		} catch (ZonaUtilidadLlenaException estaLlena) {
 			System.out.println("No se puede invocar la carta trampa, el campo esta lleno");
 			throw new ZonaUtilidadLlenaException();
@@ -51,7 +53,7 @@ public class Campo {
 	
 	public void colocarCarta(CartaCampo cartaCampoAColocar) {
 		try {
-			zonaCampo.colocar(cartaCampoAColocar);
+			zonaCampo.colocarCarta(cartaCampoAColocar);
 		} catch (ZonaCampoLlenaException estaLlena) {
 			System.out.println("No se puede invocar la carta campo, el campo esta lleno");
 			throw new ZonaCampoLlenaException();
@@ -85,6 +87,25 @@ public class Campo {
 		return ((this.obtenerCantidadDeCartasEnZonaMonstruo() + this.obtenerCantidadDeCartasEnZonaUtilidad() + this.obtenerCantidadDeCartasEnZonaCampo()) > 0);
 
 	}
-	
-	
+
+	public void colocarMonstruoEnModoAtaque(CartaMonstruo cartaAColocar) {
+		
+		cartaAColocar.colocarEnModoAtaque();
+		this.colocarCarta(cartaAColocar);
+	}
+
+	public void colocarMonstruoBocaArribaEnModoDefensa(CartaMonstruo cartaAColocar) {
+		
+		cartaAColocar.colocarEnModoDefensaBocaArriba();
+		this.colocarCarta(cartaAColocar);
+		
+	}
+
+	public void colocarMonstruoBocaAbajoEnModoDefensa(CartaMonstruo cartaAColocar) {
+		
+		cartaAColocar.colocarEnModoDefensaBocaAbajo();
+		this.colocarCarta(cartaAColocar);
+		
+	}
 }
+	

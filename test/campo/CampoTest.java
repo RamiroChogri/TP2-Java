@@ -60,6 +60,55 @@ public class CampoTest {
 		assertEquals(true, campoTest.obtenerCantidadDeCartasEnZonaCampo());
 	}
 	
+	@Test
+	public void testColocarUnaCartaMonstruoEnModoAtaqueQuedaColocado() {
+		Campo campo = new Campo();
+		CartaMonstruo cartaMonstruo = new CartaMonstruo();
+		
+		campo.colocarMonstruoEnModoAtaque(cartaMonstruo);
+		
+		assertTrue( cartaMonstruo.estaColocadaEnModoAtaque() );
+	}
 	
+	@Test
+	public void testColocarUnaCartaMonstruoBocaArribaEnModoDefensaQuedaColocado() {
+		Campo campo = new Campo();
+		CartaMonstruo carta = new CartaMonstruo();
+		
+		campo.colocarMonstruoBocaArribaEnModoDefensa(carta);
+		
+		assertTrue( carta.estaColocadaBocaArribaEnModoDefensa() );
+	}
 	
+	@Test
+	public void testColocarUnaCartaMonstruoBocaAbajoEnModoDefensaQuedaColocado() {
+		
+		Campo campo = new Campo();
+		CartaMonstruo carta = new CartaMonstruo();
+		
+		campo.colocarMonstruoBocaAbajoEnModoDefensa(carta);
+		
+		assertTrue( carta.estaColocadaBocaAbajoEnModoDefensa() );
+	}
+	
+	@Test
+	public void testColocarUnaCartaMagicaBocaAbajoQuedaColocada() {
+		
+		Campo campo = new Campo();
+		CartaMagica carta = new CartaMagica();
+		
+		campo.colocarCartaMagicaBocaAbajo(carta);
+		
+		assertTrue( carta.estaColocadaBocaAbajo() );
+	}
+	
+	@Test
+	public void testColocarUnaCartaMagicaBocaArribaQuedaColocada() {
+		Campo campo = new Campo();
+		CartaMagica carta = new CartaMagica();
+		
+		campo.colocarCartaMagicaBocaAbajo(carta);
+		
+		assertTrue( carta.estaColocadaBocaArriba());
+	}
 }
