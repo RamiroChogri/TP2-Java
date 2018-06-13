@@ -36,7 +36,7 @@ public class CartaMonstruo implements Atacable{
 	}
 
 	public void destruirCarta() {
-		
+		this.estado = new EstadoCartaEnCementerio();
 	}
 	
 }

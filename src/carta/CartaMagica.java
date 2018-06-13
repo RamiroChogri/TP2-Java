@@ -3,6 +3,7 @@ package carta;
 import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaBocaAbajo;
 import estadoCarta.EstadoCartaBocaArriba;
+import estadoCarta.EstadoCartaEnCementerio;
 import estadoCarta.EstadoCartaEnMazo;
 
 public class CartaMagica implements Utilizable{
@@ -14,7 +15,7 @@ public class CartaMagica implements Utilizable{
 	}
 	
 	public void destruirCarta() {
-		
+		this.estado = new EstadoCartaEnCementerio();
 	}
 
 	public void colocarBocaAbajo() {
