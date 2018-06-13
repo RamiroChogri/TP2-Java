@@ -5,6 +5,9 @@ public class CartaMonstruo implements Atacable{
 	private EstadoCarta estado;
 	private int puntosDeAtaque;
 	private int puntosDeDefensa;
+	private int estrellas;
+	private String nombre;
+	
 	
 	public CartaMonstruo() {
 		
@@ -12,6 +15,8 @@ public class CartaMonstruo implements Atacable{
 		this.estado = new EstadoCartaEnMazo(); 
 		this.puntosDeAtaque = 1000;
 		this.puntosDeDefensa = 700;
+		this.estrellas = 3;
+		this.nombre = "MonstruoGenericoACME";
 		
 	}
 	
@@ -19,10 +24,18 @@ public class CartaMonstruo implements Atacable{
 		this.estado = new EstadoCartaEnMazo();
 		this.puntosDeAtaque = puntosDeAtaqueAColocar;
 		this.puntosDeDefensa = puntosDeDefensaAColocar;
+		this.estrellas = 3;
+		this.nombre = "MonstruoGenericoACME";
 	}
 	
-	//Esto deberia comprobarse en campo si la carta que ataca esta en modo ataque y que la
-	//que reciba el ataque este en modo ataque o en modo defensa.
+	public CartaMonstruo(int ataqueAColocar, int defensaAColocar, int estrellasAColocar, String nombreAColocar) {
+		this.puntosDeAtaque = ataqueAColocar;
+		this.puntosDeDefensa = defensaAColocar;
+		this.estrellas = estrellasAColocar;
+		this.nombre = nombreAColocar;
+	}
+	
+	//Deberia comprobarse en campo si la carta que ataca esta en modo ataque.
 	
 	public void atacar(CartaMonstruo otraCartaMonstruo) {
 		
@@ -85,6 +98,14 @@ public class CartaMonstruo implements Atacable{
 	
 	public void destruirCarta(int danioAlJugador) {
 		this.estado = new EstadoCartaEnCementerio(danioAlJugador);
+	}
+	
+	public int obtenerEstrellas() {
+		return this.estrellas;
+	}
+	
+	public String obtenerNombre() {
+		return this.nombre;
 	}
 	
 }
