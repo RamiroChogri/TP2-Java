@@ -102,14 +102,14 @@ public class Campo {
 
 	public void colocarMonstruoBocaArribaEnModoDefensa(CartaMonstruo cartaAColocar) {
 		
-		cartaAColocar.colocarEnModoDefensaBocaArriba();
+		cartaAColocar.colocarBocaArribaEnModoDefensa();
 		this.colocarCarta(cartaAColocar);
 		
 	}
 
 	public void colocarMonstruoBocaAbajoEnModoDefensa(CartaMonstruo cartaAColocar) {
 		
-		cartaAColocar.colocarEnModoDefensaBocaAbajo();
+		cartaAColocar.colocarBocaAbajoEnModoDefensa();
 		this.colocarCarta(cartaAColocar);
 		
 	}
@@ -151,4 +151,3 @@ public class Campo {
 	}
 
 }
-	
