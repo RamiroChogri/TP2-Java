@@ -142,5 +142,24 @@ public class CartaMonstruoTest {
 		assertTrue(cartaMonstruo1.estaDestruida());
 	}
 	
-	
+	@Test
+	public void monstruoAtacaAOtroMonstruoEnModoDefensaConMismoAtaqueQueDefensaYNoSeDestruye() {
+		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(2000, 1000);
+		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(0, 2000);
+		cartaMonstruo1.colocarEnModoAtaque();
+		cartaMonstruo2.colocarBocaAbajoEnModoDefensa();
+		cartaMonstruo1.atacar(cartaMonstruo2);
+		
+		assertFalse(cartaMonstruo1.estaDestruida());
+	}
+	@Test
+	public void monstruoAtacaAOtroMonstruoEnModoDefensaConMismoAtaqueQueDefensaYNoLoDestruye() {
+		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(2000, 1000);
+		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(0, 2000);
+		cartaMonstruo1.colocarEnModoAtaque();
+		cartaMonstruo2.colocarBocaAbajoEnModoDefensa();
+		cartaMonstruo1.atacar(cartaMonstruo2);
+		
+		assertFalse(cartaMonstruo2.estaDestruida());
+	}
 }
