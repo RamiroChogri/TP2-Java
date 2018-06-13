@@ -66,6 +66,7 @@ public class CampoTest {
 		int vidaEsperada = 8000;
 		assertEquals( vidaEsperada , campo.obtenerVidaRestante() );
 	}
+	
 	@Test
 	public void testColocarUnaCartaMonstruoEnModoAtaqueQuedaColocado() {
 		Campo campo = new Campo();
@@ -136,5 +137,46 @@ public class CampoTest {
 		campo.colocarCartaTrampaBocaArriba(carta);
 		
 		assertTrue( carta.estaColocadaBocaArriba() );
+	}
+	
+	@Test
+	public void testColocarUnaCartaMagicaYUnaTrampaQudanColocadas() {
+		Campo campo = new Campo();
+		CartaMagica carta1 = new CartaMagica();
+		CartaTrampa carta2 = new CartaTrampa();
+		
+		campo.colocarCartaMagicaBocaAbajo(carta1);
+		campo.colocarCartaTrampaBocaAbajo(carta2);
+		int cartasEnCampoEsperadas = 2;
+		
+		assertEquals(cartasEnCampoEsperadas, campo.obtenerCantidadDeCartasJugadas());
+	}
+	@Test
+	public void testColocarDosCartasMonstruoyQuedanColocadas() {
+		Campo campo = new Campo();
+		CartaMonstruo carta1 = new CartaMonstruo();
+		CartaMonstruo carta2 = new CartaMonstruo();
+		
+		campo.colocarMonstruoBocaArribaEnModoDefensa(carta1);
+		campo.colocarMonstruoBocaAbajoEnModoDefensa(carta2);
+		int cartasEnCampoEsperadas = 2;
+		
+		assertEquals(cartasEnCampoEsperadas, campo.obtenerCantidadDeCartasJugadas());
+	}
+	
+	@Test
+	public void testColocarCartaMonstruoCartaMagicaYCartaTrampaQuedanColocadas() {
+		Campo campo = new Campo();
+		CartaMonstruo carta1 = new CartaMonstruo();
+		CartaMagica carta2 = new CartaMagica();
+		CartaTrampa carta3 = new CartaTrampa();
+		
+		campo.colocarMonstruoBocaArribaEnModoDefensa(carta1);
+		campo.colocarCartaMagicaBocaAbajo(carta2);
+		campo.colocarCartaTrampaBocaAbajo(carta3);
+		
+		int cartasEnCampoEsperadas = 3;
+		
+		assertEquals( cartasEnCampoEsperadas, campo.obtenerCantidadDeCartasJugadas() );
 	}
 }
