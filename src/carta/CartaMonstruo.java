@@ -107,5 +107,5 @@ public class CartaMonstruo implements Atacable{
 	public String obtenerNombre() {
 		return this.nombre;
 	}
-	
+ 	
 }
