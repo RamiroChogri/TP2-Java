@@ -3,6 +3,7 @@ package campo;
 import java.util.LinkedList;
 
 import carta.CartaMagica;
+import exceptions.NoHayLugarVacioException;
 
 public class ZonaUtilidad {
 
@@ -22,7 +23,7 @@ public class ZonaUtilidad {
 			}
 			posiciones.add(cartaMonstruoAColocar);
 		} catch (NoHayLugarVacioException noHay) {
-			throw new ZonaMagicaLlenaException();
+		//	throw new ZonaMagicaLlenaException();
 		}
 	}
 		

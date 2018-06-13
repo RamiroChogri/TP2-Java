@@ -1,8 +1,10 @@
 package campo;
 
+import carta.CartaCampo;
 import carta.CartaMagica;
 import carta.CartaMonstruo;
 import carta.CartaTrampa;
+import exceptions.*;
 
 public class Campo {
 
@@ -28,9 +30,9 @@ public class Campo {
 	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {
 		try {
 			zonaMonstruo.colocarCarta(cartaMonstruoAColocar);
-		} catch (ZonaMonstruoLlenaException estaLlena) {
+		} catch (Exception zonaMonstruoLlenaException) {
 			System.out.println("No se puede invocar el monstruo, el campo esta lleno");
-			throw new ZonaMonstruoLlenaException();
+			//throw new ZonaMonstruoLlenaException();
 		}
 	
 	}
@@ -38,27 +40,27 @@ public class Campo {
 	public void colocarCarta(CartaMagica cartaMagicaAColocar) {
 		try {
 			zonaUtilidad.colocarCarta(cartaMagicaAColocar);
-		} catch (ZonaUtilidadLlenaException estaLlena) {
+		} catch (Exception zonaUtilidadLlenaException) {
 			System.out.println("No se puede invocar la carta magica, el campo esta lleno");
-			throw new ZonaUtilidadLlenaException();
+	//		throw new ZonaUtilidadLlenaException();
 		}
 	}
 	
 	public void colocarCarta(CartaTrampa cartaTrampaAColocar) {
 		try {
 			zonaUtilidad.colocarCarta(cartaTrampaAColocar);
-		} catch (ZonaUtilidadLlenaException estaLlena) {
+		} catch (Exception zonaUtilidadLlenaException) {
 			System.out.println("No se puede invocar la carta trampa, el campo esta lleno");
-			throw new ZonaUtilidadLlenaException();
+		//	throw new ZonaUtilidadLlenaException();
 		}
 	}
 	
 	public void colocarCarta(CartaCampo cartaCampoAColocar) {
 		try {
 			zonaCampo.colocarCarta(cartaCampoAColocar);
-		} catch (ZonaCampoLlenaException estaLlena) {
+		} catch (Exception zonaCampoLlenaException) {
 			System.out.println("No se puede invocar la carta campo, el campo esta lleno");
-			throw new ZonaCampoLlenaException();
+		//	throw new ZonaCampoLlenaException();
 		}
 	}
 	

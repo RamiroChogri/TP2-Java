@@ -1,8 +1,8 @@
 package campo;
 import java.util.*;
-import java.util.concurrent.LinkedBlockingQueue;
-
 import carta.*;
+import exceptions.NoHayLugarVacioException;
+import exceptions.ZonaMonstruoLlenaException;
 
 public class ZonaMonstruo {
 	
@@ -24,8 +24,8 @@ public class ZonaMonstruo {
 			posiciones.add(cartaMonstruoAColocar);
 			
 				
-		} catch (NoHayLugarVacioException noHay) {
-			throw new ZonaMonstruoLlenaException();
+		} catch (Exception NoHayLugarVacioException) {
+			//throw new ZonaMonstruoLlenaException();
 		}
 		
 		

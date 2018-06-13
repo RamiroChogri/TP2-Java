@@ -19,4 +19,8 @@ public class Mazo {
 	public int obtenerCantidaDeCartas() {
 		return this.mazo.size();
 	}
+	
+	public Carta levantarCarta() {
+		return this.mazo.pop();
+	}
 }

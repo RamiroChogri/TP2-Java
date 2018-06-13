@@ -15,8 +15,14 @@ public class ZonaCampo {
 		//this.cartaCampo.activarEfecto();
 	}
 	
-	public void colocarCartaCampo(CartaCampo cartaAColocar) {
+	public void colocarCarta(CartaCampo cartaAColocar) {
 		this.cartaCampo = cartaAColocar;
+		this.hayCartaCampo = true;
+	}
+	
+	public void destruirCarta() {
+		this.cartaCampo = null;
+		this.hayCartaCampo = false;
 	}
 	
 	public int obtenerCantidadDeCartas() {
