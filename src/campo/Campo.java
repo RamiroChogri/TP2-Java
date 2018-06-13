@@ -72,7 +72,7 @@ public class Campo {
 	}
 	
 	public int obtenerCantidadDeCartasEnMazo() {
-		return mazo.obtenerCantidaDeCartas();
+		return mazoDelJugador.obtenerCantidaDeCartas();
 	}
 	
 	public int obtenerCantidadDeCartasEnCementerio() {
