@@ -54,14 +54,14 @@ public class Jugador {
 	public void colocarMonstruoEnModoAtaque(CartaMonstruo carta) {
 		
 		if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0)) {
-			
+		
 			this.campoPropio.eliminarUltimaCartaMonstruoColocada();
 			
 			if ((carta.obtenerEstrellas() > 6) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0 )) {
 			
 				this.campoPropio.eliminarUltimaCartaMonstruoColocada();
 			
-			} else {
+			} else if (carta.obtenerEstrellas() > 6 ){
 		
 				throw new NoHayMonstruoParaSacrificarException();
 		 
@@ -95,6 +95,11 @@ public class Jugador {
 	public boolean tieneCartasEnCampo() {
 		
 		return this.campoPropio.tieneCartas();
+	}
+
+	public int obtenerCantidadCartasEnCampo() {
+	
+		return campoPropio.obtenerCantidadDeCartasJugadas();
 	}
 	
  

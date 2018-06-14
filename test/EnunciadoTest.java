@@ -217,6 +217,9 @@ de los puntos de ataque de los monstruos*/
 		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 	
+	/*Colocar monstruos en ambos lados del campo. Colocar “Agujero negro” boca arriba
+	(es decir, se activa el efecto). Verificar que se destruyeron todos los monstruos de
+	ambos lados del campo, y que nadie recibió daño alguno.*/
 	@Test
 	public void test11MonstruosDelCampoSeDestruyenAlColocarAgujeroNegro() {
 		CartaMonstruo monstruoAtacante = new CartaMonstruo(1000, 3000);
@@ -240,14 +243,46 @@ de los puntos de ataque de los monstruos*/
 		assertEquals( vidaEsperada , jugador2.obtenerVidaRestante());
 		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
-//	
-//	@Test
-//	public void test12ColocarMonstruoQueRequiereUnSacrificioDestruyeElMonstruoAnterior() {
-//	
-//	}
-//
-//	@Test
-//	public void test13ColocarMonstruoQueRequiereDosSacrificiosDestruyeLosDosMonstruosAnteriores() {
-//	
-//	}
+	
+	/*Se coloca un monstruo en el campo, se quiere colocar un monstruo de 5 o 6
+	estrellas que requiere sacrificio. se verifica que se convocó al monstruo y se
+	destruyó el primero.*/
+	@Test
+	public void test12ColocarMonstruoQueRequiereUnSacrificioDestruyeElMonstruoAnterior() {
+		CartaMonstruo monstruo = new CartaMonstruo(1000, 3000, 3);
+		CartaMonstruo monstruoSeisEstrellas = new CartaMonstruo(1000, 2000, 6);
+
+ 		Jugador jugador1 = new Jugador();
+ 		
+ 		jugador1.colocarCartaEnCampo(monstruo);
+ 		
+ 		jugador1.colocarMonstruoEnModoAtaque( monstruoSeisEstrellas );
+ 		
+ 		assertTrue( monstruo.estaDestruida() );
+ 		assertEquals( 1 ,jugador1.obtenerCantidadCartasEnCampo());
+ 		
+
+	}
+	
+	/*Se colocan 2 monstruos en el campo, se quiere colocar un monstruo de 7 o más
+	estrellas que requiere 2 sacrificios. 
+	se verifica que se convocó al monstruo y sedestruyeron los demás. */
+	@Test
+	public void test13ColocarMonstruoQueRequiereDosSacrificiosDestruyeLosDosMonstruosAnteriores() {
+		CartaMonstruo monstruo1 = new CartaMonstruo(1000, 3000, 3);
+		CartaMonstruo monstruo2 = new CartaMonstruo(1000, 3000, 3);
+		CartaMonstruo monstruoSeisEstrellas = new CartaMonstruo(1000, 2000, 8);
+
+ 		Jugador jugador1 = new Jugador();
+ 		
+ 		jugador1.colocarCartaEnCampo(monstruo1);
+ 		jugador1.colocarCartaEnCampo(monstruo2);
+ 		
+ 		jugador1.colocarMonstruoEnModoAtaque( monstruoSeisEstrellas );
+ 		
+ 		assertTrue( monstruo1.estaDestruida() );
+ 		assertTrue( monstruo2.estaDestruida() );
+ 		
+ 		assertEquals( 1 ,jugador1.obtenerCantidadCartasEnCampo());
+	}
 }
