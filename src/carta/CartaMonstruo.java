@@ -111,7 +111,7 @@ public class CartaMonstruo implements Atacable{
 	@Override
 	public int obtenerDanioAlHaberSidoDestruida() {
 
-		return estado.obtenerPuntosDeDanio();
+		return Math.abs(estado.obtenerPuntosDeDanio());
 
 	}
  	
