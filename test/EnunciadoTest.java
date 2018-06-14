@@ -127,13 +127,14 @@ de los puntos de ataque de los monstruos*/
  		jugador2.colocarMonstruoEnModoAtaque(monstruoConMenorAtaque);
  		
  		jugador1.atacar(monstruoConMayorAtaque, monstruoConMenorAtaque);
+ 		
+		int vidaEsperada = 7000;
 		
 		assertFalse(monstruoConMayorAtaque.estaDestruida());
 		assertTrue(monstruoConMenorAtaque.estaDestruida());
 		
-		int vidaEsperada = 7000;
-		
 		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
+	
 	}
  
 	@Test
