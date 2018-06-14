@@ -17,8 +17,9 @@ public class EnunciadoTest {
 	public void test01ColocarCartaMonstruoEnModoAtaque() {
 		Campo campoTest = new Campo();
 		CartaMonstruo cartaMonstruo = new CartaMonstruo();
+		cartaMonstruo.colocarEnModoAtaque();
 		
-		campoTest.colocarMonstruoEnModoAtaque(cartaMonstruo);
+		campoTest.colocarCarta(cartaMonstruo);
 		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
 		assertTrue( cartaMonstruo.estaColocadaEnModoAtaque() );
 	}
@@ -27,8 +28,9 @@ public class EnunciadoTest {
 	public void test02ColocarMonstruoBocaAbajoEnModoDefensa() {
 		Campo campoTest = new Campo();
 		CartaMonstruo cartaMonstruo = new CartaMonstruo();
+		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
 		
-		campoTest.colocarMonstruoBocaAbajoEnModoDefensa(cartaMonstruo);
+		campoTest.colocarCarta(cartaMonstruo);
 		
 		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
 		assertTrue( cartaMonstruo.estaColocadaBocaAbajoEnModoDefensa() );
@@ -41,7 +43,7 @@ public class EnunciadoTest {
 		CartaMagica cartaMagica = new CartaMagica();
 		Campo campo = new Campo();
 		cartaMagica.colocarBocaAbajo();
-		campo.colocarCartaMagicaBocaAbajo(cartaMagica);
+		campo.colocarCarta(cartaMagica);
 		assertEquals(1, campo.obtenerCantidadDeCartasEnZonaUtilidad() );
 		assertTrue(cartaMagica.estaColocadaBocaAbajo());
 	}
@@ -51,7 +53,8 @@ public class EnunciadoTest {
 		
 		CartaTrampa cartaTrampa = new CartaTrampa();
 		Campo campoTest = new Campo();
-		campoTest.colocarCartaTrampaBocaAbajo(cartaTrampa);
+		cartaTrampa.colocarBocaAbajo();
+		campoTest.colocarCarta(cartaTrampa);
 		
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad() );
 		assertTrue(cartaTrampa.estaColocadaBocaAbajo());
@@ -232,8 +235,8 @@ de los puntos de ataque de los monstruos*/
  		jugador1.enfrentarseA(jugador2);
  		jugador2.enfrentarseA(jugador1);
  		
- 		jugador1.colocarCartaEnCampo(monstruoAtacante);
- 		jugador2.colocarCartaEnCampo(monstruoDefensor);
+ 		jugador1.colocarMonstruoEnModoAtaque(monstruoAtacante);
+ 		jugador2.colocarMonstruoBocaAbajoEnModoDefensa(monstruoDefensor);
  		
  		jugador1.colocarCartaMagicaBocaArriba( carta );
  		
@@ -254,7 +257,7 @@ de los puntos de ataque de los monstruos*/
 
  		Jugador jugador1 = new Jugador();
  		
- 		jugador1.colocarCartaEnCampo(monstruo);
+ 		jugador1.colocarMonstruoEnModoAtaque(monstruo);
  		
  		jugador1.colocarMonstruoEnModoAtaque( monstruoSeisEstrellas );
  		
@@ -271,14 +274,14 @@ de los puntos de ataque de los monstruos*/
 	public void test13ColocarMonstruoQueRequiereDosSacrificiosDestruyeLosDosMonstruosAnteriores() {
 		CartaMonstruo monstruo1 = new CartaMonstruo(1000, 3000, 3);
 		CartaMonstruo monstruo2 = new CartaMonstruo(1000, 3000, 3);
-		CartaMonstruo monstruoSeisEstrellas = new CartaMonstruo(1000, 2000, 8);
+		CartaMonstruo monstruoOchoEstrellas = new CartaMonstruo(1000, 2000, 8);
 
  		Jugador jugador1 = new Jugador();
  		
- 		jugador1.colocarCartaEnCampo(monstruo1);
- 		jugador1.colocarCartaEnCampo(monstruo2);
+ 		jugador1.colocarMonstruoEnModoAtaque(monstruo1);
+ 		jugador1.colocarMonstruoEnModoAtaque(monstruo2);
  		
- 		jugador1.colocarMonstruoEnModoAtaque( monstruoSeisEstrellas );
+ 		jugador1.colocarMonstruoEnModoAtaque( monstruoOchoEstrellas );
  		
  		assertTrue( monstruo1.estaDestruida() );
  		assertTrue( monstruo2.estaDestruida() );

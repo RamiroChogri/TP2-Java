@@ -32,6 +32,10 @@ public class Campo {
 
 	//Seguir con la excepcion
 	
+	public void colocarCarta(Carta cartaAColocar) {
+		this.colocarCarta(cartaAColocar);
+	}
+	
 	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {
 		try {
 			zonaMonstruo.colocarCarta(cartaMonstruoAColocar);
@@ -97,7 +101,7 @@ public class Campo {
 
 	}
 	
-	public int obtenerCantidadDeCartasJugadas() {
+	public int obtenerCantidadDeCartasEnJuego() {
 		
 		return (this.obtenerCantidadDeCartasEnZonaMonstruo() + this.obtenerCantidadDeCartasEnZonaUtilidad() + this.obtenerCantidadDeCartasEnZonaCampo());
 	}
@@ -107,53 +111,57 @@ public class Campo {
 		return this.vidaDelJugador;
 	}
 	
-	public void colocarMonstruoEnModoAtaque(CartaMonstruo cartaAColocar) {
-		
-		cartaAColocar.colocarEnModoAtaque();
-		this.colocarCarta(cartaAColocar);
-	}
-
-	public void colocarMonstruoBocaArribaEnModoDefensa(CartaMonstruo cartaAColocar) {
-		
-		cartaAColocar.colocarBocaArribaEnModoDefensa();
-		this.colocarCarta(cartaAColocar);
-		
-	}
-
-	public void colocarMonstruoBocaAbajoEnModoDefensa(CartaMonstruo cartaAColocar) {
-		
-		cartaAColocar.colocarBocaAbajoEnModoDefensa();
-		this.colocarCarta(cartaAColocar);
-		
-	}
-
-	public void colocarCartaMagicaBocaAbajo(CartaMagica cartaAColocar) {
-		
-		cartaAColocar.colocarBocaAbajo();
-		this.colocarCarta(cartaAColocar);
-		
+	public Carta levantarCartaDelMazo() {
+		return this.mazoDelJugador.levantarCarta();
 	}
 	
-	public void colocarCartaMagicaBocaArriba(CartaMagica cartaAColocar) {
-		
-		cartaAColocar.colocarBocaArriba();
-		this.colocarCarta(cartaAColocar);
-		
-	}
-
-	public void colocarCartaTrampaBocaAbajo(CartaTrampa cartaAColocar) {
-		
-		cartaAColocar.colocarBocaAbajo();
-		this.colocarCarta(cartaAColocar);
-		
-	}
-
-	public void colocarCartaTrampaBocaArriba(CartaTrampa cartaAColocar) {
-		
-		cartaAColocar.colocarBocaArriba();
-		this.colocarCarta(cartaAColocar);
-		
-	}
+//	public void colocarMonstruoEnModoAtaque(CartaMonstruo cartaAColocar) {
+//		
+//		cartaAColocar.colocarEnModoAtaque();
+//		this.colocarCarta(cartaAColocar);
+//	}
+//
+//	public void colocarMonstruoBocaArribaEnModoDefensa(CartaMonstruo cartaAColocar) {
+//		
+//		cartaAColocar.colocarBocaArribaEnModoDefensa();
+//		this.colocarCarta(cartaAColocar);
+//		
+//	}
+//
+//	public void colocarMonstruoBocaAbajoEnModoDefensa(CartaMonstruo cartaAColocar) {
+//		
+//		cartaAColocar.colocarBocaAbajoEnModoDefensa();
+//		this.colocarCarta(cartaAColocar);
+//		
+//	}
+//
+//	public void colocarCartaMagicaBocaAbajo(CartaMagica cartaAColocar) {
+//		
+//		cartaAColocar.colocarBocaAbajo();
+//		this.colocarCarta(cartaAColocar);
+//		
+//	}
+//	
+//	public void colocarCartaMagicaBocaArriba(CartaMagica cartaAColocar) {
+//		
+//		cartaAColocar.colocarBocaArriba();
+//		this.colocarCarta(cartaAColocar);
+//		
+//	}
+//
+//	public void colocarCartaTrampaBocaAbajo(CartaTrampa cartaAColocar) {
+//		
+//		cartaAColocar.colocarBocaAbajo();
+//		this.colocarCarta(cartaAColocar);
+//		
+//	}
+//
+//	public void colocarCartaTrampaBocaArriba(CartaTrampa cartaAColocar) {
+//		
+//		cartaAColocar.colocarBocaArriba();
+//		this.colocarCarta(cartaAColocar);
+//		
+//	}
 
 	public void enviarCartasDestruidasAlCementerio() {
 		int danio = this.zonaMonstruo.obtenerDanioRecibido();
