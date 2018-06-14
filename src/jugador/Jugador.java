@@ -62,7 +62,7 @@ public class Jugador {
 			} else {
 		
 				throw new NoHayMonstruoParaSacrificarException();
-		
+		 
 			}
 			
 		} else if ((carta.obtenerEstrellas() > 4)) {
