@@ -5,6 +5,7 @@ import estadoCarta.EstadoCartaBocaAbajo;
 import estadoCarta.EstadoCartaBocaArriba;
 import estadoCarta.EstadoCartaEnCementerio;
 import estadoCarta.EstadoCartaEnMazo;
+import campo.Campo;
 import efectos.*;
 
 public class CartaMagica implements Utilizable{
@@ -60,6 +61,15 @@ public class CartaMagica implements Utilizable{
 	
 	public Efecto obtenerEfecto() {
 		return this.efecto;
+	}
+
+
+	public void aplicarEfecto(Campo campo, Campo campoEnemigo) {
+		
+		this.efecto.aplicarEfecto(campo, campoEnemigo);
+		this.destruirCarta();
+		campo.enviarCartasDestruidasAlCementerio();
+		campoEnemigo.enviarCartasDestruidasAlCementerio();
 	}
 
 }

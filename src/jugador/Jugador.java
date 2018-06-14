@@ -3,7 +3,9 @@ package jugador;
 import campo.*;
 import exceptions.*;
 import carta.Carta;
+import carta.CartaMagica;
 import carta.CartaMonstruo;
+import efectos.Efecto;
 public class Jugador {
 
 		private Campo campoPropio;
@@ -80,6 +82,19 @@ public class Jugador {
 		
 		carta.colocarBocaArribaEnModoDefensa();
 		this.campoPropio.colocarCarta(carta);
+	}
+
+	public void colocarCartaMagicaBocaArriba(CartaMagica carta) {
+		
+	
+		this.campoPropio.colocarCarta(carta);
+		carta.aplicarEfecto( this.campoPropio, this.campoEnemigo);
+		
+	}
+
+	public boolean tieneCartasEnCampo() {
+		
+		return this.campoPropio.tieneCartas();
 	}
 	
  
