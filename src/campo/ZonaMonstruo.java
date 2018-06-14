@@ -80,6 +80,10 @@ public class ZonaMonstruo {
 	}
 	
 	public void eliminarUltimaCartaMonstruoColocada() {
-		posiciones.removeLast();
+		try {
+			posiciones.removeLast();
+		} catch (NoSuchElementException noHayMonstruoParaBorrar) {
+			//No se elimina nada
+		}
 	}
 }
