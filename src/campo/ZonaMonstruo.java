@@ -46,9 +46,11 @@ public class ZonaMonstruo {
 	    while (posicionesIterador.hasNext()) {
 	    	cartaMonstruoActual = posicionesIterador.next();
 	    	if(cartaMonstruoActual.estaDestruida()) {
+	    	
 	    		Carta cartaActual = cartaMonstruoActual;
 	    		cartasDestruidas.add(cartaActual);
 	    		posicionesIterador.remove();
+	    	
 	    	}
 	    }
 	    return cartasDestruidas;
@@ -61,5 +63,19 @@ public class ZonaMonstruo {
 	    	cartaMonstruoActual = posicionesIterador.next();
 	    	cartaMonstruoActual.destruirCarta();
 	    }
+	}
+
+	public int obtenerDanioRecibido() {
+		int danio = 0;
+		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
+	    CartaMonstruo cartaMonstruoActual;
+	    
+	    while (posicionesIterador.hasNext()) {
+	    	cartaMonstruoActual = posicionesIterador.next();
+	    	danio += cartaMonstruoActual.obtenerDanioAlHaberSidoDestruida(); 
+	    	
+	    }
+	    
+		return danio;
 	}
 }

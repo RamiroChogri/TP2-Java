@@ -1,5 +1,7 @@
 package jugador;
 import campo.*;
+import carta.Carta;
+import carta.CartaMonstruo;
 public class Jugador {
 
 		private Campo campoPropio;
@@ -12,9 +14,23 @@ public class Jugador {
 		this.campoPropio = new Campo();
 		this.mano = new Mano();	
 	}
+	
 	public void enfrentarseA(Jugador jugadorEnemigo) {
 		
 		jugadorEnemigo.setCampoEnemigo(this.campoPropio);
+	}
+	
+	public void atacar(CartaMonstruo atacante, CartaMonstruo atacado) {
+		
+		atacante.atacar(atacado);
+		
+		this.campoPropio.enviarCartasDestruidasAlCementerio();
+		this.campoEnemigo.enviarCartasDestruidasAlCementerio();
+	}
+	
+	public void colocarCartaEnCampo(CartaMonstruo carta) {
+		
+		campoPropio.colocarMonstruoEnModoAtaque( carta );
 	}
 	
 	public void setCampoEnemigo(Campo campo) {
@@ -24,5 +40,10 @@ public class Jugador {
 	public int cantidadDeCartasEnLaMano() {
 		
 		return mano.obtenerCantidadDeCartas();
+	}
+
+	public Object obtenerVidaRestante() {
+		
+		return campoPropio.obtenerVidaRestante();
 	}
 }

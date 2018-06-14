@@ -10,4 +10,6 @@ public class CartaCampo implements Utilizable{
 		//return this.estado.estaEnCementerio();
 		return false;
 	}
+
+
 }

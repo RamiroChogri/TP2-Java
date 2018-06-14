@@ -23,5 +23,10 @@ public class EstadoCartaEnCementerio extends EstadoCarta {
 	public boolean estaEnCementerio() { 
 		return true;
 	}
+	
+	public int obtenerPuntosDeDanio() {
+		
+		return diferenciaDeDanio;
+	}
 
 }

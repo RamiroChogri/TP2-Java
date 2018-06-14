@@ -69,5 +69,10 @@ public abstract class EstadoCarta {
 	public boolean estaBocaAbajo() {
 		return false;
 	}
+
+	public int obtenerPuntosDeDanio() {
+	
+		return 0;
+	}
 	
 }
