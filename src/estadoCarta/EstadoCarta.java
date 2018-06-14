@@ -17,10 +17,6 @@ public abstract class EstadoCarta {
 		return new EstadoCartaEnModoAtaque(puntosDeAtaqueMonstruo);
 	}
 	
-	public int recibirAtaque(int puntosDeAtaqueMonstruoEnemigo) {
-		return 0;
-	}
-	
 	public EstadoCartaBocaArribaEnModoDefensa colocarCartaBocaArribaEnModoDefensa() {
 		return new EstadoCartaBocaArribaEnModoDefensa();
 	}
@@ -74,5 +70,9 @@ public abstract class EstadoCarta {
 	
 		return 0;
 	}
-	
+
+	public int recibirAtaque(int puntosDeAtaqueMonstruoEnemigo) {
+		return 0;
+	}	
+
 }
