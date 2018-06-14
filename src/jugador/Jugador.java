@@ -59,13 +59,13 @@ public class Jugador {
 			
 				this.campoPropio.eliminarUltimaCartaMonstruoColocada();
 			
-			} else if ((carta.obtenerEstrellas() > 6) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() == 0 )) {
+			} else {
 		
 				throw new NoHayMonstruoParaSacrificarException();
 		
 			}
 			
-		} else if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() == 0)) {
+		} else {
 		
 			throw new NoHayMonstruoParaSacrificarException();
 		
