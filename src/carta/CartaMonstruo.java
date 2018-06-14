@@ -28,6 +28,13 @@ public class CartaMonstruo implements Atacable{
 		this.nombre = "MonstruoGenericoACME";
 	}
 	
+	public CartaMonstruo(int ataqueAColocar, int defensaAColocar, int estrellasAColocar) {
+		this.puntosDeAtaque = ataqueAColocar;
+		this.puntosDeDefensa = defensaAColocar;
+		this.estrellas = estrellasAColocar;
+		this.nombre = "MonstruoGenericoACME";
+	}
+	
 	public CartaMonstruo(int ataqueAColocar, int defensaAColocar, int estrellasAColocar, String nombreAColocar) {
 		this.puntosDeAtaque = ataqueAColocar;
 		this.puntosDeDefensa = defensaAColocar;
