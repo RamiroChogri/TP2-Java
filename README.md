@@ -14,7 +14,7 @@
 
 \pagestyle{fancy} % Encabezado y pie de página
 \fancyhf{}
-\fancyhead[L]{TP1S - Max Mustermann}
+\fancyhead[L]{TP2 - Primer Entrega}
 \fancyhead[R]{Algoritmos y Programación III - FIUBA}
 \renewcommand{\headrulewidth}{0.4pt}
 \fancyfoot[C]{\thepage}
@@ -22,39 +22,39 @@
 
 \begin{document}
 \begin{titlepage} % Carátula
-	\hfill\includegraphics[width=6cm]{logofiuba.jpg}
+  \hfill\includegraphics[width=6cm]{logofiuba.jpg}
     \centering
     \vfill
     \Huge \textbf{Trabajo Práctico 2 — Java - Entrega1}
     \vskip2cm
     \Large [7507/9502] Algoritmos y Programación III\\
-    Curso X \\ % Curso 1 para el de la tarde y 2 para el de la noche
+    Curso 1 \\ % Curso 1 para el de la tarde y 2 para el de la noche
     Primer cuatrimestre de 2018 
     \vfill
     \begin{tabular}{ | l | l | } % Datos del alumno
       \hline
-      Alumno: & B,nicolas \\ \hline
-      Número de padrón: & 123456 \\ \hline
-      Email: & mmustermann@fi.uba.ar \\ \hline
-  	\end{tabular}
+      Alumno: & Bertillod,Nicolás \\ \hline
+      Número de padrón: & 101498 \\ \hline
+      Email: & nicolasbertillod@gmail.com \\ \hline
+    \end{tabular}
      \begin{tabular}{ | l | l | } % Datos del alumno
       \hline
       Alumno: & Chogri, Ramiro \\ \hline
       Número de padrón: & 100499 \\ \hline
       Email: & ramirochogri@hotmail.com \\ \hline
-  	\end{tabular}
+    \end{tabular}
      \begin{tabular}{ | l | l | } % Datos del alumno
       \hline
-      Alumno: & F,Nicolas \\ \hline
-      Número de padrón: & 123456 \\ \hline
-      Email: & mmustermann@fi.uba.ar \\ \hline
-  	\end{tabular}
+      Alumno: & Fandos, Nicolas Gabriel \\ \hline
+      Número de padrón: & 101018 \\ \hline
+      Email: & nhicof2@gmail.com \\ \hline
+    \end{tabular}
      \begin{tabular}{ | l | l | } % Datos del alumno
       \hline
       Alumno: & Ortiz,Benjamin \\ \hline
-      Número de padrón: & 123456 \\ \hline
-      Email: & mmustermann@fi.uba.ar \\ \hline
-  	\end{tabular}
+      Número de padrón: & 100585 \\ \hline
+      Email: & benjaortiz969@gmail.com \\ \hline
+    \end{tabular}
     \vfill
     \vfill
 \end{titlepage}
@@ -68,16 +68,48 @@ El presente informe reune la documentación de la solución del tercer trabajo p
 \section{Supuestos}\label{sec:supuestos}
 % Deberá contener explicaciones de cada uno de los supuestos que el alumno haya tenido que adoptar a partir de situaciones que no estén contempladas en la especificación.
 
-Suponemos principalmente que los jugadores son conocedores de las reglas de esta adaptacion del juego de cartas yu-gi-oh!, suponemos las limitaciones de la cantidad de cartas que se pueden colocar en el campo, luego suponemos que a la hora de invocar un montruo con mayor a 4 estrellas y se debe sacrificar un monstruo ya invocado y se tomará el ultimo o ultimos invocados previamente que aun esten en el campo.
+Suponemos principalmente que los jugadores son conocedores de las reglas de esta adaptacion del juego de cartas Yu-Gi-Oh!, suponemos las limitaciones de la cantidad de cartas que se pueden colocar en el campo, luego suponemos que a la hora de invocar un montruo con mas a 4 estrellas y se debe sacrificar un monstruo ya invocado y se tomará el ultimo o ultimos invocados previamente que aun esten en el campo.
 
 
 \section{Modelo de dominio}\label{sec:modelo}
 % Explicación concisa del diseño general del trabajo.
-Optamos para esta entrega pensar en el juego de una forma similar a como se desarrola en las respectivas series y mangas del mismo, se regirá una battalla de dos jugadores en la cual cada uno contiene su campo para poder administrar en donde invoca sus cartas y realiza sus jugadas, el jugador tambien tiene su mano, la cual consiste de diverso numero de cartas.
-Cada campo es el encargado de llevar la cuenta de los puntos de vida que le quedan al jugador, ademas de llevar el control de las cartas colocadas en sus diversas zonas ya limitadas con su cantidad de cartas a jugar.
-Tenemos diversos tipos de cartas diferenciando las cartas monstruo de las magicas etc.. 
-Cada mazo de cartas consta con un limite de 40 cartas, acompañado de un cementerio en el cual van colocarse una vez destruida la carta.
 
+    \textbf{Carta}: Las diferentes clases que implementan esta interfaz tienen el objetivo de representar los diferentes tipos de carta que hay en Yu-Gi-Oh!.Todas estas cartas pueden ser colocadas en el campo. Estos tipos pueden ser:
+    
+      
+\begin{itemize}
+\item \textit{\textbf{CartaMonstruo}}: representa las cartas del tipo monstruo, las cuales pueden realizar ataques a otras cartas del mismo tipo, se pueden colocar de diferentes maneras (en el campo), pueden ser destruidas, etc.    
+\item \textit{\textbf{CartaMagica}}: representa las cartas del tipo magicas que pueden colocarse en el campo y tienen un efecto que puede activarse.
+\item \textit{\textbf{CartaTrampa}}: representa las cartas del tipo trampa que pueden colocarse en el campo y tienen un efecto que puede activarse.
+\end{itemize}
+
+
+Todos estos tipos de cartas contienen un \textbf{Estado} que puede ir variando de la siguiente manera puede ser del siguiente tipo:
+\begin{enumerate}
+\item \textit{EstadoCartaEnMazo}: es el estado de una carta cuando esta dentro del mazo
+\item \textit{EstadoCartaEnMano} : es el estado de una carta cuando esta en la mano de un jugador.
+\item \textit{EstadoCartaEnCementerio}: el estado de una carta cuando se destruye y es enviada al cementerio.
+\item \textit{EstadoCartaBocaAbajo}: es el estado de una carta del tipo Magica o Trampa que esta colocada boca abajo en el campo.
+\item \textit{EstadoCartaBocaArriba}: es el estado de una carta del tipo Magica o Trampa cuando esta colocada boca arriba en el campo.
+\item \textit{EstadoCartaEnModoAtaque}: es el estado de una carta del tipo Monstruo cuando esta colocada 
+\item \textit{EstadoCartaBocaArribaEnModoDefensa}: es el estado de una carta del tipo monstruo que esta colocada en el campo en modo de defensa y boca arriba.
+\item \textit{EstadoCartaBocaAbajoEnModoDefensa}: es el estado de una carta del tipo monstruo que esta colocada en el campo en modo de defensa y boca abajo.
+\end{enumerate}
+  
+    \textbf{Efecto}: es una interfaz que representa los efectos que pueden tener las diferentes cartas, ya sean del tipo magica, trampa o monstruo.
+    
+    
+    \textbf{Campo}: representa el campo de juego de un unico jugador. Esta clase tiene la responsabilidad de colocar cartas en sus diferentes zonas tanto como retirarlas y colocarlas en otras zonas. También contiene los puntos de vida y el mazo del jugador al que le pertenecen y los modifica a lo largo del duelo. Contiene diferentes zonas:
+\begin{itemize}
+\item \textit{\textbf{ZonaMonstruo}}: es una clase que representa la parte del campo donde se colocan los monstruos. Tiene las responsabilidades de colocar monstruos tanto como de removerlos. Tiene un limite de 5 monstruos como máximo. Tambien puede calcular cuanto daño deben recibir los puntos de vida cuando se destruyen los monstruos que contiene. También puede responder si contiene cartas y cuantas.
+\item \textit{\textbf{ZonaUtilidad}}:  representa la parte del campo donde se colocan las cartas magicas y trampa. Tiene la responsabilidad de colocar dichas cartas tanto como de removerlas. También puede responder si contiene cartas y cuantas.
+\item \textit{\textbf{Mazo}}:  es el mazo asociado al campo donde esta contenido. Permite que se tomen cartas y tambien puede responder cuantas cartas contiene.
+\end{itemize}
+  
+    \textbf{Jugador}: una instancia de este tipo representa un jugador que va a participar de un duelo. Contiene un Campo propio y una mano, asi como una referencia la campo del jugador enemigo. Puede colocar cartas en el campo y realizar ataques entre monstruos, tanto como activar cartas magicas/trampa.
+
+
+\textbf{Mano}: esta clase representa la mano(conjunto de cartas) que un jugador puede ver y colocar en el campo.
 \section{Diagramas de clase}\label{sec:diagramasdeclase}
 % Uno o varios diagramas de clases mostrando las relaciones estáticas entre las clases.  Puede agregarse todo el texto necesario para aclarar y explicar su diseño. Recuerden que la idea de todo el documento es que quede documentado y entendible cómo está implementada la solución.
 
@@ -110,11 +142,10 @@ Quisque tempus, tortor et convallis interdum, ipsum leo tempus ipsum, in molesti
 % Explicación de cada una de las excepciones creadas y con qué fin fueron creadas.
 
 \begin{description}
-\item[Exception] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec facilisis odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In aliquam dapibus lacus at condimentum. Curabitur ornare scelerisque euismod. Duis a mi in nulla sodales sollicitudin vehicula sit amet sapien. Quisque vel eros ut libero consequat scelerisque. Nullam efficitur ante eu massa gravida sollicitudin.
-\item[Excepcion] Curabitur elementum laoreet molestie. Ut hendrerit, quam lobortis porttitor cursus, ex sem facilisis massa, in interdum odio risus hendrerit dui.
-\item[Excepcion] Integer porta efficitur felis. Etiam facilisis consectetur sem, ac efficitur orci. Nam a ante commodo, fringilla nisl a, sollicitudin est.
-\item[Excepcion] Aliquam erat volutpat. Fusce quis efficitur augue. Fusce egestas mauris a nisi finibus volutpat. Maecenas venenatis ligula ut nisi maximus, vel ultricies enim scelerisque.
-\item[Excepcion] Mauris gatis feugiat erat non euismod. Donec sagittis orci enim, et convallis lacus sodales at. Nunc laoreet leo vel metus eleifend, vel aliquam sem tincidunt. Nunc imperdiet eget erat eget tincidunt. Morbi tempus risus quis nulla faucibus facilisis. Sed varius nunc vel neque rutrum vestibulum.
+\item[NoHayLugarVacioException] Excepcion que surge en el caso excepcional de querer agregar una carta en alguna zona del campo en la cual ya no quedan espacios libres disponibles.
+\item[NoHayMonstruoParaSacrificarException] A la hora de querer invocar una carta de monstruo de mas de 4 estrellas es requerido sacrificar una o mas cartas de monstruo que se encuentren colocadas en la zona de monstruos del campo del jugador, esta excepcion se lanza cuando no hay un monstruo para sacrificar y se quiere invocar un monstruo que requiere un sacrificio.
+\item[ZonaMonstruoLlenaException] Excepcion que se lanza al querer ubicar una carta de monstruo en la zona de monstruos y esta no contiene ningun espacio disponible para colocar la carta.
+\item[ZonaUtilidadLlenaException] Excepcion que se lanza al querer ubicar una carta magica o de trampa en la zona de utilidad y esta no contiene ningun espacio disponible para colocar la carta.
 \end{description}
 
 \section{Diagramas de secuencia}\label{sec:diagramasdesecuencia}
