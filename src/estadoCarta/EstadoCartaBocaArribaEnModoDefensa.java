@@ -13,4 +13,5 @@ public class EstadoCartaBocaArribaEnModoDefensa extends EstadoCarta {
 	public boolean estaBocaArribaEnModoDefensa() {
 		return true;
 	}
+	
 }

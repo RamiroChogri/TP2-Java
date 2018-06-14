@@ -54,7 +54,7 @@ public class CartaMonstruo implements Atacable{
 		danioAlJugador = this.estado.recibirAtaque(puntosDeAtaqueMonstruoEnemigo);
 		
 		if (this.estado.estaEnModoAtaque() && (danioAlJugador <= 0)) {
-			cartaEnemiga.destruirCarta(danioAlJugador);
+			cartaEnemiga.destruirCarta(danioAlJugador);	
 		}
 		
 		if ((danioAlJugador >= 0) && ((this.puntosDeDefensa < puntosDeAtaqueMonstruoEnemigo) || (this.estado.estaEnModoAtaque()))) {
