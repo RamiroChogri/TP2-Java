@@ -62,9 +62,4 @@ public class CartaMagica implements Utilizable{
 		return this.efecto;
 	}
 
-	@Override
-	public int obtenerDanioAlHaberSidoDestruida() {
-
-		return 0;
-	}
 }
