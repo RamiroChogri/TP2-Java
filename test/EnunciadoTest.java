@@ -71,47 +71,10 @@ public class EnunciadoTest {
 		
 	}
 	
-	/*Colocar una carta de monstruo en posiciÃ³n de ataque, el oponente coloca otra carta
-de monstruo en posiciÃ³n de ataque (con mayor ataque). Atacar al primer monstruo y
-verificar que este se destruyÃ³, y sufro daÃ±o a los puntos de vida igual a la diferencia
+	/*Colocar una carta de monstruo en posicion de ataque, el oponente coloca otra carta
+de monstruo en posicion de ataque (con mayor ataque). Atacar al primer monstruo y
+verificar que este se destruyo, y sufro danio a los puntos de vida igual a la diferencia
 de los puntos de ataque de los monstruos*/
-
-//	@Test
-//	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueLoDestruyeYRestaVidaAJugador() {
-//		CartaMonstruo unaCartaMonstruo = new CartaMonstruo();
-//		CartaMonstruo otraCartaMonstruo = new CartaMonstruo();
-//		
-//		unaCartaMonstruo.colocarEnModoAtaque();
-//		otraCartaMonstruo.colocarEnModoAtaque();
-//		Jugador j1 = new Jugador();
-//		
-//		j1.recibirDanio( otraCartaMonstruo.atacar( unaCartaMonstruo ) );
-//		
-//		int vidaEsperada = 8000;
-//		vidaEsperada -= ( otraCartaMonstruo.obtenerPuntosAtaque() - unaCartaMonstruo.obtenerPuntosAtaque() );
-//	
-//		assertEquals( vidaEsperada, j1.obtenerVidaRestante() );
-//		assertTrue( unaCartaMonstruo.estaDestruida() );
-//	
-//	}
-//
-//	@Test
-//	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueLoDestruyeYRestaVidaAJugadorQueA() {
-//		CartaMonstruo unaCartaMonstruo = new CartaMonstruo();
-//		CartaMonstruo otraCartaMonstruo = new CartaMonstruo();
-//		
-//		unaCartaMonstruo.colocarEnModoAtaque();
-//		otraCartaMonstruo.colocarEnModoAtaque();
-//		
-//		Jugador j1 = new Jugador();
-//		
-//		j1.recibirDanio( otraCartaMonstruo.atacar( unaCartaMonstruo ) );
-//		
-//		int vidaEsperada = 8000;
-//		vidaEsperada -= ( otraCartaMonstruo.obtenerPuntosAtaque() - unaCartaMonstruo.obtenerPuntosAtaque() );
-//		assertEquals( vidaEsperada, j1.obtenerVidaRestante() );
-//		assertTrue( otraCartaMonstruo.estaDestruida() );
-//	}
 
 	@Test
 	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueConMenorAtaque() {
@@ -136,38 +99,64 @@ de los puntos de ataque de los monstruos*/
 		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	
 	}
- 
+ /*	Colocar una carta de monstruo en posición de ataque, el oponente coloca otra carta
+	de monstruo en posición de ataque (con menor ataque), atacar al primer monstruo,
+	el monstruo atacante es destruido y el atacante recibe daño a los
+	puntos de vida igual a la diferencia de ataques.
+  * 
+  */
 	@Test
 	public void test07MonstruoAtacaAOtroMonstruoEnModoAtaqueConMayorAtaque() {
 		CartaMonstruo monstruoConMayorAtaque = new CartaMonstruo(2000, 3000);
  		CartaMonstruo monstruoConMenorAtaque = new CartaMonstruo(1000, 2000);
- 		Campo campoTest = new Campo();
- 		Campo campoTestEnemigo = new Campo(); 
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
  		
- 		campoTest.colocarMonstruoEnModoAtaque(monstruoConMayorAtaque);
- 		campoTestEnemigo.colocarMonstruoEnModoAtaque(monstruoConMenorAtaque);
+ 		jugador1.colocarMonstruoEnModoAtaque(monstruoConMayorAtaque);
+ 		jugador2.colocarMonstruoEnModoAtaque(monstruoConMenorAtaque);
  		
- 		monstruoConMayorAtaque.atacar(monstruoConMenorAtaque);
+ 		jugador2.atacar(monstruoConMenorAtaque, monstruoConMayorAtaque);
  		
- 		assertFalse(monstruoConMayorAtaque.estaDestruida());
- 		assertTrue(monstruoConMenorAtaque.estaDestruida());
+		int vidaEsperada = 7000;
+		
+		assertFalse(monstruoConMayorAtaque.estaDestruida());
+		assertTrue(monstruoConMenorAtaque.estaDestruida());
+		
+		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	}
 	
-	
+	/*
+	Colocar una carta de monstruo en posición de ataque, el oponente coloca otra carta
+	de monstruo en posición de ataque (con igual ataque), atacar al primer monstruo,
+	ambos monstruos son destruidos y nadie recibe daño a los puntos de
+	vida.
+	*/
 	
 	@Test
 	public void test08MonstruoAtacaAOtroMonstruoEnModoAtaqueConIgualAtaque() {
-		CartaMonstruo unMonstruoConMilAtaque = new CartaMonstruo(1000, 3000);
- 		CartaMonstruo otroMonstruoConMilAtaque = new CartaMonstruo(1000, 2000);
- 		Campo campoTest = new Campo();
- 		Campo campoTestEnemigo = new Campo(); 
+		CartaMonstruo monstruoConMilDeAtaque = new CartaMonstruo(1000, 3000);
+ 		CartaMonstruo otroMonstruoConMilDeAtaque = new CartaMonstruo(1000, 2000);
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
  		
- 		campoTest.colocarMonstruoEnModoAtaque(unMonstruoConMilAtaque);
- 		campoTestEnemigo.colocarMonstruoEnModoAtaque(otroMonstruoConMilAtaque);
- 		unMonstruoConMilAtaque.atacar(otroMonstruoConMilAtaque);
+ 		jugador1.colocarMonstruoEnModoAtaque(monstruoConMilDeAtaque);
+ 		jugador2.colocarMonstruoEnModoAtaque(otroMonstruoConMilDeAtaque);
  		
- 		assertTrue(unMonstruoConMilAtaque.estaDestruida());
- 		assertTrue(otroMonstruoConMilAtaque.estaDestruida());
+ 		jugador2.atacar( monstruoConMilDeAtaque , otroMonstruoConMilDeAtaque);
+ 		
+		int vidaEsperada = 8000;
+		
+		assertTrue(monstruoConMilDeAtaque.estaDestruida());
+		assertTrue(otroMonstruoConMilDeAtaque.estaDestruida());
+		
+		assertEquals( vidaEsperada , jugador2.obtenerVidaRestante());
+		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 	
 	@Test
