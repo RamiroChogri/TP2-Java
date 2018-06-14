@@ -221,17 +221,24 @@ de los puntos de ataque de los monstruos*/
 	public void test11MonstruosDelCampoSeDestruyenAlColocarAgujeroNegro() {
 		CartaMonstruo monstruoAtacante = new CartaMonstruo(1000, 3000);
 		CartaMonstruo monstruoDefensor = new CartaMonstruo(1000, 2000);
- 		Campo campoTest = new Campo();
- 		Campo campoTestEnemigo = new Campo(); 
  		EfectoAgujeroNegro agujeroNegroEfecto = new EfectoAgujeroNegro();
+ 		CartaMagica carta = new CartaMagica( agujeroNegroEfecto );
+ 		Jugador jugador1 = new Jugador();
+ 		Jugador jugador2 = new Jugador();
  		
- 		campoTest.colocarMonstruoEnModoAtaque(monstruoAtacante);
- 		campoTestEnemigo.colocarMonstruoBocaArribaEnModoDefensa(monstruoDefensor);
+ 		jugador1.enfrentarseA(jugador2);
+ 		jugador2.enfrentarseA(jugador1);
  		
- 		agujeroNegroEfecto.aplicarEfecto(campoTest, campoTestEnemigo);
+ 		jugador1.colocarCartaEnCampo(monstruoAtacante);
+ 		jugador2.colocarCartaEnCampo(monstruoDefensor);
  		
- 		assertFalse(campoTest.tieneCartas());
- 		assertFalse(campoTestEnemigo.tieneCartas());
+ 		jugador1.colocarCartaMagicaBocaArriba( carta );
+ 		
+ 		assertFalse( jugador1.tieneCartasEnCampo());
+ 		assertFalse( jugador2.tieneCartasEnCampo());
+ 		int vidaEsperada = 8000;
+		assertEquals( vidaEsperada , jugador2.obtenerVidaRestante());
+		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 //	
 //	@Test
