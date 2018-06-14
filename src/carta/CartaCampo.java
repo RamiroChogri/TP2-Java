@@ -11,11 +11,4 @@ public class CartaCampo implements Utilizable{
 		return false;
 	}
 
-	@Override
-	public int obtenerDanioAlHaberSidoDestruida() {
-
-		return 0;
-	}
-
-
 }

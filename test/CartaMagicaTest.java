@@ -65,12 +65,4 @@ public class CartaMagicaTest {
 		assertFalse(cartaMagica.estaColocadaBocaAbajo());				
 	}
 	
-	@Test
-	public void testObtenerDanioAlHaberSidoDestruidaDevuelveCero() {
-		CartaMagica cartaMagica = new CartaMagica();
-		cartaMagica.destruirCarta();
-		
-		assertEquals(0, cartaMagica.obtenerDanioAlHaberSidoDestruida());			
-	}
-	
 }	

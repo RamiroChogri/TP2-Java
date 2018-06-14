@@ -63,11 +63,6 @@ public class CartaMagica implements Utilizable{
 		return this.efecto;
 	}
 
-	@Override
-	public int obtenerDanioAlHaberSidoDestruida() {
-
-		return 0;
-	}
 
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo) {
 		
@@ -76,4 +71,5 @@ public class CartaMagica implements Utilizable{
 		campo.enviarCartasDestruidasAlCementerio();
 		campoEnemigo.enviarCartasDestruidasAlCementerio();
 	}
+
 }
