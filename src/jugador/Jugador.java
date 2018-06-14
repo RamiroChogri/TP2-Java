@@ -67,13 +67,19 @@ public class Jugador {
 			
 		} else if ((carta.obtenerEstrellas() > 4)) {
 		
-			throw new NoHayMonstruoParaSacrificarException();
+			//throw new NoHayMonstruoParaSacrificarException();
 		
 		}
 		
 		carta.colocarEnModoAtaque();
 		this.campoPropio.colocarCarta(carta);
 
+	}
+	
+	public void colocarMonstruoBocaArribaEnModoDefensa(CartaMonstruo carta) {
+		
+		carta.colocarBocaArribaEnModoDefensa();
+		this.campoPropio.colocarCarta(carta);
 	}
 	
  

@@ -99,9 +99,9 @@ de los puntos de ataque de los monstruos*/
 		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	
 	}
- /*	Colocar una carta de monstruo en posición de ataque, el oponente coloca otra carta
-	de monstruo en posición de ataque (con menor ataque), atacar al primer monstruo,
-	el monstruo atacante es destruido y el atacante recibe daño a los
+ /*	Colocar una carta de monstruo en posiciï¿½n de ataque, el oponente coloca otra carta
+	de monstruo en posiciï¿½n de ataque (con menor ataque), atacar al primer monstruo,
+	el monstruo atacante es destruido y el atacante recibe daï¿½o a los
 	puntos de vida igual a la diferencia de ataques.
   * 
   */
@@ -129,9 +129,9 @@ de los puntos de ataque de los monstruos*/
 	}
 	
 	/*
-	Colocar una carta de monstruo en posición de ataque, el oponente coloca otra carta
-	de monstruo en posición de ataque (con igual ataque), atacar al primer monstruo,
-	ambos monstruos son destruidos y nadie recibe daño a los puntos de
+	Colocar una carta de monstruo en posiciï¿½n de ataque, el oponente coloca otra carta
+	de monstruo en posiciï¿½n de ataque (con igual ataque), atacar al primer monstruo,
+	ambos monstruos son destruidos y nadie recibe daï¿½o a los puntos de
 	vida.
 	*/
 	
@@ -159,19 +159,33 @@ de los puntos de ataque de los monstruos*/
 		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 	
+	/*Colocar una carta de monstruo en posiciÃ³n de defensa, el oponente coloca otra carta
+	de monstruo en posiciÃ³n de ataque (con mayor ataque que la defensa del primer
+	monstruo), atacar al primer monstruo y verificar que este se destruyÃ³ y no sufriÃ³
+	ningÃºn daÃ±o vital.*/
 	@Test
 	public void test09MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMayorAtaqueQueSuDefensa() {
 		CartaMonstruo monstruoAtacante = new CartaMonstruo(3000, 3000);
  		CartaMonstruo monstruoDefensor = new CartaMonstruo(1000, 2000);
- 		Campo campoTest = new Campo();
- 		Campo campoTestEnemigo = new Campo(); 
+ 
+ 		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
  		
- 		campoTest.colocarMonstruoEnModoAtaque(monstruoAtacante);
- 		campoTestEnemigo.colocarMonstruoBocaArribaEnModoDefensa(monstruoDefensor);
- 		monstruoAtacante.atacar(monstruoDefensor);
+ 		jugador1.colocarMonstruoEnModoAtaque(monstruoAtacante);
+ 		jugador2.colocarMonstruoBocaArribaEnModoDefensa(monstruoDefensor);
  		
- 		assertFalse(monstruoAtacante.estaDestruida());
- 		assertTrue(monstruoDefensor.estaDestruida());
+ 		jugador2.atacar( monstruoAtacante , monstruoDefensor );
+ 		
+		int vidaEsperada = 8000;
+		
+		assertFalse(monstruoAtacante.estaDestruida());
+		assertTrue(monstruoDefensor.estaDestruida());
+		
+		assertEquals( vidaEsperada , jugador2.obtenerVidaRestante());
+		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 
 	@Test
