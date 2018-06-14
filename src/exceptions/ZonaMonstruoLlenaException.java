@@ -1,5 +1,5 @@
 package exceptions;
 
-public class ZonaMonstruoLlenaException extends Exception {
+public class ZonaMonstruoLlenaException extends RuntimeException {
 
 }

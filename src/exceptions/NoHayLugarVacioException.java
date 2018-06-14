@@ -1,5 +1,5 @@
 package exceptions;
 
-public class NoHayLugarVacioException extends Exception {
+public class NoHayLugarVacioException extends RuntimeException {
 
 }
