@@ -51,6 +51,5 @@ public class Jugador {
 		
 		cartaAColocar.colocarEnModoAtaque();
 		this.campoPropio.colocarCarta(cartaAColocar);
-		
 	}
 }
