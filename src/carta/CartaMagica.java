@@ -61,4 +61,10 @@ public class CartaMagica implements Utilizable{
 	public Efecto obtenerEfecto() {
 		return this.efecto;
 	}
+
+	@Override
+	public int obtenerDanioAlHaberSidoDestruida() {
+
+		return 0;
+	}
 }
