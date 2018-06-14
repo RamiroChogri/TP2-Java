@@ -1,5 +1,7 @@
 package jugador;
+
 import campo.*;
+import exceptions.*;
 import carta.Carta;
 import carta.CartaMonstruo;
 public class Jugador {
@@ -49,8 +51,30 @@ public class Jugador {
 
 	public void colocarMonstruoEnModoAtaque(CartaMonstruo carta) {
 		
+		if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0)) {
+			
+			this.campoPropio.eliminarUltimaCartaMonstruoColocada();
+			
+			if ((carta.obtenerEstrellas() > 6) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0 )) {
+			
+				this.campoPropio.eliminarUltimaCartaMonstruoColocada();
+			
+			} else if ((carta.obtenerEstrellas() > 6) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() == 0 )) {
+		
+				throw new NoHayMonstruoParaSacrificarException();
+		
+			}
+			
+		} else if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() == 0)) {
+		
+			throw new NoHayMonstruoParaSacrificarException();
+		
+		}
+		
 		carta.colocarEnModoAtaque();
 		this.campoPropio.colocarCarta(carta);
-		
+
 	}
+	
+	
 }

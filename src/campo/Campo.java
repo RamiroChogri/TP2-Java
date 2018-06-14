@@ -171,5 +171,10 @@ public class Campo {
 		this.zonaMonstruo.vaciar();
 		this.enviarCartasDestruidasAlCementerio();
 	}
+	
+	public void eliminarUltimaCartaMonstruoColocada() {
+		this.zonaMonstruo.eliminarUltimaCartaMonstruoColocada();
+		this.enviarCartasDestruidasAlCementerio();
+	}
 
 }

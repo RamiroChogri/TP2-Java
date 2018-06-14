@@ -78,4 +78,8 @@ public class ZonaMonstruo {
 	    
 		return danio;
 	}
+	
+	public void eliminarUltimaCartaMonstruoColocada() {
+		posiciones.removeLast();
+	}
 }
