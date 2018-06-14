@@ -6,6 +6,7 @@ import org.junit.Test;
 import campo.Campo;
 import carta.*;
 import efectos.EfectoAgujeroNegro;
+import jugador.Jugador;
 
 
 public class EnunciadoTest {
@@ -112,19 +113,27 @@ de los puntos de ataque de los monstruos*/
 //		assertTrue( otraCartaMonstruo.estaDestruida() );
 //	}
 
- 	@Test
+	@Test
 	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueConMenorAtaque() {
 		CartaMonstruo monstruoConMayorAtaque = new CartaMonstruo(2000, 3000);
 		CartaMonstruo monstruoConMenorAtaque = new CartaMonstruo(1000, 2000);
-		Campo campoTest = new Campo();
- 		Campo campoTestEnemigo = new Campo(); 
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
  		
- 		campoTest.colocarMonstruoEnModoAtaque(monstruoConMayorAtaque);
- 		campoTestEnemigo.colocarMonstruoEnModoAtaque(monstruoConMenorAtaque);
-		monstruoConMenorAtaque.atacar(monstruoConMayorAtaque);
+ 		jugador1.colocarMonstruoEnModoAtaque(monstruoConMayorAtaque);
+ 		jugador2.colocarMonstruoEnModoAtaque(monstruoConMenorAtaque);
+ 		
+ 		jugador1.atacar(monstruoConMayorAtaque, monstruoConMenorAtaque);
 		
 		assertFalse(monstruoConMayorAtaque.estaDestruida());
 		assertTrue(monstruoConMenorAtaque.estaDestruida());
+		
+		int vidaEsperada = 7000;
+		
+		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	}
  
 	@Test

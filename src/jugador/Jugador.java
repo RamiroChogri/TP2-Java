@@ -46,4 +46,11 @@ public class Jugador {
 		
 		return campoPropio.obtenerVidaRestante();
 	}
+
+	public void colocarMonstruoEnModoAtaque(CartaMonstruo cartaAColocar) {
+		
+		cartaAColocar.colocarEnModoAtaque();
+		this.campoPropio.colocarCarta(cartaAColocar);
+		
+	}
 }
