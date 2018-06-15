@@ -16,12 +16,15 @@ public class EnunciadoTest {
 	@Test
 	public void test01ColocarCartaMonstruoEnModoAtaque() {
 		Campo campoTest = new Campo();
-		CartaMonstruo cartaMonstruo = new CartaMonstruo();
+		CartaMonstruo cartaMonstruo = new CartaMonstruo(); //Pogramar vs interfaces !!!!
 		cartaMonstruo.colocarEnModoAtaque();
 		
 		campoTest.colocarCarta(cartaMonstruo);
 		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
 		assertTrue( cartaMonstruo.estaColocadaEnModoAtaque() );
+		
+		//REPENSAR ESTE TESTS ( Y LOS PARECIDOS ) SE DEBE TESTEAR COMPORTAMIENTO
+		
 	}
 	
 	@Test
