@@ -1,7 +1,8 @@
 package jugador;
 
 import java.util.LinkedList;
-import carta.*;
+
+import cartas.*;
 
 public class Mano {
 	

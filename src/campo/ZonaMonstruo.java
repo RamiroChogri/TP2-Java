@@ -1,6 +1,7 @@
 package campo;
 import java.util.*;
-import carta.*;
+
+import cartas.*;
 import exceptions.NoHayLugarVacioException;
 import exceptions.ZonaMonstruoLlenaException;
 

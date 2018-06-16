@@ -1,9 +1,9 @@
 package jugador;
 import org.junit.Test;
 
-import carta.CartaMagica;
-import carta.CartaMonstruo;
-import carta.CartaTrampa;
+import cartas.CartaMagica;
+import cartas.CartaMonstruo;
+import cartas.CartaTrampa;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

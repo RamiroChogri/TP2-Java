@@ -1,7 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 import campo.*;
-import carta.*;
+import cartas.*;
 import efectos.*;
 
 public class CartaMagicaTest {

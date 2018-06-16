@@ -1,8 +1,9 @@
 package campo;
-import carta.*;
 import efectos.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import cartas.*;
 
 public class CampoTest {
 	

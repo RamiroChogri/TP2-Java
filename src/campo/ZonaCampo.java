@@ -1,7 +1,7 @@
 package campo;
 
-import carta.Carta;
-import carta.CartaCampo;
+import cartas.Carta;
+import cartas.CartaCampo;
 
 public class ZonaCampo {
 

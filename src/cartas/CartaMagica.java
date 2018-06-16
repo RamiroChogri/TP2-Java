@@ -1,4 +1,4 @@
-package carta;
+package cartas;
 
 import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaBocaAbajo;

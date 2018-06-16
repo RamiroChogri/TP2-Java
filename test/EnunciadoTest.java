@@ -3,8 +3,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
+import estrategias.*;
+import modos.*;
 import campo.Campo;
-import carta.*;
+import cartas.*;
 import efectos.EfectoAgujeroNegro;
 import jugador.Jugador;
 
@@ -15,16 +17,57 @@ public class EnunciadoTest {
 	//Colocar una carta de monstruo en posición de ataque.
 	@Test
 	public void test01ColocarCartaMonstruoEnModoAtaque() {
-		Campo campoTest = new Campo();
-		CartaMonstruo cartaMonstruo = new CartaMonstruo(); //Pogramar vs interfaces !!!!
-		cartaMonstruo.colocarEnModoAtaque();
+//		Campo campoTest = new Campo();
+//		CartaMonstruo cartaMonstruo = new CartaMonstruo(); //Pogramar vs interfaces !!!!
+//		cartaMonstruo.colocarEnModoAtaque();
+//		
+//		campoTest.colocarCarta(cartaMonstruo);
+//		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
+//		assertTrue( cartaMonstruo.estaColocadaEnModoAtaque() );
+//		
 		
-		campoTest.colocarCarta(cartaMonstruo);
-		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
-		assertTrue( cartaMonstruo.estaColocadaEnModoAtaque() );
+		
+		//Agregada nueva clase "puntos" en carta para el manejo de puntos de ataque y defensa
+		//en cartas monstruo
+		//Agregado nuevo EstadoCartaInvocada (No tiene nada implementado)
+		//Agregadas clases Estrategias y Modos (no implementados, deben relacionarse con el
+		//campo todavia)
+		//Falta cambiar todo lo que diga "Utilizable" por "Activable"
+		
+		Campo campoPropio = new Campo();
+		Campo campoEnemigo = new Campo();
+		int puntosDeAtaqueCartaMonstruo = 1000;
+		int puntosDeDefensaCartaMonstruo = 500;
+		Atacable cartaMonstruoPropia = new CartaMonstruo(puntosDeAtaqueCartaMonstruo, puntosDeDefensaCartaMonstruo);
+		Atacable cartaMonstruoEnemiga = new CartaMonstruo(puntosDeAtaqueCartaMonstruo - 100, puntosDeDefensaCartaMonstruo - 100);
+		Modo modoAtaque = new ModoAtaque();
+		Estrategia bocaArriba = new EstrategiaBocaArriba();
+		//campo recibe estrategia y modo
+		campoPropio.colocarCarta(cartaMonstruoPropia, bocaArriba, modoAtaque);
+		campoEnemigo.colocarCarta(cartaMonstruoEnemiga, bocaArriba, modoAtaque);
+		
+		cartaMonstruoPropia.atacar(cartaMonstruoEnemiga);
+		campoEnemigo.enviarCartasDestruidasAlCementerio();
+		
+		//Como esta en modo ataque y tiene mas puntos de ataque que la carta enemiga la mata
+		//y la envia al cementerio <--- Esta bien que tenga que aclarar que es lo que esta
+		//pasando? El codigo deberia ser mas claro o el comentario sobra?
+		
+		assertEquals( 1, campoEnemigo.obtenerCantidadDeCartasEnCementerio() );
+		
+		
 		
 		//REPENSAR ESTE TESTS ( Y LOS PARECIDOS ) SE DEBE TESTEAR COMPORTAMIENTO
 		
+		//-Hay que rehacer "EstadoCarta", separar en "POSICION-BOCAARRIBA/ABAJO-ATAQUE/DEFENSA"
+		//-Colocar en modo ataque implica que puede atacar
+		//-Puntos de ataque/defensa que no sean integers el comportamiento que podrían tener
+		// para que no sean solo clases contenedoras es el de aumentar/decrementar su valor 
+		// hasta que "pase el turno" (es decir, se puede hacer que cuando se construya tenga
+		// un valor original y posea un metodo que sea "aumentarEn(puntosExtra)" y otro que
+		// sea "eliminarAumento" o algo del estilo)
+		//-Les convence una clase que sea "ModoDeCartaMonstruo"? O es muy especifica?
+		//
 	}
 	
 	@Test

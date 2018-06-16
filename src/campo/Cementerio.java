@@ -1,7 +1,8 @@
 package campo;
 
 import java.util.LinkedList;
-import carta.Carta;
+
+import cartas.Carta;
 
 public class Cementerio {
 

@@ -2,11 +2,12 @@ package campo;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import carta.Carta;
-import carta.CartaCampo;
-import carta.CartaMagica;
-import carta.CartaMonstruo;
-import carta.CartaTrampa;
+
+import cartas.Carta;
+import cartas.CartaCampo;
+import cartas.CartaMagica;
+import cartas.CartaMonstruo;
+import cartas.CartaTrampa;
 import exceptions.*;
 
 public class Campo {

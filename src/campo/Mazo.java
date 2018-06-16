@@ -1,8 +1,9 @@
 package campo;
 
 import java.util.Stack;
-import carta.Carta;
-import carta.CartaMonstruo;
+
+import cartas.Carta;
+import cartas.CartaMonstruo;
 
 public class Mazo {
 

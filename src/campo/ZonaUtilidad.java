@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import carta.Carta;
-import carta.CartaMagica;
-import carta.CartaMonstruo;
+import cartas.Carta;
+import cartas.CartaMagica;
+import cartas.CartaMonstruo;
 import exceptions.NoHayLugarVacioException;
 
 public class ZonaUtilidad {

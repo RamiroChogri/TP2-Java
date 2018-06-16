@@ -1,8 +1,8 @@
 package jugador;
 
 import campo.*;
+import cartas.*;
 import exceptions.*;
-import carta.*;
 import efectos.Efecto;
 public class Jugador {
 
