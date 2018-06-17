@@ -1,5 +1,9 @@
 package cartas;
+
 import estadoCarta.*;
+import estrategias.*;
+import modos.*;
+
 public class CartaMonstruo implements Atacable{
 	
 	private EstadoCarta estado;
@@ -7,7 +11,6 @@ public class CartaMonstruo implements Atacable{
 	private Puntos puntosDeDefensa;
 	private int estrellas;
 	private String nombre;
-	
 	
 	public CartaMonstruo() {
 		
@@ -77,6 +80,18 @@ public class CartaMonstruo implements Atacable{
 		
 	}
 	
+	/////////////////////////////
+	
+	public void colocar(Estrategia boca, Modo modo) {
+		
+		modo.asignarPuntosAtaque(this.puntosDeAtaque);
+		modo.asignarPuntosDefensa(this.puntosDeDefensa);
+		
+		this.estado = new EstadoCartaInvocada(boca, modo);
+	
+	}
+	
+	////////////////////////////
 	
 	public void colocarEnModoAtaque() {
 		this.estado = new EstadoCartaEnModoAtaque(this.puntosDeAtaque.obtener());

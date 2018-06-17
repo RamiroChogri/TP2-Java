@@ -3,6 +3,9 @@ package campo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import cartas.*;
+import estrategias.*;
+import modos.*;
 import cartas.Destruible;
 import cartas.CartaCampo;
 import cartas.CartaMagica;
@@ -31,6 +34,14 @@ public class Campo {
 		this.mazoDelJugador = new Mazo();
 	}
 
+	////////////////////////////////////
+	
+	public void colocarCarta(Atacable cartaAtacable, Estrategia boca, Modo modo) {
+		cartaAtacable.colocar(boca, modo);
+		zonaMonstruo.colocarCarta(cartaAtacable);
+	}
+	
+	//////////////////////////////////
 	//Seguir con la excepcion
 	
 	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {

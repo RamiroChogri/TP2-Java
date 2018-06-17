@@ -31,7 +31,7 @@ public class EnunciadoTest {
 		//en cartas monstruo
 		//Agregado nuevo EstadoCartaInvocada (No tiene nada implementado)
 		//Agregadas clases Estrategias y Modos (no implementados, deben relacionarse con el
-		//campo todavia)
+		//campo todavia)	
 		//Falta cambiar todo lo que diga "Utilizable" por "Activable"
 		
 		Campo campoPropio = new Campo();
