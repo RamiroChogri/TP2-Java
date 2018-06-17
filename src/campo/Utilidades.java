@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import cartas.Destruible;
 import cartas.CartaMagica;
+import cartas.CartaMonstruo;
 import exceptions.NoHayLugarVacioException;
 
 public class Utilidades extends Zona{
@@ -54,6 +55,15 @@ public class Utilidades extends Zona{
 	    	}
 	    }
 	    return cartasDestruidas;
+	}
+	
+	public void vaciar() {
+		Iterator<CartaMagica> posicionesIterador = this.posiciones.iterator();		
+	    CartaMagica cartaActivableActual;
+	    while (posicionesIterador.hasNext()) {
+	    	cartaActivableActual = posicionesIterador.next();
+	    	cartaActivableActual.destruirCarta();
+	    }
 	}
 
 }

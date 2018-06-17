@@ -9,5 +9,5 @@ public  abstract class Zona {
 	public abstract boolean hayEspacioDisponible();
 	public abstract int obtenerCantidadDeCartas();
 	public abstract LinkedList<Destruible> recolectarCartasDestruidas();
-
+	public abstract void vaciar();
 }

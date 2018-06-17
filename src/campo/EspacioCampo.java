@@ -53,8 +53,11 @@ public class EspacioCampo extends Zona{
 	    return cartasDestruidas;
 	}
 
-	@Override
 	public boolean hayEspacioDisponible() {
 		return this.hayCartaCampo;
+	}
+
+	public void vaciar() {
+		this.destruirCarta();
 	}
 }

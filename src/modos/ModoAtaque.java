@@ -4,7 +4,6 @@ import cartas.Puntos;
 
 public class ModoAtaque extends Modo {
 
-	@Override
 	public ModoAtaque colocarEnModoAtaque() {
 		return this;
 	}

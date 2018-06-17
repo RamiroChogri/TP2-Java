@@ -3,9 +3,9 @@ import cartas.*;
 
 public abstract class Modo {
 
-		public abstract void asignarPuntosAtaque(Puntos puntosAtaque);
+		//public abstract void asignarPuntosAtaque(Puntos puntosAtaque);
 		
-		public abstract void asignarPuntosDefensa(Puntos puntosDefensa);
+		//public abstract void asignarPuntosDefensa(Puntos puntosDefensa);
 		
 	
 		public ModoAtaque colocarEnModoAtaque() {
