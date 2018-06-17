@@ -16,9 +16,9 @@ import exceptions.*;
 public class Campo {
 
 	private int vidaDelJugador;
-	private ZonaMonstruo zonaMonstruo;
-	private ZonaUtilidad zonaUtilidad;
-	private ZonaCampo zonaCampo;
+	private Criaturas zonaMonstruo;
+	private Utilidad zonaUtilidad;
+	private EspacioCampo zonaCampo;
 	private Cementerio cementerio;
 	private Mazo mazoDelJugador;
 	
@@ -27,9 +27,9 @@ public class Campo {
 		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
 		//ordenadas aleatoriamente
 		this.vidaDelJugador = 8000;
-		this.zonaMonstruo = new ZonaMonstruo();
-		this.zonaUtilidad = new ZonaUtilidad();
-		this.zonaCampo = new ZonaCampo();
+		this.zonaMonstruo = new Criaturas();
+		this.zonaUtilidad = new Utilidad();
+		this.zonaCampo = new EspacioCampo();
 		this.cementerio = new Cementerio();
 		this.mazoDelJugador = new Mazo();
 	}

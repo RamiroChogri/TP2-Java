@@ -6,12 +6,12 @@ import java.util.LinkedList;
 
 import cartas.CartaCampo;
 
-public class ZonaCampo extends Zona{
+public class EspacioCampo extends Zona{
 
 	private CartaCampo cartaCampo;
 	private Boolean hayCartaCampo;
 	
-	public ZonaCampo() {
+	public EspacioCampo() {
 		this.cartaCampo = new CartaCampo();
 		this.hayCartaCampo = false;
 	}
