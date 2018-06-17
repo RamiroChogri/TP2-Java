@@ -33,10 +33,6 @@ public class Campo {
 
 	//Seguir con la excepcion
 	
-	public void colocarCarta(Destruible cartaAColocar) {
-		this.colocarCarta(cartaAColocar);
-	}
-	
 	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {
 		try {
 			zonaMonstruo.colocarCarta(cartaMonstruoAColocar);

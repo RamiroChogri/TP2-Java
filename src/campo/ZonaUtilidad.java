@@ -1,12 +1,10 @@
 package campo;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import cartas.Destruible;
 import cartas.CartaMagica;
-import cartas.CartaMonstruo;
 import exceptions.NoHayLugarVacioException;
 
 public class ZonaUtilidad {
