@@ -84,10 +84,7 @@ public class CartaMonstruo implements Atacable{
 	
 	public void colocar(Estrategia boca, Modo modo) {
 		
-		modo.asignarPuntosAtaque(this.puntosDeAtaque);
-		modo.asignarPuntosDefensa(this.puntosDeDefensa);
-		
-		this.estado = new EstadoCartaInvocada(boca, modo);
+		this.estado = new EstadoCartaInvocada(boca, modo, this.puntosDeAtaque, this.puntosDeDefensa);
 	
 	}
 	
