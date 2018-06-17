@@ -7,12 +7,12 @@ import cartas.Destruible;
 import cartas.CartaMagica;
 import exceptions.NoHayLugarVacioException;
 
-public class Utilidad extends Zona{
+public class Utilidades extends Zona{
 
 	private LinkedList<CartaMagica> posiciones;
 	private boolean hayEspacio;
 	
-	public Utilidad() {
+	public Utilidades() {
 		posiciones = new LinkedList<CartaMagica>();
 		hayEspacio = true;
 	}

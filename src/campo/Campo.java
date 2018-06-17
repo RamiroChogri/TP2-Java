@@ -17,7 +17,7 @@ public class Campo {
 
 	private int vidaDelJugador;
 	private Criaturas zonaMonstruo;
-	private Utilidad zonaUtilidad;
+	private Utilidades zonaUtilidad;
 	private EspacioCampo zonaCampo;
 	private Cementerio cementerio;
 	private Mazo mazoDelJugador;
@@ -28,7 +28,7 @@ public class Campo {
 		//ordenadas aleatoriamente
 		this.vidaDelJugador = 8000;
 		this.zonaMonstruo = new Criaturas();
-		this.zonaUtilidad = new Utilidad();
+		this.zonaUtilidad = new Utilidades();
 		this.zonaCampo = new EspacioCampo();
 		this.cementerio = new Cementerio();
 		this.mazoDelJugador = new Mazo();
