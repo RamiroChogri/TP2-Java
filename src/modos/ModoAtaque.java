@@ -7,6 +7,10 @@ public class ModoAtaque extends Modo {
 	public ModoAtaque colocarEnModoAtaque() {
 		return this;
 	}
+	
+	public ModoDefensa colocarEnModoDefensa() {
+		return new ModoDefensa();
+	}
 
 	
 	//Agregar algo que "Pemita atacar"
