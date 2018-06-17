@@ -3,7 +3,7 @@ package campo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import cartas.Carta;
+import cartas.Destruible;
 import cartas.CartaCampo;
 import cartas.CartaMagica;
 import cartas.CartaMonstruo;
@@ -33,7 +33,7 @@ public class Campo {
 
 	//Seguir con la excepcion
 	
-	public void colocarCarta(Carta cartaAColocar) {
+	public void colocarCarta(Destruible cartaAColocar) {
 		this.colocarCarta(cartaAColocar);
 	}
 	
@@ -112,7 +112,7 @@ public class Campo {
 		return this.vidaDelJugador;
 	}
 	
-	public Carta levantarCartaDelMazo() {
+	public Destruible levantarCartaDelMazo() {
 		return this.mazoDelJugador.levantarCarta();
 	}
 	
@@ -166,7 +166,7 @@ public class Campo {
 
 	public void enviarCartasDestruidasAlCementerio() {
 		int danio = this.zonaMonstruo.obtenerDanioRecibido();
-		LinkedList<Carta> cartasAEnterrar = new LinkedList<Carta>();
+		LinkedList<Destruible> cartasAEnterrar = new LinkedList<Destruible>();
 		cartasAEnterrar.addAll(this.zonaMonstruo.recolectarCartasDestruidas());
 		cartasAEnterrar.addAll(this.zonaUtilidad.recolectarCartasDestruidas());
 		// this.enterrarCartaCampo(); Error, me agrega null a la lista y para ahorrar if lo comentamos por ahora

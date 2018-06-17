@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import cartas.Carta;
+import cartas.Destruible;
 import cartas.CartaMagica;
 import cartas.CartaMonstruo;
 import exceptions.NoHayLugarVacioException;
@@ -39,14 +39,14 @@ public class ZonaUtilidad {
 		return this.posiciones.size();
 	}
 
-	public LinkedList<Carta> recolectarCartasDestruidas() {
-		LinkedList<Carta>cartasDestruidas = new LinkedList<Carta>();
+	public LinkedList<Destruible> recolectarCartasDestruidas() {
+		LinkedList<Destruible>cartasDestruidas = new LinkedList<Destruible>();
 		Iterator<CartaMagica> posicionesIterador = this.posiciones.iterator();		
 	    CartaMagica cartaMagicaActual;
 	    while (posicionesIterador.hasNext()) {
 	    	cartaMagicaActual = posicionesIterador.next();
 	    	if(cartaMagicaActual.estaDestruida()) {
-	    		Carta cartaActual = cartaMagicaActual;
+	    		Destruible cartaActual = cartaMagicaActual;
 	    		cartasDestruidas.add(cartaActual);
 	    		posicionesIterador.remove();
 	    	}

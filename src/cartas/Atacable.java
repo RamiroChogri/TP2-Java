@@ -1,6 +1,6 @@
 package cartas;
 
-public interface Atacable extends Carta{
+public interface Atacable extends Destruible{
 
 	public int obtenerDanioAlHaberSidoDestruida();
 	

@@ -1,6 +1,6 @@
 package campo;
 
-import cartas.Carta;
+import cartas.Destruible;
 import cartas.CartaCampo;
 
 public class ZonaCampo {
@@ -32,8 +32,8 @@ public class ZonaCampo {
 		return cantidadDeCartaCampo;
 	}
 
-	public Carta recolectarCartasDestruidas() {
-		Carta cartaCampoADestruir = null;
+	public Destruible recolectarCartasDestruidas() {
+		Destruible cartaCampoADestruir = null;
 		if(this.cartaCampo.estaDestruida()) {
 			cartaCampoADestruir = this.cartaCampo;
 			this.cartaCampo = null;

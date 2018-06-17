@@ -2,21 +2,21 @@ package campo;
 
 import java.util.LinkedList;
 
-import cartas.Carta;
+import cartas.Destruible;
 
 public class Cementerio {
 
-	private LinkedList<Carta> cementerio;
+	private LinkedList<Destruible> cementerio;
 	
 	public Cementerio() {
-		this.cementerio = new LinkedList<Carta>();
+		this.cementerio = new LinkedList<Destruible>();
 	}
 	
-	public void agregarCartaAlCementerio(Carta cartaDestruida) {
+	public void agregarCartaAlCementerio(Destruible cartaDestruida) {
 		this.cementerio.add(cartaDestruida);
 	}
 	
-	public void agregarCartasAlCementerio(LinkedList<Carta> cartasAEnterrar) {
+	public void agregarCartasAlCementerio(LinkedList<Destruible> cartasAEnterrar) {
 		this.cementerio.addAll(cartasAEnterrar);
 	}
 	

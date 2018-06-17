@@ -1,6 +1,6 @@
 package cartas;
 
-public interface Carta {
+public interface Destruible {
 	
 	public void destruirCarta();
 

@@ -40,15 +40,15 @@ public class ZonaMonstruo {
 		return (this.posiciones.size());
 	}
 	
-	public LinkedList<Carta> recolectarCartasDestruidas() {
-		LinkedList<Carta>cartasDestruidas = new LinkedList<Carta>();
+	public LinkedList<Destruible> recolectarCartasDestruidas() {
+		LinkedList<Destruible>cartasDestruidas = new LinkedList<Destruible>();
 		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
 	    CartaMonstruo cartaMonstruoActual;
 	    while (posicionesIterador.hasNext()) {
 	    	cartaMonstruoActual = posicionesIterador.next();
 	    	if(cartaMonstruoActual.estaDestruida()) {
 	    	
-	    		Carta cartaActual = cartaMonstruoActual;
+	    		Destruible cartaActual = cartaMonstruoActual;
 	    		cartasDestruidas.add(cartaActual);
 	    		posicionesIterador.remove();
 	    	

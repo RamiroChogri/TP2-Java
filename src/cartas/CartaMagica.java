@@ -8,7 +8,7 @@ import estadoCarta.EstadoCartaEnMazo;
 import campo.Campo;
 import efectos.*;
 
-public class CartaMagica implements Utilizable{
+public class CartaMagica implements Activable{
 	
 	private EstadoCarta estado;
 	private Efecto efecto;

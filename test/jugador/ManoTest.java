@@ -22,7 +22,7 @@ public class ManoTest {
 	@Test
 	public void test02CantidadDeCartasEnManoEsUnoAlAgregarCarta() {
 		Mano mano = new Mano();
-		Carta carta = new CartaMonstruo();
+		Destruible carta = new CartaMonstruo();
 		
 		mano.agregarCartaEnMano( carta );
 	
@@ -32,10 +32,10 @@ public class ManoTest {
 	@Test
 	public void test03CantidadDeCartasEnManoEsCorrectaAlAgregarVariasCartas() {
 		Mano mano = new Mano();
-		Carta carta1 = new CartaMonstruo();
-		Carta carta2 = new CartaMonstruo();
-		Carta carta3 = new CartaMonstruo();
-		LinkedList<Carta> variasCartas = new LinkedList<Carta>();
+		Destruible carta1 = new CartaMonstruo();
+		Destruible carta2 = new CartaMonstruo();
+		Destruible carta3 = new CartaMonstruo();
+		LinkedList<Destruible> variasCartas = new LinkedList<Destruible>();
 		
 		variasCartas.add( carta1 );
 		variasCartas.add( carta2 );
