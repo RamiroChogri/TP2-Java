@@ -1,9 +1,12 @@
 package campo;
 
 import cartas.Destruible;
+
+import java.util.LinkedList;
+
 import cartas.CartaCampo;
 
-public class ZonaCampo {
+public class ZonaCampo extends Zona{
 
 	private CartaCampo cartaCampo;
 	private Boolean hayCartaCampo;
@@ -17,6 +20,13 @@ public class ZonaCampo {
 		//this.cartaCampo.activarEfecto();
 	}
 	
+	public void desactivarEfectoDeCampo() {
+		//this.cartaCampo.activarEfecto();
+	}
+	
+	public void colocarCarta(Destruible cartaMonstruoAColocar) {
+		//MetodoForzadoPorZona
+	}
 	public void colocarCarta(CartaCampo cartaAColocar) {
 		this.cartaCampo = cartaAColocar;
 		this.hayCartaCampo = true;
@@ -32,12 +42,19 @@ public class ZonaCampo {
 		return cantidadDeCartaCampo;
 	}
 
-	public Destruible recolectarCartasDestruidas() {
+	public LinkedList<Destruible> recolectarCartasDestruidas() {
 		Destruible cartaCampoADestruir = null;
 		if(this.cartaCampo.estaDestruida()) {
 			cartaCampoADestruir = this.cartaCampo;
 			this.cartaCampo = null;
 		}
-	    return cartaCampoADestruir;
+		LinkedList<Destruible> cartasDestruidas = new LinkedList<Destruible>();
+		cartasDestruidas.add(cartaCampoADestruir);
+	    return cartasDestruidas;
+	}
+
+	@Override
+	public boolean hayEspacioDisponible() {
+		return this.hayCartaCampo;
 	}
 }

@@ -5,7 +5,7 @@ import cartas.*;
 import exceptions.NoHayLugarVacioException;
 import exceptions.ZonaMonstruoLlenaException;
 
-public class ZonaMonstruo {
+public class ZonaMonstruo extends Zona {
 	
 	private LinkedList<CartaMonstruo> posiciones;
 	private boolean hayEspacio;
@@ -13,6 +13,10 @@ public class ZonaMonstruo {
 	public ZonaMonstruo() {
 		posiciones = new LinkedList<CartaMonstruo>();
 		hayEspacio = true;
+	}
+	
+	public void colocarCarta(Destruible cartaMonstruoAColocar) {
+		//MetodoForzadoPorZona
 	}
 	
 	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {
