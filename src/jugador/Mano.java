@@ -6,18 +6,18 @@ import cartas.*;
 
 public class Mano {
 	
-	private LinkedList<Destruible> cartasEnMano;
+	private LinkedList<Colocable> cartasEnMano;
 	
 	public Mano() {
 		
-		this.cartasEnMano = new LinkedList<Destruible>() ;
+		this.cartasEnMano = new LinkedList<Colocable>() ;
 		
 	}
-	public void agregarCartaEnMano(Destruible carta) {
+	public void agregarCartaEnMano(Colocable carta) {
 		this.cartasEnMano.add(carta);
 	}
 	
-	public void agregarCartasEnMano(LinkedList<Destruible> cartas) {
+	public void agregarCartasEnMano(LinkedList<Colocable> cartas) {
 		this.cartasEnMano.addAll( cartas );
 	}
 

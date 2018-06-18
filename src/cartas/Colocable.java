@@ -4,6 +4,6 @@ import campo.*;
 
 public interface Colocable {
 	
-	public void colocarse(ZonaMonstruos monstruos ,ZonaMagicasYTrampas magicasYTrampas, ZonaCampo campo);
+	public void colocarse(ZonaMonstruos monstruos ,ZonaMagicasYTrampas magicasYTrampas, ZonaCampo campo, EstadoCarta estadoAColocar);
 	
 }

@@ -36,8 +36,8 @@ public class Campo {
 
 	////////////////////////////////////
 	
-	public void colocarCarta(Colocable cartaAColocar) {
-		cartaAColocar.colocarse(monstruos, magicasYTrampas, espacioCampo);
+	public void colocarCarta(Colocable cartaAColocar,EstadoCarta estadoAColocar) {
+		cartaAColocar.colocarse(monstruos, magicasYTrampas, espacioCampo, estadoAColocar);
 	}
 	
 	//////////////////////////////////
