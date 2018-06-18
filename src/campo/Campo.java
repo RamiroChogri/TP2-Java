@@ -44,7 +44,7 @@ public class Campo {
 	//////////////////////////////////
 	//Seguir con la excepcion
 	
-	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar , Estrategia boca, Modo modo) {
+	public void colocarCarta(Atacable cartaMonstruoAColocar , Estrategia boca, Modo modo) {
 		try {
 			zonaMonstruo.colocarCarta(cartaMonstruoAColocar);
 		} catch (Exception zonaMonstruoLlenaException) {

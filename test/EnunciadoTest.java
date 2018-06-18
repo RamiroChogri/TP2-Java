@@ -14,7 +14,7 @@ import jugador.Jugador;
 public class EnunciadoTest {
 	
 	
-	//Colocar una carta de monstruo en posición de ataque.
+	//Colocar una carta de monstruo en posiciÃ³n de ataque.
 	@Test
 	public void test01ColocarCartaMonstruoEnModoAtaque() {
 //		Campo campoTest = new Campo();
@@ -38,8 +38,8 @@ public class EnunciadoTest {
 		Campo campoEnemigo = new Campo();
 		int puntosDeAtaqueCartaMonstruo = 1000;
 		int puntosDeDefensaCartaMonstruo = 500;
-		Colocable cartaMonstruoPropia = new CartaMonstruo(puntosDeAtaqueCartaMonstruo, puntosDeDefensaCartaMonstruo);
-		Colocable cartaMonstruoEnemiga = new CartaMonstruo(puntosDeAtaqueCartaMonstruo - 100, puntosDeDefensaCartaMonstruo - 100);
+		Atacable cartaMonstruoPropia = new CartaMonstruo(puntosDeAtaqueCartaMonstruo, puntosDeDefensaCartaMonstruo);
+		Atacable cartaMonstruoEnemiga = new CartaMonstruo(puntosDeAtaqueCartaMonstruo - 100, puntosDeDefensaCartaMonstruo - 100);
 		Modo modoAtaque = new ModoAtaque();
 		Estrategia bocaArriba = new EstrategiaBocaArriba();
 		//campo recibe estrategia y modo
@@ -61,7 +61,7 @@ public class EnunciadoTest {
 		
 		//-Hay que rehacer "EstadoCarta", separar en "POSICION-BOCAARRIBA/ABAJO-ATAQUE/DEFENSA"
 		//-Colocar en modo ataque implica que puede atacar
-		//-Puntos de ataque/defensa que no sean integers el comportamiento que podrían tener
+		//-Puntos de ataque/defensa que no sean integers el comportamiento que podrÃ­an tener
 		// para que no sean solo clases contenedoras es el de aumentar/decrementar su valor 
 		// hasta que "pase el turno" (es decir, se puede hacer que cuando se construya tenga
 		// un valor original y posea un metodo que sea "aumentarEn(puntosExtra)" y otro que
@@ -148,9 +148,9 @@ de los puntos de ataque de los monstruos*/
 		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	
 	}
- /*	Colocar una carta de monstruo en posici�n de ataque, el oponente coloca otra carta
-	de monstruo en posici�n de ataque (con menor ataque), atacar al primer monstruo,
-	el monstruo atacante es destruido y el atacante recibe da�o a los
+ /*	Colocar una carta de monstruo en posiciï¿½n de ataque, el oponente coloca otra carta
+	de monstruo en posiciï¿½n de ataque (con menor ataque), atacar al primer monstruo,
+	el monstruo atacante es destruido y el atacante recibe daï¿½o a los
 	puntos de vida igual a la diferencia de ataques.
   * 
   */
@@ -178,9 +178,9 @@ de los puntos de ataque de los monstruos*/
 	}
 	
 	/*
-	Colocar una carta de monstruo en posici�n de ataque, el oponente coloca otra carta
-	de monstruo en posici�n de ataque (con igual ataque), atacar al primer monstruo,
-	ambos monstruos son destruidos y nadie recibe da�o a los puntos de
+	Colocar una carta de monstruo en posiciï¿½n de ataque, el oponente coloca otra carta
+	de monstruo en posiciï¿½n de ataque (con igual ataque), atacar al primer monstruo,
+	ambos monstruos son destruidos y nadie recibe daï¿½o a los puntos de
 	vida.
 	*/
 	
@@ -208,10 +208,10 @@ de los puntos de ataque de los monstruos*/
 		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 	
-	/*Colocar una carta de monstruo en posición de defensa, el oponente coloca otra carta
-	de monstruo en posición de ataque (con mayor ataque que la defensa del primer
-	monstruo), atacar al primer monstruo y verificar que este se destruyó y no sufrió
-	ningún daño vital.*/
+	/*Colocar una carta de monstruo en posiciÃ³n de defensa, el oponente coloca otra carta
+	de monstruo en posiciÃ³n de ataque (con mayor ataque que la defensa del primer
+	monstruo), atacar al primer monstruo y verificar que este se destruyÃ³ y no sufriÃ³
+	ningÃºn daÃ±o vital.*/
 	@Test
 	public void test09MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMayorAtaqueQueSuDefensa() {
 		CartaMonstruo monstruoAtacante = new CartaMonstruo(3000, 3000);
@@ -237,10 +237,10 @@ de los puntos de ataque de los monstruos*/
 		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 	
-	/*Colocar una carta de monstruo en posición de defensa, el oponente coloca otra carta
-	de monstruo en posición de ataque (con menor ataque que la defensa del primer
-	monstruo), atacar al primer monstruo y verificar que este no se destruyó y no sufrió
-	ningún daño vital.*/
+	/*Colocar una carta de monstruo en posiciÃ³n de defensa, el oponente coloca otra carta
+	de monstruo en posiciÃ³n de ataque (con menor ataque que la defensa del primer
+	monstruo), atacar al primer monstruo y verificar que este no se destruyÃ³ y no sufriÃ³
+	ningÃºn daÃ±o vital.*/
 	@Test
 	public void test10MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMenorAtaqueQueSuDefensa() {
 		CartaMonstruo monstruoAtacante = new CartaMonstruo(1000, 3000);
@@ -266,9 +266,9 @@ de los puntos de ataque de los monstruos*/
 		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 	
-	/*Colocar monstruos en ambos lados del campo. Colocar “Agujero negro” boca arriba
+	/*Colocar monstruos en ambos lados del campo. Colocar â€œAgujero negroâ€� boca arriba
 	(es decir, se activa el efecto). Verificar que se destruyeron todos los monstruos de
-	ambos lados del campo, y que nadie recibió daño alguno.*/
+	ambos lados del campo, y que nadie recibiÃ³ daÃ±o alguno.*/
 	@Test
 	public void test11MonstruosDelCampoSeDestruyenAlColocarAgujeroNegro() {
 		CartaMonstruo monstruoAtacante = new CartaMonstruo(1000, 3000);
@@ -294,8 +294,8 @@ de los puntos de ataque de los monstruos*/
 	}
 	
 	/*Se coloca un monstruo en el campo, se quiere colocar un monstruo de 5 o 6
-	estrellas que requiere sacrificio. se verifica que se convocó al monstruo y se
-	destruyó el primero.*/
+	estrellas que requiere sacrificio. se verifica que se convocÃ³ al monstruo y se
+	destruyÃ³ el primero.*/
 	@Test
 	public void test12ColocarMonstruoQueRequiereUnSacrificioDestruyeElMonstruoAnterior() {
 		CartaMonstruo monstruo = new CartaMonstruo(1000, 3000, 3);
@@ -313,9 +313,9 @@ de los puntos de ataque de los monstruos*/
 
 	}
 	
-	/*Se colocan 2 monstruos en el campo, se quiere colocar un monstruo de 7 o más
+	/*Se colocan 2 monstruos en el campo, se quiere colocar un monstruo de 7 o mÃ¡s
 	estrellas que requiere 2 sacrificios. 
-	se verifica que se convocó al monstruo y sedestruyeron los demás. */
+	se verifica que se convocÃ³ al monstruo y sedestruyeron los demÃ¡s. */
 	@Test
 	public void test13ColocarMonstruoQueRequiereDosSacrificiosDestruyeLosDosMonstruosAnteriores() {
 		CartaMonstruo monstruo1 = new CartaMonstruo(1000, 3000, 3);
