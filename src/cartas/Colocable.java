@@ -1,8 +1,9 @@
 package cartas;
 
-import estrategias.Estrategia;
-import modos.Modo;
+import campo.*;
 
 public interface Colocable {
-	public void colocar(Estrategia estrategia, Modo modo);
+	
+	public void colocarse(ZonaMonstruo monstruos ,Utilidades magicasYTrampas, EspacioCampo campo);
+	
 }
