@@ -8,7 +8,9 @@ import modos.*;
 import campo.Campo;
 import cartas.*;
 import efectos.EfectoAgujeroNegro;
+import estadoCarta.*;
 import jugador.Jugador;
+import exceptions.*;
 
 
 public class EnunciadoTest {
@@ -36,17 +38,25 @@ public class EnunciadoTest {
 		
 		Campo campoPropio = new Campo();
 		Campo campoEnemigo = new Campo();
-		int puntosDeAtaqueCartaMonstruo = 1000;
-		int puntosDeDefensaCartaMonstruo = 500;
-		Atacable cartaMonstruoPropia = new CartaMonstruo(puntosDeAtaqueCartaMonstruo, puntosDeDefensaCartaMonstruo);
-		Atacable cartaMonstruoEnemiga = new CartaMonstruo(puntosDeAtaqueCartaMonstruo - 100, puntosDeDefensaCartaMonstruo - 100);
+		Puntos ataqueMonstruo1 = new Puntos(1000);
+		Puntos defensaMonstruo1 = new Puntos(500);
+		Puntos ataqueMonstruo2 = new Puntos(900);
+		Puntos defensaMonstruo2 = new Puntos(300);
+		int estrellasMonstruo = 3;
+		Atacable monstruoPropio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasMonstruo);
+		Atacable monstruoEnemigo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasMonstruo);
 		Modo modoAtaque = new ModoAtaque();
-		Estrategia bocaArriba = new EstrategiaBocaArriba();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		//campo recibe estrategia y modo
-		campoPropio.colocarCarta(cartaMonstruoPropia, bocaArriba, modoAtaque);
-		campoEnemigo.colocarCarta(cartaMonstruoEnemiga, bocaArriba, modoAtaque);
 		
-		cartaMonstruoPropia.atacar(cartaMonstruoEnemiga);
+		monstruoPropio.cambiarA(modoAtaque);
+		monstruoEnemigo.cambiarA(modoAtaque);
+		
+		
+		campoPropio.colocarCarta(monstruoPropio, bocaArriba);
+		campoEnemigo.colocarCarta(monstruoEnemigo, bocaArriba);
+		
+		monstruoPropio.atacar(monstruoEnemigo);
 		campoEnemigo.enviarCartasDestruidasAlCementerio();
 		
 		//Como esta en modo ataque y tiene mas puntos de ataque que la carta enemiga la mata
@@ -72,14 +82,49 @@ public class EnunciadoTest {
 	
 	@Test
 	public void test02ColocarMonstruoBocaAbajoEnModoDefensa() {
-		Campo campoTest = new Campo();
-		CartaMonstruo cartaMonstruo = new CartaMonstruo();
-		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
+//		
+//		Campo campoTest = new Campo();
+//		CartaMonstruo cartaMonstruo = new CartaMonstruo();
+//		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
+//		
+//		campoTest.colocarCarta(cartaMonstruo);
+//		
+//		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
+//		assertTrue( cartaMonstruo.estaColocadaBocaAbajoEnModoDefensa() );
+//		
+
+		//CartaEnModoDefensaNoPuedeAtacar
+		//cambia algo el que este boca abajo? Que comportamiento le agrega?
 		
-		campoTest.colocarCarta(cartaMonstruo);
+		Campo campoPropio = new Campo();
+		Campo campoEnemigo = new Campo();
+		Puntos ataqueMonstruo1 = new Puntos(1000);
+		Puntos defensaMonstruo1 = new Puntos(500);
+		Puntos ataqueMonstruo2 = new Puntos(900);
+		Puntos defensaMonstruo2 = new Puntos(300);
+		int estrellasMonstruo = 3;
+		Atacable monstruoPropio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasMonstruo);
+		Atacable monstruoEnemigo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasMonstruo);
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		boolean huboExcepcion = false;
 		
-		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
-		assertTrue( cartaMonstruo.estaColocadaBocaAbajoEnModoDefensa() );
+		monstruoPropio.cambiarA(modoDefensa);
+		monstruoEnemigo.cambiarA(modoAtaque);
+		
+		campoPropio.colocarCarta(monstruoPropio, bocaAbajo);
+		campoEnemigo.colocarCarta(monstruoEnemigo, bocaArriba);
+		
+		
+		try {
+			monstruoPropio.atacar(monstruoEnemigo);
+		} catch (MonstruoEnModoDefensaNoPuedeAtacarException error) {
+			huboExcepcion = true;
+		}
+		
+		assertTrue(huboExcepcion);
 		
 	}
 	

@@ -2,6 +2,7 @@ package cartas;
 
 import estadoCarta.*;
 import estrategias.*;
+import exceptions.MonstruoEnModoDefensaNoPuedeAtacarException;
 import modos.*;
 import campo.*;
 
@@ -78,6 +79,10 @@ public class CartaMonstruo implements Atacable{
 	//Deberia comprobarse en campo si la carta que ataca esta en modo ataque.
 	
 	public void atacar(Atacable cartaAtacableEnemiga) {
+		if (this.estaEnModoDefensa()) {
+			throw new MonstruoEnModoDefensaNoPuedeAtacarException();
+		}
+		
 		cartaAtacableEnemiga.recibirAtaque(this, this.puntosDeAtaque.obtener());
 	}
 	
