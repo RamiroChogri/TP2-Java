@@ -16,6 +16,11 @@ public abstract class Modo {
 			return new ModoDefensa(this.puntosDeAtaque, this.puntosDeDefensa);
 		}
 		
-		public abstract Boolean estaEnModoAtaque();
-		public abstract Boolean estaEnModoDefensa();
+		public abstract boolean estaEnModoAtaque();
+		public abstract boolean estaEnModoDefensa();
+
+		public abstract void recibirAtaque(CartaMonstruo cartaAtacante, Puntos puntosDeAtaqueMonstruoAtacante,
+				CartaMonstruo cartaAtacada);
+
+
 }

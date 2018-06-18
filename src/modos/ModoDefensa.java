@@ -1,5 +1,6 @@
 package modos;
 
+import cartas.CartaMonstruo;
 import cartas.Puntos;
 
 public class ModoDefensa extends Modo {
@@ -31,12 +32,24 @@ public class ModoDefensa extends Modo {
 		return new ModoAtaque(this.puntosDeAtaque, this.puntosDeDefensa);
 	}
 
-	public Boolean estaEnModoAtaque() {
+	public boolean estaEnModoAtaque() {
 		return false;
 	}
 
-	public Boolean estaEnModoDefensa() {
+	public boolean estaEnModoDefensa() {
 		return true;
 	}
+
+	@Override
+	public void recibirAtaque(CartaMonstruo cartaAtacante, Puntos puntosDeAtaqueMonstruoAtacante,
+			CartaMonstruo cartaAtacada) {
+		
+		if( puntosDeAtaqueMonstruoAtacante.sonMayoresA(this.puntosDeDefensa) ) {
+			cartaAtacada.destruirCarta();
+		}
+		
+	}
+	
+	
 	
 }

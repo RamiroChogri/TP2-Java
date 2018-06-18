@@ -36,5 +36,15 @@ public class Puntos {
 	public void eliminarModificadores() {
 		this.puntos = this.puntosOriginales;
 	}
+
+	public boolean sonMayoresA(Puntos otrosPuntos) {
+		
+		return otrosPuntos.sonMenoresA(this.puntos);
+	}
+
+	private boolean sonMenoresA(int cantidadDePuntos) {
+		
+		return (this.puntos < cantidadDePuntos);
+	}
 	
 }

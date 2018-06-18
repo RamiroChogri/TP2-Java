@@ -93,9 +93,18 @@ public class CartaMonstruo implements Atacable{
 			otraCartaMonstruo.colocarBocaArribaEnModoDefensa();
 		}
 		
-		otraCartaMonstruo.recibirAtaque(this, this.puntosDeAtaque.obtener());
+		otraCartaMonstruo.recibirAtaque(this, this.puntosDeAtaque);
 		
 	}
+	
+	/////////
+	
+	public void recibirAtaque(CartaMonstruo cartaAtacante, Puntos puntosDeAtaqueMonstruoAtacante) {
+	
+		this.modo.recibirAtaque(cartaAtacante, puntosDeAtaqueMonstruoAtacante, this);
+	}
+	
+	/////////
 	
 	public void recibirAtaque(CartaMonstruo cartaEnemiga, int puntosDeAtaqueMonstruoEnemigo) {
 		
