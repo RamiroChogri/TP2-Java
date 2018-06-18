@@ -38,8 +38,8 @@ public class EnunciadoTest {
 		Campo campoEnemigo = new Campo();
 		int puntosDeAtaqueCartaMonstruo = 1000;
 		int puntosDeDefensaCartaMonstruo = 500;
-		Atacable cartaMonstruoPropia = new CartaMonstruo(puntosDeAtaqueCartaMonstruo, puntosDeDefensaCartaMonstruo);
-		Atacable cartaMonstruoEnemiga = new CartaMonstruo(puntosDeAtaqueCartaMonstruo - 100, puntosDeDefensaCartaMonstruo - 100);
+		Colocable cartaMonstruoPropia = new CartaMonstruo(puntosDeAtaqueCartaMonstruo, puntosDeDefensaCartaMonstruo);
+		Colocable cartaMonstruoEnemiga = new CartaMonstruo(puntosDeAtaqueCartaMonstruo - 100, puntosDeDefensaCartaMonstruo - 100);
 		Modo modoAtaque = new ModoAtaque();
 		Estrategia bocaArriba = new EstrategiaBocaArriba();
 		//campo recibe estrategia y modo
