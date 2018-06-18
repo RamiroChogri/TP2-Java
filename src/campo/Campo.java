@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import cartas.*;
 import cartas.Destruible;
 import estadoCarta.EstadoCarta;
+import exceptions.NoHayEspacioEnElCampoException;
+import exceptions.NoHayLugarVacioException;
 
 public class Campo {
 
@@ -29,14 +31,12 @@ public class Campo {
 
 	////////////////////////////////////
 	
-	public void colocarCarta(Colocable cartaAColocar,EstadoCarta estadoAColocar) {
+	public void colocarCarta(Colocable cartaAColocar,EstadoCarta estadoAColocar) throws NoHayLugarVacioException {
 		cartaAColocar.colocarse(monstruos, magicasYTrampas, espacioCampo, estadoAColocar);
 	}
 	
 	//////////////////////////////////
 	//Seguir con la excepcion
-	
-
 	
 	public int obtenerCantidadDeCartasEnZonaMonstruo() {
 		return monstruos.obtenerCantidadDeCartas();

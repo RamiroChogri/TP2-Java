@@ -59,6 +59,37 @@ public class Jugador {
 		return campoPropio.obtenerVidaRestante();
 	}
 
+	public void colocar (Atacable carta, EstadoCarta estado, Modo modo) {
+
+		carta.cambiarA(modo);
+			
+		if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0)) {
+				
+			this.campoPropio.eliminarUltimaCartaMonstruoColocada();
+				
+			if ((carta.obtenerEstrellas() > 6) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0 )) {
+				
+				this.campoPropio.eliminarUltimaCartaMonstruoColocada();
+			
+			} else if (carta.obtenerEstrellas() > 6 ){
+			
+				throw new NoHayMonstruoParaSacrificarException();
+			 
+			}
+				
+		} else if ((carta.obtenerEstrellas() > 4)) {
+			
+			throw new NoHayMonstruoParaSacrificarException();
+			
+		}
+		campoPropio.colocarCarta(carta, estado);
+	}
+	
+	public void colocar(Activable carta, EstadoCarta estado) {
+		campoPropio.colocarCarta(carta, estado);
+		
+	}
+	
 	public void colocarMonstruoEnModoAtaque(CartaMonstruo carta) {
 		
 		if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0)) {
