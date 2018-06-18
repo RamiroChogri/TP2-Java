@@ -18,15 +18,5 @@ public class EstadoCartaInvocada extends EstadoCarta {
 		this.puntosDeDefensa = puntosDEFRecibidos;
 	}
 	
-	public int recibirAtaque(Puntos puntosAtaqueEnemigo) {
-	
-		int diferenciaDanio = puntosAtaqueEnemigo.obtenerDiferenciaCon(this.puntosDeAtaque);
-		return diferenciaDanio;
-	
-	}
-
-
-	
-	
 	
 }
