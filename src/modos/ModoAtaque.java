@@ -7,6 +7,11 @@ public class ModoAtaque extends Modo {
 	private Puntos puntosDeAtaque;
 	private Puntos puntosDeDefensa;
 	
+	public ModoAtaque() {
+		this.puntosDeAtaque = null;
+		this.puntosDeDefensa = null;
+	}
+	
 	public ModoAtaque(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar) {
 		this.puntosDeAtaque = puntosDeAtaqueAColocar;
 		this.puntosDeDefensa = puntosDeDefensaAColocar;
