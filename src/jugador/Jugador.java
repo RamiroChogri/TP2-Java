@@ -3,7 +3,9 @@ package jugador;
 import campo.*;
 import cartas.*;
 import exceptions.*;
+import modos.*;
 import efectos.Efecto;
+import estadoCarta.*;
 public class Jugador {
 
 		private Campo campoPropio;
@@ -78,9 +80,12 @@ public class Jugador {
 			throw new NoHayMonstruoParaSacrificarException();
 		
 		}
+		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaArriba();
+		Modo nuevoModo = new ModoAtaque();
+		carta.cambiarA(nuevoModo);
 		
-		carta.colocarEnModoAtaque();
-		this.campoPropio.colocarCarta(carta);
+		Colocable cartaAColocar = carta;
+		this.campoPropio.colocarCarta(cartaAColocar, nuevoEstado);
 
 	}
 	
@@ -106,8 +111,12 @@ public class Jugador {
 		
 		}
 		
-		carta.colocarBocaArribaEnModoDefensa();
-		this.campoPropio.colocarCarta(carta);
+		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaArriba();
+		Modo nuevoModo = new ModoDefensa();
+		carta.cambiarA(nuevoModo);
+		
+		Colocable cartaAColocar = carta;
+		this.campoPropio.colocarCarta(cartaAColocar, nuevoEstado);
 	}
 	
 	public void colocarMonstruoBocaAbajoEnModoDefensa(CartaMonstruo carta) {
@@ -132,37 +141,40 @@ public class Jugador {
 		
 		}
 		
-		carta.colocarBocaAbajoEnModoDefensa();
-		this.campoPropio.colocarCarta(carta);
+		
+		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaAbajo();
+		Modo nuevoModo = new ModoDefensa();
+		carta.cambiarA(nuevoModo);
+		
+		Colocable cartaAColocar = carta;
+		this.campoPropio.colocarCarta(cartaAColocar, nuevoEstado);
 
 	}
 
 	public void colocarCartaMagicaBocaArriba(CartaMagica carta) {
 		
-		this.campoPropio.colocarCarta(carta);
+		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaArriba();
+		Colocable cartaAColocar = carta;
+		
+		this.campoPropio.colocarCarta(cartaAColocar , nuevoEstado );
 		carta.aplicarEfecto( this.campoPropio, this.campoEnemigo);
 		
 	}
 	
 	public void colocarCartaMagicaBocaAbajo(CartaMagica carta) {
+		EstadoCarta nuevoEstado= new EstadoCartaColocadaBocaAbajo();
+		Colocable cartaAColocar = carta;
 		
-		this.campoPropio.colocarCarta(carta);
-		
+		this.campoPropio.colocarCarta(cartaAColocar, nuevoEstado);
 	}
 
-	public void colocarCartaTrampaBocaArriba(CartaTrampa carta) {
-		
-		carta.colocarBocaArriba();
-		this.campoPropio.colocarCarta(carta);
-		carta.aplicarEfecto( this.campoPropio, this.campoEnemigo);
-		
-	}
-	
 	public void colocarCartaTrampaBocaAbajo(CartaTrampa carta) {
 		
-		carta.colocarBocaAbajo();
-		this.campoPropio.colocarCarta(carta);
+		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaAbajo();
+		Colocable cartaAColocar = carta;
 		
+		this.campoPropio.colocarCarta(cartaAColocar , nuevoEstado);
+		carta.aplicarEfecto( this.campoPropio, this.campoEnemigo);	
 	}
 	
 

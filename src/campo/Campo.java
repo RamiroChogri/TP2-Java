@@ -7,6 +7,7 @@ import cartas.*;
 import estrategias.*;
 import modos.*;
 import cartas.Destruible;
+import estadoCarta.EstadoCarta;
 import cartas.CartaCampo;
 import cartas.CartaMagica;
 import cartas.CartaMonstruo;

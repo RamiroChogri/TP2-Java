@@ -1,6 +1,7 @@
 package cartas;
 
 import campo.*;
+import estadoCarta.EstadoCarta;
 
 public interface Colocable {
 	
