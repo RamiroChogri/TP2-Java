@@ -36,15 +36,15 @@ public class Campo {
 
 	////////////////////////////////////
 	
-	public void colocarCarta(Atacable cartaAtacable, Estrategia boca, Modo modo) {
-		cartaAtacable.colocar(boca, modo);
-		zonaMonstruo.colocarCarta(cartaAtacable);
+	public void colocarCarta(Colocable carta, Estrategia boca, Modo modo) {
+		carta.colocar(boca, modo);
+		zonaMonstruo.colocarCarta(carta);
 	}
 	
 	//////////////////////////////////
 	//Seguir con la excepcion
 	
-	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {
+	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar , Estrategia boca, Modo modo) {
 		try {
 			zonaMonstruo.colocarCarta(cartaMonstruoAColocar);
 		} catch (Exception zonaMonstruoLlenaException) {
@@ -54,7 +54,7 @@ public class Campo {
 	
 	}
 	
-	public void colocarCarta(CartaMagica cartaMagicaAColocar) {
+	public void colocarCarta(CartaMagica cartaMagicaAColocar, Estrategia boca) {
 		try {
 			zonaUtilidad.colocarCarta(cartaMagicaAColocar);
 		} catch (Exception zonaUtilidadLlenaException) {

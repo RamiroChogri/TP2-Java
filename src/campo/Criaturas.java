@@ -15,7 +15,7 @@ public class Criaturas extends Zona {
 		hayEspacio = true;
 	}
 	
-	public void colocarCarta(Destruible cartaMonstruoAColocar) {
+	public void colocarCarta(Colocable cartaMonstruoAColocar) {
 		//MetodoForzadoPorZona
 	}
 	

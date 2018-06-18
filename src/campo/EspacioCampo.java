@@ -5,6 +5,7 @@ import cartas.Destruible;
 import java.util.LinkedList;
 
 import cartas.CartaCampo;
+import cartas.Colocable;
 
 public class EspacioCampo extends Zona{
 
@@ -24,7 +25,7 @@ public class EspacioCampo extends Zona{
 		//this.cartaCampo.activarEfecto();
 	}
 	
-	public void colocarCarta(Destruible cartaMonstruoAColocar) {
+	public void colocarCarta(Colocable cartaMonstruoAColocar) {
 		//MetodoForzadoPorZona
 	}
 	public void colocarCarta(CartaCampo cartaAColocar) {

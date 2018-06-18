@@ -4,7 +4,7 @@ import estadoCarta.*;
 import estrategias.*;
 import modos.*;
 
-public class CartaMonstruo implements Atacable{
+public class CartaMonstruo implements Atacable,Colocable{
 	
 	private EstadoCarta estado;
 	private Puntos puntosDeAtaque;
@@ -135,9 +135,13 @@ public class CartaMonstruo implements Atacable{
 	}
 
 	public int obtenerDanioAlHaberSidoDestruida() {
-
 		return estado.obtenerPuntosDeDanio();
+	}
 
+	@Override
+	public void recibirAtaque(Atacable atacable, int puntosAtaqueAtacable) {
+		// TODO Auto-generated method stub
+		
 	}
  	
 }

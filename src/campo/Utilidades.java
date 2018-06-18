@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import cartas.Destruible;
 import cartas.CartaMagica;
 import cartas.CartaMonstruo;
+import cartas.Colocable;
 import exceptions.NoHayLugarVacioException;
 
 public class Utilidades extends Zona{
@@ -18,7 +19,7 @@ public class Utilidades extends Zona{
 		hayEspacio = true;
 	}
 	
-	public void colocarCarta(Destruible cartaMonstruoAColocar) {
+	public void colocarCarta(Colocable cartaMonstruoAColocar) {
 		//MetodoForzadoPorZona
 	}
 	
