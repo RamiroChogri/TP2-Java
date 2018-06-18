@@ -83,7 +83,7 @@ public class CartaMonstruo implements Atacable{
 			throw new MonstruoEnModoDefensaNoPuedeAtacarException();
 		}
 		
-		cartaAtacableEnemiga.recibirAtaque(this, this.puntosDeAtaque.obtener());
+		cartaAtacableEnemiga.recibirAtaque(this, this.puntosDeAtaque);
 	}
 	
 	
