@@ -1,5 +1,5 @@
 package cartas;
 
-public interface Activable extends Destruible{
+public interface Activable extends Destruible, Colocable{
 
 }

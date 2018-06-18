@@ -1,6 +1,8 @@
 package cartas;
 
-public interface Atacable extends Destruible{
+import modos.Modo;
+
+public interface Atacable extends Destruible, Colocable{
 
 	public int obtenerDanioAlHaberSidoDestruida();
 	
@@ -11,4 +13,6 @@ public interface Atacable extends Destruible{
 	public void recibirAtaque(Atacable atacable, int puntosAtaqueAtacable);
 	
 	public void recibirAtaque(CartaMonstruo cartaMonstruo, int puntosAtaqueAtacable);
+	
+	public void cambiarA(Modo modoRecibido);
 }

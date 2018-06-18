@@ -5,7 +5,7 @@ import estrategias.*;
 import modos.*;
 import campo.*;
 
-public class CartaMonstruo implements Atacable,Colocable{
+public class CartaMonstruo implements Atacable{
 	
 	private EstadoCarta estado;
 	private Modo modo;
