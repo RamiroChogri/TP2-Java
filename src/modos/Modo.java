@@ -15,5 +15,7 @@ public abstract class Modo {
 		public ModoDefensa colocarEnModoDefensa() {
 			return new ModoDefensa(this.puntosDeAtaque, this.puntosDeDefensa);
 		}
-	
+		
+		public abstract Boolean estaEnModoAtaque();
+		public abstract Boolean estaEnModoDefensa();
 }

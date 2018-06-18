@@ -66,7 +66,7 @@ public class CartaMonstruo implements Atacable,Colocable{
 		this.modo = modoRecibido;
 	}
 		
-	public void colocarEn(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
+	public void colocarse(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
 		this.estado = estadoAColocar;
 		zonaMonstruos.colocarCarta(this);
 	}
@@ -84,7 +84,7 @@ public class CartaMonstruo implements Atacable,Colocable{
 	
 	public void atacar(CartaMonstruo otraCartaMonstruo) {
 		
-		if (otraCartaMonstruo.estaColocadaBocaAbajoEnModoDefensa()) {
+		if (otraCartaMonstruo.estaColocadaBocaAbajo() && otraCartaMonstruo.estaEnModoDefensa()) {
 			otraCartaMonstruo.colocarBocaArribaEnModoDefensa();
 		}
 		
@@ -98,11 +98,11 @@ public class CartaMonstruo implements Atacable,Colocable{
 		
 		danioAlJugador = this.estado.recibirAtaque(puntosDeAtaqueMonstruoEnemigo);
 		
-		if (this.estado.estaEnModoAtaque() && (danioAlJugador <= 0)) {
+		if (this.modo.estaEnModoAtaque() && (danioAlJugador <= 0)) {
 			cartaEnemiga.destruirCarta(Math.abs(danioAlJugador));	
 		}
 		
-		if ((danioAlJugador >= 0) && ((this.puntosDeDefensa.obtener() < puntosDeAtaqueMonstruoEnemigo) || (this.estado.estaEnModoAtaque()))) {
+		if ((danioAlJugador >= 0) && ((this.puntosDeDefensa.obtener() < puntosDeAtaqueMonstruoEnemigo) || (this.modo.estaEnModoAtaque()))) {
 			this.destruirCarta(danioAlJugador);
 		}
 		
@@ -122,7 +122,7 @@ public class CartaMonstruo implements Atacable,Colocable{
 		this.estado = new EstadoCartaColocadaBocaAbajo();
 		this.modo = this.modo.colocarEnModoDefensa();
 	}
-//	
+	
 //	public boolean estaColocadaEnModoAtaque() {
 //		return (this.modo.estaEnModoAtaque());
 //	}
@@ -135,6 +135,21 @@ public class CartaMonstruo implements Atacable,Colocable{
 //		return (this.estado.estaBocaAbajo() && this.modo.estaEnModoDefensa());
 //	}
 
+	public Boolean estaColocadaBocaAbajo() {
+		return this.estado.estaBocaAbajo();
+	}
+	public Boolean estaColocadaBocaArriba() {
+		return this.estado.estaBocaArriba();
+	}
+	
+	public Boolean estaEnModoAtaque() {
+		return this.modo.estaEnModoAtaque();
+	}
+	
+	public Boolean estaEnModoDefensa() {
+		return this.modo.estaEnModoDefensa();
+	}
+	
 	public boolean estaDestruida() {
 		return this.estado.estaDestruida();
 	}

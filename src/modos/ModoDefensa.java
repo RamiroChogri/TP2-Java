@@ -30,5 +30,13 @@ public class ModoDefensa extends Modo {
 	public ModoAtaque colocarEnModoAtaque() {
 		return new ModoAtaque(this.puntosDeAtaque, this.puntosDeDefensa);
 	}
+
+	public Boolean estaEnModoAtaque() {
+		return false;
+	}
+
+	public Boolean estaEnModoDefensa() {
+		return true;
+	}
 	
 }
