@@ -210,7 +210,7 @@ de los puntos de ataque de los monstruos*/
  		
  		jugador1.atacar(monstruoConMayorAtaque, monstruoConMenorAtaque);
  		
-		int vidaEsperada = 7000;
+		int vidaEsperada = 7900;
 		
 		assertFalse(monstruoConMayorAtaque.estaDestruida());
 		assertTrue(monstruoConMenorAtaque.estaDestruida());

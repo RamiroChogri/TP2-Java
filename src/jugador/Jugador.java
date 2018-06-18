@@ -24,7 +24,7 @@ public class Jugador {
 		jugadorEnemigo.setCampoEnemigo(this.campoPropio);
 	}
 	
-	public void atacar(CartaMonstruo atacante, CartaMonstruo atacado) {
+	public void atacar(Atacable atacante, Atacable atacado) {
 		
 		atacante.atacar(atacado);
 		
