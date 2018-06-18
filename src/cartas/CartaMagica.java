@@ -10,6 +10,7 @@ import campo.ZonaCampo;
 import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
 import efectos.*;
+import exceptions.*;
 
 public class CartaMagica implements Activable{
 	
@@ -72,6 +73,10 @@ public class CartaMagica implements Activable{
 
 
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo) {
+	
+		if(this.estaColocadaBocaAbajo()) {
+			throw new CartaBocaAbajoNoPuedeActivarEfectoException();
+		}
 		
 		this.efecto.aplicarEfecto(campo, campoEnemigo);
 		this.destruirCarta();

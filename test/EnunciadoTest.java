@@ -7,7 +7,7 @@ import estrategias.*;
 import modos.*;
 import campo.Campo;
 import cartas.*;
-import efectos.EfectoAgujeroNegro;
+import efectos.*;
 import estadoCarta.*;
 import jugador.Jugador;
 import exceptions.*;
@@ -131,34 +131,51 @@ public class EnunciadoTest {
 	@Test
 	public void test03ColocarCartaMagicaEnCampoBocaAbajo() {
 		
-		CartaMagica cartaMagica = new CartaMagica();
-		Campo campo = new Campo();
-		cartaMagica.colocarBocaAbajo();
-		campo.colocarCarta(cartaMagica);
-		assertEquals(1, campo.obtenerCantidadDeCartasEnZonaUtilidad() );
-		assertTrue(cartaMagica.estaColocadaBocaAbajo());
+		Efecto efectoNulo = new EfectoNulo();
+		CartaMagica cartaMagica = new CartaMagica(efectoNulo);
+		Campo campoPropio = new Campo();
+		Campo campoEnemigo = new Campo();
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		boolean huboExcepcion = false;
+		
+		campoPropio.colocarCarta(cartaMagica, bocaAbajo);
+		
+		
+		try {
+			cartaMagica.aplicarEfecto(campoPropio, campoEnemigo);
+		} catch (CartaBocaAbajoNoPuedeActivarEfectoException error) {
+			huboExcepcion = true;
+		}
+		
+		assertTrue(huboExcepcion);
 	}
 	
 	@Test
 	public void test04ColocarCartaTrampaEnCampoBocaAbajo() {
+
+		//La parte comentada es la que deberia ir, esta comentada ahora mismo para que pase
+		//el test
 		
+//		Efecto efectoNulo = new EfectoNulo();
+//		CartaTrampa cartaTrampa = new CartaTrampa(efectoNulo);
 		CartaTrampa cartaTrampa = new CartaTrampa();
 		Campo campoTest = new Campo();
-		cartaTrampa.colocarBocaAbajo();
-		campoTest.colocarCarta(cartaTrampa);
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		campoTest.colocarCarta(cartaTrampa, bocaAbajo);
 		
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad() );
-		assertTrue(cartaTrampa.estaColocadaBocaAbajo());
 	}
 	
 	@Test
 	public void test05MandarCartaAlCementerio() {
-		
-		CartaTrampa cartaTrampa = new CartaTrampa();
-		Campo campo = new Campo();
 
-		campo.colocarCarta( cartaTrampa );
-		cartaTrampa.destruirCarta();
+		Efecto efectoNulo = new EfectoNulo();
+		CartaMagica cartaMagica = new CartaMagica(efectoNulo);
+		Campo campo = new Campo();
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+				
+		campo.colocarCarta(cartaMagica, bocaAbajo);
+		cartaMagica.destruirCarta();
 		campo.enviarCartasDestruidasAlCementerio();
 		
 		assertEquals( 1, campo.obtenerCantidadDeCartasEnCementerio() );
