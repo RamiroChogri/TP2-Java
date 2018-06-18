@@ -11,7 +11,7 @@ import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
 import efectos.*;
 
-public class CartaMagica implements Activable{
+public class CartaMagica implements Activable,Colocable{
 	
 	private EstadoCarta estado;
 	private Efecto efecto;
@@ -77,6 +77,14 @@ public class CartaMagica implements Activable{
 		this.destruirCarta();
 		campo.enviarCartasDestruidasAlCementerio();
 		campoEnemigo.enviarCartasDestruidasAlCementerio();
+	}
+
+	@Override
+	public void colocarse(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
+		
+		this.estado = estadoAColocar;
+		zonaMagicasYTrampas.colocarCarta(this);	
+	
 	}
 
 }
