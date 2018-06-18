@@ -185,16 +185,28 @@ de los puntos de ataque de los monstruos*/
 
 	@Test
 	public void test06MonstruoAtacaAOtroMonstruoEnModoAtaqueConMenorAtaque() {
-		CartaMonstruo monstruoConMayorAtaque = new CartaMonstruo(2000, 3000);
-		CartaMonstruo monstruoConMenorAtaque = new CartaMonstruo(1000, 2000);
+		Puntos ataqueMonstruo1 = new Puntos(1000);
+		Puntos defensaMonstruo1 = new Puntos(500);
+		Puntos ataqueMonstruo2 = new Puntos(900);
+		Puntos defensaMonstruo2 = new Puntos(300);
+		int estrellas = 3;
+		Atacable monstruoConMayorAtaque = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellas);
+		Atacable monstruoConMenorAtaque = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellas);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
 		jugador1.enfrentarseA(jugador2);
 		jugador2.enfrentarseA(jugador1);
  		
- 		jugador1.colocarMonstruoEnModoAtaque(monstruoConMayorAtaque);
- 		jugador2.colocarMonstruoEnModoAtaque(monstruoConMenorAtaque);
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		
+		//Desde jugador al colocar pueden lanzarse dos tipos de excepciones
+		//NoHayEspacioEnCampo y NoHayMonstruoParaSacrificar cuando se quiere colocar un monstruo
+		//de muchas estrellas
+		
+ 		jugador1.colocar(monstruoConMayorAtaque, bocaArriba, modoAtaque);
+ 		jugador2.colocar(monstruoConMenorAtaque, bocaArriba, modoAtaque);
  		
  		jugador1.atacar(monstruoConMayorAtaque, monstruoConMenorAtaque);
  		

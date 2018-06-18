@@ -21,18 +21,10 @@ public class ZonaMonstruos extends Zona {
 	
 	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {
 		hayEspacio = this.hayEspacioDisponible();
-		try {
 			if ( !hayEspacio ) {
 				throw new NoHayLugarVacioException();
 			}
-			
 			posiciones.add(cartaMonstruoAColocar);
-			
-				
-		} catch (Exception NoHayLugarVacioException) {
-			//throw new ZonaMonstruoLlenaException();
-		}
-		
 		
 	}
 	

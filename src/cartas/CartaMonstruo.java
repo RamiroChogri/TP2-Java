@@ -3,6 +3,8 @@ package cartas;
 import estadoCarta.*;
 import estrategias.*;
 import exceptions.MonstruoEnModoDefensaNoPuedeAtacarException;
+import exceptions.NoHayEspacioEnElCampoException;
+import exceptions.ZonaMonstruoLlenaException;
 import modos.*;
 import campo.*;
 
