@@ -5,12 +5,12 @@ import cartas.*;
 import exceptions.NoHayLugarVacioException;
 import exceptions.ZonaMonstruoLlenaException;
 
-public class ZonaMonstruo extends Zona {
+public class ZonaMonstruos extends Zona {
 	
 	private LinkedList<CartaMonstruo> posiciones;
 	private boolean hayEspacio;
 	
-	public ZonaMonstruo() {
+	public ZonaMonstruos() {
 		posiciones = new LinkedList<CartaMonstruo>();
 		hayEspacio = true;
 	}

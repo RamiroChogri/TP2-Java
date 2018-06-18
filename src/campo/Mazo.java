@@ -2,17 +2,17 @@ package campo;
 
 import java.util.Stack;
 
-import cartas.Destruible;
+import cartas.Colocable;
 import cartas.CartaMonstruo;
 
 public class Mazo {
 
-	private Stack<Destruible> mazo;
+	private Stack<Colocable> mazo;
 	
 	public Mazo() {
-		this.mazo = new Stack<Destruible>();
+		this.mazo = new Stack<Colocable>();
 		while(this.mazo.size()<40) {
-			Destruible cartaActual = new CartaMonstruo();
+			Colocable cartaActual = new CartaMonstruo();
 			this.mazo.add(cartaActual);
 		}
 	}
@@ -21,7 +21,7 @@ public class Mazo {
 		return this.mazo.size();
 	}
 	
-	public Destruible levantarCarta() {
+	public Colocable levantarCarta() {
 		return this.mazo.pop();
 	}
 }

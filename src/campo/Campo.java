@@ -16,9 +16,9 @@ import exceptions.*;
 public class Campo {
 
 	private int vidaDelJugador;
-	private Criaturas zonaMonstruo;
-	private Utilidades zonaUtilidad;
-	private EspacioCampo zonaCampo;
+	private ZonaMonstruos monstruos;
+	private ZonaMagicasYTrampas magicasYTrampas ;
+	private ZonaCampo espacioCampo;
 	private Cementerio cementerio;
 	private Mazo mazoDelJugador;
 	
@@ -27,71 +27,35 @@ public class Campo {
 		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
 		//ordenadas aleatoriamente
 		this.vidaDelJugador = 8000;
-		this.zonaMonstruo = new Criaturas();
-		this.zonaUtilidad = new Utilidades();
-		this.zonaCampo = new EspacioCampo();
+		this.monstruos = new ZonaMonstruos();
+		this.magicasYTrampas = new ZonaMagicasYTrampas();
+		this.espacioCampo = new ZonaCampo();
 		this.cementerio = new Cementerio();
 		this.mazoDelJugador = new Mazo();
 	}
 
 	////////////////////////////////////
 	
-	public void colocarCarta(Colocable carta, Estrategia boca, Modo modo) {
-		carta.colocar(boca, modo);
-		zonaMonstruo.colocarCarta(carta);
+	public void colocarCarta(Colocable cartaAColocar) {
+		cartaAColocar.colocarse(monstruos, magicasYTrampas, espacioCampo);
 	}
 	
 	//////////////////////////////////
 	//Seguir con la excepcion
 	
-	public void colocarCarta(Atacable cartaMonstruoAColocar , Estrategia boca, Modo modo) {
-		try {
-			zonaMonstruo.colocarCarta(cartaMonstruoAColocar);
-		} catch (Exception zonaMonstruoLlenaException) {
-			System.out.println("No se puede invocar el monstruo, el campo esta lleno");
-			//throw new ZonaMonstruoLlenaException();
-		}
-	
-	}
-	
-	public void colocarCarta(CartaMagica cartaMagicaAColocar, Estrategia boca) {
-		try {
-			zonaUtilidad.colocarCarta(cartaMagicaAColocar);
-		} catch (Exception zonaUtilidadLlenaException) {
-			System.out.println("No se puede invocar la carta magica, el campo esta lleno");
-	//		throw new ZonaUtilidadLlenaException();
-		}
-	}
-	
-	public void colocarCarta(CartaTrampa cartaTrampaAColocar) {
-		try {
-			zonaUtilidad.colocarCarta(cartaTrampaAColocar);
-		} catch (Exception zonaUtilidadLlenaException) {
-			System.out.println("No se puede invocar la carta trampa, el campo esta lleno");
-		//	throw new ZonaUtilidadLlenaException();
-		}
-	}
-	
-	public void colocarCarta(CartaCampo cartaCampoAColocar) {
-		try {
-			zonaCampo.colocarCarta(cartaCampoAColocar);
-		} catch (Exception zonaCampoLlenaException) {
-			System.out.println("No se puede invocar la carta campo, el campo esta lleno");
-		//	throw new ZonaCampoLlenaException();
-		}
-	}
+
 	
 	public int obtenerCantidadDeCartasEnZonaMonstruo() {
-		return zonaMonstruo.obtenerCantidadDeCartas();
+		return monstruos.obtenerCantidadDeCartas();
 	}
 	
 	
 	public int obtenerCantidadDeCartasEnZonaUtilidad() {
-		return zonaUtilidad.obtenerCantidadDeCartas();
+		return magicasYTrampas.obtenerCantidadDeCartas();
 	}
 	
 	public int obtenerCantidadDeCartasEnZonaCampo() {
-		return zonaCampo.obtenerCantidadDeCartas();
+		return espacioCampo.obtenerCantidadDeCartas();
 	}
 	
 	public int obtenerCantidadDeCartasEnMazo() {
@@ -119,9 +83,73 @@ public class Campo {
 		return this.vidaDelJugador;
 	}
 	
-	public Destruible levantarCartaDelMazo() {
+	public Colocable levantarCartaDelMazo() {
 		return this.mazoDelJugador.levantarCarta();
 	}
+	
+	public void enviarCartasDestruidasAlCementerio() {
+		int danio = this.monstruos.obtenerDanioRecibido();
+		LinkedList<Destruible> cartasAEnterrar = new LinkedList<Destruible>();
+		cartasAEnterrar.addAll(this.monstruos.recolectarCartasDestruidas());
+		cartasAEnterrar.addAll(this.magicasYTrampas.recolectarCartasDestruidas());
+		// this.enterrarCartaCampo(); Error, me agrega null a la lista y para ahorrar if lo comentamos por ahora
+		this.cementerio.agregarCartasAlCementerio(cartasAEnterrar);
+		
+		vidaDelJugador -= danio;
+		
+	}
+	
+	public void vaciarZonaMonstruos() {
+		this.monstruos.vaciar();
+		this.enviarCartasDestruidasAlCementerio();
+	}
+	
+	public void eliminarUltimaCartaMonstruoColocada() {
+		this.monstruos.eliminarUltimaCartaMonstruoColocada();
+		this.enviarCartasDestruidasAlCementerio();
+	}
+
+	
+//	public void colocarCarta(Atacable cartaMonstruoAColocar , Estrategia boca, Modo modo) {
+//	try {
+//		monstruos.colocarCarta(cartaMonstruoAColocar);
+//	} catch (Exception zonaMonstruoLlenaException) {
+//		System.out.println("No se puede invocar el monstruo, el campo esta lleno");
+//		//throw new ZonaMonstruoLlenaException();
+//	}
+//
+//}
+//
+//public void colocarCarta(CartaMagica cartaMagicaAColocar, Estrategia boca) {
+//	try {
+//		zonaUtilidad.colocarCarta(cartaMagicaAColocar);
+//	} catch (Exception zonaUtilidadLlenaException) {
+//		System.out.println("No se puede invocar la carta magica, el campo esta lleno");
+////		throw new ZonaUtilidadLlenaException();
+//	}
+//}
+//
+//public void colocarCarta(CartaTrampa cartaTrampaAColocar) {
+//	try {
+//		zonaUtilidad.colocarCarta(cartaTrampaAColocar);
+//	} catch (Exception zonaUtilidadLlenaException) {
+//		System.out.println("No se puede invocar la carta trampa, el campo esta lleno");
+//	//	throw new ZonaUtilidadLlenaException();
+//	}
+//}
+//
+//public void colocarCarta(CartaCampo cartaCampoAColocar) {
+//	try {
+//		zonaCampo.colocarCarta(cartaCampoAColocar);
+//	} catch (Exception zonaCampoLlenaException) {
+//		System.out.println("No se puede invocar la carta campo, el campo esta lleno");
+//	//	throw new ZonaCampoLlenaException();
+//	}
+//}
+	
+	
+// ---------------------------------------------------
+	
 	
 //	public void colocarMonstruoEnModoAtaque(CartaMonstruo cartaAColocar) {
 //		
@@ -171,26 +199,5 @@ public class Campo {
 //		
 //	}
 
-	public void enviarCartasDestruidasAlCementerio() {
-		int danio = this.zonaMonstruo.obtenerDanioRecibido();
-		LinkedList<Destruible> cartasAEnterrar = new LinkedList<Destruible>();
-		cartasAEnterrar.addAll(this.zonaMonstruo.recolectarCartasDestruidas());
-		cartasAEnterrar.addAll(this.zonaUtilidad.recolectarCartasDestruidas());
-		// this.enterrarCartaCampo(); Error, me agrega null a la lista y para ahorrar if lo comentamos por ahora
-		this.cementerio.agregarCartasAlCementerio(cartasAEnterrar);
-		
-		vidaDelJugador -= danio;
-		
-	}
-	
-	public void vaciarZonaMonstruos() {
-		this.zonaMonstruo.vaciar();
-		this.enviarCartasDestruidasAlCementerio();
-	}
-	
-	public void eliminarUltimaCartaMonstruoColocada() {
-		this.zonaMonstruo.eliminarUltimaCartaMonstruoColocada();
-		this.enviarCartasDestruidasAlCementerio();
-	}
 
 }
