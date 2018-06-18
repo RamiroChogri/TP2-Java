@@ -7,12 +7,12 @@ import java.util.LinkedList;
 import cartas.CartaCampo;
 import cartas.Colocable;
 
-public class EspacioCampo extends Zona{
+public class ZonaCampo extends Zona{
 
 	private CartaCampo cartaCampo;
 	private Boolean hayCartaCampo;
 	
-	public EspacioCampo() {
+	public ZonaCampo() {
 		this.cartaCampo = new CartaCampo();
 		this.hayCartaCampo = false;
 	}

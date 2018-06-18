@@ -9,12 +9,12 @@ import cartas.CartaMonstruo;
 import cartas.Colocable;
 import exceptions.NoHayLugarVacioException;
 
-public class Utilidades extends Zona{
+public class ZonaMagicasYTrampas extends Zona{
 
 	private LinkedList<CartaMagica> posiciones;
 	private boolean hayEspacio;
 	
-	public Utilidades() {
+	public ZonaMagicasYTrampas() {
 		posiciones = new LinkedList<CartaMagica>();
 		hayEspacio = true;
 	}
