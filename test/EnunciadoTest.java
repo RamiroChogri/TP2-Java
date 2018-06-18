@@ -153,12 +153,8 @@ public class EnunciadoTest {
 	@Test
 	public void test04ColocarCartaTrampaEnCampoBocaAbajo() {
 
-		//La parte comentada es la que deberia ir, esta comentada ahora mismo para que pase
-		//el test
-		
-//		Efecto efectoNulo = new EfectoNulo();
-//		CartaTrampa cartaTrampa = new CartaTrampa(efectoNulo);
-		CartaTrampa cartaTrampa = new CartaTrampa();
+		Efecto efectoNulo = new EfectoNulo();
+		CartaTrampa cartaTrampa = new CartaTrampa(efectoNulo);
 		Campo campoTest = new Campo();
 		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
 		campoTest.colocarCarta(cartaTrampa, bocaAbajo);

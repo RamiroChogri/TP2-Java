@@ -1,18 +1,10 @@
 package campo;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import cartas.*;
-import estrategias.*;
-import modos.*;
 import cartas.Destruible;
 import estadoCarta.EstadoCarta;
-import cartas.CartaCampo;
-import cartas.CartaMagica;
-import cartas.CartaMonstruo;
-import cartas.CartaTrampa;
-import exceptions.*;
 
 public class Campo {
 

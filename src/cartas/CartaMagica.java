@@ -14,8 +14,8 @@ import exceptions.*;
 
 public class CartaMagica implements Activable{
 	
-	private EstadoCarta estado;
-	private Efecto efecto;
+	protected EstadoCarta estado;
+	protected Efecto efecto;
 	
 	
 	public CartaMagica() {
