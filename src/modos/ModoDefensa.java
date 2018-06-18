@@ -1,17 +1,29 @@
 package modos;
 
+import cartas.Puntos;
+
 public class ModoDefensa extends Modo {
 
+	private Puntos puntosDeAtaque;
+	private Puntos puntosDeDefensa;
+	
+	public ModoDefensa(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar) {
+		this.puntosDeAtaque = puntosDeAtaqueAColocar;
+		this.puntosDeDefensa = puntosDeDefensaAColocar;
+	}
+	
+	public void asignarPuntos(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar) {
+		this.puntosDeAtaque = puntosDeAtaqueAColocar;
+		this.puntosDeDefensa = puntosDeDefensaAColocar;
+	}
+	
 	@Override
 	public ModoDefensa colocarEnModoDefensa() {
 		return this;
 	}
 	
 	public ModoAtaque colocarEnModoAtaque() {
-		return new ModoAtaque();
+		return new ModoAtaque(this.puntosDeAtaque, this.puntosDeDefensa);
 	}
-	//Agregar algo que impida atacar pero que impida que el jugador pierda vida
-	//Esto deberia ser un atributo exclusivo de las cartas Monstruo y actuar solo cuando estan
-	//invocadas
 	
 }

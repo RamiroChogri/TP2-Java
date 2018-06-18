@@ -1,11 +1,14 @@
 package cartas;
 
 import estadoCarta.EstadoCarta;
-import estadoCarta.EstadoCartaBocaAbajo;
-import estadoCarta.EstadoCartaBocaArriba;
-import estadoCarta.EstadoCartaEnCementerio;
-import estadoCarta.EstadoCartaEnMazo;
+import estadoCarta.EstadoCartaColocadaBocaAbajo;
+import estadoCarta.EstadoCartaColocadaBocaArriba;
+import estadoCarta.EstadoCartaDestruida;
+import estadoCarta.EstadoCartaNoJugada;
 import campo.Campo;
+import campo.ZonaCampo;
+import campo.ZonaMagicasYTrampas;
+import campo.ZonaMonstruos;
 import efectos.*;
 
 public class CartaMagica implements Activable{
@@ -16,34 +19,38 @@ public class CartaMagica implements Activable{
 	
 	public CartaMagica() {
 		
-		this.estado = new EstadoCartaEnMazo();
+		this.estado = new EstadoCartaNoJugada();
 		Efecto efectoNulo = new EfectoNulo();
 		this.efecto = efectoNulo;
 	}
 	
 	public CartaMagica(Efecto efectoAColocar) {
 		
-		this.estado = new EstadoCartaEnMazo();
+		this.estado = new EstadoCartaNoJugada();
 		this.efecto = efectoAColocar;
 	
 	}
 	
+	public void colocarEn(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
+		this.estado = estadoAColocar;
+		zonaMagicasYTrampas.colocarCarta(this);
+	}
+	
 	public void destruirCarta() {
 	
-		this.estado = new EstadoCartaEnCementerio();
+		this.estado = new EstadoCartaDestruida();
 
 	}
 
 	public void colocarBocaAbajo() {
 	
-		this.estado = new EstadoCartaBocaAbajo();
+		this.estado = new EstadoCartaColocadaBocaAbajo();
 		
 	}
 
-	public Efecto colocarBocaArriba() {
+	public void colocarBocaArriba() {
 		
-		this.estado = new EstadoCartaBocaArriba();
-		return this.efecto;
+		this.estado = new EstadoCartaColocadaBocaArriba();
 		
 	}
 
@@ -56,7 +63,7 @@ public class CartaMagica implements Activable{
 	}
 	
 	public boolean estaDestruida() {
-		return this.estado.estaEnCementerio();
+		return this.estado.estaDestruida();
 	}
 	
 	public Efecto obtenerEfecto() {

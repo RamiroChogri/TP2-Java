@@ -1,14 +1,14 @@
 package estadoCarta;
 
-public class EstadoCartaEnCementerio extends EstadoCarta {
+public class EstadoCartaDestruida extends EstadoCarta {
 	
 	int diferenciaDeDanio;
 	
-	public EstadoCartaEnCementerio() {
+	public EstadoCartaDestruida() {
 		diferenciaDeDanio = 0;
 	}
 	
-	public EstadoCartaEnCementerio(int danioAlJugador) {
+	public EstadoCartaDestruida(int danioAlJugador) {
 		diferenciaDeDanio = danioAlJugador;
 	}
 	
@@ -16,11 +16,11 @@ public class EstadoCartaEnCementerio extends EstadoCarta {
 		return diferenciaDeDanio;
 	}
 	
-	public EstadoCartaEnCementerio colocarCartaEnCementerio() {
+	public EstadoCartaDestruida destruirCarta() {
 		return this;
 	}
 
-	public boolean estaEnCementerio() { 
+	public boolean estaDestruida() { 
 		return true;
 	}
 	

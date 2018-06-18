@@ -3,10 +3,12 @@ package cartas;
 import estadoCarta.*;
 import estrategias.*;
 import modos.*;
+import campo.*;
 
 public class CartaMonstruo implements Atacable,Colocable{
 	
 	private EstadoCarta estado;
+	private Modo modo;
 	private Puntos puntosDeAtaque;
 	private Puntos puntosDeDefensa;
 	private int estrellas;
@@ -15,7 +17,7 @@ public class CartaMonstruo implements Atacable,Colocable{
 	public CartaMonstruo() {
 		
 		//por defecto en el mazo
-		this.estado = new EstadoCartaEnMazo(); 
+		this.estado = new EstadoCartaNoJugada(); 
 		this.puntosDeAtaque = new Puntos(1000);
 		this.puntosDeDefensa = new Puntos(700);
 		this.estrellas = 3;
@@ -23,29 +25,55 @@ public class CartaMonstruo implements Atacable,Colocable{
 		
 	}
 	
-	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar) {
-		this.estado = new EstadoCartaEnMazo();
-		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
-		this.puntosDeDefensa = new Puntos(puntosDeDefensaAColocar);
-		this.estrellas = 3;
+//	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar) {
+//		this.estado = new EstadoCartaEnMazo();
+//		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
+//		this.puntosDeDefensa = new Puntos(puntosDeDefensaAColocar);
+//		this.estrellas = 3;
+//		this.nombre = "MonstruoGenericoACME";
+//	}
+//	
+//	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar, int estrellasAColocar) {
+//		this.estado = new EstadoCartaEnMazo();
+//		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
+//		this.puntosDeDefensa = new Puntos(puntosDeDefensaAColocar);
+//		this.estrellas = estrellasAColocar;
+//		this.nombre = "MonstruoGenericoACME";
+//	}
+//	 
+//	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar, int estrellasAColocar, String nombreAColocar) {
+//		this.estado = new EstadoCartaEnMazo();
+//		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
+//		this.puntosDeDefensa = new Puntos(puntosDeDefensaAColocar);
+//		this.estrellas = estrellasAColocar;
+//		this.nombre = nombreAColocar;
+//	}
+//	
+	
+	////////////////////////////
+	
+	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar, int estrellasAColocar) {
+		this.puntosDeAtaque = puntosDeAtaqueAColocar;
+		this.puntosDeDefensa = puntosDeDefensaAColocar;
+		this.estado = new EstadoCartaNoJugada();
+		this.estrellas = estrellasAColocar;
 		this.nombre = "MonstruoGenericoACME";
+		this.modo = new ModoAtaque(puntosDeAtaque, puntosDeDefensa);
 	}
 	
-	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar, int estrellasAColocar) {
-		this.estado = new EstadoCartaEnMazo();
-		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
-		this.puntosDeDefensa = new Puntos(puntosDeDefensaAColocar);
-		this.estrellas = estrellasAColocar;
-		this.nombre = "MonstruoGenericoACME";
+	public void cambiarA(Modo modoRecibido) {
+		modoRecibido.asignarPuntos(this.puntosDeAtaque, this.puntosDeDefensa);
+		this.modo = modoRecibido;
 	}
-	 
-	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar, int estrellasAColocar, String nombreAColocar) {
-		this.estado = new EstadoCartaEnMazo();
-		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
-		this.puntosDeDefensa = new Puntos(puntosDeDefensaAColocar);
-		this.estrellas = estrellasAColocar;
-		this.nombre = nombreAColocar;
+		
+	public void colocarEn(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
+		this.estado = estadoAColocar;
+		zonaMonstruos.colocarCarta(this);
 	}
+	
+	
+	////////////////////////////
+	
 	
 	//Deberia comprobarse en campo si la carta que ataca esta en modo ataque.
 	
@@ -80,50 +108,43 @@ public class CartaMonstruo implements Atacable,Colocable{
 		
 	}
 	
-	/////////////////////////////
-	
-	public void colocar(Estrategia boca, Modo modo) {
-		
-		this.estado = new EstadoCartaInvocada(boca, modo, this.puntosDeAtaque, this.puntosDeDefensa);
-	
-	}
-	
-	////////////////////////////
-	
 	public void colocarEnModoAtaque() {
-		this.estado = new EstadoCartaEnModoAtaque(this.puntosDeAtaque.obtener());
+		this.estado = new EstadoCartaColocadaBocaArriba();
+		this.modo = this.modo.colocarEnModoAtaque();
 	}
 	
 	public void colocarBocaArribaEnModoDefensa() {
-		this.estado = new EstadoCartaBocaArribaEnModoDefensa();
+		this.estado = new EstadoCartaColocadaBocaArriba();
+		this.modo = this.modo.colocarEnModoDefensa();
 	}
 	
 	public void colocarBocaAbajoEnModoDefensa() {
-		this.estado = new EstadoCartaBocaAbajoEnModoDefensa();
+		this.estado = new EstadoCartaColocadaBocaAbajo();
+		this.modo = this.modo.colocarEnModoDefensa();
 	}
-	
-	public boolean estaColocadaEnModoAtaque() {
-		return (this.estado.estaEnModoAtaque());
-	}
-	
-	public boolean estaColocadaBocaArribaEnModoDefensa() {
-		return ( this.estado.estaBocaArribaEnModoDefensa() );
-	}
-	
-	public boolean estaColocadaBocaAbajoEnModoDefensa() {
-		return (this.estado.estaBocaAbajoEnModoDefensa() );
-	}
+//	
+//	public boolean estaColocadaEnModoAtaque() {
+//		return (this.modo.estaEnModoAtaque());
+//	}
+//	
+//	public boolean estaColocadaBocaArribaEnModoDefensa() {
+//		return ( this.estado.estaBocaArriba() && this.modo.estaEnModoDefensa() );
+//	}
+//	
+//	public boolean estaColocadaBocaAbajoEnModoDefensa() {
+//		return (this.estado.estaBocaAbajo() && this.modo.estaEnModoDefensa());
+//	}
 
 	public boolean estaDestruida() {
-		return this.estado.estaEnCementerio();
+		return this.estado.estaDestruida();
 	}
 	
 	public void destruirCarta() {
-		this.estado = new EstadoCartaEnCementerio();
+		this.estado = new EstadoCartaDestruida();
 	}
 	
 	public void destruirCarta(int danioAlJugador) {
-		this.estado = new EstadoCartaEnCementerio(danioAlJugador);
+		this.estado = new EstadoCartaDestruida(danioAlJugador);
 	}
 	
 	public int obtenerEstrellas() {

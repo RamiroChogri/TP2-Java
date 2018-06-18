@@ -4,17 +4,25 @@ import cartas.Puntos;
 
 public class ModoAtaque extends Modo {
 
+	private Puntos puntosDeAtaque;
+	private Puntos puntosDeDefensa;
+	
+	public ModoAtaque(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar) {
+		this.puntosDeAtaque = puntosDeAtaqueAColocar;
+		this.puntosDeDefensa = puntosDeDefensaAColocar;
+	}
+	
+	public void asignarPuntos(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar) {
+		this.puntosDeAtaque = puntosDeAtaqueAColocar;
+		this.puntosDeDefensa = puntosDeDefensaAColocar;
+	}
+	
 	public ModoAtaque colocarEnModoAtaque() {
 		return this;
 	}
 	
 	public ModoDefensa colocarEnModoDefensa() {
-		return new ModoDefensa();
+		return new ModoDefensa(this.puntosDeAtaque, this.puntosDeDefensa);
 	}
 
-	
-	//Agregar algo que "Pemita atacar"
-	//Esto deberia ser un atributo exclusivo de las cartas Monstruo y actuar solo cuando estan
-	//invocadas
-	
 }

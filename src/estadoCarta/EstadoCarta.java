@@ -5,56 +5,19 @@ public abstract class EstadoCarta {
 	//un metodo que coloque la carta en el mazo es absurdo
 	
 
-	public EstadoCartaEnMano colocarCartaEnMano() {
-		return new EstadoCartaEnMano();
+	public EstadoCartaDestruida destruirCarta() {
+		return new EstadoCartaDestruida();
 	}
 	
-	public EstadoCartaEnCementerio colocarCartaEnCementerio() {
-		return new EstadoCartaEnCementerio();
+	public EstadoCartaColocadaBocaArriba colocarCartaBocaArriba() {
+		return new EstadoCartaColocadaBocaArriba();
 	}
 	
-	public EstadoCartaEnModoAtaque colocarCartaEnModoAtaque(int puntosDeAtaqueMonstruo) {
-		return new EstadoCartaEnModoAtaque(puntosDeAtaqueMonstruo);
-	}
-	
-	public EstadoCartaBocaArribaEnModoDefensa colocarCartaBocaArribaEnModoDefensa() {
-		return new EstadoCartaBocaArribaEnModoDefensa();
-	}
-	
-	public EstadoCartaBocaAbajoEnModoDefensa colocarCartaBocaAbajoEnModoDefensa() {
-		return new EstadoCartaBocaAbajoEnModoDefensa();
-	}
-	
-	public EstadoCartaBocaArriba colocarCartaBocaArriba() {
-		return new EstadoCartaBocaArriba();
-	}
-	
-	public EstadoCartaBocaAbajo colocarCartaBocaAbajo() {
-		return new EstadoCartaBocaAbajo();
+	public EstadoCartaColocadaBocaAbajo colocarCartaBocaAbajo() {
+		return new EstadoCartaColocadaBocaAbajo();
 	}
 
-//	------------------------------MetodosParaSobreescribir-------------------------
-	public boolean estaEnMazo() {
-		return false;
-	}
-	
-	public boolean estaEnMano() {
-		return false;
-	}
-	
-	public boolean estaEnCementerio() { 
-		return false;
-	}
-	
-	public boolean estaEnModoAtaque() {
-		return false;
-	}
-	
-	public boolean estaBocaArribaEnModoDefensa() {
-		return false;
-	}
-	
-	public boolean estaBocaAbajoEnModoDefensa() {
+	public boolean estaNoJugada() {
 		return false;
 	}
 	
@@ -65,7 +28,11 @@ public abstract class EstadoCarta {
 	public boolean estaBocaAbajo() {
 		return false;
 	}
-
+	
+	public boolean estaDestruida() {
+		return false;
+	}
+	
 	public int obtenerPuntosDeDanio() {
 	
 		return 0;
