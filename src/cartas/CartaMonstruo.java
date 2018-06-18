@@ -20,6 +20,24 @@ public class CartaMonstruo implements Atacable{
 		
 	}
 	
+	//////////////////////////////////////////
+	
+	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar) {
+		this.estado = new EstadoCartaEnMazo();
+		this.puntosDeAtaque = puntosDeAtaqueAColocar;
+		this.puntosDeDefensa = puntosDeDefensaAColocar;
+		this.estrellas = 3;
+		this.nombre = "MonstruoGenericoACME";
+	}
+
+	//Repensar, esto es lo mismo que lo que esta pensado en la otra branch
+	
+	public void colocar(Estrategia estrategia, Modo modo) {
+		this.estado = new EstadoInvocada(estrategia, modo, this.puntosDeAtaque, this.puntosDeDefensa);
+	}
+	
+	//////////////////////////////////////////
+	
 	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar) {
 		this.estado = new EstadoCartaEnMazo();
 		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
