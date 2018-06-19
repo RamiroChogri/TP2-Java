@@ -470,16 +470,16 @@ de los puntos de ataque de los monstruos*/
 	
 	@Test
 	public void test14ColocarWastelandBocaArribaConUnMonstruoEnAmbosCampos() {
-		Puntos ataqueMonstruo1 = new Puntos(1500);
+		Puntos ataqueMonstruo1 = new Puntos(1500); //1700 con wasteland
 		Puntos defensaMonstruo1 = new Puntos(3000);
 		Puntos ataqueMonstruo2 = new Puntos(1000);
-		Puntos defensaMonstruo2 = new Puntos(1000);
+		Puntos defensaMonstruo2 = new Puntos(1000); //1300 con wasteland
 		int estrellasDeUnMonstruo = 3;
 		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
 		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
 
-		Efecto efectoWasteland = new EfectoWasteland();
-		CartaCampo whasteland = new CartaCampo(efectoWasteland);
+		Efecto efectoWasteland = new EfectoWasteland();//wasteland aumenta los ptsatk de tus monstruos en 200
+		CartaCampo whasteland = new CartaCampo(efectoWasteland); // tambien los ptsdef de los monstruos enemigos en 300
 		
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
@@ -488,20 +488,73 @@ de los puntos de ataque de los monstruos*/
 		jugador2.enfrentarseA(jugador1);
 		
 		Modo modoAtaque = new ModoAtaque();
-		Modo modoDefensa = new ModoDefensa();
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		
 		jugador1.colocar(unMonstruo, bocaArriba, modoAtaque);
-		jugador2.colocar(otroMonstruo, bocaArriba, modoDefensa);
+		jugador2.colocar(otroMonstruo, bocaArriba, modoAtaque);
 		jugador1.colocarCartaMagicaBocaArriba(whasteland);
 		
+		jugador1.atacar(unMonstruo, otroMonstruo);
+		
+		int vidaEsperada = 7300;
+		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
 	}
 	
-//	@Test
-//	public void test15ColocarSogenBocaArribaConUnMonstruoEnAmbosCampos() {}
+	@Test
+	public void test15ColocarSogenBocaArribaConUnMonstruoEnAmbosCampos() {
+		Puntos ataqueMonstruo1 = new Puntos(1500);
+		Puntos defensaMonstruo1 = new Puntos(1000); //1500 con sogen
+		Puntos ataqueMonstruo2 = new Puntos(1000); //1200 con sogen
+		Puntos defensaMonstruo2 = new Puntos(1000);
+		int estrellasDeUnMonstruo = 3;
+		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
+		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
+
+		Efecto efectoSogend = new EfectoSogen();//sogen aumenta los ptsdef de tus monstruos en 500
+		CartaCampo sogen = new CartaCampo(efectoSogend);  // tambien los ptsatk de los monstruos enemigos en 200
+		
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		
+		jugador1.colocar(unMonstruo, bocaArriba, modoAtaque);
+		jugador2.colocar(otroMonstruo, bocaArriba, modoAtaque);
+		jugador1.colocarCartaMagicaBocaArriba(sogen);
+		
+		jugador1.atacar(unMonstruo, otroMonstruo);
+		
+		int vidaEsperada = 8000;
+		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+	}
 	
-//	@Test
-//	public void test16ActivarPotOfGreedPermiteLevantarDosCartasDelMazo() {}
+	@Test
+	public void test16ActivarPotOfGreedPermiteLevantarDosCartasDelMazo() {
+		Puntos ataqueMonstruo1 = new Puntos(1500);
+		Puntos defensaMonstruo1 = new Puntos(1000); //1500 con sogen
+		Puntos ataqueMonstruo2 = new Puntos(1000); //1200 con sogen
+		Puntos defensaMonstruo2 = new Puntos(1000);
+		int estrellasDeUnMonstruo = 3;
+		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
+		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
+
+		Efecto efectoPotOfGreed = new EfectoPotOfGreed();//sogen aumenta los ptsdef de tus monstruos en 500
+		CartaMagica potOfGreed = new CartaMagica(efectoPotOfGreed);  // tambien los ptsatk de los monstruos enemigos en 200
+		
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		jugador1.colocarCartaMagicaBocaArriba(potOfGreed);
+		int cartasEnManoEperadas = 7;
+		assertEquals(cartasEnManoEperadas, jugador1.obtenerCantidadDeCartasEnLaMano());
+	}
 	
 //	@Test
 //	public void test17ColocarFisuraBocaArribaConUnMonstruoEnAmbosCamposDestruyeAlDeMenorAtaque() {}
