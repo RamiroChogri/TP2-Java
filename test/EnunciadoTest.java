@@ -284,7 +284,7 @@ de los puntos de ataque de los monstruos*/
 		jugador1.colocar(monstruoConMilDeAtaque, bocaArriba, modoAtaque);
  		jugador2.colocar(otroMonstruoConMilDeAtaque, bocaArriba, modoAtaque);
 
- 		jugador2.atacar( monstruoConMilDeAtaque , otroMonstruoConMilDeAtaque);
+ 		jugador2.atacar( otroMonstruoConMilDeAtaque , monstruoConMilDeAtaque);
  		
 		int vidaEsperada = 8000;
 		
@@ -301,27 +301,33 @@ de los puntos de ataque de los monstruos*/
 	ningÃºn daÃ±o vital.*/
 	@Test
 	public void test09MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMayorAtaqueQueSuDefensa() {
-		CartaMonstruo monstruoAtacante = new CartaMonstruo(3000, 3000);
- 		CartaMonstruo monstruoDefensor = new CartaMonstruo(1000, 2000);
- 
- 		Jugador jugador1 = new Jugador();
+		Puntos ataqueMonstruo1 = new Puntos(2000);
+		Puntos defensaMonstruo1 = new Puntos(3000);
+		Puntos ataqueMonstruo2 = new Puntos(1000);
+		Puntos defensaMonstruo2 = new Puntos(1500);
+		int estrellas = 3;
+		Atacable unMonstuo = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellas);
+ 		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellas);
+		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
 		jugador1.enfrentarseA(jugador2);
 		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		jugador1.colocar(unMonstuo, bocaArriba, modoAtaque);
+ 		jugador2.colocar(otroMonstruo, bocaArriba, modoDefensa);
  		
- 		jugador1.colocarMonstruoEnModoAtaque(monstruoAtacante);
- 		jugador2.colocarMonstruoBocaArribaEnModoDefensa(monstruoDefensor);
- 		
- 		jugador2.atacar( monstruoAtacante , monstruoDefensor );
+ 		jugador1.atacar(unMonstuo, otroMonstruo);
  		
 		int vidaEsperada = 8000;
 		
-		assertFalse(monstruoAtacante.estaDestruida());
-		assertTrue(monstruoDefensor.estaDestruida());
+		assertFalse(unMonstuo.estaDestruida());
+		assertTrue(otroMonstruo.estaDestruida());
 		
-		assertEquals( vidaEsperada , jugador2.obtenerVidaRestante());
-		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
+		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	}
 	
 	/*Colocar una carta de monstruo en posiciÃ³n de defensa, el oponente coloca otra carta
@@ -330,27 +336,33 @@ de los puntos de ataque de los monstruos*/
 	ningÃºn daÃ±o vital.*/
 	@Test
 	public void test10MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMenorAtaqueQueSuDefensa() {
-		CartaMonstruo monstruoAtacante = new CartaMonstruo(1000, 3000);
- 		CartaMonstruo monstruoDefensor = new CartaMonstruo(1000, 2000);
- 
- 		Jugador jugador1 = new Jugador();
+		Puntos ataqueMonstruo1 = new Puntos(2000);
+		Puntos defensaMonstruo1 = new Puntos(3000);
+		Puntos ataqueMonstruo2 = new Puntos(1000);
+		Puntos defensaMonstruo2 = new Puntos(2500);
+		int estrellas = 3;
+		Atacable unMonstuo = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellas);
+ 		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellas);
+		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
 		jugador1.enfrentarseA(jugador2);
 		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		jugador1.colocar(unMonstuo, bocaArriba, modoAtaque);
+ 		jugador2.colocar(otroMonstruo, bocaArriba, modoDefensa);
  		
- 		jugador1.colocarMonstruoEnModoAtaque(monstruoAtacante);
- 		jugador2.colocarMonstruoBocaArribaEnModoDefensa(monstruoDefensor);
- 		
- 		jugador2.atacar( monstruoAtacante , monstruoDefensor );
+ 		jugador1.atacar(unMonstuo, otroMonstruo);
  		
 		int vidaEsperada = 8000;
 		
-		assertFalse(monstruoAtacante.estaDestruida());
-		assertFalse(monstruoDefensor.estaDestruida());
+		assertFalse(unMonstuo.estaDestruida());
+		assertFalse(otroMonstruo.estaDestruida());
 		
-		assertEquals( vidaEsperada , jugador2.obtenerVidaRestante());
-		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
+		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	}
 	
 	/*Colocar monstruos en ambos lados del campo. Colocar â€œAgujero negroâ€� boca arriba
@@ -358,26 +370,31 @@ de los puntos de ataque de los monstruos*/
 	ambos lados del campo, y que nadie recibiÃ³ daÃ±o alguno.*/
 	@Test
 	public void test11MonstruosDelCampoSeDestruyenAlColocarAgujeroNegro() {
-		CartaMonstruo monstruoAtacante = new CartaMonstruo(1000, 3000);
-		CartaMonstruo monstruoDefensor = new CartaMonstruo(1000, 2000);
- 		EfectoAgujeroNegro agujeroNegroEfecto = new EfectoAgujeroNegro();
+		Puntos ataqueMonstruo1 = new Puntos(2000);
+		Puntos defensaMonstruo1 = new Puntos(3000);
+		Puntos ataqueMonstruo2 = new Puntos(1000);
+		Puntos defensaMonstruo2 = new Puntos(2500);
+		int estrellas = 3;
+		Atacable unMonstuo = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellas);
+ 		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellas);
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		EfectoAgujeroNegro agujeroNegroEfecto = new EfectoAgujeroNegro();
  		CartaMagica carta = new CartaMagica( agujeroNegroEfecto );
- 		Jugador jugador1 = new Jugador();
- 		Jugador jugador2 = new Jugador();
  		
- 		jugador1.enfrentarseA(jugador2);
- 		jugador2.enfrentarseA(jugador1);
- 		
- 		jugador1.colocarMonstruoEnModoAtaque(monstruoAtacante);
- 		jugador2.colocarMonstruoBocaAbajoEnModoDefensa(monstruoDefensor);
- 		
- 		jugador1.colocarCartaMagicaBocaArriba( carta );
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		jugador1.colocar(unMonstuo, bocaArriba, modoAtaque);
+ 		jugador2.colocar(otroMonstruo, bocaArriba, modoDefensa);
+ 		jugador1.colocarCartaMagicaBocaArriba(carta);
  		
  		assertFalse( jugador1.tieneCartasEnCampo());
  		assertFalse( jugador2.tieneCartasEnCampo());
- 		int vidaEsperada = 8000;
-		assertEquals( vidaEsperada , jugador2.obtenerVidaRestante());
-		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 	
 	/*Se coloca un monstruo en el campo, se quiere colocar un monstruo de 5 o 6
@@ -385,18 +402,33 @@ de los puntos de ataque de los monstruos*/
 	destruyÃ³ el primero.*/
 	@Test
 	public void test12ColocarMonstruoQueRequiereUnSacrificioDestruyeElMonstruoAnterior() {
-		CartaMonstruo monstruo = new CartaMonstruo(1000, 3000, 3);
-		CartaMonstruo monstruoSeisEstrellas = new CartaMonstruo(1000, 2000, 6);
-
- 		Jugador jugador1 = new Jugador();
+		Puntos ataqueMonstruo1 = new Puntos(2000);
+		Puntos defensaMonstruo1 = new Puntos(3000);
+		Puntos ataqueMonstruo2 = new Puntos(1000);
+		Puntos defensaMonstruo2 = new Puntos(2500);
+		int estrellasDeUnMonstruo = 3;
+		int estrellasDeOtroMonstruo = 6;
+		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
+ 		Atacable unMonstruode6Estrellas = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeOtroMonstruo);
  		
- 		jugador1.colocarMonstruoEnModoAtaque(monstruo);
+ 		Atacable unSacrificio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		jugador1.colocar(unSacrificio, bocaArriba, modoAtaque);
+		jugador1.colocar(unMonstruode6Estrellas,bocaArriba, modoAtaque);
+ 		jugador2.colocar(unMonstruo, bocaArriba, modoAtaque);
  		
- 		jugador1.colocarMonstruoEnModoAtaque( monstruoSeisEstrellas );
+ 		jugador1.atacar(unMonstruode6Estrellas, unMonstruo);
  		
- 		assertTrue( monstruo.estaDestruida() );
- 		assertEquals( 1 ,jugador1.obtenerCantidadCartasEnCampo());
- 		
+ 		int vidaEsperada = 7000;
+ 		assertEquals(1,jugador1.obtenerCantidadCartasEnCampo());
+		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 
 	}
 	
@@ -405,20 +437,34 @@ de los puntos de ataque de los monstruos*/
 	se verifica que se convocÃ³ al monstruo y sedestruyeron los demÃ¡s. */
 	@Test
 	public void test13ColocarMonstruoQueRequiereDosSacrificiosDestruyeLosDosMonstruosAnteriores() {
-		CartaMonstruo monstruo1 = new CartaMonstruo(1000, 3000, 3);
-		CartaMonstruo monstruo2 = new CartaMonstruo(1000, 3000, 3);
-		CartaMonstruo monstruoOchoEstrellas = new CartaMonstruo(1000, 2000, 8);
-
- 		Jugador jugador1 = new Jugador();
+		Puntos ataqueMonstruo1 = new Puntos(2000);
+		Puntos defensaMonstruo1 = new Puntos(3000);
+		Puntos ataqueMonstruo2 = new Puntos(1000);
+		Puntos defensaMonstruo2 = new Puntos(2500);
+		int estrellasDeUnMonstruo = 3;
+		int estrellasDeOtroMonstruo = 8;
+		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
+ 		Atacable unMonstruode6Estrellas = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeOtroMonstruo);
  		
- 		jugador1.colocarMonstruoEnModoAtaque(monstruo1);
- 		jugador1.colocarMonstruoEnModoAtaque(monstruo2);
+ 		Atacable unSacrificio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
+ 		Atacable otroSacrificio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		jugador1.colocar(unSacrificio, bocaArriba, modoAtaque);
+		jugador1.colocar(otroSacrificio, bocaArriba, modoAtaque);
+		jugador1.colocar(unMonstruode6Estrellas,bocaArriba, modoAtaque);
+ 		jugador2.colocar(unMonstruo, bocaArriba, modoAtaque);
  		
- 		jugador1.colocarMonstruoEnModoAtaque( monstruoOchoEstrellas );
+ 		jugador1.atacar(unMonstruode6Estrellas, unMonstruo);
  		
- 		assertTrue( monstruo1.estaDestruida() );
- 		assertTrue( monstruo2.estaDestruida() );
- 		
- 		assertEquals( 1 ,jugador1.obtenerCantidadCartasEnCampo());
+ 		int vidaEsperada = 7000;
+ 		assertEquals(1,jugador1.obtenerCantidadCartasEnCampo());
+		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	}
 }
