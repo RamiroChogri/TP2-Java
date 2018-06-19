@@ -80,6 +80,10 @@ public class CartaMonstruo implements Atacable{
 		this.regla = reglaDeInvocacion;	
 	}
 	
+	public void setNombre(String nombreDeLaCarta) {
+		
+		this.nombre = nombreDeLaCarta;
+	}
 	
 	
 	public void cambiarA(Modo modoRecibido) {
