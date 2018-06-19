@@ -478,8 +478,8 @@ de los puntos de ataque de los monstruos*/
 		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
 		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
 
-		Efecto efectoWhasteland = new EfectoWhasteland();
-		CartaCampo whasteland = new CartaCampo(efectoWhasteland);
+		Efecto efectoWasteland = new EfectoWasteland();
+		CartaCampo whasteland = new CartaCampo(efectoWasteland);
 		
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
