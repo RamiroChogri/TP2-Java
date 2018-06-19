@@ -7,6 +7,7 @@ import cartas.Destruible;
 import estadoCarta.EstadoCarta;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.NoHayLugarVacioException;
+import jugador.Mano;
 
 public class Campo {
 
@@ -16,6 +17,8 @@ public class Campo {
 	private ZonaCampo espacioCampo;
 	private Cementerio cementerio;
 	private Mazo mazoDelJugador;
+	private Mano manoDelJugador;
+	
 	
 	
 	public Campo() {
@@ -27,6 +30,19 @@ public class Campo {
 		this.espacioCampo = new ZonaCampo();
 		this.cementerio = new Cementerio();
 		this.mazoDelJugador = new Mazo();
+		this.manoDelJugador = null;
+	}
+	
+	public Campo(Mano manoDelJugador) {
+		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
+		//ordenadas aleatoriamente
+		this.vidaDelJugador = 8000;
+		this.monstruos = new ZonaMonstruos();
+		this.magicasYTrampas = new ZonaMagicasYTrampas();
+		this.espacioCampo = new ZonaCampo();
+		this.cementerio = new Cementerio();
+		this.mazoDelJugador = new Mazo();
+		this.manoDelJugador = manoDelJugador;
 	}
 
 	////////////////////////////////////
@@ -105,6 +121,12 @@ public class Campo {
 	public void activarEfectoDeCampo(Campo campoEnemigo) {
 		this.espacioCampo.activarEfectoDeCampo(this,campoEnemigo);
 	}
+	
+	//Para PotOfGreed	
+	public void agregarCartaEnMano(Colocable cartaAColocar) {
+		this.manoDelJugador.agregarCartaEnMano(cartaAColocar);
+	}
+	
 	
 //	public void colocarCarta(Atacable cartaMonstruoAColocar , Estrategia boca, Modo modo) {
 //	try {
