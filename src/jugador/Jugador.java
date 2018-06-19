@@ -87,6 +87,10 @@ public class Jugador {
 		}
 		campoPropio.colocarCarta(carta, estado);
 	}
+	public void colocarMonstruo (Atacable carta, EstadoCarta estado, Modo modo) {
+		campoPropio.colocarCarta(carta, estado);
+		carta.cambiarA(modo);
+	}
 	
 	public void colocar(Activable carta, EstadoCarta estado) {
 		campoPropio.colocarCarta(carta, estado);

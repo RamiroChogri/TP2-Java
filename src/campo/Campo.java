@@ -48,7 +48,7 @@ public class Campo {
 	////////////////////////////////////
 	
 	public void colocarCarta(Colocable cartaAColocar,EstadoCarta estadoAColocar) throws NoHayLugarVacioException {
-		cartaAColocar.colocarse(monstruos, magicasYTrampas, espacioCampo, estadoAColocar);
+		cartaAColocar.colocarse(this.monstruos, this.magicasYTrampas, this.espacioCampo, estadoAColocar);
 	}
 	
 	//////////////////////////////////
