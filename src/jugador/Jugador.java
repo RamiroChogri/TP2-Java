@@ -15,8 +15,11 @@ public class Jugador {
 
 	public Jugador() {
 		
-		this.campoPropio = new Campo();
-		this.mano = new Mano();	
+		this.mano = new Mano();
+		this.campoPropio = new Campo(mano);
+		for(int i=0;i<5;i++) {
+			this.tomarCartaDelMazo();
+		}
 	}
 	
 	public void enfrentarseA(Jugador jugadorEnemigo) {
