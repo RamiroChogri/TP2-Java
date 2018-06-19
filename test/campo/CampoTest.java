@@ -1,5 +1,12 @@
 package campo;
 import efectos.*;
+import estadoCarta.EstadoCarta;
+import estadoCarta.EstadoCartaColocadaBocaArriba;
+import jugador.Jugador;
+import modos.Modo;
+import modos.ModoAtaque;
+import modos.ModoDefensa;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -31,33 +38,52 @@ public class CampoTest {
 	
 	@Test
 	public void testColocarUnMonstruoBocaArribaEnZonaCorrecta() {
-		Campo campoTest = new Campo();
-		CartaMonstruo cartaTestMonstruo = new CartaMonstruo();
-		campoTest.colocarCarta(cartaTestMonstruo);
-		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
+		Campo campoPropio = new Campo();
+		Puntos ataqueMonstruo1 = new Puntos(1000);
+		Puntos defensaMonstruo1 = new Puntos(500);
+		int estrellasMonstruo = 3;
+		Atacable monstruoPropio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasMonstruo);
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		
+		monstruoPropio.cambiarA(modoAtaque);
+		campoPropio.colocarCarta(monstruoPropio, bocaArriba);
+		
+		assertEquals(1, campoPropio.obtenerCantidadDeCartasEnZonaMonstruo());
 	}
 	
 	@Test
 	public void testColocarUnaCartaMagicaEnZonaCorrecta() {
 		Campo campoTest = new Campo();
-		CartaMagica cartaTestMagica = new CartaMagica();
-		campoTest.colocarCarta(cartaTestMagica);
+		
+		EfectoAgujeroNegro agujeroNegroEfecto = new EfectoAgujeroNegro();
+ 		Colocable carta = new CartaMagica( agujeroNegroEfecto );
+		
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		campoTest.colocarCarta(carta, bocaArriba);
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad());
 	}
 	
 	@Test
 	public void testColocarUnaCartaTrampaEnZonaCorrecta() {
 		Campo campoTest = new Campo();
-		CartaTrampa cartaTestTrampa = new CartaTrampa();
-		campoTest.colocarCarta(cartaTestTrampa);
+		
+		Efecto efectoTest = new EfectoNulo();
+ 		Colocable carta = new CartaTrampa(efectoTest);
+ 		
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		campoTest.colocarCarta(carta, bocaArriba);
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad());
 	}
 	
 	@Test
 	public void testColocarUnaCartaCampoEnZonaCorrecta() {
 		Campo campoTest = new Campo();
-		CartaCampo cartaTestCampo = new CartaCampo();
-		campoTest.colocarCarta(cartaTestCampo);
+		
+ 		Colocable cartaCampo = new CartaCampo();
+ 		
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		campoTest.colocarCarta(cartaCampo, bocaArriba);
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaCampo());
 	}
 	
@@ -74,12 +100,16 @@ public class CampoTest {
 		CartaMonstruo cartaMonstruo = new CartaMonstruo();
 		
 		cartaMonstruo.colocarEnModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+
+		campo.colocarCarta(cartaMonstruo,bocaArriba);
 		
-		campo.colocarCarta(cartaMonstruo);
-		
-		assertTrue( cartaMonstruo.estaColocadaEnModoAtaque() );
-		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMonstruo() );
+		assertTrue(cartaMonstruo.estaEnModoAtaque());
+		assertTrue(cartaMonstruo.estaColocadaBocaArriba());
+		assertEquals(1, campo.obtenerCantidadDeCartasEnZonaMonstruo());
 	}
+	
+	// hasta aca funiona, hay varias de abajo q tmb pero no estoy seguro cuales, pero todas las de arriba funcionan bien
 	
 	@Test
 	public void testColocarUnaCartaMonstruoBocaArribaEnModoDefensaQuedaColocado() {
