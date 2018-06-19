@@ -43,6 +43,9 @@ public class ModoAtaque extends Modo {
 	public void recibirAtaque(CartaMonstruo cartaAtacante, Puntos puntosDeAtaqueMonstruoAtacante,
 			CartaMonstruo cartaAtacada) {
 		
+		System.out.println(puntosDeAtaqueMonstruoAtacante.obtener());
+		System.out.println(this.puntosDeAtaque.obtener());
+		
 		if(puntosDeAtaqueMonstruoAtacante.sonMayoresA(this.puntosDeAtaque)) {
 			
 			int diferenciaDeDanio = puntosDeAtaqueMonstruoAtacante.obtenerDiferenciaCon(this.puntosDeAtaque);
@@ -57,6 +60,8 @@ public class ModoAtaque extends Modo {
 			cartaAtacante.destruirCarta();
 			cartaAtacada.destruirCarta();
 		}
+		
+		int diferenciaDeDanio = puntosDeAtaqueMonstruoAtacante.obtenerDiferenciaCon(this.puntosDeAtaque);
 		
 	}
 

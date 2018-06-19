@@ -151,18 +151,18 @@ public class CartaMonstruo implements Atacable{
 //		return (this.estado.estaBocaAbajo() && this.modo.estaEnModoDefensa());
 //	}
 
-	public Boolean estaColocadaBocaAbajo() {
+	public boolean estaColocadaBocaAbajo() {
 		return this.estado.estaBocaAbajo();
 	}
-	public Boolean estaColocadaBocaArriba() {
+	public boolean estaColocadaBocaArriba() {
 		return this.estado.estaBocaArriba();
 	}
 	
-	public Boolean estaEnModoAtaque() {
+	public boolean estaEnModoAtaque() {
 		return this.modo.estaEnModoAtaque();
 	}
 	
-	public Boolean estaEnModoDefensa() {
+	public boolean estaEnModoDefensa() {
 		return this.modo.estaEnModoDefensa();
 	}
 	

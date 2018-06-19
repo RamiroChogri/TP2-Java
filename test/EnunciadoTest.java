@@ -211,6 +211,9 @@ de los puntos de ataque de los monstruos*/
  		jugador1.atacar(monstruoConMayorAtaque, monstruoConMenorAtaque);
  		
 		int vidaEsperada = 7900;
+	
+		
+		//Separar en test unitarios
 		
 		assertFalse(monstruoConMayorAtaque.estaDestruida());
 		assertTrue(monstruoConMenorAtaque.estaDestruida());
@@ -226,16 +229,23 @@ de los puntos de ataque de los monstruos*/
   */
 	@Test
 	public void test07MonstruoAtacaAOtroMonstruoEnModoAtaqueConMayorAtaque() {
-		CartaMonstruo monstruoConMayorAtaque = new CartaMonstruo(2000, 3000);
- 		CartaMonstruo monstruoConMenorAtaque = new CartaMonstruo(1000, 2000);
+		Puntos ataqueMonstruo1 = new Puntos(2000);
+		Puntos defensaMonstruo1 = new Puntos(3000);
+		Puntos ataqueMonstruo2 = new Puntos(1000);
+		Puntos defensaMonstruo2 = new Puntos(2000);
+		int estrellas = 3;
+		Atacable monstruoConMayorAtaque = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellas);
+ 		Atacable monstruoConMenorAtaque = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellas);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
 		jugador1.enfrentarseA(jugador2);
 		jugador2.enfrentarseA(jugador1);
- 		
- 		jugador1.colocarMonstruoEnModoAtaque(monstruoConMayorAtaque);
- 		jugador2.colocarMonstruoEnModoAtaque(monstruoConMenorAtaque);
+		
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		jugador1.colocar(monstruoConMayorAtaque, bocaArriba, modoAtaque);
+ 		jugador2.colocar(monstruoConMenorAtaque, bocaArriba, modoAtaque);
  		
  		jugador2.atacar(monstruoConMenorAtaque, monstruoConMayorAtaque);
  		
@@ -256,17 +266,24 @@ de los puntos de ataque de los monstruos*/
 	
 	@Test
 	public void test08MonstruoAtacaAOtroMonstruoEnModoAtaqueConIgualAtaque() {
-		CartaMonstruo monstruoConMilDeAtaque = new CartaMonstruo(1000, 3000);
- 		CartaMonstruo otroMonstruoConMilDeAtaque = new CartaMonstruo(1000, 2000);
+		Puntos ataqueMonstruo1 = new Puntos(2000);
+		Puntos defensaMonstruo1 = new Puntos(3000);
+		Puntos defensaMonstruo2 = new Puntos(2000);
+		int estrellas = 3;
+		CartaMonstruo monstruoConMilDeAtaque = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellas);
+ 		CartaMonstruo otroMonstruoConMilDeAtaque = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo2, estrellas);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
 		jugador1.enfrentarseA(jugador2);
 		jugador2.enfrentarseA(jugador1);
  		
- 		jugador1.colocarMonstruoEnModoAtaque(monstruoConMilDeAtaque);
- 		jugador2.colocarMonstruoEnModoAtaque(otroMonstruoConMilDeAtaque);
- 		
+
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		jugador1.colocar(monstruoConMilDeAtaque, bocaArriba, modoAtaque);
+ 		jugador2.colocar(otroMonstruoConMilDeAtaque, bocaArriba, modoAtaque);
+
  		jugador2.atacar( monstruoConMilDeAtaque , otroMonstruoConMilDeAtaque);
  		
 		int vidaEsperada = 8000;
@@ -274,7 +291,7 @@ de los puntos de ataque de los monstruos*/
 		assertTrue(monstruoConMilDeAtaque.estaDestruida());
 		assertTrue(otroMonstruoConMilDeAtaque.estaDestruida());
 		
-		assertEquals( vidaEsperada , jugador2.obtenerVidaRestante());
+		assertEquals( vidaEsperada, jugador2.obtenerVidaRestante());
 		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
 	}
 	
