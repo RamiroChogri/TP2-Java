@@ -2,6 +2,7 @@ package campo;
 
 import java.util.LinkedList;
 
+import efectos.*;
 import cartas.*;
 import cartas.Destruible;
 import estadoCarta.EstadoCarta;
@@ -18,8 +19,6 @@ public class Campo {
 	private Cementerio cementerio;
 	private Mazo mazoDelJugador;
 	private Mano manoDelJugador;
-	
-	
 	
 	public Campo() {
 		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
@@ -46,6 +45,14 @@ public class Campo {
 	}
 
 	////////////////////////////////////
+	
+	public void aumentarAtaqueMonstruosPorEfectoCampo(Puntos puntosAtaque) {
+		this.monstruos.aumentarAtaqueMonstruoPorEfectoCampo(puntosAtaque);
+	}
+	
+	public void aumentarDefensaMonstruosPorEfectoCampo(Puntos puntosDefensa) {
+		this.monstruos.aumentarDefensaMonstruoPorEfectoCampo(puntosDefensa);
+	}
 	
 	public void colocarCarta(Colocable cartaAColocar,EstadoCarta estadoAColocar) throws NoHayLugarVacioException {
 		cartaAColocar.colocarse(this.monstruos, this.magicasYTrampas, this.espacioCampo, estadoAColocar);

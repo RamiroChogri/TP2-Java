@@ -9,10 +9,14 @@ public class ZonaMonstruos extends Zona {
 	
 	private LinkedList<CartaMonstruo> posiciones;
 	private boolean hayEspacio;
+	private Puntos puntosDeAtaqueExtra;
+	private Puntos puntosDeDefensaExtra;
 	
 	public ZonaMonstruos() {
-		posiciones = new LinkedList<CartaMonstruo>();
-		hayEspacio = true;
+		this.posiciones = new LinkedList<CartaMonstruo>();
+		this.hayEspacio = true;
+		this.puntosDeAtaqueExtra = new Puntos(0);
+		this.puntosDeDefensaExtra = new Puntos(0);
 	}
 	
 	public void colocarCarta(Colocable cartaMonstruoAColocar) {
@@ -20,16 +24,18 @@ public class ZonaMonstruos extends Zona {
 	}
 	
 	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {
-		hayEspacio = this.hayEspacioDisponible();
-			if ( !hayEspacio ) {
+		this.hayEspacio = this.hayEspacioDisponible();
+			if ( !this.hayEspacio ) {
 				throw new NoHayLugarVacioException();
 			}
-			posiciones.add(cartaMonstruoAColocar);
+			cartaMonstruoAColocar.aumentarAtaqueEn(this.puntosDeAtaqueExtra);
+			cartaMonstruoAColocar.aumentarDefensaEn(this.puntosDeDefensaExtra);
+			this.posiciones.add(cartaMonstruoAColocar);
 		
 	}
 	
 	public boolean hayEspacioDisponible() {	
-		return (posiciones.size() < 5);
+		return (this.posiciones.size() < 5);
 	}
 
 	public int obtenerCantidadDeCartas() {
@@ -78,7 +84,7 @@ public class ZonaMonstruos extends Zona {
 	
 	public void eliminarUltimaCartaMonstruoColocada() {
 		try {
-			posiciones.getLast().destruirCarta();;
+			posiciones.getLast().destruirCarta();
 		} catch (NoSuchElementException noHayMonstruoParaBorrar) {
 			//No se elimina nada
 		}
@@ -88,4 +94,32 @@ public class ZonaMonstruos extends Zona {
 		
 		return ( posiciones.size() >= cantidadDeMonstruosBuscados );
 	}
+	
+	public void aumentarAtaqueMonstruoPorEfectoCampo(Puntos puntosAtaqueAColocar) {
+		this.puntosDeAtaqueExtra = puntosAtaqueAColocar;
+		this.puntosDeDefensaExtra = new Puntos(0);
+		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
+	    CartaMonstruo cartaMonstruoActual;
+	    while (posicionesIterador.hasNext()) {
+	    	cartaMonstruoActual = posicionesIterador.next();
+	    	cartaMonstruoActual.eliminarModificadorDeAtaque();
+	    	cartaMonstruoActual.eliminarModificadorDeDefensa();
+	    	cartaMonstruoActual.aumentarAtaqueEn(this.puntosDeAtaqueExtra);
+	    }
+	}
+	
+	public void aumentarDefensaMonstruoPorEfectoCampo(Puntos puntosDefensaAColocar) {
+		this.puntosDeAtaqueExtra = new Puntos(0);
+		this.puntosDeDefensaExtra = puntosDefensaAColocar;
+		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
+	    CartaMonstruo cartaMonstruoActual;
+	    while (posicionesIterador.hasNext()) {
+	    	cartaMonstruoActual = posicionesIterador.next();
+	    	cartaMonstruoActual.eliminarModificadorDeAtaque();
+	    	cartaMonstruoActual.eliminarModificadorDeDefensa();
+	    	cartaMonstruoActual.aumentarDefensaEn(this.puntosDeDefensaExtra);
+	    }
+	}
+	
+	
 }

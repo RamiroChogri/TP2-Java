@@ -198,7 +198,21 @@ public class CartaMonstruo implements Atacable{
 	
 		return this.puntosDeDefensa;
 	}
-
 	
+	public void eliminarModificadorDeAtaque() {
+		this.puntosDeAtaque.eliminarModificadores();
+	}
+	
+	public void eliminarModificadorDeDefensa() {
+		this.puntosDeDefensa.eliminarModificadores();
+	}
+	
+	public void aumentarAtaqueEn(Puntos puntosDeAtaqueExtra) {
+		this.puntosDeAtaque.aumentar(puntosDeAtaqueExtra);
+	}
+	
+	public void aumentarDefensaEn(Puntos puntosDeDefensaExtra) {
+		this.puntosDeDefensa.aumentar(puntosDeDefensaExtra);
+	}
  	
 }

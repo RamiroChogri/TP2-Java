@@ -29,6 +29,10 @@ public class Puntos {
 	
 	//Ver si se quiere agregar un metodo para decrementar o si usar este con parametros negativos
 	
+	public void aumentar(Puntos puntosExtra) {
+		this.puntos += puntosExtra.obtener();
+	}
+	
 	public void aumentar(int puntosExtra) {
 		this.puntos += puntosExtra;
 	}
