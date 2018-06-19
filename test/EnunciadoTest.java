@@ -244,6 +244,7 @@ de los puntos de ataque de los monstruos*/
 		
 		Modo modoAtaque = new ModoAtaque();
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		
 		jugador1.colocar(monstruoConMayorAtaque, bocaArriba, modoAtaque);
  		jugador2.colocar(monstruoConMenorAtaque, bocaArriba, modoAtaque);
  		

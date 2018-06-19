@@ -64,7 +64,7 @@ public class CartaMonstruo implements Atacable{
 		this.estado = new EstadoCartaNoJugada();
 		this.estrellas = estrellasAColocar;
 		this.nombre = "MonstruoGenericoACME";
-		this.modo = new ModoAtaque(puntosDeAtaque, puntosDeDefensa);
+		this.modo = new ModoAtaque();
 		this.regla = new ReglaDeMonstruoChicoStrategy();
 	}
 	
@@ -76,7 +76,7 @@ public class CartaMonstruo implements Atacable{
 		this.estado = new EstadoCartaNoJugada();
 		this.estrellas = estrellasAColocar;
 		this.nombre = "MonstruoGenericoACME";
-		this.modo = new ModoAtaque(puntosDeAtaque, puntosDeDefensa);
+		this.modo = new ModoAtaque();
 		this.regla = reglaDeInvocacion;	
 	}
 	
@@ -87,7 +87,6 @@ public class CartaMonstruo implements Atacable{
 	
 	
 	public void cambiarA(Modo modoRecibido) {
-		modoRecibido.asignarPuntos(this.puntosDeAtaque, this.puntosDeDefensa);
 		this.modo = modoRecibido;
 	}
 		
@@ -107,7 +106,7 @@ public class CartaMonstruo implements Atacable{
 			throw new MonstruoEnModoDefensaNoPuedeAtacarException();
 		}
 		
-		cartaAtacableEnemiga.recibirAtaque(this, this.puntosDeAtaque);
+		cartaAtacableEnemiga.recibirAtaque(this);
 	}
 	
 	
@@ -122,29 +121,14 @@ public class CartaMonstruo implements Atacable{
 	}
 	
 	/////////
+	@Override
+	public void recibirAtaque(CartaMonstruo cartaAtacante) {
 	
-	public void recibirAtaque(CartaMonstruo cartaAtacante, Puntos puntosDeAtaqueMonstruoAtacante) {
-	
-		this.modo.recibirAtaque(cartaAtacante, puntosDeAtaqueMonstruoAtacante, this);
+		this.modo.recibirAtaque(cartaAtacante, this);
 	}
 	
 	/////////
 	
-	public void recibirAtaque(CartaMonstruo cartaEnemiga, int puntosDeAtaqueMonstruoEnemigo) {
-		
-		int danioAlJugador = 0;
-		
-		danioAlJugador = this.estado.recibirAtaque(puntosDeAtaqueMonstruoEnemigo);
-		
-		if (this.modo.estaEnModoAtaque() && (danioAlJugador <= 0)) {
-			cartaEnemiga.destruirCarta(Math.abs(danioAlJugador));	
-		}
-		
-		if ((danioAlJugador >= 0) && ((this.puntosDeDefensa.obtener() < puntosDeAtaqueMonstruoEnemigo) || (this.modo.estaEnModoAtaque()))) {
-			this.destruirCarta(danioAlJugador);
-		}
-		
-	}
 	
 	public void colocarEnModoAtaque() {
 		this.estado = new EstadoCartaColocadaBocaArriba();
@@ -217,5 +201,23 @@ public class CartaMonstruo implements Atacable{
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Puntos obtenerPuntosAtaque() {
+		
+		return this.puntosDeAtaque;
+	}
+
+	@Override
+	public void recibirAtaque(CartaMonstruo cartaMonstruo, Puntos puntosAtaqueDeMonstruoAtacante) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Puntos obtenerPuntosDefensa() {
+	
+		return this.puntosDeDefensa;
+	}
+
+	
  	
 }

@@ -4,31 +4,14 @@ import cartas.CartaMonstruo;
 import cartas.Puntos;
 
 public class ModoAtaque extends Modo {
-
-	private Puntos puntosDeAtaque;
-	private Puntos puntosDeDefensa;
 	
-	public ModoAtaque() {
-		this.puntosDeAtaque = null;
-		this.puntosDeDefensa = null;
-	}
-	
-	public ModoAtaque(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar) {
-		this.puntosDeAtaque = puntosDeAtaqueAColocar;
-		this.puntosDeDefensa = puntosDeDefensaAColocar;
-	}
-	
-	public void asignarPuntos(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar) {
-		this.puntosDeAtaque = puntosDeAtaqueAColocar;
-		this.puntosDeDefensa = puntosDeDefensaAColocar;
-	}
 	
 	public ModoAtaque colocarEnModoAtaque() {
 		return this;
 	}
 	
 	public ModoDefensa colocarEnModoDefensa() {
-		return new ModoDefensa(this.puntosDeAtaque, this.puntosDeDefensa);
+		return new ModoDefensa();
 	}
 
 	public boolean estaEnModoAtaque() {
@@ -40,28 +23,28 @@ public class ModoAtaque extends Modo {
 	}
 
 	@Override
-	public void recibirAtaque(CartaMonstruo cartaAtacante, Puntos puntosDeAtaqueMonstruoAtacante,
-			CartaMonstruo cartaAtacada) {
+	public void recibirAtaque(CartaMonstruo cartaAtacante, CartaMonstruo cartaAtacada) {
 		
-		System.out.println(puntosDeAtaqueMonstruoAtacante.obtener());
-		System.out.println(this.puntosDeAtaque.obtener());
+		Puntos puntosDeAtaqueMonstruoAtacante = cartaAtacante.obtenerPuntosAtaque();
+		Puntos puntosDeAtaqueMonstruoAtacado = cartaAtacada.obtenerPuntosAtaque();
 		
-		if(puntosDeAtaqueMonstruoAtacante.sonMayoresA(this.puntosDeAtaque)) {
+		
+		if(puntosDeAtaqueMonstruoAtacante.sonMayoresA(puntosDeAtaqueMonstruoAtacado)) {
 			
-			int diferenciaDeDanio = puntosDeAtaqueMonstruoAtacante.obtenerDiferenciaCon(this.puntosDeAtaque);
+			int diferenciaDeDanio = puntosDeAtaqueMonstruoAtacante.obtenerDiferenciaCon(puntosDeAtaqueMonstruoAtacado);
 			cartaAtacada.destruirCarta(diferenciaDeDanio);	
 		}
-		else if(this.puntosDeAtaque.sonMayoresA(puntosDeAtaqueMonstruoAtacante)) {
-			int diferenciaDeDanio = this.puntosDeAtaque.obtenerDiferenciaCon(puntosDeAtaqueMonstruoAtacante);
+		else if(puntosDeAtaqueMonstruoAtacado.sonMayoresA(puntosDeAtaqueMonstruoAtacante)) {
 			
+			int diferenciaDeDanio = puntosDeAtaqueMonstruoAtacado.obtenerDiferenciaCon(puntosDeAtaqueMonstruoAtacante);
 			cartaAtacante.destruirCarta(diferenciaDeDanio);
+			
 		}
 		else {
 			cartaAtacante.destruirCarta();
 			cartaAtacada.destruirCarta();
 		}
 		
-		int diferenciaDeDanio = puntosDeAtaqueMonstruoAtacante.obtenerDiferenciaCon(this.puntosDeAtaque);
 		
 	}
 
