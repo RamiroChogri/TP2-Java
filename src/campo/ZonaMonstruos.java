@@ -83,4 +83,9 @@ public class ZonaMonstruos extends Zona {
 			//No se elimina nada
 		}
 	}
+
+	public boolean tieneMonstruosColocados(int cantidadDeMonstruosBuscados) {
+		
+		return ( posiciones.size() >= cantidadDeMonstruosBuscados );
+	}
 }

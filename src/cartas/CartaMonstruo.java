@@ -6,6 +6,7 @@ import exceptions.MonstruoEnModoDefensaNoPuedeAtacarException;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.ZonaMonstruoLlenaException;
 import modos.*;
+import InvocacionStrategy.*;
 import campo.*;
 
 public class CartaMonstruo implements Atacable{
@@ -16,6 +17,7 @@ public class CartaMonstruo implements Atacable{
 	private Puntos puntosDeDefensa;
 	private int estrellas;
 	private String nombre;
+	private ReglaDeInvocacionStrategy regla;
 	
 	public CartaMonstruo() {
 		
@@ -25,6 +27,7 @@ public class CartaMonstruo implements Atacable{
 		this.puntosDeDefensa = new Puntos(700);
 		this.estrellas = 3;
 		this.nombre = "MonstruoGenericoACME";
+		this.regla = new ReglaDeMonstruoChicoStrategy();
 		
 	}
 	
@@ -64,6 +67,20 @@ public class CartaMonstruo implements Atacable{
 		this.modo = new ModoAtaque(puntosDeAtaque, puntosDeDefensa);
 	}
 	
+	///////constructor que recibe la regla para colocarse ////////
+	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar,
+				int estrellasAColocar, ReglaDeInvocacionStrategy reglaDeInvocacion) {
+		this.puntosDeAtaque = puntosDeAtaqueAColocar;
+		this.puntosDeDefensa = puntosDeDefensaAColocar;
+		this.estado = new EstadoCartaNoJugada();
+		this.estrellas = estrellasAColocar;
+		this.nombre = "MonstruoGenericoACME";
+		this.modo = new ModoAtaque(puntosDeAtaque, puntosDeDefensa);
+		this.regla = reglaDeInvocacion;	
+	}
+	
+	
+	
 	public void cambiarA(Modo modoRecibido) {
 		modoRecibido.asignarPuntos(this.puntosDeAtaque, this.puntosDeDefensa);
 		this.modo = modoRecibido;
@@ -71,7 +88,7 @@ public class CartaMonstruo implements Atacable{
 		
 	public void colocarse(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
 		this.estado = estadoAColocar;
-		zonaMonstruos.colocarCarta(this);
+		regla.colocarCarta( zonaMonstruos, this);
 	}
 	
 	
