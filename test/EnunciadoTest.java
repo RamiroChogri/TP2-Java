@@ -467,4 +467,43 @@ de los puntos de ataque de los monstruos*/
  		assertEquals(1,jugador1.obtenerCantidadCartasEnCampo());
 		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	}
+	
+//	@Test
+//	public void test14ColocarWastelandBocaArribaConUnMonstruoEnAmbosCampos() {}
+	
+//	@Test
+//	public void test15ColocarSogenBocaArribaConUnMonstruoEnAmbosCampos() {}
+	
+//	@Test
+//	public void test16ActivarPotOfGreedPermiteLevantarDosCartasDelMazo() {}
+	
+//	@Test
+//	public void test17ColocarFisuraBocaArribaConUnMonstruoEnAmbosCamposDestruyeAlDeMenorAtaque() {}
+	
+//	@Test
+//	public void test18AtacarConJinzoRestaPuntosDeVidaDirectamenteAlOponente() {}
+	
+//	@Test
+//	public void test19InvocarAlDragonDefinitivoSacrifica3Dragones() {}
+	
+//	@Test
+//	public void test20InsectoBocaAbajoEnModoDefensaDestruyeAlAtacante() {}
+	
+//	@Test
+//	public void test21CilindroDaniaDirectamenteAlOponenteAlSerAtacada() {}
+	
+	/* Coloco un monstruo en posición de ataque y la carta trampa Reinforcements de mi
+	lado del campo, coloco un monstruo en el campo enemigo (con 400 puntos mas de
+	ataque que el primero) y atacar al primer monstruo. Verificar que se activa la carta
+	trampa, y el monstruo enemigo es destruido y se infligió 100 puntos de daño a la
+	vida del otro jugador.*/	
+//	@Test
+//	public void test22() {}
+	
+//	@Test
+//	public void test23ExtraerTodasLasCartasFinalizaPartida() {}
+	
+//	@Test
+//	public void test24LasCincoPartesDeExodiaEnManoFinalizanPartida() {}
+	
 }
