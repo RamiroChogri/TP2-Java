@@ -17,8 +17,8 @@ public class ZonaCampo extends Zona{
 		this.hayCartaCampo = false;
 	}
 	
-	public void activarEfectoDeCampo() {
-		//this.cartaCampo.activarEfecto();
+	public void activarEfectoDeCampo(Campo campoPropio, Campo campoEnemigo) {
+		this.cartaCampo.aplicarEfecto(campoPropio, campoEnemigo);
 	}
 	
 	public void desactivarEfectoDeCampo() {
@@ -28,13 +28,14 @@ public class ZonaCampo extends Zona{
 	public void colocarCarta(Colocable cartaMonstruoAColocar) {
 		//MetodoForzadoPorZona
 	}
+	
 	public void colocarCarta(CartaCampo cartaAColocar) {
 		this.cartaCampo = cartaAColocar;
 		this.hayCartaCampo = true;
 	}
 	
 	public void destruirCarta() {
-		this.cartaCampo = null;
+		this.cartaCampo = new CartaCampo();;
 		this.hayCartaCampo = false;
 	}
 	

@@ -380,7 +380,7 @@ de los puntos de ataque de los monstruos*/
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
-		EfectoAgujeroNegro agujeroNegroEfecto = new EfectoAgujeroNegro();
+		Efecto agujeroNegroEfecto = new EfectoAgujeroNegro();
  		CartaMagica carta = new CartaMagica( agujeroNegroEfecto );
  		
 		jugador1.enfrentarseA(jugador2);
@@ -468,8 +468,34 @@ de los puntos de ataque de los monstruos*/
 		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	}
 	
-//	@Test
-//	public void test14ColocarWastelandBocaArribaConUnMonstruoEnAmbosCampos() {}
+	@Test
+	public void test14ColocarWastelandBocaArribaConUnMonstruoEnAmbosCampos() {
+		Puntos ataqueMonstruo1 = new Puntos(1500);
+		Puntos defensaMonstruo1 = new Puntos(3000);
+		Puntos ataqueMonstruo2 = new Puntos(1000);
+		Puntos defensaMonstruo2 = new Puntos(1000);
+		int estrellasDeUnMonstruo = 3;
+		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
+		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
+
+		Efecto efectoWhasteland = new EfectoWhasteland();
+		CartaCampo whasteland = new CartaCampo(efectoWhasteland);
+		
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		
+		jugador1.colocar(unMonstruo, bocaArriba, modoAtaque);
+		jugador2.colocar(otroMonstruo, bocaArriba, modoDefensa);
+		jugador1.colocarCartaMagicaBocaArriba(whasteland);
+		
+	}
 	
 //	@Test
 //	public void test15ColocarSogenBocaArribaConUnMonstruoEnAmbosCampos() {}

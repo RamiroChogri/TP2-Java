@@ -102,6 +102,9 @@ public class Campo {
 		this.enviarCartasDestruidasAlCementerio();
 	}
 
+	public void activarEfectoDeCampo(Campo campoEnemigo) {
+		this.espacioCampo.activarEfectoDeCampo(this,campoEnemigo);
+	}
 	
 //	public void colocarCarta(Atacable cartaMonstruoAColocar , Estrategia boca, Modo modo) {
 //	try {

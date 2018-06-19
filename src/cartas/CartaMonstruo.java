@@ -65,6 +65,7 @@ public class CartaMonstruo implements Atacable{
 		this.estrellas = estrellasAColocar;
 		this.nombre = "MonstruoGenericoACME";
 		this.modo = new ModoAtaque(puntosDeAtaque, puntosDeDefensa);
+		this.regla = new ReglaDeMonstruoChicoStrategy();
 	}
 	
 	///////constructor que recibe la regla para colocarse ////////
