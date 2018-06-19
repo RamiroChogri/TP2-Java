@@ -511,8 +511,8 @@ de los puntos de ataque de los monstruos*/
 		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
 		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
 
-		Efecto efectoSogend = new EfectoSogen();//sogen aumenta los ptsdef de tus monstruos en 500
-		CartaCampo sogen = new CartaCampo(efectoSogend);  // tambien los ptsatk de los monstruos enemigos en 200
+		Efecto efectoSogen = new EfectoSogen();//sogen aumenta los ptsdef de tus monstruos en 500
+		CartaCampo sogen = new CartaCampo(efectoSogen);  // tambien los ptsatk de los monstruos enemigos en 200
 		
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
@@ -529,7 +529,7 @@ de los puntos de ataque de los monstruos*/
 		
 		jugador1.atacar(unMonstruo, otroMonstruo);
 		
-		int vidaEsperada = 8000;
+		int vidaEsperada = 7700;
 		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
 	}
 	
