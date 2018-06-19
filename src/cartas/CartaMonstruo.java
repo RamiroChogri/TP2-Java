@@ -109,17 +109,7 @@ public class CartaMonstruo implements Atacable{
 		cartaAtacableEnemiga.recibirAtaque(this);
 	}
 	
-	
-	public void atacar(CartaMonstruo otraCartaMonstruo) {
-		
-		if (otraCartaMonstruo.estaColocadaBocaAbajo() && otraCartaMonstruo.estaEnModoDefensa()) {
-			otraCartaMonstruo.colocarBocaArribaEnModoDefensa();
-		}
-		
-		otraCartaMonstruo.recibirAtaque(this, this.puntosDeAtaque);
-		
-	}
-	
+
 	/////////
 	@Override
 	public void recibirAtaque(CartaMonstruo cartaAtacante) {
@@ -196,22 +186,13 @@ public class CartaMonstruo implements Atacable{
 		return estado.obtenerPuntosDeDanio();
 	}
 
-	@Override
-	public void recibirAtaque(Atacable atacable, int puntosAtaqueAtacable) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	public Puntos obtenerPuntosAtaque() {
 		
 		return this.puntosDeAtaque;
 	}
 
-	@Override
-	public void recibirAtaque(CartaMonstruo cartaMonstruo, Puntos puntosAtaqueDeMonstruoAtacante) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public Puntos obtenerPuntosDefensa() {
 	
