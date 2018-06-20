@@ -141,8 +141,8 @@ public class Campo {
 		return monstruoConMenorAtaque;
 	}
 	
-	public void recibirDanioDirecto(Puntos puntoDeDañoDirecto) {
-		int daño = puntoDeDañoDirecto.obtener();
+	public void recibirDanioDirecto(Puntos puntoDeDanioDirecto) {
+		int daño = puntoDeDanioDirecto.obtener();
 		this.vidaDelJugador-= daño;
 	}
 
