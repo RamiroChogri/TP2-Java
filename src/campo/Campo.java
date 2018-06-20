@@ -14,36 +14,34 @@ import jugador.Mano;
 
 public class Campo {
 
-	private int vidaDelJugador;
 	private ZonaMonstruos monstruos;
 	private ZonaMagicasYTrampas magicasYTrampas ;
 	private ZonaCampo espacioCampo;
 	private Cementerio cementerio;
 	private Mazo mazoDelJugador;
-	private Mano manoDelJugador;
+	private Jugador jugador;
 	
-	public Campo() {
+//	public Campo() {
+//		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
+//		//ordenadas aleatoriamente
+//		this.vidaDelJugador = 8000;
+//		this.monstruos = new ZonaMonstruos();
+//		this.magicasYTrampas = new ZonaMagicasYTrampas();
+//		this.espacioCampo = new ZonaCampo();
+//		this.cementerio = new Cementerio();
+//		this.mazoDelJugador = new Mazo();
+//		this.manoDelJugador = null;
+//	}
+	
+	public Campo(Jugador jugadorDuenio) {
 		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
 		//ordenadas aleatoriamente
-		this.vidaDelJugador = 8000;
 		this.monstruos = new ZonaMonstruos();
 		this.magicasYTrampas = new ZonaMagicasYTrampas();
 		this.espacioCampo = new ZonaCampo();
 		this.cementerio = new Cementerio();
 		this.mazoDelJugador = new Mazo();
-		this.manoDelJugador = null;
-	}
-	
-	public Campo(Mano manoDelJugador) {
-		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
-		//ordenadas aleatoriamente
-		this.vidaDelJugador = 8000;
-		this.monstruos = new ZonaMonstruos();
-		this.magicasYTrampas = new ZonaMagicasYTrampas();
-		this.espacioCampo = new ZonaCampo();
-		this.cementerio = new Cementerio();
-		this.mazoDelJugador = new Mazo();
-		this.manoDelJugador = manoDelJugador;
+		this.jugador = jugadorDuenio;
 	}
 
 	////////////////////////////////////
@@ -56,8 +54,8 @@ public class Campo {
 		this.monstruos.aumentarDefensaMonstruoPorEfectoCampo(puntosDefensa);
 	}
 	
-	public void colocarCarta(Jugador jugador, Colocable cartaAColocar,EstadoCarta estadoAColocar) throws NoHayLugarVacioException {
-		cartaAColocar.colocarse(jugador, this.monstruos, this.magicasYTrampas, this.espacioCampo, this.cementerio, estadoAColocar);
+	public void colocarCarta(Colocable cartaAColocar,EstadoCarta estadoAColocar) throws NoHayLugarVacioException {
+		cartaAColocar.colocarse(this.jugador, this.monstruos, this.magicasYTrampas, this.espacioCampo, this.cementerio, estadoAColocar);
 	}
 	
 	//////////////////////////////////
@@ -96,10 +94,6 @@ public class Campo {
 		return (this.obtenerCantidadDeCartasEnZonaMonstruos() + this.obtenerCantidadDeCartasEnZonaMagicasYTrampas() + this.obtenerCantidadDeCartasEnZonaCampo());
 	}
 	
-	public int obtenerVidaRestante() {
-		
-		return this.vidaDelJugador;
-	}
 	
 	public Colocable levantarCartaDelMazo() {
 		return this.mazoDelJugador.levantarCarta();
@@ -113,7 +107,7 @@ public class Campo {
 		// this.enterrarCartaCampo(); Error, me agrega null a la lista y para ahorrar if lo comentamos por ahora
 		this.cementerio.agregarCartasAlCementerio(cartasAEnterrar);
 		
-		vidaDelJugador -= danio;
+		this.jugador.recibirAtaque(danio);
 		
 	}
 	
@@ -132,8 +126,8 @@ public class Campo {
 	}
 	
 	//Para PotOfGreed	
-	public void agregarCartaEnMano(Colocable cartaAColocar) {
-		this.manoDelJugador.agregarCartaEnMano(cartaAColocar);
+	public void agregarAManoCartaDelMazo() {
+		this.jugador.tomarCartaDelMazo();
 	}
 	
 	public Atacable obtenerCartaMonstruoConMenorAtaque() throws NoHayMonstruoParaSacrificarException {
@@ -141,9 +135,5 @@ public class Campo {
 		return monstruoConMenorAtaque;
 	}
 	
-	public void recibirDanioDirecto(Puntos puntoDeDanioDirecto) {
-		int daño = puntoDeDanioDirecto.obtener();
-		this.vidaDelJugador-= daño;
-	}
 
 }
