@@ -13,4 +13,6 @@ public interface Atacable extends Destruible, Colocable{
 	public int obtenerEstrellas();
 
 	void recibirAtaque(CartaMonstruo cartaAtacante);
+
+	public Puntos obtenerPuntosAtaque();
 }

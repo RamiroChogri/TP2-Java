@@ -221,5 +221,15 @@ public class CartaMonstruo implements Atacable{
 	public void aumentarDefensaEn(Puntos puntosDeDefensaExtra) {
 		this.puntosDeDefensa.aumentar(puntosDeDefensaExtra);
 	}
+
+	public boolean tieneMasPuntosDeAtaqueQue(Atacable carta) {
+		
+		return puntosDeAtaque.sonMayoresA(carta.obtenerPuntosAtaque());
+	}
+
+	public int diferenciaDeAtaqueCon(CartaMonstruo carta) {
+		
+		return puntosDeAtaque.obtenerDiferenciaCon(carta.obtenerPuntosAtaque());
+	}
  	
 }

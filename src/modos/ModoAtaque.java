@@ -25,18 +25,14 @@ public class ModoAtaque extends Modo {
 	@Override
 	public void recibirAtaque(CartaMonstruo cartaAtacante, CartaMonstruo cartaAtacada) {
 		
-		Puntos puntosDeAtaqueMonstruoAtacante = cartaAtacante.obtenerPuntosAtaque();
-		Puntos puntosDeAtaqueMonstruoAtacado = cartaAtacada.obtenerPuntosAtaque();
-		
-		
-		if(puntosDeAtaqueMonstruoAtacante.sonMayoresA(puntosDeAtaqueMonstruoAtacado)) {
+		if(cartaAtacante.tieneMasPuntosDeAtaqueQue(cartaAtacada)) {
 			
-			int diferenciaDeDanio = puntosDeAtaqueMonstruoAtacante.obtenerDiferenciaCon(puntosDeAtaqueMonstruoAtacado);
+			int diferenciaDeDanio = cartaAtacante.diferenciaDeAtaqueCon(cartaAtacada);
 			cartaAtacada.destruirCarta(diferenciaDeDanio);	
 		}
-		else if(puntosDeAtaqueMonstruoAtacado.sonMayoresA(puntosDeAtaqueMonstruoAtacante)) {
+		else if(cartaAtacada.tieneMasPuntosDeAtaqueQue(cartaAtacante)) {
 			
-			int diferenciaDeDanio = puntosDeAtaqueMonstruoAtacado.obtenerDiferenciaCon(puntosDeAtaqueMonstruoAtacante);
+			int diferenciaDeDanio = cartaAtacada.diferenciaDeAtaqueCon(cartaAtacante);
 			cartaAtacante.destruirCarta(diferenciaDeDanio);
 			
 		}
@@ -44,8 +40,7 @@ public class ModoAtaque extends Modo {
 			cartaAtacante.destruirCarta();
 			cartaAtacada.destruirCarta();
 		}
-		
-		
+			
 	}
 
 }
