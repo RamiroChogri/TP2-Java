@@ -24,6 +24,7 @@ public class ReglaDeMonstruoGrandeStrategy extends ReglaDeInvocacionStrategy {
 		
 		zonaMonstruos.eliminarUltimaCartaMonstruoColocada();
 		monstruosSacrificados.addAll(zonaMonstruos.recolectarCartasDestruidas());
+		
 		zonaMonstruos.eliminarUltimaCartaMonstruoColocada();
 		monstruosSacrificados.addAll( zonaMonstruos.recolectarCartasDestruidas() );
 		

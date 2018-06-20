@@ -142,5 +142,30 @@ public class ZonaMonstruos extends Zona {
 		return cartaMonstruoMenorPuntaje;
 	}
 	
+	public boolean tieneElMonstruoTantasVeces(String nombreDelMonstruo, int cantidadDeVeces) {
+		int vecesEncontrada = 0;
+		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
+		CartaMonstruo monstruoActual;
+		while(posicionesIterator.hasNext()) {
+			monstruoActual = posicionesIterator.next();
+			if( nombreDelMonstruo == monstruoActual.obtenerNombre() ) {
+				vecesEncontrada++;
+			}
+		}
+		
+		return ( vecesEncontrada >= cantidadDeVeces );
+	}
 	
+	public void sacrificarA(String nombreDelMonstruo) {
+		boolean destruido = false;
+		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
+		CartaMonstruo monstruoActual;
+		while(posicionesIterator.hasNext() && !destruido) {
+			monstruoActual = posicionesIterator.next();
+			if( nombreDelMonstruo == monstruoActual.obtenerNombre() ) {
+				monstruoActual.destruirCarta();
+				destruido = true;
+			}
+		}
+	}
 }

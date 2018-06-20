@@ -9,6 +9,18 @@ public class CartaMonstruoFactory {
 			
 		}
 		
+		public CartaMonstruo crearDragonDefinitivoDeOjosAzules() {
+			
+			Puntos puntosDeAtaque = new Puntos(4500);
+			Puntos puntosDeDefensa = new Puntos(3800);
+			int estrellas = 12;
+			ReglaDeInvocacionStrategy regla = new ReglaDragonBlancoDefinitivoStrategy();
+			
+			CartaMonstruo dragonBlancoDefinitivo = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
+			dragonBlancoDefinitivo.setNombre("Dragon Definitivo De Ojos Azules");
+			
+			return dragonBlancoDefinitivo;			
+		}
 		public CartaMonstruo crearDragonBlancoDeOjosAzules() {
 			
 			Puntos puntosDeAtaque = new Puntos(3000);
