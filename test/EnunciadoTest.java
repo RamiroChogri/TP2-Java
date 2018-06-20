@@ -565,14 +565,43 @@ de los puntos de ataque de los monstruos*/
 		
 		jugador1.colocar(fisura, bocaArriba);
 		
+		//Hay que hacer otro caso como para verificar que efecto de fisura no es destruir
+		//la segunda carta colocada (que no esta hardcodeado)
+		
 		assertTrue(monstruoCon1000DeAtaque.estaDestruida());
 		assertFalse(monstruoCon1100DeAtaque.estaDestruida());
 		assertFalse(monstruoCon1700DeAtaque.estaDestruida());
 		
 	}
 	
-//	@Test
-//	public void test18AtacarConJinzoRestaPuntosDeVidaDirectamenteAlOponente() {}
+	@Test
+	public void test18AtacarConJinzoRestaPuntosDeVidaDirectamenteAlOponente() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		
+		Atacable jinzo7 = fabrica.crearJinzo7();
+		Atacable monstruoCon1700DeAtaque = fabrica.crearBueyDeBatalla();
+ 		Atacable monstruoCon1100DeAtaque = fabrica.crearConejoOscuro();
+ 		
+ 		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		jugador1.colocar(jinzo7, bocaArriba, modoAtaque);
+		jugador2.colocar(monstruoCon1700DeAtaque, bocaArriba, modoAtaque);
+		jugador2.colocar(monstruoCon1100DeAtaque, bocaArriba, modoAtaque);
+		
+		//Si no es jinzo7 debe tirar excepcion de que hay cartas monstruo vivas en el
+		//tablero enemigo que deben destruirse antes de poder atacar directamente al 
+		//jugador enemigo
+		jugador1.atacar(jinzo7, jugador2);
+		
+		int vidaEsperada = 7500;
+		assertEquals(7500, jugador2.obtenerVidaRestante());
+	}
 	
 //	@Test
 //	public void test19InvocarAlDragonDefinitivoSacrifica3Dragones() {}
