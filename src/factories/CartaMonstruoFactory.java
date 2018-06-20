@@ -166,4 +166,28 @@ public class CartaMonstruoFactory {
 			
 			return avian;
 		}
+		
+		public CartaMonstruo crearDamaArpia() {
+			Puntos puntosDeAtaque = new Puntos(1300);
+			Puntos puntosDeDefensa = new Puntos(1400);
+			int estrellas = 4;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			CartaMonstruo damaArpia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
+			damaArpia.setNombre("Dama Arpia");
+			
+			return damaArpia;
+		}
+		
+		public CartaMonstruo crearDragonDeKoumori() {
+			Puntos puntosDeAtaque = new Puntos(1500);
+			Puntos puntosDeDefensa = new Puntos(1200);
+			int estrellas = 4;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			CartaMonstruo dragonDeKoumori = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
+			dragonDeKoumori.setNombre("Dragon De Koumori");
+			
+			return dragonDeKoumori;
+		}
 }
