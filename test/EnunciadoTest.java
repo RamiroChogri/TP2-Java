@@ -266,12 +266,15 @@ de los puntos de ataque de los monstruos*/
 	
 	@Test
 	public void test08MonstruoAtacaAOtroMonstruoEnModoAtaqueConIgualAtaque() {
-		Puntos ataqueMonstruo1 = new Puntos(2000);
+		Puntos ataqueMonstruo1 = new Puntos(1000);
 		Puntos defensaMonstruo1 = new Puntos(3000);
+		
+		Puntos ataqueMonstruo2 = new Puntos(1000);
 		Puntos defensaMonstruo2 = new Puntos(2000);
+		
 		int estrellas = 3;
 		CartaMonstruo monstruoConMilDeAtaque = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellas);
- 		CartaMonstruo otroMonstruoConMilDeAtaque = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo2, estrellas);
+ 		CartaMonstruo otroMonstruoConMilDeAtaque = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellas);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
