@@ -47,13 +47,15 @@ public class Jugador implements Daniable{
 		this.campoEnemigo.enviarCartasDestruidasAlCementerio();
 	}
 	
-	public void atacar(Atacable atacante, Daniable atacado) {
-		
+	public void atacar(Atacable atacante, Jugador atacado) {
+
 		atacante.atacar(atacado);
 		
 		this.campoPropio.enviarCartasDestruidasAlCementerio();
 		this.campoEnemigo.enviarCartasDestruidasAlCementerio();
 	}
+	
+	
 	
 	//Desde el jugador no vamos a colocar genericamente la carta, desde el jugador
 	//vamos a colocar la carta de la manera que quiera el jugador y despues la colocacion
@@ -150,7 +152,7 @@ public class Jugador implements Daniable{
 		campoPropio.enviarCartasDestruidasAlCementerio();
 	}
 
-	public void recibirAtaque(CartaMonstruo cartaAtacante) {
+	public void recibirAtaque(Atacable cartaAtacante) {
 		
 		if (campoPropio.obtenerCantidadDeCartasEnZonaMonstruos() > 0) {
 			throw new NoSePuedeAtacarAlJugadorDirectamenteException();
@@ -163,7 +165,6 @@ public class Jugador implements Daniable{
 	public void recibirAtaque(int danioRecibido) {
 		this.vida -= danioRecibido;
 	}
-	
 /*
 	public void atacar(Atacable cartaAtacable) {
 		//Forzado
