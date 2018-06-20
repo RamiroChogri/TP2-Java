@@ -142,8 +142,8 @@ public class Campo {
 	}
 	
 	public void recibirDanioDirecto(Puntos puntoDeDanioDirecto) {
-		int daño = puntoDeDanioDirecto.obtener();
-		this.vidaDelJugador-= daño;
+		int danio = puntoDeDanioDirecto.obtener();
+		this.vidaDelJugador-= danio;
 	}
 
 }
