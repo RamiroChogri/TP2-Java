@@ -642,8 +642,33 @@ de los puntos de ataque de los monstruos*/
 		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
 	}
 	
-//	@Test
-//	public void test20InsectoBocaAbajoEnModoDefensaDestruyeAlAtacante() {}
+	@Test
+	public void test20InsectoBocaAbajoEnModoDefensaDestruyeAlAtacante() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Atacable insectoComeHombres = fabrica.crearInsectoComeHombres();
+		Atacable damaArpia = fabrica.crearDamaArpia();
+		
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		
+		jugador1.colocar(insectoComeHombres, bocaAbajo, new ModoDefensa() );
+		jugador2.colocar(damaArpia, bocaArriba, new ModoAtaque() );
+		
+		jugador2.atacar(damaArpia ,insectoComeHombres);
+		
+		int vidaEsperada = 8000;
+		
+		assertEquals(1 , jugador1.obtenerCantidadCartasEnZonaMonstruos());
+		assertEquals (0, jugador2.obtenerCantidadCartasEnZonaMonstruos());
+		assertEquals(vidaEsperada, jugador1.obtenerVidaRestante() );
+		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante() );
+}
 	
 //	@Test
 //	public void test21CilindroDaniaDirectamenteAlOponenteAlSerAtacada() {}

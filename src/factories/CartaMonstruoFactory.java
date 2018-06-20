@@ -2,6 +2,7 @@ package factories;
 
 import cartas.Atacable;
 import cartas.CartaMonstruo;
+import cartas.EfectoInsectoComeHombres;
 import cartas.Puntos;
 import efectos.Efecto;
 import efectos.EfectoJinzo7;
@@ -191,5 +192,18 @@ public class CartaMonstruoFactory {
 			
 			return jinzo7;
 			
+		}
+		
+		public Atacable crearInsectoComeHombres() {
+			Puntos puntosDeAtaque = new Puntos(450);
+			Puntos puntosDeDefensa = new Puntos(600);
+			int estrellas = 2;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			Atacable insectoComeHombres = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Insecto Come Hombres");
+			
+			insectoComeHombres = new EfectoInsectoComeHombres(insectoComeHombres);
+			
+			return insectoComeHombres;
 		}
 }
