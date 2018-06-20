@@ -12,12 +12,14 @@ public class Jugador implements Daniable{
 		private Campo campoPropio;
 		private Campo campoEnemigo;
 		private Mano mano;
+		private int vida;
 	
 
 	public Jugador() {
 		
 		this.mano = new Mano();
-		this.campoPropio = new Campo(mano);
+		this.campoPropio = new Campo(this);
+		this.vida = 8000;
 		for(int i=0;i<5;i++) {
 			this.tomarCartaDelMazo();
 		}
@@ -66,9 +68,9 @@ public class Jugador implements Daniable{
 		mano.agregarCartaEnMano(campoPropio.levantarCartaDelMazo());
 	}
 
-	public Object obtenerVidaRestante() {
+	public int obtenerVidaRestante() {
 		
-		return campoPropio.obtenerVidaRestante();
+		return this.vida;
 	}
 /*
 	public void colocar (Atacable carta, EstadoCarta estado, Modo modo) {
@@ -99,13 +101,13 @@ public class Jugador implements Daniable{
 */	
 	public void colocar(Atacable carta, EstadoCarta estado, Modo modo) {
 		carta.cambiarA(modo);
-		campoPropio.colocarCarta(this, carta, estado);
+		campoPropio.colocarCarta(carta, estado);
 		campoPropio.enviarCartasDestruidasAlCementerio();
 		
 	}
 	
 	public void colocar(Activable carta, EstadoCarta estado) {
-		campoPropio.colocarCarta(this, carta, estado);
+		campoPropio.colocarCarta(carta, estado);
 		
 	}
 	
@@ -141,7 +143,11 @@ public class Jugador implements Daniable{
 
 	public void recibirAtaque(CartaMonstruo cartaAtacante) {
 		Puntos puntosDeDanioRecibidos = cartaAtacante.obtenerPuntosAtaque();
-		this.campoPropio.recibirDanioDirecto(puntosDeDanioRecibidos);
+		this.vida -= puntosDeDanioRecibidos.obtener();
+	}
+	
+	public void recibirAtaque(int danioRecibido) {
+		this.vida -= danioRecibido;
 	}
 
 	public void atacar(Atacable cartaAtacable) {
