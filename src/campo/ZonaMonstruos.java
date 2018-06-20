@@ -3,6 +3,7 @@ import java.util.*;
 
 import cartas.*;
 import exceptions.NoHayLugarVacioException;
+import exceptions.NoHayMonstruoException;
 import exceptions.ZonaMonstruoLlenaException;
 
 public class ZonaMonstruos extends Zona {
@@ -119,6 +120,26 @@ public class ZonaMonstruos extends Zona {
 	    	cartaMonstruoActual.eliminarModificadorDeDefensa();
 	    	cartaMonstruoActual.aumentarDefensaEn(this.puntosDeDefensaExtra);
 	    }
+	}
+
+	public Atacable obtenerMonstruoConMenorAtaque() {
+		
+		if( posiciones.isEmpty() ) { throw new NoHayMonstruoException(); };
+		
+		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
+	    CartaMonstruo cartaMonstruoMenorPuntaje = posicionesIterador.next();
+	        
+	    while ( posicionesIterador.hasNext() ) {
+	    	
+	    	CartaMonstruo cartaActual = posicionesIterador.next();
+	    	if(cartaMonstruoMenorPuntaje.tieneMasPuntosDeAtaqueQue(cartaActual)) {
+	    		
+	    		cartaMonstruoMenorPuntaje = cartaActual;
+	    		
+	    	}
+	    	
+	    }
+		return cartaMonstruoMenorPuntaje;
 	}
 	
 	
