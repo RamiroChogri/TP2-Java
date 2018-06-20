@@ -535,7 +535,8 @@ de los puntos de ataque de los monstruos*/
 	public void test16ActivarPotOfGreedPermiteLevantarDosCartasDelMazo() {
 
 		Efecto efectoPotOfGreed = new EfectoPotOfGreed();//sogen aumenta los ptsdef de tus monstruos en 500
-		CartaMagica potOfGreed = new CartaMagica(efectoPotOfGreed);  // tambien los ptsatk de los monstruos enemigos en 200
+		Activable potOfGreed = new CartaMagica(efectoPotOfGreed);  // tambien los ptsatk de los monstruos enemigos en 200
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
@@ -543,13 +544,40 @@ de los puntos de ataque de los monstruos*/
 		jugador1.enfrentarseA(jugador2);
 		jugador2.enfrentarseA(jugador1);
 		
-		jugador1.colocarCartaMagicaBocaArriba(potOfGreed);
+		jugador1.colocar(potOfGreed, bocaArriba);
 		int cartasEnManoEperadas = 7;
 		assertEquals(cartasEnManoEperadas, jugador1.obtenerCantidadDeCartasEnLaMano());
 	}
 	
-//	@Test
-//	public void test17ColocarFisuraBocaArribaConUnMonstruoEnAmbosCamposDestruyeAlDeMenorAtaque() {}
+	@Test
+	public void test17ColocarFisuraBocaArribaConUnMonstruoEnAmbosCamposDestruyeAlDeMenorAtaque() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		
+		Atacable monstruoCon1000DeAtaque = fabrica.crearHeroeElementalAvian();
+		Atacable monstruoCon1700DeAtaque = fabrica.crearBueyDeBatalla();
+ 		Atacable monstruoCon1100DeAtaque = fabrica.crearConejoOscuro();
+ 		Efecto efectoFisura = new EfectoFisura();
+ 		Activable fisura = new CartaMagica(efectoFisura);
+ 				
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		jugador2.colocar(monstruoCon1700DeAtaque, bocaArriba, modoAtaque);
+		jugador2.colocar(monstruoCon1000DeAtaque, bocaArriba, modoAtaque);
+		jugador2.colocar(monstruoCon1100DeAtaque, bocaArriba, modoAtaque);
+		
+		jugador1.colocar(fisura, bocaArriba);
+		
+		assertTrue(monstruoCon1000DeAtaque.estaDestruida());
+		assertFalse(monstruoCon1100DeAtaque.estaDestruida());
+		assertFalse(monstruoCon1700DeAtaque.estaDestruida());
+		
+	}
 	
 //	@Test
 //	public void test18AtacarConJinzoRestaPuntosDeVidaDirectamenteAlOponente() {}
