@@ -21,11 +21,7 @@ public class ZonaCampo extends Zona{
 		this.cartaCampo.aplicarEfecto(campoPropio, campoEnemigo);
 	}
 	
-	public void desactivarEfectoDeCampo() {
-		//this.cartaCampo.activarEfecto();
-	}
-	
-	public void colocarCarta(Colocable cartaMonstruoAColocar) {
+	public void colocarCarta(Colocable cartaAColocar) {
 		//MetodoForzadoPorZona
 	}
 	
@@ -35,12 +31,12 @@ public class ZonaCampo extends Zona{
 	}
 	
 	public void destruirCarta() {
-		this.cartaCampo = new CartaCampo();;
+		this.cartaCampo = null;
 		this.hayCartaCampo = false;
 	}
 	
 	public int obtenerCantidadDeCartas() {
-		int cantidadDeCartaCampo = hayCartaCampo ? 1 : 0;
+		int cantidadDeCartaCampo = (hayCartaCampo ? 1 : 0);
 		return cantidadDeCartaCampo;
 	}
 
@@ -61,5 +57,9 @@ public class ZonaCampo extends Zona{
 
 	public void vaciar() {
 		this.destruirCarta();
+	}
+
+	public void enviarCampoAlCementerio(Cementerio cementerio) {
+		cementerio.agregarCartaAlCementerio(this.cartaCampo);
 	}
 }
