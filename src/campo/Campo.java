@@ -21,17 +21,16 @@ public class Campo {
 	private Mazo mazoDelJugador;
 	private Jugador jugador;
 	
-//	public Campo() {
-//		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
-//		//ordenadas aleatoriamente
-//		this.vidaDelJugador = 8000;
-//		this.monstruos = new ZonaMonstruos();
-//		this.magicasYTrampas = new ZonaMagicasYTrampas();
-//		this.espacioCampo = new ZonaCampo();
-//		this.cementerio = new Cementerio();
-//		this.mazoDelJugador = new Mazo();
-//		this.manoDelJugador = null;
-//	}
+	public Campo() {
+		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
+		//ordenadas aleatoriamente
+		this.monstruos = new ZonaMonstruos();
+		this.magicasYTrampas = new ZonaMagicasYTrampas();
+		this.espacioCampo = new ZonaCampo();
+		this.cementerio = new Cementerio();
+		this.mazoDelJugador = new Mazo();
+		this.jugador = new Jugador(this);
+	}
 	
 	public Campo(Jugador jugadorDuenio) {
 		//Todas las zonas se inicializan vacias y el mazo se inicializa con 40 cartas
