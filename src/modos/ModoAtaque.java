@@ -1,5 +1,6 @@
 package modos;
 
+import cartas.Atacable;
 import cartas.CartaMonstruo;
 import cartas.Puntos;
 
@@ -23,7 +24,7 @@ public class ModoAtaque extends Modo {
 	}
 
 	@Override
-	public void recibirAtaque(CartaMonstruo cartaAtacante, CartaMonstruo cartaAtacada) {
+	public void recibirAtaque(Atacable cartaAtacante, Atacable cartaAtacada) {
 		
 		if(cartaAtacante.tieneMasPuntosDeAtaqueQue(cartaAtacada)) {
 			

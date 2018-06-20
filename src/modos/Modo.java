@@ -14,6 +14,6 @@ public abstract class Modo {
 		public abstract boolean estaEnModoAtaque();
 		public abstract boolean estaEnModoDefensa();
 
-		public abstract void recibirAtaque(CartaMonstruo cartaAtacante, CartaMonstruo cartaAtacada);
+		public abstract void recibirAtaque(Atacable cartaAtacante, Atacable cartaAtacada);
 
 }

@@ -2,6 +2,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import campo.*;
 import cartas.*;
+import efectos.EfectoJinzo7;
+import estadoCarta.EstadoCarta;
+import estadoCarta.EstadoCartaColocadaBocaArriba;
+import factories.CartaMonstruoFactory;
+import jugador.Jugador;
+import modos.Modo;
+import modos.ModoAtaque;
 
 public class CartaMonstruoTest {
 	
@@ -161,5 +168,23 @@ public class CartaMonstruoTest {
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
 		assertEquals(2000 - 100 ,cartaMonstruo2.obtenerDanioAlHaberSidoDestruida());
+	}
+	
+	@Test
+	public void testJinzo7AtacaDirectamenteAJugador() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable jinzo7 = fabrica.crearJinzo7();
+		Jugador jugador = new Jugador();
+		Atacable cartaMonstruoEnemiga = fabrica.crearConejoOscuro();
+		
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		Modo modoAtaque = new ModoAtaque();
+		
+		jugador.colocar(cartaMonstruoEnemiga, bocaArriba, modoAtaque);
+		jinzo7.atacar(jugador);
+		
+		int vidaEsperada = 8000 - 500;
+		assertEquals(vidaEsperada, jugador.obtenerVidaRestante());
+	
 	}
 }

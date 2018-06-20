@@ -600,7 +600,7 @@ de los puntos de ataque de los monstruos*/
 		jugador1.atacar(jinzo7, jugador2);
 		
 		int vidaEsperada = 7500;
-		assertEquals(7500, jugador2.obtenerVidaRestante());
+		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
 	}
 	
 	@Test

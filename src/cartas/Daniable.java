@@ -2,6 +2,6 @@ package cartas;
 
 public interface Daniable {
 
-	void recibirAtaque(CartaMonstruo cartaAtacante);
+	void recibirAtaque(Atacable cartaAtacante);
 
 }
