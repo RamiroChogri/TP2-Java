@@ -142,6 +142,11 @@ public class Jugador implements Daniable{
 	}
 
 	public void recibirAtaque(CartaMonstruo cartaAtacante) {
+		
+		if (campoPropio.obtenerCantidadDeCartasEnZonaMonstruos() > 0) {
+			throw new NoSePuedeAtacarAlJugadorDirectamenteException();
+		}
+		
 		Puntos puntosDeDanioRecibidos = cartaAtacante.obtenerPuntosAtaque();
 		this.vida -= puntosDeDanioRecibidos.obtenerPuntosActuales();
 	}
