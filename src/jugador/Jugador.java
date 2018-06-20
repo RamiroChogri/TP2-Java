@@ -6,7 +6,8 @@ import exceptions.*;
 import modos.*;
 import efectos.Efecto;
 import estadoCarta.*;
-public class Jugador {
+
+public class Jugador implements Daniable{
 
 		private Campo campoPropio;
 		private Campo campoEnemigo;
@@ -28,6 +29,14 @@ public class Jugador {
 	}
 	
 	public void atacar(Atacable atacante, Atacable atacado) {
+		
+		atacante.atacar(atacado);
+		
+		this.campoPropio.enviarCartasDestruidasAlCementerio();
+		this.campoEnemigo.enviarCartasDestruidasAlCementerio();
+	}
+	
+	public void atacar(Daniable atacante, Daniable atacado) {
 		
 		atacante.atacar(atacado);
 		
@@ -104,131 +113,6 @@ public class Jugador {
 		carta.aplicarEfecto(this.campoPropio, this.campoEnemigo);
 	}
 	
-//	public void colocarMonstruoEnModoAtaque(CartaMonstruo carta) {
-//		
-//		if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0)) {
-//		
-//			this.campoPropio.eliminarUltimaCartaMonstruoColocada();
-//			
-//			if ((carta.obtenerEstrellas() > 6) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0 )) {
-//			
-//				this.campoPropio.eliminarUltimaCartaMonstruoColocada();
-//			
-//			} else if (carta.obtenerEstrellas() > 6 ){
-//		
-//				throw new NoHayMonstruoParaSacrificarException();
-//		 
-//			}
-//			
-//		} else if ((carta.obtenerEstrellas() > 4)) {
-//		
-//			throw new NoHayMonstruoParaSacrificarException();
-//		
-//		}
-//		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaArriba();
-//		Modo nuevoModo = new ModoAtaque();
-//		carta.cambiarA(nuevoModo);
-//		
-//		Colocable cartaAColocar = carta;
-//		this.campoPropio.colocarCarta(cartaAColocar, nuevoEstado);
-//
-//	}
-//	
-//	public void colocarMonstruoBocaArribaEnModoDefensa(CartaMonstruo carta) {
-//				
-//		if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0)) {
-//		
-//			this.campoPropio.eliminarUltimaCartaMonstruoColocada();
-//			
-//			if ((carta.obtenerEstrellas() > 6) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0 )) {
-//			
-//				this.campoPropio.eliminarUltimaCartaMonstruoColocada();
-//			
-//			} else if (carta.obtenerEstrellas() > 6 ){
-//		
-//				throw new NoHayMonstruoParaSacrificarException();
-//		 
-//			}
-//			
-//		} else if ((carta.obtenerEstrellas() > 4)) {
-//		
-//			throw new NoHayMonstruoParaSacrificarException();
-//		
-//		}
-//		
-//		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaArriba();
-//		Modo nuevoModo = new ModoDefensa();
-//		carta.cambiarA(nuevoModo);
-//		
-//		Colocable cartaAColocar = carta;
-//		this.campoPropio.colocarCarta(cartaAColocar, nuevoEstado);
-//	}
-//	
-//	public void colocarMonstruoBocaAbajoEnModoDefensa(CartaMonstruo carta) {
-//		
-//		if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0)) {
-//		
-//			this.campoPropio.eliminarUltimaCartaMonstruoColocada();
-//			
-//			if ((carta.obtenerEstrellas() > 6) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0 )) {
-//			
-//				this.campoPropio.eliminarUltimaCartaMonstruoColocada();
-//			
-//			} else if (carta.obtenerEstrellas() > 6 ){
-//		
-//				throw new NoHayMonstruoParaSacrificarException();
-//		 
-//			}
-//			
-//		} else if ((carta.obtenerEstrellas() > 4)) {
-//		
-//			throw new NoHayMonstruoParaSacrificarException();
-//		
-//		}
-//		
-//		
-//		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaAbajo();
-//		Modo nuevoModo = new ModoDefensa();
-//		carta.cambiarA(nuevoModo);
-//		
-//		Colocable cartaAColocar = carta;
-//		this.campoPropio.colocarCarta(cartaAColocar, nuevoEstado);
-//
-//	}
-//
-//	public void colocarCartaMagicaBocaArriba(CartaMagica carta) {
-//		
-//		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaArriba();
-//		Colocable cartaAColocar = carta;
-//		
-//		this.campoPropio.colocarCarta(cartaAColocar , nuevoEstado );
-//		carta.aplicarEfecto( this.campoPropio, this.campoEnemigo);
-//		
-//	}
-//	
-//	public void colocarCartaMagicaBocaAbajo(CartaMagica carta) {
-//		EstadoCarta nuevoEstado= new EstadoCartaColocadaBocaAbajo();
-//		Colocable cartaAColocar = carta;
-//		
-//		this.campoPropio.colocarCarta(cartaAColocar, nuevoEstado);
-//	}
-//
-//	public void colocarCartaTrampaBocaAbajo(CartaTrampa carta) {
-//		
-//		EstadoCarta nuevoEstado = new EstadoCartaColocadaBocaAbajo();
-//		Colocable cartaAColocar = carta;
-//		
-//		this.campoPropio.colocarCarta(cartaAColocar , nuevoEstado);
-//		carta.aplicarEfecto( this.campoPropio, this.campoEnemigo);	
-//	}
-	
-
-	//No funciona con metodo generico que recibe cualquier tipo de carta
-//
-//	private void colocarCarta (Carta carta) {
-//		this.campoPropio.colocarCarta(carta);
-//	}
-//	
 	public boolean tieneCartasEnCampo() {
 		
 		return this.campoPropio.tieneCartas();
@@ -253,6 +137,19 @@ public class Jugador {
 	
 	public void enviarCartasDestruidasAlCementerio() {
 		campoPropio.enviarCartasDestruidasAlCementerio();
+	}
+
+	public void recibirAtaque(CartaMonstruo cartaAtacante) {
+		Puntos puntosDeDañoRecibidos = cartaAtacante.obtenerPuntosAtaque();
+		this.campoPropio.recibirDanioDirecto(puntosDeDañoRecibidos);
+	}
+
+	public void atacar(Atacable cartaAtacable) {
+		//Forzado
+	}
+
+	public void atacar(Daniable jugador) {
+		//Forzado
 	}
  
 }

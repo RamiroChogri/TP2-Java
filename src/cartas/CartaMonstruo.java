@@ -35,33 +35,6 @@ public class CartaMonstruo implements Atacable{
 		
 	}
 	
-//	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar) {
-//		this.estado = new EstadoCartaEnMazo();
-//		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
-//		this.puntosDeDefensa = new Puntos(puntosDeDefensaAColocar);
-//		this.estrellas = 3;
-//		this.nombre = "MonstruoGenericoACME";
-//	}
-//	
-//	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar, int estrellasAColocar) {
-//		this.estado = new EstadoCartaEnMazo();
-//		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
-//		this.puntosDeDefensa = new Puntos(puntosDeDefensaAColocar);
-//		this.estrellas = estrellasAColocar;
-//		this.nombre = "MonstruoGenericoACME";
-//	}
-//	 
-//	public CartaMonstruo(int puntosDeAtaqueAColocar, int puntosDeDefensaAColocar, int estrellasAColocar, String nombreAColocar) {
-//		this.estado = new EstadoCartaEnMazo();
-//		this.puntosDeAtaque = new Puntos(puntosDeAtaqueAColocar);
-//		this.puntosDeDefensa = new Puntos(puntosDeDefensaAColocar);
-//		this.estrellas = estrellasAColocar;
-//		this.nombre = nombreAColocar;
-//	}
-//	
-	
-	////////////////////////////
-	
 	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar, int estrellasAColocar) {
 		this.puntosDeAtaque = puntosDeAtaqueAColocar;
 		this.puntosDeDefensa = puntosDeDefensaAColocar;
@@ -119,7 +92,6 @@ public class CartaMonstruo implements Atacable{
 	
 
 	/////////
-	@Override
 	public void recibirAtaque(CartaMonstruo cartaAtacante) {
 	
 		this.modo.recibirAtaque(cartaAtacante, this);
@@ -143,18 +115,6 @@ public class CartaMonstruo implements Atacable{
 		this.modo = this.modo.colocarEnModoDefensa();
 	}
 	
-//	public boolean estaColocadaEnModoAtaque() {
-//		return (this.modo.estaEnModoAtaque());
-//	}
-//	
-//	public boolean estaColocadaBocaArribaEnModoDefensa() {
-//		return ( this.estado.estaBocaArriba() && this.modo.estaEnModoDefensa() );
-//	}
-//	
-//	public boolean estaColocadaBocaAbajoEnModoDefensa() {
-//		return (this.estado.estaBocaAbajo() && this.modo.estaEnModoDefensa());
-//	}
-
 	public boolean estaColocadaBocaAbajo() {
 		return this.estado.estaBocaAbajo();
 	}
@@ -194,13 +154,10 @@ public class CartaMonstruo implements Atacable{
 		return estado.obtenerPuntosDeDanio();
 	}
 
-
-
 	public Puntos obtenerPuntosAtaque() {
 		
 		return this.puntosDeAtaque;
 	}
-
 
 	public Puntos obtenerPuntosDefensa() {
 	
@@ -231,6 +188,10 @@ public class CartaMonstruo implements Atacable{
 	public int diferenciaDeAtaqueCon(CartaMonstruo carta) {
 		
 		return puntosDeAtaque.obtenerDiferenciaCon(carta.obtenerPuntosAtaque());
+	}
+
+	public void atacar(Daniable jugador) {
+		jugador.recibirAtaque(this);
 	}
  	
 }

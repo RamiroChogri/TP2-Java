@@ -1,9 +1,15 @@
 package jugador;
 import org.junit.Test;
 
+import cartas.Atacable;
 import cartas.CartaMagica;
 import cartas.CartaMonstruo;
 import cartas.CartaTrampa;
+import estadoCarta.EstadoCarta;
+import estadoCarta.EstadoCartaColocadaBocaArriba;
+import factories.CartaMonstruoFactory;
+import modos.Modo;
+import modos.ModoAtaque;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -11,10 +17,10 @@ import static org.junit.Assert.assertTrue;
 public class JugadorTest {
 
 		@Test
-		public void testSeCreaJugadorConUnCampoYNoTieneCartasEnLaMano() {
+		public void testSeCreaJugadorConUnCampoYTieneCincoCartasEnLaMano() {
 			Jugador jugador1 = new Jugador();
 			
-			assertEquals( 0, jugador1.obtenerCantidadDeCartasEnLaMano() );
+			assertEquals( 5, jugador1.obtenerCantidadDeCartasEnLaMano() );
 		}
 		
 		
@@ -41,12 +47,12 @@ public class JugadorTest {
 		}
 		
 		@Test
-		public void testJugadorTomaDosCartasDelMazoYTieneDosCartasEnLaMano() {
+		public void testJugadorTomaDosCartasDelMazoYTieneSieteCartasEnLaMano() {
 			Jugador jugador1 = new Jugador();
 			jugador1.tomarCartaDelMazo();
 			jugador1.tomarCartaDelMazo();
 			
-			assertEquals(2, jugador1.obtenerCantidadDeCartasEnLaMano());
+			assertEquals(7, jugador1.obtenerCantidadDeCartasEnLaMano());
 		}
 		
 		@Test
@@ -79,6 +85,28 @@ public class JugadorTest {
 			jugador1.colocarCartaTrampaBocaAbajo(cartaTrampa);
 			
 			assertEquals(4, jugador1.obtenerCantidadCartasEnCampo());
+		}
+		
+		@Test
+		public void testAtacarAunJugadorSinMonstruosEnCampo() {
+			CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+			
+			Atacable unMonstruo = fabrica.crearHeroeElementalAvian();
+	 		
+			Jugador jugador1 = new Jugador();
+			Jugador jugador2 = new Jugador();
+			
+			jugador1.enfrentarseA(jugador2);
+			jugador2.enfrentarseA(jugador1);
+			
+			Modo modoAtaque = new ModoAtaque();
+			EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+			jugador1.colocar(unMonstruo, bocaArriba, modoAtaque);
+	 		
+	 		jugador1.atacar(unMonstruo, jugador2);
+	 		
+	 		int vidaEsperada = 7000;
+			assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 		}
 		
 }
