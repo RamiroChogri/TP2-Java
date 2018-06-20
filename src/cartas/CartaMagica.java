@@ -18,6 +18,7 @@ public class CartaMagica implements Activable{
 	
 	protected EstadoCarta estado;
 	protected Efecto efecto;
+	private String nombre;
 	
 	
 	public CartaMagica() {
@@ -25,13 +26,18 @@ public class CartaMagica implements Activable{
 		this.estado = new EstadoCartaNoJugada();
 		Efecto efectoNulo = new EfectoNulo();
 		this.efecto = efectoNulo;
+		this.nombre = " ";
 	}
 	
 	public CartaMagica(Efecto efectoAColocar) {
 		
 		this.estado = new EstadoCartaNoJugada();
 		this.efecto = efectoAColocar;
+		this.nombre = " ";
 	
+	}
+	public void setNombre(String nombreDeLaCarta) {
+		this.nombre = nombreDeLaCarta;
 	}
 	
 	public void colocarEn(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
