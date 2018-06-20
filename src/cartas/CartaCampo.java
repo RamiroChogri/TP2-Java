@@ -11,6 +11,8 @@ import exceptions.CartaBocaAbajoNoPuedeActivarEfectoException;
 
 public class CartaCampo extends CartaMagica {
 	
+	private String nombre;
+	
 	public CartaCampo() {
 		super();
 	}
@@ -18,6 +20,10 @@ public class CartaCampo extends CartaMagica {
 	public CartaCampo(Efecto efectoAColocar) {
 		super(efectoAColocar);
 	
+	}
+	
+	public void setNombre(String nombreDeLaCarta) {
+		this.nombre = nombreDeLaCarta;
 	}
 	
 	public void colocarse(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
