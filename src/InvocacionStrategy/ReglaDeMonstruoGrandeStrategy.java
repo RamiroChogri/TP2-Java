@@ -21,7 +21,9 @@ public class ReglaDeMonstruoGrandeStrategy extends ReglaDeInvocacionStrategy {
 			//lanzar excepcion de que no hay 2 monstruos para sacrificar
 		}
 		LinkedList<Destruible> monstruosSacrificados = new LinkedList<Destruible>();
+		
 		zonaMonstruos.eliminarUltimaCartaMonstruoColocada();
+		monstruosSacrificados.addAll(zonaMonstruos.recolectarCartasDestruidas());
 		zonaMonstruos.eliminarUltimaCartaMonstruoColocada();
 		monstruosSacrificados.addAll( zonaMonstruos.recolectarCartasDestruidas() );
 		

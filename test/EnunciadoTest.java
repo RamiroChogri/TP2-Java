@@ -436,17 +436,12 @@ de los puntos de ataque de los monstruos*/
 	se verifica que se convocÃ³ al monstruo y sedestruyeron los demÃ¡s. */
 	@Test
 	public void test13ColocarMonstruoQueRequiereDosSacrificiosDestruyeLosDosMonstruosAnteriores() {
-		Puntos ataqueMonstruo1 = new Puntos(2000);
-		Puntos defensaMonstruo1 = new Puntos(3000);
-		Puntos ataqueMonstruo2 = new Puntos(1000);
-		Puntos defensaMonstruo2 = new Puntos(2500);
-		int estrellasDeUnMonstruo = 3;
-		int estrellasDeOtroMonstruo = 8;
-		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
- 		Atacable unMonstruode6Estrellas = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeOtroMonstruo, new ReglaDeMonstruoGrandeStrategy());
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable unMonstruo = fabrica.crearDragonDeBrillo();
+ 		Atacable unMonstruoDe7Estrellas = fabrica.crearMagoOscuro();
  		
- 		Atacable unSacrificio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
- 		Atacable otroSacrificio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
+ 		Atacable unSacrificio = fabrica.crearBetaElGuerreroMagnetico();
+ 		Atacable otroSacrificio = fabrica.crearDuendeMistico();
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
@@ -457,12 +452,12 @@ de los puntos de ataque de los monstruos*/
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		jugador1.colocar(unSacrificio, bocaArriba, modoAtaque);
 		jugador1.colocar(otroSacrificio, bocaArriba, modoAtaque);
-		jugador1.colocar(unMonstruode6Estrellas,bocaArriba, modoAtaque);
+		jugador1.colocar(unMonstruoDe7Estrellas,bocaArriba, modoAtaque);
  		jugador2.colocar(unMonstruo, bocaArriba, modoAtaque);
  		
- 		jugador1.atacar(unMonstruode6Estrellas, unMonstruo);
+ 		jugador1.atacar(unMonstruoDe7Estrellas, unMonstruo);
  		
- 		int vidaEsperada = 7000;
+ 		int vidaEsperada = 7400;
  		assertEquals(1,jugador1.obtenerCantidadCartasEnCampo());
 		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
 	}
