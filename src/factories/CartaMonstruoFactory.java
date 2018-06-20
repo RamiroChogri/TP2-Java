@@ -12,184 +12,169 @@ public class CartaMonstruoFactory {
 			
 		}
 		
-		public CartaMonstruo crearDragonDefinitivoDeOjosAzules() {
+		public Atacable crearDragonDefinitivoDeOjosAzules() {
 			
 			Puntos puntosDeAtaque = new Puntos(4500);
 			Puntos puntosDeDefensa = new Puntos(3800);
 			int estrellas = 12;
 			ReglaDeInvocacionStrategy regla = new ReglaDragonBlancoDefinitivoStrategy();
 			
-			CartaMonstruo dragonBlancoDefinitivo = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			dragonBlancoDefinitivo.setNombre("Dragon Definitivo De Ojos Azules");
+			Atacable dragonBlancoDefinitivo = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Dragon Definitivo De Ojos Azules");
 			
 			return dragonBlancoDefinitivo;			
 		}
-		public CartaMonstruo crearDragonBlancoDeOjosAzules() {
+		public Atacable crearDragonBlancoDeOjosAzules() {
 			
 			Puntos puntosDeAtaque = new Puntos(3000);
 			Puntos puntosDeDefensa = new Puntos(2500);
 			int estrellas = 8;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoGrandeStrategy();
 			
-			CartaMonstruo dragonBlancoDeOjosAzules = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			dragonBlancoDeOjosAzules.setNombre("Dragon Blanco De Ojos Azules");
+			Atacable dragonBlancoDeOjosAzules = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Dragon Blanco De Ojos Azules");
 			
 			return dragonBlancoDeOjosAzules;
 		}
 		
-		public CartaMonstruo crearMagoOscuro() {
+		public Atacable crearMagoOscuro() {
 			Puntos puntosDeAtaque = new Puntos(2500);
 			Puntos puntosDeDefensa = new Puntos(2100);
 			int estrellas = 7;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoGrandeStrategy();
 			
-			CartaMonstruo magoOscuro = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			magoOscuro.setNombre("Mago Oscuro");
+			Atacable magoOscuro = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Mago Oscuro");
 			
 			return magoOscuro;
 		}
 		
-		public CartaMonstruo crearZoa() {
+		public Atacable crearZoa() {
 			Puntos puntosDeAtaque = new Puntos(2600);
 			Puntos puntosDeDefensa = new Puntos(1900);
 			int estrellas = 7;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoGrandeStrategy();
 			
-			CartaMonstruo zoa = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			zoa.setNombre("Zoa");
+			Atacable zoa = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Zoa");
 			
 			return zoa;
 		}
 	
-		public CartaMonstruo crearCraneoConvocado() {
+		public Atacable crearCraneoConvocado() {
 			Puntos puntosDeAtaque = new Puntos(2500);
 			Puntos puntosDeDefensa = new Puntos(1200);
 			int estrellas = 5;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoMedianoStrategy();
 			
-			CartaMonstruo craneoConvocado = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			craneoConvocado.setNombre("Craneo Convocado");
+			Atacable craneoConvocado = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Craneo Convocado");
 			
 			return craneoConvocado;	
 		}
 		
 
-		public CartaMonstruo crearEspadachinVengador() {
+		public Atacable crearEspadachinVengador() {
 			Puntos puntosDeAtaque = new Puntos(2000);
 			Puntos puntosDeDefensa = new Puntos(1600);
 			int estrellas = 6;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoMedianoStrategy();
 			
-			CartaMonstruo espadachinVengador = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			espadachinVengador.setNombre("Espadachin Vengador");
+			Atacable espadachinVengador = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Espadachin Vengador");
 			
 			return espadachinVengador;
 		}
 		
-		public CartaMonstruo crearBueyDeBatalla() {
+		public Atacable crearBueyDeBatalla() {
 			Puntos puntosDeAtaque = new Puntos(1700);
 			Puntos puntosDeDefensa = new Puntos(1000);
 			int estrellas = 4;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			CartaMonstruo bueyDeBatalla = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			bueyDeBatalla.setNombre("Buey De Batalla");
+			Atacable bueyDeBatalla = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Buey De Batalla");
 			
 			return bueyDeBatalla;
 		}
 		
-		public CartaMonstruo crearConejoOscuro() {
+		public Atacable crearConejoOscuro() {
 			Puntos puntosDeAtaque = new Puntos(1100);
 			Puntos puntosDeDefensa = new Puntos(1500);
 			int estrellas = 4;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			CartaMonstruo conejoOscuro = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			conejoOscuro.setNombre("Conejo Oscuro");
+			Atacable conejoOscuro = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Conejo Oscuro");
 			
 			return conejoOscuro;
 		}
 		
-		public CartaMonstruo crearDragonDeBrillo() {
+		public Atacable crearDragonDeBrillo() {
 			Puntos puntosDeAtaque = new Puntos(1900);
 			Puntos puntosDeDefensa = new Puntos(1500);
 			int estrellas = 4;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			CartaMonstruo dragonDeBrillo = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			dragonDeBrillo.setNombre("Dragon De Brillo");
+			Atacable dragonDeBrillo = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Dragon De Brillo");
 			
 			return dragonDeBrillo;
 		}
 		
-		public CartaMonstruo crearDuendeMistico() {
+		public Atacable crearDuendeMistico() {
 			Puntos puntosDeAtaque = new Puntos(800);
 			Puntos puntosDeDefensa = new Puntos(2000);
 			int estrellas = 4;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			CartaMonstruo duendeMistico = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			duendeMistico.setNombre("Duende Mistico");
+			Atacable duendeMistico = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Duende Mistico");
 			
 			return duendeMistico;
 		}
 		
-		public CartaMonstruo crearBetaElGuerreroMagnetico() {
+		public Atacable crearBetaElGuerreroMagnetico() {
 			Puntos puntosDeAtaque = new Puntos(1700);
 			Puntos puntosDeDefensa = new Puntos(1500);
 			int estrellas = 4;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			CartaMonstruo betaElGuerreroMagnetico = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			betaElGuerreroMagnetico.setNombre("Beta El Guerrero Magnetico");
+			Atacable betaElGuerreroMagnetico = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Beta El Guerrero Magnetico");
 			
 			return betaElGuerreroMagnetico;
 		}
 		
-		public CartaMonstruo crearJineteVorse() {
+		public Atacable crearJineteVorse() {
 			Puntos puntosDeAtaque = new Puntos(1900);
 			Puntos puntosDeDefensa = new Puntos(1200);
 			int estrellas = 4;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			CartaMonstruo jineteVorse = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			jineteVorse.setNombre("Jinete Vorse");
+			Atacable jineteVorse = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Jinete Vorse");
 			
 			return jineteVorse;
 		}
 		
-		public CartaMonstruo crearHeroeElementalAvian() {
+		public Atacable crearHeroeElementalAvian() {
 			Puntos puntosDeAtaque = new Puntos(1000);
 			Puntos puntosDeDefensa = new Puntos(1000);
 			int estrellas = 3;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			CartaMonstruo avian = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			avian.setNombre("Heroe Elemental Avian");
+			Atacable avian = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Heroe Elemental Avian");
 			
 			return avian;
 		}
 		
-		public CartaMonstruo crearDamaArpia() {
+		public Atacable crearDamaArpia() {
 			Puntos puntosDeAtaque = new Puntos(1300);
 			Puntos puntosDeDefensa = new Puntos(1400);
 			int estrellas = 4;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			CartaMonstruo damaArpia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			damaArpia.setNombre("Dama Arpia");
+			Atacable damaArpia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Dama Arpia");
 			
 			return damaArpia;
 		}
 		
-		public CartaMonstruo crearDragonDeKoumori() {
+		public Atacable crearDragonDeKoumori() {
 			Puntos puntosDeAtaque = new Puntos(1500);
 			Puntos puntosDeDefensa = new Puntos(1200);
 			int estrellas = 4;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			CartaMonstruo dragonDeKoumori = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
-			dragonDeKoumori.setNombre("Dragon De Koumori");
+			Atacable dragonDeKoumori = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Dragon De Koumori");
 			
 			return dragonDeKoumori;
 		}
