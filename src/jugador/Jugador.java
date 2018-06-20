@@ -47,7 +47,7 @@ public class Jugador implements Daniable{
 		this.campoEnemigo.enviarCartasDestruidasAlCementerio();
 	}
 	
-	public void atacar(Daniable atacante, Daniable atacado) {
+	public void atacar(Atacable atacante, Daniable atacado) {
 		
 		atacante.atacar(atacado);
 		
@@ -163,7 +163,7 @@ public class Jugador implements Daniable{
 	public void recibirAtaque(int danioRecibido) {
 		this.vida -= danioRecibido;
 	}
-
+/*
 	public void atacar(Atacable cartaAtacable) {
 		//Forzado
 	}
@@ -171,5 +171,5 @@ public class Jugador implements Daniable{
 	public void atacar(Daniable jugador) {
 		//Forzado
 	}
- 
+ */
 }

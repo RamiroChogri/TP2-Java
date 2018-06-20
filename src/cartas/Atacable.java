@@ -11,4 +11,8 @@ public interface Atacable extends Destruible, Colocable,Daniable{
 	public int obtenerEstrellas();
 
 	public Puntos obtenerPuntosAtaque();
+	
+	public void atacar(Atacable cartaAtacable);
+
+	public void atacar(Daniable jugador);
 }
