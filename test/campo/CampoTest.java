@@ -19,9 +19,9 @@ public class CampoTest {
 	
 	
 	@Test
-	public void testComienzaLaPartidaCon40CartasEnElMazo() {
+	public void testComienzaLaPartidaCon35CartasEnElMazo() {
 		Campo campoTest = new Campo();
-		assertEquals(40, campoTest.obtenerCantidadDeCartasEnMazo());
+		assertEquals(35, campoTest.obtenerCantidadDeCartasEnMazo());
 	}
 	
 	@Test

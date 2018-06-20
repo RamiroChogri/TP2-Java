@@ -25,6 +25,15 @@ public class Jugador implements Daniable{
 		}
 	}
 	
+	public Jugador(Campo campoDelJugador) {
+		this.mano = new Mano();
+		this.campoPropio = campoDelJugador;
+		this.vida = 8000;
+		for(int i=0;i<5;i++) {
+			this.tomarCartaDelMazo();
+		}
+	}
+	
 	public void enfrentarseA(Jugador jugadorEnemigo) {
 		
 		jugadorEnemigo.setCampoEnemigo(this.campoPropio);
