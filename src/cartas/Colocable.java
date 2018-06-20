@@ -5,6 +5,6 @@ import estadoCarta.EstadoCarta;
 
 public interface Colocable {
 	
-	public void colocarse(ZonaMonstruos monstruos ,ZonaMagicasYTrampas magicasYTrampas, ZonaCampo campo, EstadoCarta estadoAColocar);
-	
+	public void colocarse(ZonaMonstruos monstruos ,ZonaMagicasYTrampas magicasYTrampas, ZonaCampo campo, Cementerio cementerio, EstadoCarta estadoAColocar);
+
 }

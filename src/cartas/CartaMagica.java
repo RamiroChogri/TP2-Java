@@ -6,6 +6,7 @@ import estadoCarta.EstadoCartaColocadaBocaArriba;
 import estadoCarta.EstadoCartaDestruida;
 import estadoCarta.EstadoCartaNoJugada;
 import campo.Campo;
+import campo.Cementerio;
 import campo.ZonaCampo;
 import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
@@ -84,7 +85,7 @@ public class CartaMagica implements Activable{
 		campoEnemigo.enviarCartasDestruidasAlCementerio();
 	}
 
-	public void colocarse(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
+	public void colocarse(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
 		this.estado = estadoAColocar;
 		zonaMagicasYTrampas.colocarCarta(this);	
 	}

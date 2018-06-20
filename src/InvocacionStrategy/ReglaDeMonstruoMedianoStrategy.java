@@ -1,7 +1,10 @@
 package InvocacionStrategy;
 
+import java.util.LinkedList;
+
 import campo.ZonaMonstruos;
 import cartas.CartaMonstruo;
+import cartas.Destruible;
 
 public class ReglaDeMonstruoMedianoStrategy extends ReglaDeInvocacionStrategy {
 	
@@ -11,15 +14,21 @@ public class ReglaDeMonstruoMedianoStrategy extends ReglaDeInvocacionStrategy {
 	
 
 	@Override
-	public void colocarCarta(ZonaMonstruos zonaMonstruos, CartaMonstruo cartaAColocar) {
-		
+	public LinkedList<Destruible> colocarCarta(ZonaMonstruos zonaMonstruos, CartaMonstruo cartaAColocar) {
+
 		int cantidadDeMonstruosASacrificar = 1;
 		
 		if(!zonaMonstruos.tieneMonstruosColocados(cantidadDeMonstruosASacrificar)) {
 			// lanzar Excepcion de que no hay ni 1 monstruo para sacrificar
 		}
+		LinkedList<Destruible> monstruoSacrificado = new LinkedList<Destruible>();
+		
 		zonaMonstruos.eliminarUltimaCartaMonstruoColocada();
+		monstruoSacrificado = zonaMonstruos.recolectarCartasDestruidas();
+		
 		zonaMonstruos.colocarCarta(cartaAColocar);
+		
+		return monstruoSacrificado;
 	}
 
 }

@@ -61,7 +61,7 @@ public class Jugador {
 		
 		return campoPropio.obtenerVidaRestante();
 	}
-
+/*
 	public void colocar (Atacable carta, EstadoCarta estado, Modo modo) {
 
 		carta.cambiarA(modo);
@@ -87,9 +87,12 @@ public class Jugador {
 		}
 		campoPropio.colocarCarta(carta, estado);
 	}
-	public void colocarMonstruo (Atacable carta, EstadoCarta estado, Modo modo) {
-		campoPropio.colocarCarta(carta, estado);
+*/	
+	public void colocar(Atacable carta, EstadoCarta estado, Modo modo) {
 		carta.cambiarA(modo);
+		campoPropio.colocarCarta(carta, estado);
+		campoPropio.enviarCartasDestruidasAlCementerio();
+		
 	}
 	
 	public void colocar(Activable carta, EstadoCarta estado) {

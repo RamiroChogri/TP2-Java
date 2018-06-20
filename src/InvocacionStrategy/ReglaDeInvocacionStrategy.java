@@ -1,10 +1,13 @@
 package InvocacionStrategy;
 
+import java.util.LinkedList;
+
 import campo.ZonaMonstruos;
 import cartas.CartaMonstruo;
+import cartas.Destruible;
 
 public abstract class ReglaDeInvocacionStrategy {
 
-	public abstract void colocarCarta(ZonaMonstruos zonaMonstruos, CartaMonstruo cartaAColocar);
+	public abstract LinkedList<Destruible> colocarCarta(ZonaMonstruos zonaMonstruos, CartaMonstruo cartaAColocar);
 
 }
