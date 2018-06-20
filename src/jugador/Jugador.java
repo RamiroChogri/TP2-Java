@@ -163,6 +163,7 @@ public class Jugador implements Daniable{
 	public void recibirAtaque(int danioRecibido) {
 		this.vida -= danioRecibido;
 	}
+	
 /*
 	public void atacar(Atacable cartaAtacable) {
 		//Forzado
