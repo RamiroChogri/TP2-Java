@@ -3,6 +3,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
+import InvocacionStrategy.ReglaDeMonstruoGrandeStrategy;
 import estrategias.*;
 import modos.*;
 import campo.Campo;
@@ -11,6 +12,7 @@ import efectos.*;
 import estadoCarta.*;
 import jugador.Jugador;
 import exceptions.*;
+import factories.CartaMonstruoFactory;
 
 
 public class EnunciadoTest {
@@ -403,16 +405,12 @@ de los puntos de ataque de los monstruos*/
 	destruyÃ³ el primero.*/
 	@Test
 	public void test12ColocarMonstruoQueRequiereUnSacrificioDestruyeElMonstruoAnterior() {
-		Puntos ataqueMonstruo1 = new Puntos(2000);
-		Puntos defensaMonstruo1 = new Puntos(3000);
-		Puntos ataqueMonstruo2 = new Puntos(1000);
-		Puntos defensaMonstruo2 = new Puntos(2500);
-		int estrellasDeUnMonstruo = 3;
-		int estrellasDeOtroMonstruo = 6;
-		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
- 		Atacable unMonstruode6Estrellas = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeOtroMonstruo);
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		
+		Atacable unMonstruo = fabrica.crearHeroeElementalAvian();
+ 		Atacable unMonstruode6Estrellas = fabrica.crearEspadachinVengador();
  		
- 		Atacable unSacrificio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
+ 		Atacable unSacrificio = fabrica.crearConejoOscuro();
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
@@ -445,7 +443,7 @@ de los puntos de ataque de los monstruos*/
 		int estrellasDeUnMonstruo = 3;
 		int estrellasDeOtroMonstruo = 8;
 		Atacable unMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
- 		Atacable unMonstruode6Estrellas = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeOtroMonstruo);
+ 		Atacable unMonstruode6Estrellas = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeOtroMonstruo, new ReglaDeMonstruoGrandeStrategy());
  		
  		Atacable unSacrificio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
  		Atacable otroSacrificio = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellasDeUnMonstruo);
