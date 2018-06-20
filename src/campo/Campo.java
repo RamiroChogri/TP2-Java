@@ -9,6 +9,7 @@ import estadoCarta.EstadoCarta;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.NoHayLugarVacioException;
 import exceptions.NoHayMonstruoParaSacrificarException;
+import jugador.Jugador;
 import jugador.Mano;
 
 public class Campo {
@@ -55,19 +56,19 @@ public class Campo {
 		this.monstruos.aumentarDefensaMonstruoPorEfectoCampo(puntosDefensa);
 	}
 	
-	public void colocarCarta(Colocable cartaAColocar,EstadoCarta estadoAColocar) throws NoHayLugarVacioException {
-		cartaAColocar.colocarse(this.monstruos, this.magicasYTrampas, this.espacioCampo, this.cementerio, estadoAColocar);
+	public void colocarCarta(Jugador jugador, Colocable cartaAColocar,EstadoCarta estadoAColocar) throws NoHayLugarVacioException {
+		cartaAColocar.colocarse(jugador, this.monstruos, this.magicasYTrampas, this.espacioCampo, this.cementerio, estadoAColocar);
 	}
 	
 	//////////////////////////////////
 	//Seguir con la excepcion
 	
-	public int obtenerCantidadDeCartasEnZonaMonstruo() {
+	public int obtenerCantidadDeCartasEnZonaMonstruos() {
 		return monstruos.obtenerCantidadDeCartas();
 	}
 	
 	
-	public int obtenerCantidadDeCartasEnZonaUtilidad() {
+	public int obtenerCantidadDeCartasEnZonaMagicasYTrampas() {
 		return magicasYTrampas.obtenerCantidadDeCartas();
 	}
 	
@@ -86,13 +87,13 @@ public class Campo {
 	
 	public boolean tieneCartas() {
 
-		return ((this.obtenerCantidadDeCartasEnZonaMonstruo() + this.obtenerCantidadDeCartasEnZonaUtilidad() + this.obtenerCantidadDeCartasEnZonaCampo()) > 0);
+		return ((this.obtenerCantidadDeCartasEnZonaMonstruos() + this.obtenerCantidadDeCartasEnZonaMagicasYTrampas() + this.obtenerCantidadDeCartasEnZonaCampo()) > 0);
 
 	}
 	
 	public int obtenerCantidadDeCartasEnJuego() {
 		
-		return (this.obtenerCantidadDeCartasEnZonaMonstruo() + this.obtenerCantidadDeCartasEnZonaUtilidad() + this.obtenerCantidadDeCartasEnZonaCampo());
+		return (this.obtenerCantidadDeCartasEnZonaMonstruos() + this.obtenerCantidadDeCartasEnZonaMagicasYTrampas() + this.obtenerCantidadDeCartasEnZonaCampo());
 	}
 	
 	public int obtenerVidaRestante() {

@@ -49,7 +49,7 @@ public class CampoTest {
 		monstruoPropio.cambiarA(modoAtaque);
 		campoPropio.colocarCarta(monstruoPropio, bocaArriba);
 		
-		assertEquals(1, campoPropio.obtenerCantidadDeCartasEnZonaMonstruo());
+		assertEquals(1, campoPropio.obtenerCantidadDeCartasEnZonaMonstruos());
 	}
 	
 	@Test
@@ -61,7 +61,7 @@ public class CampoTest {
 		
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		campoTest.colocarCarta(carta, bocaArriba);
-		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad());
+		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaMagicasYTrampas());
 	}
 	
 	@Test
@@ -73,7 +73,7 @@ public class CampoTest {
  		
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		campoTest.colocarCarta(carta, bocaArriba);
-		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad());
+		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaMagicasYTrampas());
 	}
 	
 	@Test
@@ -106,7 +106,7 @@ public class CampoTest {
 		
 		assertTrue(cartaMonstruo.estaEnModoAtaque());
 		assertTrue(cartaMonstruo.estaColocadaBocaArriba());
-		assertEquals(1, campo.obtenerCantidadDeCartasEnZonaMonstruo());
+		assertEquals(1, campo.obtenerCantidadDeCartasEnZonaMonstruos());
 	}
 	
 	// hasta aca funiona, hay varias de abajo q tmb pero no estoy seguro cuales, pero todas las de arriba funcionan bien
@@ -121,7 +121,7 @@ public class CampoTest {
 		campo.colocarCarta(carta);
 		
 		assertTrue( carta.estaColocadaBocaArribaEnModoDefensa() );
-		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMonstruo() );
+		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMonstruos() );
 	}
 	
 	@Test
@@ -135,7 +135,7 @@ public class CampoTest {
 		campo.colocarCarta(carta);
 		
 		assertTrue( carta.estaColocadaBocaAbajoEnModoDefensa() );
-		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMonstruo() );
+		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMonstruos() );
 	
 	}
 	
@@ -150,7 +150,7 @@ public class CampoTest {
 		campo.colocarCarta(carta);
 		
 		assertTrue( carta.estaColocadaBocaAbajo() );
-		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaUtilidad() );
+		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMagicasYTrampas() );
 	
 	}
 	
@@ -164,7 +164,7 @@ public class CampoTest {
 		campo.colocarCarta(carta);
 		
 		assertTrue( carta.estaColocadaBocaArriba());
-		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaUtilidad() );
+		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMagicasYTrampas() );
 	
 	}
 	
@@ -178,7 +178,7 @@ public class CampoTest {
 		campo.colocarCarta(carta);
 		
 		assertTrue( carta.estaColocadaBocaAbajo() );
-		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaUtilidad() );
+		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMagicasYTrampas() );
 	}
 	
 	@Test
@@ -191,7 +191,7 @@ public class CampoTest {
 		campo.colocarCarta(carta);
 		
 		assertTrue( carta.estaColocadaBocaArriba() );
-		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaUtilidad() );
+		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMagicasYTrampas() );
 	}
 	
 	@Test
@@ -263,6 +263,6 @@ public class CampoTest {
 		campo.colocarCarta(cartaMonstruo3);
 	
 		campo.vaciarZonaMonstruos();
-		assertTrue ( campo.obtenerCantidadDeCartasEnZonaMonstruo() == 0 );
+		assertTrue ( campo.obtenerCantidadDeCartasEnZonaMonstruos() == 0 );
 	}
 }

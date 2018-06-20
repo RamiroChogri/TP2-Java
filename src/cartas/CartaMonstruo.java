@@ -5,6 +5,7 @@ import estrategias.*;
 import exceptions.MonstruoEnModoDefensaNoPuedeAtacarException;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.ZonaMonstruoLlenaException;
+import jugador.Jugador;
 import modos.*;
 
 import java.util.LinkedList;
@@ -93,7 +94,7 @@ public class CartaMonstruo implements Atacable{
 		this.modo = modoRecibido;
 	}
 		
-	public void colocarse(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
+	public void colocarse(Jugador jugador, ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
 		this.estado = estadoAColocar;
 		LinkedList<Destruible> monstruosSacrificados = new LinkedList<Destruible>();
 		

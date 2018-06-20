@@ -12,6 +12,7 @@ import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
 import efectos.*;
 import exceptions.*;
+import jugador.Jugador;
 
 public class CartaMagica implements Activable{
 	
@@ -85,9 +86,13 @@ public class CartaMagica implements Activable{
 		campoEnemigo.enviarCartasDestruidasAlCementerio();
 	}
 
-	public void colocarse(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
+	public void colocarse(Jugador jugador, ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
 		this.estado = estadoAColocar;
-		zonaMagicasYTrampas.colocarCarta(this);	
+		zonaMagicasYTrampas.colocarCarta(this);
+		
+		if (estado.estaBocaArriba()) {
+			jugador.aplicarEfectoCarta(this);
+		}
 	}
 
 }

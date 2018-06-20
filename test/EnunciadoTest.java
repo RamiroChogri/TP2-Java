@@ -38,8 +38,8 @@ public class EnunciadoTest {
 		//campo todavia)	
 		//Falta cambiar todo lo que diga "Utilizable" por "Activable"
 		
-		Campo campoPropio = new Campo();
-		Campo campoEnemigo = new Campo();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		Puntos ataqueMonstruo1 = new Puntos(1000);
 		Puntos defensaMonstruo1 = new Puntos(500);
 		Puntos ataqueMonstruo2 = new Puntos(900);
@@ -51,21 +51,20 @@ public class EnunciadoTest {
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		//campo recibe estrategia y modo
 		
-		monstruoPropio.cambiarA(modoAtaque);
-		monstruoEnemigo.cambiarA(modoAtaque);
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
 		
-		
-		campoPropio.colocarCarta(monstruoPropio, bocaArriba);
-		campoEnemigo.colocarCarta(monstruoEnemigo, bocaArriba);
+		jugador1.colocar(monstruoPropio, bocaArriba, modoAtaque);
+		jugador2.colocar(monstruoEnemigo, bocaArriba, modoAtaque);
 		
 		monstruoPropio.atacar(monstruoEnemigo);
-		campoEnemigo.enviarCartasDestruidasAlCementerio();
+		jugador2.enviarCartasDestruidasAlCementerio();
 		
 		//Como esta en modo ataque y tiene mas puntos de ataque que la carta enemiga la mata
 		//y la envia al cementerio <--- Esta bien que tenga que aclarar que es lo que esta
 		//pasando? El codigo deberia ser mas claro o el comentario sobra?
 		
-		assertEquals( 1, campoEnemigo.obtenerCantidadDeCartasEnCementerio() );
+		assertEquals( 1, jugador2.obtenerCantidadDeCartasEnCementerio() );
 		
 		
 		
@@ -98,8 +97,8 @@ public class EnunciadoTest {
 		//CartaEnModoDefensaNoPuedeAtacar
 		//cambia algo el que este boca abajo? Que comportamiento le agrega?
 		
-		Campo campoPropio = new Campo();
-		Campo campoEnemigo = new Campo();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		Puntos ataqueMonstruo1 = new Puntos(1000);
 		Puntos defensaMonstruo1 = new Puntos(500);
 		Puntos ataqueMonstruo2 = new Puntos(900);
@@ -113,11 +112,11 @@ public class EnunciadoTest {
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		boolean huboExcepcion = false;
 		
-		monstruoPropio.cambiarA(modoDefensa);
-		monstruoEnemigo.cambiarA(modoAtaque);
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
 		
-		campoPropio.colocarCarta(monstruoPropio, bocaAbajo);
-		campoEnemigo.colocarCarta(monstruoEnemigo, bocaArriba);
+		jugador1.colocar(monstruoPropio, bocaAbajo, modoDefensa);
+		jugador2.colocar(monstruoEnemigo, bocaArriba, modoAtaque);
 		
 		
 		try {
@@ -133,18 +132,16 @@ public class EnunciadoTest {
 	@Test
 	public void test03ColocarCartaMagicaEnCampoBocaAbajo() {
 		
+		Jugador jugador = new Jugador();
 		Efecto efectoNulo = new EfectoNulo();
-		CartaMagica cartaMagica = new CartaMagica(efectoNulo);
-		Campo campoPropio = new Campo();
-		Campo campoEnemigo = new Campo();
+		Activable cartaMagica = new CartaMagica(efectoNulo);
 		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
 		boolean huboExcepcion = false;
 		
-		campoPropio.colocarCarta(cartaMagica, bocaAbajo);
-		
+		jugador.colocar(cartaMagica, bocaAbajo);
 		
 		try {
-			cartaMagica.aplicarEfecto(campoPropio, campoEnemigo);
+			jugador.aplicarEfectoCarta(cartaMagica);
 		} catch (CartaBocaAbajoNoPuedeActivarEfectoException error) {
 			huboExcepcion = true;
 		}
@@ -155,28 +152,28 @@ public class EnunciadoTest {
 	@Test
 	public void test04ColocarCartaTrampaEnCampoBocaAbajo() {
 
+		Jugador jugador = new Jugador();
 		Efecto efectoNulo = new EfectoNulo();
-		CartaTrampa cartaTrampa = new CartaTrampa(efectoNulo);
-		Campo campoTest = new Campo();
+		Activable cartaTrampa = new CartaTrampa(efectoNulo);
 		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
-		campoTest.colocarCarta(cartaTrampa, bocaAbajo);
+		jugador.colocar(cartaTrampa, bocaAbajo);
 		
-		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaUtilidad() );
+		assertEquals(1, jugador.obtenerCantidadDeCartasEnZonaMagicasYTrampas() );
 	}
 	
 	@Test
 	public void test05MandarCartaAlCementerio() {
-
+		
+		Jugador jugador = new Jugador();
 		Efecto efectoNulo = new EfectoNulo();
-		CartaMagica cartaMagica = new CartaMagica(efectoNulo);
-		Campo campo = new Campo();
+		Activable cartaMagica = new CartaMagica(efectoNulo);
 		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
 				
-		campo.colocarCarta(cartaMagica, bocaAbajo);
+		jugador.colocar(cartaMagica, bocaAbajo);
 		cartaMagica.destruirCarta();
-		campo.enviarCartasDestruidasAlCementerio();
+		jugador.enviarCartasDestruidasAlCementerio();
 		
-		assertEquals( 1, campo.obtenerCantidadDeCartasEnCementerio() );
+		assertEquals( 1, jugador.obtenerCantidadDeCartasEnCementerio() );
 		
 	}
 	
@@ -384,7 +381,7 @@ de los puntos de ataque de los monstruos*/
 		Jugador jugador2 = new Jugador();
 		
 		Efecto agujeroNegroEfecto = new EfectoAgujeroNegro();
- 		CartaMagica carta = new CartaMagica( agujeroNegroEfecto );
+ 		Activable agujeroNegro = new CartaMagica( agujeroNegroEfecto );
  		
 		jugador1.enfrentarseA(jugador2);
 		jugador2.enfrentarseA(jugador1);
@@ -394,7 +391,7 @@ de los puntos de ataque de los monstruos*/
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		jugador1.colocar(unMonstuo, bocaArriba, modoAtaque);
  		jugador2.colocar(otroMonstruo, bocaArriba, modoDefensa);
- 		jugador1.colocarCartaMagicaBocaArriba(carta);
+ 		jugador1.colocar(agujeroNegro, bocaArriba);
  		
  		assertFalse( jugador1.tieneCartasEnCampo());
  		assertFalse( jugador2.tieneCartasEnCampo());
@@ -473,7 +470,7 @@ de los puntos de ataque de los monstruos*/
 		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
 
 		Efecto efectoWasteland = new EfectoWasteland();//wasteland aumenta los ptsatk de tus monstruos en 200
-		CartaCampo wasteland = new CartaCampo(efectoWasteland); // tambien los ptsdef de los monstruos enemigos en 300
+		Activable wasteland = new CartaCampo(efectoWasteland); // tambien los ptsdef de los monstruos enemigos en 300
 		
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
@@ -486,7 +483,7 @@ de los puntos de ataque de los monstruos*/
 		
 		jugador1.colocar(unMonstruo, bocaArriba, modoAtaque);
 		jugador2.colocar(otroMonstruo, bocaArriba, modoAtaque);
-		jugador1.colocarCartaMagicaBocaArriba(wasteland);
+		jugador1.colocar(wasteland, bocaArriba);
 		
 		jugador1.atacar(unMonstruo, otroMonstruo);
 		
@@ -505,7 +502,7 @@ de los puntos de ataque de los monstruos*/
 		Atacable otroMonstruo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasDeUnMonstruo);
 
 		Efecto efectoSogen = new EfectoSogen();//sogen aumenta los ptsdef de tus monstruos en 500
-		CartaCampo sogen = new CartaCampo(efectoSogen);  // tambien los ptsatk de los monstruos enemigos en 200
+		Activable sogen = new CartaCampo(efectoSogen);  // tambien los ptsatk de los monstruos enemigos en 200
 		
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
@@ -518,7 +515,7 @@ de los puntos de ataque de los monstruos*/
 		
 		jugador1.colocar(unMonstruo, bocaArriba, modoAtaque);
 		jugador2.colocar(otroMonstruo, bocaArriba, modoAtaque);
-		jugador1.colocarCartaMagicaBocaArriba(sogen);
+		jugador1.colocar(sogen, bocaArriba);
 		
 		jugador1.atacar(unMonstruo, otroMonstruo);
 		
