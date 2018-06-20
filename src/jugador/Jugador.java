@@ -143,7 +143,7 @@ public class Jugador implements Daniable{
 
 	public void recibirAtaque(CartaMonstruo cartaAtacante) {
 		Puntos puntosDeDanioRecibidos = cartaAtacante.obtenerPuntosAtaque();
-		this.vida -= puntosDeDanioRecibidos.obtener();
+		this.vida -= puntosDeDanioRecibidos.obtenerPuntosActuales();
 	}
 	
 	public void recibirAtaque(int danioRecibido) {
