@@ -603,8 +603,44 @@ de los puntos de ataque de los monstruos*/
 		assertEquals(7500, jugador2.obtenerVidaRestante());
 	}
 	
-//	@Test
-//	public void test19InvocarAlDragonDefinitivoSacrifica3Dragones() {}
+	@Test
+	public void test19InvocarAlDragonDefinitivoSacrificando3DragonesBlancos() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		
+		Atacable primerDragonBlancoDeOjosAzules = fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable segundoDragonBlancoDeOjosAzules = fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable tercerDragonBlancoDeOjosAzules = fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable dragonDefinitivo = fabrica.crearDragonDefinitivoDeOjosAzules();
+		
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		Modo modoDeAtaque = new ModoAtaque();
+		
+		jugador1.colocar(fabrica.crearConejoOscuro(), bocaArriba, modoDeAtaque);
+		jugador1.colocar(fabrica.crearJineteVorse(), bocaArriba, modoDeAtaque);
+		jugador1.colocar(primerDragonBlancoDeOjosAzules, bocaArriba, modoDeAtaque);
+		
+		jugador1.colocar(fabrica.crearConejoOscuro(), bocaArriba, modoDeAtaque);
+		jugador1.colocar(fabrica.crearDuendeMistico(), bocaArriba, modoDeAtaque);
+		jugador1.colocar(segundoDragonBlancoDeOjosAzules, bocaArriba, modoDeAtaque);
+		
+		jugador1.colocar(fabrica.crearBueyDeBatalla(), bocaArriba, modoDeAtaque);
+		jugador1.colocar(fabrica.crearDragonDeBrillo(), bocaArriba, modoDeAtaque);
+		jugador1.colocar(tercerDragonBlancoDeOjosAzules, bocaArriba, modoDeAtaque);
+		
+		jugador1.colocar(dragonDefinitivo, bocaArriba, modoDeAtaque);
+		
+		jugador1.atacar(dragonDefinitivo, jugador2);
+		
+		int vidaEsperada =3500;
+		
+		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+	}
 	
 //	@Test
 //	public void test20InsectoBocaAbajoEnModoDefensaDestruyeAlAtacante() {}
