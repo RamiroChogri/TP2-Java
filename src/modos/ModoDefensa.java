@@ -1,5 +1,6 @@
 package modos;
 
+import cartas.Atacable;
 import cartas.CartaMonstruo;
 import cartas.Puntos;
 
@@ -24,7 +25,7 @@ public class ModoDefensa extends Modo {
 	}
 
 	@Override
-	public void recibirAtaque(CartaMonstruo cartaAtacante, CartaMonstruo cartaAtacada) {
+	public void recibirAtaque(Atacable cartaAtacante, Atacable cartaAtacada) {
 		
 		Puntos puntosDeAtaqueMonstruoAtacante = cartaAtacante.obtenerPuntosAtaque();
 		Puntos puntosDeDefensaMonstruoAtacado = cartaAtacada.obtenerPuntosDefensa();

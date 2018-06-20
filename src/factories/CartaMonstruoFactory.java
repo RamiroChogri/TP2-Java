@@ -1,7 +1,10 @@
 package factories;
 
+import cartas.Atacable;
 import cartas.CartaMonstruo;
 import cartas.Puntos;
+import efectos.Efecto;
+import efectos.EfectoJinzo7;
 import InvocacionStrategy.*;
 public class CartaMonstruoFactory {
 
@@ -189,5 +192,19 @@ public class CartaMonstruoFactory {
 			dragonDeKoumori.setNombre("Dragon De Koumori");
 			
 			return dragonDeKoumori;
+		}
+		
+		public Atacable crearJinzo7() {
+			Puntos puntosDeAtaque = new Puntos(500);
+			Puntos puntosDeDefensa = new Puntos(400);
+			int estrellas = 2;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			Atacable jinzo7 = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Jinzo 7");
+			
+			jinzo7 = new EfectoJinzo7(jinzo7);
+			
+			return jinzo7;
+			
 		}
 }

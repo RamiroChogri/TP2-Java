@@ -57,6 +57,18 @@ public class CartaMonstruo implements Atacable{
 		this.regla = reglaDeInvocacion;	
 	}
 	
+	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar,
+			int estrellasAColocar, ReglaDeInvocacionStrategy reglaDeInvocacion, String nombreAColocar) {
+	this.puntosDeAtaque = puntosDeAtaqueAColocar;
+	this.puntosDeDefensa = puntosDeDefensaAColocar;
+	this.estado = new EstadoCartaNoJugada();
+	this.estrellas = estrellasAColocar;
+	this.nombre = nombreAColocar;
+	this.modo = new ModoAtaque();
+	this.regla = reglaDeInvocacion;	
+	
+	}
+	
 	public void setNombre(String nombreDeLaCarta) {
 		
 		this.nombre = nombreDeLaCarta;
@@ -92,7 +104,7 @@ public class CartaMonstruo implements Atacable{
 	
 
 	/////////
-	public void recibirAtaque(CartaMonstruo cartaAtacante) {
+	public void recibirAtaque(Atacable cartaAtacante) {
 	
 		this.modo.recibirAtaque(cartaAtacante, this);
 	}
@@ -185,12 +197,12 @@ public class CartaMonstruo implements Atacable{
 		return puntosDeAtaque.sonMayoresA(carta.obtenerPuntosAtaque());
 	}
 
-	public int diferenciaDeAtaqueCon(CartaMonstruo carta) {
+	public int diferenciaDeAtaqueCon(Atacable carta) {
 		
 		return puntosDeAtaque.obtenerDiferenciaCon(carta.obtenerPuntosAtaque());
 	}
 
-	public void atacar(Daniable jugador) {
+	public void atacar(Jugador jugador) {
 		jugador.recibirAtaque(this);
 	}
  	
