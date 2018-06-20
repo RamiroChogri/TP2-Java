@@ -8,6 +8,7 @@ import cartas.Destruible;
 import estadoCarta.EstadoCarta;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.NoHayLugarVacioException;
+import exceptions.NoHayMonstruoParaSacrificarException;
 import jugador.Mano;
 
 public class Campo {
@@ -132,6 +133,11 @@ public class Campo {
 	//Para PotOfGreed	
 	public void agregarCartaEnMano(Colocable cartaAColocar) {
 		this.manoDelJugador.agregarCartaEnMano(cartaAColocar);
+	}
+	
+	public Atacable obtenerCartaMonstruoConMenorAtaque() throws NoHayMonstruoParaSacrificarException {
+		Atacable monstruoConMenorAtaque = this.monstruos.obtenerMonstruoConMenorAtaque();
+		return monstruoConMenorAtaque;
 	}
 	
 	
