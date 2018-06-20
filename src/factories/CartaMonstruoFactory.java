@@ -142,4 +142,16 @@ public class CartaMonstruoFactory {
 			
 			return jineteVorse;
 		}
+		
+		public CartaMonstruo crearHeroeElementalAvian() {
+			Puntos puntosDeAtaque = new Puntos(1000);
+			Puntos puntosDeDefensa = new Puntos(1000);
+			int estrellas = 3;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			CartaMonstruo avian = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla);
+			avian.setNombre("Heroe Elemental Avian");
+			
+			return avian;
+		}
 }
