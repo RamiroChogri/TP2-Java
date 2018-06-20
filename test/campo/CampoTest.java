@@ -194,6 +194,7 @@ public class CampoTest {
 		assertEquals(cartasEnCampoEsperadas, campo.obtenerCantidadDeCartasEnJuego());
 	}
 	
+
 	@Test
 	public void testColocarDosCartasMonstruoyQuedanColocadas() {
 		Campo campo = new Campo();
