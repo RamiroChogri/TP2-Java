@@ -1,6 +1,7 @@
 package cartas;
 
 import campo.Campo;
+import campo.Cementerio;
 import campo.ZonaCampo;
 import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
@@ -8,6 +9,7 @@ import efectos.Efecto;
 import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaNoJugada;
 import exceptions.CartaBocaAbajoNoPuedeActivarEfectoException;
+import jugador.Jugador;
 
 public class CartaCampo extends CartaMagica {
 	
@@ -26,9 +28,16 @@ public class CartaCampo extends CartaMagica {
 		this.nombre = nombreDeLaCarta;
 	}
 	
-	public void colocarse(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
+	public void colocarse(Jugador jugador, ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
+		zonaCampo.enviarCampoAlCementerio(cementerio);
+		zonaCampo.destruirCarta();
+		//jugador.destruirCartaCampoEnemiga();
 		this.estado = estadoAColocar;
 		zonaCampo.colocarCarta(this);
+		
+		if (estado.estaBocaArriba()) {
+			jugador.aplicarEfectoCarta(this);
+		}
 	}
 	
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo) {

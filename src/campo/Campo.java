@@ -30,6 +30,7 @@ public class Campo {
 		this.cementerio = new Cementerio();
 		this.mazoDelJugador = new Mazo();
 		this.jugador = new Jugador(this);
+		this.jugador.setCampoEnemigo(this);
 	}
 	
 	public Campo(Jugador jugadorDuenio) {
@@ -80,7 +81,6 @@ public class Campo {
 	public int obtenerCantidadDeCartasEnCementerio() {
 		return cementerio.obtenerCantidadDeCartas();
 	}
-	
 	
 	public boolean tieneCartas() {
 

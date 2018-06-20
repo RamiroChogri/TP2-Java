@@ -1,7 +1,9 @@
 package campo;
 import efectos.*;
 import estadoCarta.EstadoCarta;
+import estadoCarta.EstadoCartaColocadaBocaAbajo;
 import estadoCarta.EstadoCartaColocadaBocaArriba;
+import factories.CartaMonstruoFactory;
 import jugador.Jugador;
 import modos.Modo;
 import modos.ModoAtaque;
@@ -59,8 +61,8 @@ public class CampoTest {
 		EfectoAgujeroNegro agujeroNegroEfecto = new EfectoAgujeroNegro();
  		Colocable carta = new CartaMagica( agujeroNegroEfecto );
 		
-		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
-		campoTest.colocarCarta(carta, bocaArriba);
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		campoTest.colocarCarta(carta, bocaAbajo);
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaMagicasYTrampas());
 	}
 	
@@ -71,8 +73,8 @@ public class CampoTest {
 		Efecto efectoTest = new EfectoNulo();
  		Colocable carta = new CartaTrampa(efectoTest);
  		
-		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
-		campoTest.colocarCarta(carta, bocaArriba);
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		campoTest.colocarCarta(carta, bocaAbajo);
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaMagicasYTrampas());
 	}
 	
@@ -80,61 +82,59 @@ public class CampoTest {
 	public void testColocarUnaCartaCampoEnZonaCorrecta() {
 		Campo campoTest = new Campo();
 		
- 		Colocable cartaCampo = new CartaCampo();
+		Efecto efectoNulo = new EfectoNulo();
+ 		Colocable cartaCampo = new CartaCampo(efectoNulo);
  		
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		campoTest.colocarCarta(cartaCampo, bocaArriba);
 		assertEquals(1, campoTest.obtenerCantidadDeCartasEnZonaCampo());
 	}
 	
-	@Test
-	public void testObtenerVidaRestanteFunciona() {
-		Campo campo = new Campo();
-		int vidaEsperada = 8000;
-		assertEquals( vidaEsperada , campo.obtenerVidaRestante() );
-	}
 	
 	@Test
 	public void testColocarUnaCartaMonstruoEnModoAtaqueQuedaColocado() {
-		Campo campo = new Campo();
-		CartaMonstruo cartaMonstruo = new CartaMonstruo();
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
 		
-		cartaMonstruo.colocarEnModoAtaque();
-		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		CartaMonstruo cartaMonstruo = fabrica.crearHeroeElementalAvian();
+		Campo campo = new Campo();
 
-		campo.colocarCarta(cartaMonstruo,bocaArriba);
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		campo.colocarCarta(cartaMonstruo, bocaArriba);
 		
 		assertTrue(cartaMonstruo.estaEnModoAtaque());
 		assertTrue(cartaMonstruo.estaColocadaBocaArriba());
 		assertEquals(1, campo.obtenerCantidadDeCartasEnZonaMonstruos());
 	}
 	
-	// hasta aca funiona, hay varias de abajo q tmb pero no estoy seguro cuales, pero todas las de arriba funcionan bien
 	
 	@Test
 	public void testColocarUnaCartaMonstruoBocaArribaEnModoDefensaQuedaColocado() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		
+		CartaMonstruo cartaMonstruo = fabrica.crearHeroeElementalAvian();
 		Campo campo = new Campo();
-		CartaMonstruo carta = new CartaMonstruo();
-		
-		carta.colocarBocaArribaEnModoDefensa();
-		
-		campo.colocarCarta(carta);
-		
-		assertTrue( carta.estaColocadaBocaArribaEnModoDefensa() );
+
+		cartaMonstruo.colocarBocaArribaEnModoDefensa();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		campo.colocarCarta(cartaMonstruo, bocaArriba);
+		assertTrue( cartaMonstruo.estaColocadaBocaArriba());
+		assertTrue( cartaMonstruo.estaEnModoDefensa());
 		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMonstruos() );
 	}
 	
 	@Test
 	public void testColocarUnaCartaMonstruoBocaAbajoEnModoDefensaQuedaColocado() {
 		
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		
+		CartaMonstruo cartaMonstruo = fabrica.crearHeroeElementalAvian();
 		Campo campo = new Campo();
-		CartaMonstruo carta = new CartaMonstruo();
-		
-		carta.colocarBocaAbajoEnModoDefensa();
-		
-		campo.colocarCarta(carta);
-		
-		assertTrue( carta.estaColocadaBocaAbajoEnModoDefensa() );
+
+		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		campo.colocarCarta(cartaMonstruo, bocaAbajo);
+		assertTrue( cartaMonstruo.estaColocadaBocaAbajo());
+		assertTrue( cartaMonstruo.estaEnModoDefensa());
 		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMonstruos() );
 	
 	}
