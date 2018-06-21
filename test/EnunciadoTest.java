@@ -3,7 +3,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-import InvocacionStrategy.ReglaDeMonstruoGrandeStrategy;
 import estrategias.*;
 import modos.*;
 import campo.Campo;
@@ -14,6 +13,7 @@ import jugador.Jugador;
 import exceptions.*;
 import factories.CartaMonstruoFactory;
 import factories.CartaTrampaFactory;
+import invocacionStrategy.ReglaDeMonstruoGrandeStrategy;
 
 
 public class EnunciadoTest {

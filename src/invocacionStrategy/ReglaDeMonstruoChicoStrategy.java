@@ -1,4 +1,4 @@
-package InvocacionStrategy;
+package invocacionStrategy;
 
 import java.util.LinkedList;
 

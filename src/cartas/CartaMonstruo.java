@@ -5,12 +5,12 @@ import estrategias.*;
 import exceptions.MonstruoEnModoDefensaNoPuedeAtacarException;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.ZonaMonstruoLlenaException;
+import invocacionStrategy.*;
 import jugador.Jugador;
 import modos.*;
 
 import java.util.LinkedList;
 
-import InvocacionStrategy.*;
 import campo.*;
 
 public class CartaMonstruo implements Atacable{

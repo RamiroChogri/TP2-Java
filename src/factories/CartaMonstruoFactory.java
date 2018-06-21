@@ -6,7 +6,7 @@ import cartas.CartaMonstruo;
 import cartas.RecibeAtaqueComoInsectoComeHombres;
 import cartas.Puntos;
 import efectos.Efecto;
-import InvocacionStrategy.*;
+import invocacionStrategy.*;
 public class CartaMonstruoFactory {
 
 		public CartaMonstruoFactory() {
