@@ -122,6 +122,12 @@ public class EfectoJinzo7 extends CartaMonstruoDecorator {
 		getAtacable().ponerEn(estado);
 	}
 	
+	@Override
+	public String obtenerNombre() {
+		String nombre = getAtacable().obtenerNombre();
+		return nombre;
+	}
+	
 	//Efecto Jinzo7
 	
 	@Override

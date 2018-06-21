@@ -123,7 +123,13 @@ public class EfectoInsectoComeHombres extends CartaMonstruoDecorator {
 	public void ponerEn(EstadoCarta estado) {
 		getAtacable().ponerEn(estado);
 	}
-	
+
+	@Override
+	public String obtenerNombre() {
+		String nombre = getAtacable().obtenerNombre();
+		return nombre;
+	}
+
 	//Efecto Insecto Come-Hombres
 
 	@Override
