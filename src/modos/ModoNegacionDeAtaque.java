@@ -41,7 +41,7 @@ public class ModoNegacionDeAtaque extends Modo {
 	@Override
 	public void recibirAtaque(Atacable cartaAtacante, Atacable cartaAtacada) {
 		
-		//Deberia volver al modo que tenia antes.
+	
 		cartaAtacada.cambiarA(this.colocarEnModoAnterior());
 	}
 
