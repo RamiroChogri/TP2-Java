@@ -103,7 +103,7 @@ public class Campo {
 		cartasAEnterrar.addAll(this.monstruos.recolectarCartasDestruidas());
 		cartasAEnterrar.addAll(this.magicasYTrampas.recolectarCartasDestruidas());
 		// this.enterrarCartaCampo(); Error, me agrega null a la lista y para ahorrar if lo comentamos por ahora
-		this.cementerio.agregarCartasAlCementerio(cartasAEnterrar);
+		this.cementerio.agregarCartas(cartasAEnterrar);
 		
 		this.jugador.recibirAtaque(danio);
 		

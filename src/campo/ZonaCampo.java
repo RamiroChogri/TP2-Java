@@ -60,6 +60,6 @@ public class ZonaCampo extends Zona{
 	}
 
 	public void enviarCampoAlCementerio(Cementerio cementerio) {
-		cementerio.agregarCartaAlCementerio(this.cartaCampo);
+		cementerio.agregarCarta(this.cartaCampo);
 	}
 }

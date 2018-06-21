@@ -12,11 +12,11 @@ public class Cementerio {
 		this.cementerio = new LinkedList<Destruible>();
 	}
 	
-	public void agregarCartaAlCementerio(Destruible cartaDestruida) {
+	public void agregarCarta(Destruible cartaDestruida) {
 		this.cementerio.add(cartaDestruida);
 	}
 	
-	public void agregarCartasAlCementerio(LinkedList<Destruible> cartasAEnterrar) {
+	public void agregarCartas(LinkedList<Destruible> cartasAEnterrar) {
 		this.cementerio.addAll(cartasAEnterrar);
 	}
 	

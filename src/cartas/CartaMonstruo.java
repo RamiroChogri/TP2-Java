@@ -88,7 +88,7 @@ public class CartaMonstruo implements Atacable{
 		
 		monstruosSacrificados = regla.colocarCarta( zonaMonstruos, this);
 		
-		 cementerio.agregarCartasAlCementerio(monstruosSacrificados);
+		 cementerio.agregarCartas(monstruosSacrificados);
 	}
 	
 	
