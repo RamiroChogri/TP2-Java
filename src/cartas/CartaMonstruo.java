@@ -100,6 +100,13 @@ public class CartaMonstruo implements Atacable{
 		cartaAtacableEnemiga.recibirAtaque(this);
 	}
 	
+	public void atacar(Jugador jugador) {
+		if (this.estaEnModoDefensa()) {
+			throw new MonstruoEnModoDefensaNoPuedeAtacarException();
+		}
+		
+		jugador.recibirAtaque(this);
+	}
 
 	public void recibirAtaque(Atacable cartaAtacante) {
 	
@@ -200,11 +207,6 @@ public class CartaMonstruo implements Atacable{
 		return puntosDeAtaque.obtenerDiferenciaCon(carta.obtenerPuntosAtaque());
 	}
 
-	public void atacar(Jugador jugador) {
-		jugador.recibirAtaque(this);
-	}
-
-	@Override
 	public Modo obtenerModo() {
 
 		return this.modo;

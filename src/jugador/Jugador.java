@@ -13,13 +13,14 @@ public class Jugador implements Daniable{
 		private Campo campoEnemigo;
 		private Mano mano;
 		private int vida;
-	
+		private boolean tieneAExodiaEnMano;
 
 	public Jugador() {
 		
 		this.mano = new Mano();
 		this.campoPropio = new Campo(this);
 		this.vida = 8000;
+		this.tieneAExodiaEnMano = false;
 		for(int i=0;i<5;i++) {
 			this.tomarCartaDelMazo();
 		}
@@ -29,6 +30,7 @@ public class Jugador implements Daniable{
 		this.mano = new Mano();
 		this.campoPropio = campoDelJugador;
 		this.vida = 8000;
+		this.tieneAExodiaEnMano = false;
 		for(int i=0;i<5;i++) {
 			this.tomarCartaDelMazo();
 		}
@@ -78,6 +80,12 @@ public class Jugador implements Daniable{
 	public void tomarCartaDelMazo() {
 		try {
 			mano.agregarCartaEnMano(campoPropio.levantarCartaDelMazo());
+			this.tieneAExodiaEnMano = this.mano.tieneAExodia();
+			
+			if (tieneAExodiaEnMano) {
+				campoEnemigo.obtenerDuenio().derrotarse();
+			}
+			
 		} catch (NoQuedanCartasEnElMazoException error) {
 			this.vida = 0;
 		}
@@ -157,13 +165,8 @@ public class Jugador implements Daniable{
 	}
 	
 	public boolean tieneAExodiaEnMano() {
-		boolean tieneAExodiaEnMano = this.mano.tieneAExodia();
 		
-		if (tieneAExodiaEnMano) {
-			campoEnemigo.obtenerDuenio().derrotarse();
-		}
-		
-		return tieneAExodiaEnMano;
+		return this.tieneAExodiaEnMano;
 	}
 	
 	public void derrotarse() {

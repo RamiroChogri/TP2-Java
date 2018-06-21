@@ -35,7 +35,7 @@ public class ModoNegacionDeAtaque extends Modo {
 	}
 	
 	public Modo colocarEnModoAnterior() {
-		return modoAnterior;
+		return this.modoAnterior;
 	}
 	
 	@Override

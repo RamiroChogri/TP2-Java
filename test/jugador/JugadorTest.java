@@ -8,6 +8,7 @@ import modos.*;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class JugadorTest {
@@ -142,5 +143,49 @@ public class JugadorTest {
 			jugador2.colocar(campo2, bocaArriba);
 			
 			assertEquals(1,jugador1.obtenerCantidadDeCartasEnCementerio());
+		}
+		
+		@Test
+		public void testExtraerTodasLasCartasDerrotaAlJugador() {
+			Jugador jugador = new Jugador();
+			Jugador jugadorEnemigo = new Jugador();
+			
+			jugador.enfrentarseA(jugadorEnemigo);
+			jugadorEnemigo.enfrentarseA(jugador);
+			
+			for(int i=0; i<36; i++) {
+				jugador.tomarCartaDelMazo();
+			}
+			assertTrue(jugador.estaDerrotado());
+		}
+		
+		@Test
+		public void testJugadorConLasCincoPartesDeExodiaEnManoDerrotaAlJugadorEnemigo() {
+			Jugador jugador1 = new Jugador();
+			Jugador jugador2 = new Jugador();
+			
+			jugador1.enfrentarseA(jugador2);
+			jugador2.enfrentarseA(jugador1);
+			
+			for(int i=0; i<35; i++) {
+				jugador1.tomarCartaDelMazo();
+			}
+			
+			assertTrue(jugador2.estaDerrotado());
+		}
+		
+		@Test
+		public void testJugadorConLasCincoPartesDeExodiaEnManoNoDerrotaAlJugadorConExodia() {
+			Jugador jugador1 = new Jugador();
+			Jugador jugador2 = new Jugador();
+			
+			jugador1.enfrentarseA(jugador2);
+			jugador2.enfrentarseA(jugador1);
+			
+			for(int i=0; i<35; i++) {
+				jugador1.tomarCartaDelMazo();
+			}
+			
+			assertFalse(jugador1.estaDerrotado());
 		}
 }

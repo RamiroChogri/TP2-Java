@@ -738,6 +738,11 @@ de los puntos de ataque de los monstruos*/
 	@Test
 	public void test23ExtraerTodasLasCartasFinalizaPartida() {
 		Jugador jugador = new Jugador();
+		Jugador jugadorEnemigo = new Jugador();
+		
+		jugador.enfrentarseA(jugadorEnemigo);
+		jugadorEnemigo.enfrentarseA(jugador);
+		
 		for(int i=0; i<36; i++) {
 			jugador.tomarCartaDelMazo();
 		}

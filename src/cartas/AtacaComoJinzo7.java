@@ -133,6 +133,12 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 		getAtacable().aumentarAtaqueEn(puntosAumentar);
 	}
 	
+	@Override
+	public Modo obtenerModo() {
+		Modo modo = getAtacable().obtenerModo();
+		return modo;
+	}
+	
 	//este es el metodo Redefinido
 	
 	@Override

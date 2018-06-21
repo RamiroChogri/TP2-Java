@@ -218,7 +218,21 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void test16Jinzo7AtacaDirectamenteAJugador() {
+	public void test16MonstruoAtacaDirectamenteAJugador() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Jugador jugador = new Jugador();
+		Atacable cartaMonstruo = fabrica.crearConejoOscuro();
+		
+		cartaMonstruo.atacar(jugador);
+		
+		int vidaEsperada = 8000 - 1100;
+		assertEquals(vidaEsperada, jugador.obtenerVidaRestante());
+	
+		
+	}
+	
+	@Test
+	public void test17Jinzo7AtacaDirectamenteAJugador() {
 		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
 		Atacable jinzo7 = fabrica.crearJinzo7();
 		Jugador jugador = new Jugador();
@@ -234,4 +248,74 @@ public class CartaMonstruoTest {
 		assertEquals(vidaEsperada, jugador.obtenerVidaRestante());
 	
 	}
+	
+	@Test
+	public void test18Jinzo7AtacaAOtraCartaMonstruoNormalmente() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable jinzo7 = fabrica.crearJinzo7();
+		Jugador jugadorPropio = new Jugador();
+		Jugador jugadorEnemigo = new Jugador();
+		Atacable cartaMonstruoEnemiga = fabrica.crearConejoOscuro();
+		
+		jugadorPropio.enfrentarseA(jugadorEnemigo);
+		jugadorEnemigo.enfrentarseA(jugadorPropio);
+		
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		Modo modoAtaque = new ModoAtaque();
+		
+		jugadorPropio.colocar(jinzo7, bocaArriba, modoAtaque);
+		jugadorEnemigo.colocar(cartaMonstruoEnemiga, bocaArriba, modoAtaque);
+		jugadorPropio.atacar(jinzo7, cartaMonstruoEnemiga);
+		
+		int vidaEsperada = 8000 - (1100 - 500);
+		assertEquals(vidaEsperada, jugadorPropio.obtenerVidaRestante());
+		
+	}
+	
+	@Test
+	public void test19MonstruoAtacaAInsectoComeHombresBocaAbajoYSeDestruye() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+	
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+	
+		Atacable insectoComeHombres = fabrica.crearInsectoComeHombres();
+		Atacable damaArpia = fabrica.crearDamaArpia();
+	
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+	
+		jugador1.colocar(insectoComeHombres, bocaAbajo, new ModoDefensa() );
+		jugador2.colocar(damaArpia, bocaArriba, new ModoAtaque() );
+	
+		jugador2.atacar(damaArpia ,insectoComeHombres);
+	
+		assertTrue(damaArpia.estaDestruida()); 
+	}
+	
+	@Test
+	public void test20MonstruoAtacaAInsectoComeHombresBocaAbajoYElInsectoSobrevive() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+	
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+	
+		Atacable insectoComeHombres = fabrica.crearInsectoComeHombres();
+		Atacable damaArpia = fabrica.crearDamaArpia();
+	
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+	
+		jugador1.colocar(insectoComeHombres, bocaAbajo, new ModoDefensa() );
+		jugador2.colocar(damaArpia, bocaArriba, new ModoAtaque() );
+	
+		jugador2.atacar(damaArpia ,insectoComeHombres);
+	
+		assertFalse(insectoComeHombres.estaDestruida()); 
+	}
+	
 }

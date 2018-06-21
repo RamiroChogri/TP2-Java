@@ -135,6 +135,12 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 		getAtacable().aumentarAtaqueEn(puntosAumentar);
 	}
 
+	@Override
+	public Modo obtenerModo() {
+		Modo modo = getAtacable().obtenerModo();
+		return modo;
+	}
+	
 	//Efecto Insecto Come-Hombres
 
 	@Override
