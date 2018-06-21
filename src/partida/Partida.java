@@ -69,21 +69,25 @@ public class Partida {
 		
 		while (!partidaFinalizada) {
 			jugadorEnTurno = jugadorEnTurno.obtenerJugadorEnemigo();
-			//Verificar que se ingrese el nombre de un monstruo que existe.
 			
 			fasesIterador = this.listaDeFases.iterator();
-		    while (fasesIterador.hasNext()) {
-		    	this.faseActual = fasesIterador.next();
-		    	//Ver fases (se manejan con fase actual, que va a recorrer todas las fases
-		    	//hasta la final
-		    }
+			this.faseActual = fasesIterador.next();
 			
-		    
+			if (!(jugadorEnTurno.tieneAExodiaEnMano())) {
+		    	while (fasesIterador.hasNext()) {
+		    		this.faseActual = fasesIterador.next();
+		    		//Verificar que se ingrese el nombre de un monstruo que existe.
+		    	
+		    		//Ver fases (se manejan con fase actual, que va a recorrer todas las fases
+		    		//hasta la final
+		    	}
+			}
 		    
 		    //No se verifica quien gano
 		    
 			if (jugadorEnTurno.estaMuerto() || jugadorEnTurno.obtenerJugadorEnemigo().estaMuerto() || 
-					jugadorEnTurno.obtenerCartasMazo <= 0 || jugadorEnTurno.obtenerJugadorEnemigo().obtenerCartasMazo <= 0) {
+					jugadorEnTurno.obtenerCartasMazo() <= 0 || jugadorEnTurno.obtenerJugadorEnemigo().obtenerCartasMazo() <= 0 ||
+					jugadorEnTurno.tieneAExodiaEnMano()) {
 				this.finalizar();
 			}
 		}

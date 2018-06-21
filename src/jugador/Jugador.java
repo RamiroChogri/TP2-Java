@@ -182,6 +182,11 @@ public class Jugador implements Daniable{
 		return (this.vida <= 0);
 	}
 	
+	public boolean tieneAExodiaEnMano() {
+		boolean tieneAExodiaEnMano = this.mano.tieneAExodia();
+		return tieneAExodiaEnMano;
+	}
+	
 /*
 	public void atacar(Atacable cartaAtacable) {
 		//Forzado
