@@ -718,7 +718,7 @@ de los puntos de ataque de los monstruos*/
 	trampa, y el monstruo enemigo es destruido y se infligió 100 puntos de daño a la
 	vida del otro jugador.*/	
 	@Test
-	public void test22CartaRefuerzo() {
+	public void test22UnMonstruoEsAtacadoYSeActivaReinforcementsElAtacanteEsDestruido() {
 		
 		
 		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
