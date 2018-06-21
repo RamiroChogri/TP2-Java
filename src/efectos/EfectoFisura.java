@@ -16,5 +16,11 @@ public class EfectoFisura implements Efecto {
 			//No se destruye nada
 		}
 	}
+
+	@Override
+	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -12,4 +12,10 @@ public class EfectoWasteland implements Efecto {
 		campoPropio.aumentarAtaqueMonstruosPorEfectoCampo(puntosDeAtaqueExtra);
 		campoEnemigo.aumentarDefensaMonstruosPorEfectoCampo(puntosDeDefensaExtra);
 	}
+
+	@Override
+	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado) {
+		// TODO Auto-generated method stub
+		
+	}
 }

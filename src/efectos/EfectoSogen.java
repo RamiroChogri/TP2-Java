@@ -1,6 +1,7 @@
 package efectos;
 
 import campo.Campo;
+import cartas.Atacable;
 import cartas.Puntos;
 
 public class EfectoSogen implements Efecto {
@@ -11,6 +12,12 @@ public class EfectoSogen implements Efecto {
 		Puntos puntosDeDefensaExtra = new Puntos(500);
 		campoPropio.aumentarDefensaMonstruosPorEfectoCampo(puntosDeDefensaExtra);
 		campoEnemigo.aumentarAtaqueMonstruosPorEfectoCampo(puntosDeAtaqueExtra);
+	}
+
+	@Override
+	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
