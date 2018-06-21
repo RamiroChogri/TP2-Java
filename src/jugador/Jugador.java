@@ -202,6 +202,10 @@ public class Jugador implements Daniable{
 		this.recibirAtaque(this.vida);
 	
 	}
+
+	public void destruirCartaCampoEnemiga() {
+		this.campoEnemigo.vaciarZonaCampo();
+	}
 	
 /*
 	public void atacar(Atacable cartaAtacable) {

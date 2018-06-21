@@ -31,7 +31,7 @@ public class CartaCampo extends CartaMagica {
 	public void colocarse(Jugador jugador, ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
 		zonaCampo.enviarCampoAlCementerio(cementerio);
 		zonaCampo.destruirCarta();
-		//jugador.destruirCartaCampoEnemiga();
+		jugador.destruirCartaCampoEnemiga();
 		this.estado = estadoAColocar;
 		zonaCampo.colocarCarta(this);
 		
