@@ -74,6 +74,9 @@ public class CartaMonstruo implements Atacable{
 		this.nombre = nombreDeLaCarta;
 	}
 	
+	public void ponerEn(EstadoCarta estadoRecibido) {
+		this.estado = estadoRecibido;
+	}
 	
 	public void cambiarA(Modo modoRecibido) {
 		this.modo = modoRecibido;
@@ -106,6 +109,9 @@ public class CartaMonstruo implements Atacable{
 	/////////
 	public void recibirAtaque(Atacable cartaAtacante) {
 	
+		if (estaColocadaBocaAbajo()) {
+			this.estado = new EstadoCartaColocadaBocaArriba();
+		}
 		this.modo.recibirAtaque(cartaAtacante, this);
 	}
 	

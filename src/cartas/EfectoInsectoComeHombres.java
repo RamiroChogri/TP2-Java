@@ -1,19 +1,20 @@
-package efectos;
+package cartas;
 
 import campo.Cementerio;
 import campo.ZonaCampo;
 import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
-import cartas.*;
 import estadoCarta.EstadoCarta;
-import jugador.*;
+import estadoCarta.EstadoCartaColocadaBocaArriba;
+import jugador.Jugador;
 import modos.Modo;
 
-public class EfectoJinzo7 extends CartaMonstruoDecorator { 
-	
-	public EfectoJinzo7(Atacable cartaMonstruo) {
-		super(cartaMonstruo);
+public class EfectoInsectoComeHombres extends CartaMonstruoDecorator {
+
+	public EfectoInsectoComeHombres(Atacable atacableAColocar) {
+		super(atacableAColocar);
 	}
+
 
 	@Override
 	public int obtenerDanioAlHaberSidoDestruida() {
@@ -54,16 +55,16 @@ public class EfectoJinzo7 extends CartaMonstruoDecorator {
 			ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
 		
 		getAtacable().colocarse(jugador, zonaMonstruos, zonaMagicasYTrampas, zonaCampo, cementerio, estadoAColocar);
-	}
-
-	@Override
-	public void recibirAtaque(Atacable cartaAtacante) {
-		getAtacable().recibirAtaque(cartaAtacante);
-	}
+	}	
 
 	@Override
 	public void atacar(Atacable cartaAtacable) {
 		getAtacable().atacar(cartaAtacable);
+	}
+	
+	@Override
+	public void atacar(Jugador jugador) {
+		getAtacable().atacar(jugador);
 	}
 
 	@Override
@@ -88,7 +89,8 @@ public class EfectoJinzo7 extends CartaMonstruoDecorator {
 	public void destruirCarta(int danio) {
 		getAtacable().destruirCarta(danio);
 	}
-	
+
+
 	@Override
 	public boolean estaColocadaBocaArriba() {
 		boolean estaColocadaBocaArriba = getAtacable().estaColocadaBocaArriba();
@@ -122,13 +124,18 @@ public class EfectoJinzo7 extends CartaMonstruoDecorator {
 		getAtacable().ponerEn(estado);
 	}
 	
-	//Efecto Jinzo7
-	
+	//Efecto Insecto Come-Hombres
+
 	@Override
-	public void atacar(Jugador jugador) {
-		Puntos puntosDeAtaque = getAtacable().obtenerPuntosAtaque();
-		int ataqueDirecto = puntosDeAtaque.obtenerPuntosActuales();
-		jugador.recibirAtaque(ataqueDirecto);
+	public void recibirAtaque(Atacable cartaAtacante) {
+		if (getAtacable().estaColocadaBocaAbajo()) {
+			cartaAtacante.destruirCarta();
+			EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+			this.ponerEn(bocaArriba);
+		} else {
+			getAtacable().recibirAtaque(cartaAtacante);
+		}
 	}
+
 
 }

@@ -150,5 +150,8 @@ public class Campo {
 		
 	}
 	
+	public Jugador obtenerJugador() {
+		return this.jugador;
+	}
 
 }

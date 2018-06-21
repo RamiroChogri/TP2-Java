@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import campo.ZonaMonstruos;
 import cartas.CartaMonstruo;
 import cartas.Destruible;
+import exceptions.NoHaySuficientesMonstruosParaSacrificar;
 
 public class ReglaDeMonstruoGrandeStrategy extends ReglaDeInvocacionStrategy {
 	
@@ -18,7 +19,7 @@ public class ReglaDeMonstruoGrandeStrategy extends ReglaDeInvocacionStrategy {
 		int cantidadDeMonstruosASacrificar = 2;
 		
 		if( !zonaMonstruos.tieneMonstruosColocados(cantidadDeMonstruosASacrificar) ) {
-			//lanzar excepcion de que no hay 2 monstruos para sacrificar
+			throw new NoHaySuficientesMonstruosParaSacrificar();
 		}
 		LinkedList<Destruible> monstruosSacrificados = new LinkedList<Destruible>();
 		

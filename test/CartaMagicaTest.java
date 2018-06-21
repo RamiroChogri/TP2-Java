@@ -17,9 +17,7 @@ public class CartaMagicaTest {
 	@Test
 	public void testColocarCartaMagicaBocaArribaNoEstaBocaAbajo() {
 		CartaMagica cartaMagica = new CartaMagica();
-		Efecto efectoRecibidoAlDarVueltaLaCarta;
-		efectoRecibidoAlDarVueltaLaCarta = cartaMagica.colocarBocaArriba();
-		
+		cartaMagica.colocarBocaArriba();
 		assertFalse(cartaMagica.estaColocadaBocaAbajo());
 		
 	}
@@ -27,9 +25,7 @@ public class CartaMagicaTest {
 	@Test
 	public void testColocarCartaMagicaBocaArribaEstaBocaArriba() {
 		CartaMagica cartaMagica = new CartaMagica();
-		Efecto efectoRecibidoAlDarVueltaLaCarta;
-		efectoRecibidoAlDarVueltaLaCarta = cartaMagica.colocarBocaArriba();
-		
+		cartaMagica.colocarBocaArriba();
 		assertTrue(cartaMagica.estaColocadaBocaArriba());
 	}	
 	
@@ -44,6 +40,7 @@ public class CartaMagicaTest {
 	@Test
 	public void testDestruirCartaMagicaLaDestruye() {
 		CartaMagica cartaMagica = new CartaMagica();
+		cartaMagica.colocarBocaArriba();
 		cartaMagica.destruirCarta();
 		
 		assertTrue(cartaMagica.estaDestruida());	

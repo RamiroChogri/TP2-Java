@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import campo.ZonaMonstruos;
 import cartas.CartaMonstruo;
 import cartas.Destruible;
+import exceptions.NoHaySuficientesDragonesBlancosParaSacrificarException;
 
 public class ReglaDragonBlancoDefinitivoStrategy extends ReglaDeInvocacionStrategy {
 
@@ -13,7 +14,7 @@ public class ReglaDragonBlancoDefinitivoStrategy extends ReglaDeInvocacionStrate
 		
 		String nombreMonstruoASacrificar = "Dragon Blanco De Ojos Azules";
 		if(!zonaMonstruos.tieneElMonstruoTantasVeces( nombreMonstruoASacrificar , 3) ) {
-			//tirar excepcion
+			throw new NoHaySuficientesDragonesBlancosParaSacrificarException();
 		}
 		LinkedList<Destruible> monstruosSacrificados = new LinkedList<Destruible>();
 		

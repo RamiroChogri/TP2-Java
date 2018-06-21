@@ -267,12 +267,15 @@ de los puntos de ataque de los monstruos*/
 	
 	@Test
 	public void test08MonstruoAtacaAOtroMonstruoEnModoAtaqueConIgualAtaque() {
-		Puntos ataqueMonstruo1 = new Puntos(2000);
+		Puntos ataqueMonstruo1 = new Puntos(1000);
 		Puntos defensaMonstruo1 = new Puntos(3000);
+		
+		Puntos ataqueMonstruo2 = new Puntos(1000);
 		Puntos defensaMonstruo2 = new Puntos(2000);
+		
 		int estrellas = 3;
 		CartaMonstruo monstruoConMilDeAtaque = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo1, estrellas);
- 		CartaMonstruo otroMonstruoConMilDeAtaque = new CartaMonstruo(ataqueMonstruo1, defensaMonstruo2, estrellas);
+ 		CartaMonstruo otroMonstruoConMilDeAtaque = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellas);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
@@ -643,8 +646,33 @@ de los puntos de ataque de los monstruos*/
 		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
 	}
 	
-//	@Test
-//	public void test20InsectoBocaAbajoEnModoDefensaDestruyeAlAtacante() {}
+	@Test
+	public void test20InsectoBocaAbajoEnModoDefensaDestruyeAlAtacante() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Atacable insectoComeHombres = fabrica.crearInsectoComeHombres();
+		Atacable damaArpia = fabrica.crearDamaArpia();
+		
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		
+		jugador1.colocar(insectoComeHombres, bocaAbajo, new ModoDefensa() );
+		jugador2.colocar(damaArpia, bocaArriba, new ModoAtaque() );
+		
+		jugador2.atacar(damaArpia ,insectoComeHombres);
+		
+		int vidaEsperada = 8000;
+		
+		assertEquals(1 , jugador1.obtenerCantidadCartasEnZonaMonstruos());
+		assertEquals (0, jugador2.obtenerCantidadCartasEnZonaMonstruos());
+		assertEquals(vidaEsperada, jugador1.obtenerVidaRestante() );
+		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante() );
+}
 	
 	@Test
 	public void test21CilindroDaniaDirectamenteAlOponenteAlSerAtacada() {

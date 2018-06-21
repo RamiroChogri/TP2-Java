@@ -1,5 +1,6 @@
 package cartas;
 
+import estadoCarta.EstadoCarta;
 import jugador.Jugador;
 import modos.Modo;
 
@@ -24,5 +25,15 @@ public interface Atacable extends Destruible, Colocable,Daniable{
 	public int diferenciaDeAtaqueCon(Atacable cartaAtacada);
 	
 	public void destruirCarta(int danio);
+	
+	public boolean estaColocadaBocaArriba();
+	
+	public boolean estaColocadaBocaAbajo();
+	
+	public boolean estaEnModoAtaque();
+	
+	public boolean estaEnModoDefensa();
+	
+	public void ponerEn(EstadoCarta estado);
 
 }

@@ -1,8 +1,10 @@
 package campo;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 import cartas.Colocable;
+import exceptions.NoQuedanCartasEnElMazoException;
 import cartas.CartaMonstruo;
 
 public class Mazo {
@@ -22,6 +24,13 @@ public class Mazo {
 	}
 	
 	public Colocable levantarCarta() {
-		return this.mazo.pop();
+		Colocable cartaADevolver;
+		try {
+			cartaADevolver =  this.mazo.pop();
+		} catch (EmptyStackException error) {
+			throw new NoQuedanCartasEnElMazoException();
+		}
+
+		return cartaADevolver;
 	}
 }
