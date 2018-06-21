@@ -56,7 +56,7 @@ public class CartaMonstruo implements Atacable{
 		this.modo = new ModoAtaque();
 		this.regla = reglaDeInvocacion;	
 	}
-	
+	//Constructor que recibe todo lo anterior + el nombre
 	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar,
 			int estrellasAColocar, ReglaDeInvocacionStrategy reglaDeInvocacion, String nombreAColocar) {
 	this.puntosDeAtaque = puntosDeAtaqueAColocar;
@@ -92,11 +92,6 @@ public class CartaMonstruo implements Atacable{
 	}
 	
 	
-	////////////////////////////
-	
-	
-	//Deberia comprobarse en campo si la carta que ataca esta en modo ataque.
-	
 	public void atacar(Atacable cartaAtacableEnemiga) {
 		if (this.estaEnModoDefensa()) {
 			throw new MonstruoEnModoDefensaNoPuedeAtacarException();
@@ -106,7 +101,6 @@ public class CartaMonstruo implements Atacable{
 	}
 	
 
-	/////////
 	public void recibirAtaque(Atacable cartaAtacante) {
 	
 		if (estaColocadaBocaAbajo()) {
@@ -114,8 +108,6 @@ public class CartaMonstruo implements Atacable{
 		}
 		this.modo.recibirAtaque(cartaAtacante, this);
 	}
-	
-	/////////
 	
 	
 	public void colocarEnModoAtaque() {

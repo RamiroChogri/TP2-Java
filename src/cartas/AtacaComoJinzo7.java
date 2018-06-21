@@ -133,7 +133,7 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 		getAtacable().aumentarAtaqueEn(puntosAumentar);
 	}
 	
-	//Efecto Jinzo7
+	//este es el metodo Redefinido
 	
 	@Override
 	public void atacar(Jugador jugador) {

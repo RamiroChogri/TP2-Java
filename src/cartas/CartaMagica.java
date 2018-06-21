@@ -114,7 +114,6 @@ public class CartaMagica implements Activable{
 
 	@Override
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado) {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -66,11 +66,6 @@ public class Jugador implements Daniable{
 	//vamos a colocar la carta de la manera que quiera el jugador y despues la colocacion
 	//es generica en el campo.
 	
-//	public void colocarCartaEnCampo(CartaMonstruo carta) {
-//		
-//		campoPropio.colocarMonstruoEnModoAtaque( carta );
-//	}
-	
 	public void setCampoEnemigo(Campo campo) {
 		this.campoEnemigo = campo;
 	}
@@ -92,33 +87,7 @@ public class Jugador implements Daniable{
 		
 		return this.vida;
 	}
-/*
-	public void colocar (Atacable carta, EstadoCarta estado, Modo modo) {
-
-		carta.cambiarA(modo);
-			
-		if ((carta.obtenerEstrellas() > 4) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0)) {
-				
-			this.campoPropio.eliminarUltimaCartaMonstruoColocada();
-				
-			if ((carta.obtenerEstrellas() > 6) && (campoPropio.obtenerCantidadDeCartasEnZonaMonstruo() > 0 )) {
-				
-				this.campoPropio.eliminarUltimaCartaMonstruoColocada();
-			
-			} else if (carta.obtenerEstrellas() > 6 ){
-			
-				throw new NoHayMonstruoParaSacrificarException();
-			 
-			}
-				
-		} else if ((carta.obtenerEstrellas() > 4)) {
-			
-			throw new NoHayMonstruoParaSacrificarException();
-			
-		}
-		campoPropio.colocarCarta(carta, estado);
-	}
-*/	
+	
 	public void colocar(Atacable carta, EstadoCarta estado, Modo modo) {
 		carta.cambiarA(modo);
 		campoPropio.colocarCarta(carta, estado);
@@ -206,15 +175,5 @@ public class Jugador implements Daniable{
 	public void destruirCartaCampoEnemiga() {
 		this.campoEnemigo.vaciarZonaCampo();
 	}
-	
-/*
-	public void atacar(Atacable cartaAtacable) {
-		//Forzado
-	}
-
-	public void atacar(Daniable jugador) {
-		//Forzado
-	}
- */
 	
 }

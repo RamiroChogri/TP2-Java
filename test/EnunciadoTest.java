@@ -21,17 +21,7 @@ public class EnunciadoTest {
 	
 	//Colocar una carta de monstruo en posiciÃ³n de ataque.
 	@Test
-	public void test01ColocarCartaMonstruoEnModoAtaque() {
-//		Campo campoTest = new Campo();
-//		CartaMonstruo cartaMonstruo = new CartaMonstruo(); //Pogramar vs interfaces !!!!
-//		cartaMonstruo.colocarEnModoAtaque();
-//		
-//		campoTest.colocarCarta(cartaMonstruo);
-//		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
-//		assertTrue( cartaMonstruo.estaColocadaEnModoAtaque() );
-//		
-		
-		
+	public void test01ColocarCartaMonstruoEnModoAtaque() {			
 		//Agregada nueva clase "puntos" en carta para el manejo de puntos de ataque y defensa
 		//en cartas monstruo
 		//Agregado nuevo EstadoCartaInvocada (No tiene nada implementado)
@@ -83,17 +73,7 @@ public class EnunciadoTest {
 	}
 	
 	@Test
-	public void test02ColocarMonstruoBocaAbajoEnModoDefensa() {
-//		
-//		Campo campoTest = new Campo();
-//		CartaMonstruo cartaMonstruo = new CartaMonstruo();
-//		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
-//		
-//		campoTest.colocarCarta(cartaMonstruo);
-//		
-//		assertEquals(1,campoTest.obtenerCantidadDeCartasEnZonaMonstruo());
-//		assertTrue( cartaMonstruo.estaColocadaBocaAbajoEnModoDefensa() );
-//		
+	public void test02ColocarMonstruoBocaAbajoEnModoDefensa() {		
 
 		//CartaEnModoDefensaNoPuedeAtacar
 		//cambia algo el que este boca abajo? Que comportamiento le agrega?
