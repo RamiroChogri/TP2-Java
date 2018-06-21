@@ -206,4 +206,60 @@ public class CartaMonstruoFactory {
 			
 			return insectoComeHombres;
 		}
+		
+		public Atacable crearCabezaDeExodia() {
+			Puntos puntosDeAtaque = new Puntos(1000);
+			Puntos puntosDeDefensa = new Puntos(1000);
+			int estrellas = 3;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			Atacable cabezaDeExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Exodia , El Prohibido");
+			
+			return cabezaDeExodia;	
+		}
+		
+		public Atacable crearBrazoIzquierdoExodia() {
+			Puntos puntosDeAtaque = new Puntos(200);
+			Puntos puntosDeDefensa = new Puntos(300);
+			int estrellas = 1;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			Atacable brazoIzquierdoExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Brazo Izquierdo De Exodia");
+			
+			return brazoIzquierdoExodia;
+		}
+		
+		public Atacable crearBrazoDerechoExodia() {
+			Puntos puntosDeAtaque = new Puntos(200);
+			Puntos puntosDeDefensa = new Puntos(300);
+			int estrellas = 1;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			Atacable brazoDerechoExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Brazo Derecho De Exodia");
+			
+			return brazoDerechoExodia;
+		}
+		
+		public Atacable crearPiernaIzquierdaExodia() {
+			Puntos puntosDeAtaque = new Puntos(200);
+			Puntos puntosDeDefensa = new Puntos(300);
+			int estrellas = 1;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			Atacable piernaIzquierdaExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Pierna Izquierda De Exodia");
+			
+			return piernaIzquierdaExodia;
+		}
+		
+		public Atacable crearPiernaDerechaExodia() {
+			Puntos puntosDeAtaque = new Puntos(200);
+			Puntos puntosDeDefensa = new Puntos(300);
+			int estrellas = 1;
+			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
+			
+			Atacable piernaDerechaExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Pierna Derecha De Exodia");
+			
+			return piernaDerechaExodia;
+		}
+		
 }

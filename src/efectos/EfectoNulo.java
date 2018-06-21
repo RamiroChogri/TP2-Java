@@ -2,7 +2,7 @@ package efectos;
 import campo.*;
 import cartas.Atacable;
 
-public class EfectoNulo implements Efecto {
+public class EfectoNulo extends Efecto {
 
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo) {
 		//No hace nada

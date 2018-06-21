@@ -4,7 +4,7 @@ import campo.Campo;
 import cartas.Atacable;
 import exceptions.NoHayMonstruoParaSacrificarException;
 
-public class EfectoFisura implements Efecto {
+public class EfectoFisura extends Efecto {
 
 	@Override
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo) {

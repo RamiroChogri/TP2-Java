@@ -3,7 +3,7 @@ package efectos;
 import campo.Campo;
 import cartas.Atacable;
 
-public class EfectoPotOfGreed implements Efecto {
+public class EfectoPotOfGreed extends Efecto {
 
 	@Override
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo) {

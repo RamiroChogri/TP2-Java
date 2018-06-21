@@ -2,10 +2,10 @@ package efectos;
 import campo.*;
 import cartas.Atacable;
 
-public interface Efecto {
+public abstract class Efecto {
 
-	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo);
+	public abstract void aplicarEfecto(Campo campoPropio, Campo campoEnemigo);
 
-	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado);
+	public abstract void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado);
 	
 }

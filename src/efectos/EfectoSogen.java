@@ -4,7 +4,7 @@ import campo.Campo;
 import cartas.Atacable;
 import cartas.Puntos;
 
-public class EfectoSogen implements Efecto {
+public class EfectoSogen extends Efecto {
 
 	@Override
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo) {

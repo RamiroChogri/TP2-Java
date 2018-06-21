@@ -4,7 +4,7 @@ import campo.Campo;
 import cartas.Atacable;
 import cartas.Puntos;
 
-public class EfectoRefuerzos implements Efecto {
+public class EfectoRefuerzos extends Efecto {
 
 	private Puntos puntosAumentar;
 	@Override
