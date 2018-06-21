@@ -33,6 +33,7 @@ public class Mano {
 		String exodia = "Exodia";
 		int cantidadCartasExodiaEnMano = 0;
 		Colocable cartaActual = null;
+		String nombreCartaActual;
 		
 		Iterator<Colocable> posicionesIterador = this.cartasEnMano.iterator();
 		while(posicionesIterador.hasNext()) {
