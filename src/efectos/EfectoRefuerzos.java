@@ -2,9 +2,11 @@ package efectos;
 
 import campo.Campo;
 import cartas.Atacable;
+import cartas.Puntos;
 
 public class EfectoRefuerzos implements Efecto {
 
+	private Puntos puntosAumentar;
 	@Override
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo) {
 		
@@ -13,7 +15,8 @@ public class EfectoRefuerzos implements Efecto {
 
 	@Override
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado) {
-		// TODO Auto-generated method stub
+		this.puntosAumentar = new Puntos( 500 );
+		atacado.aumentarAtaqueEn( puntosAumentar );
 		
 	}
 

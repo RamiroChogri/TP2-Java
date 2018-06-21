@@ -36,4 +36,6 @@ public interface Atacable extends Destruible, Colocable,Daniable{
 	
 	public void ponerEn(EstadoCarta estado);
 
+	public void aumentarAtaqueEn(Puntos puntosAumentar);
+
 }

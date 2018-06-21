@@ -717,8 +717,43 @@ de los puntos de ataque de los monstruos*/
 	ataque que el primero) y atacar al primer monstruo. Verificar que se activa la carta
 	trampa, y el monstruo enemigo es destruido y se infligió 100 puntos de daño a la
 	vida del otro jugador.*/	
-//	@Test
-//	public void test22() {}
+	@Test
+	public void test22CartaRefuerzo() {
+		
+		
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		CartaTrampaFactory fabricaTrampas = new CartaTrampaFactory();
+		
+		Activable refuerzos = fabricaTrampas.crearRefuerzos();
+		
+		Atacable monstruo1 = fabrica.crearDragonDeKoumori();
+ 		Atacable monstruo2 = fabrica.crearJineteVorse();
+ 		
+ 		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		
+		jugador1.colocar(monstruo1, bocaArriba, modoAtaque);
+		jugador1.colocar(refuerzos, bocaAbajo);
+		
+		jugador2.colocar(monstruo2, bocaArriba, modoAtaque);
+		jugador2.atacar(monstruo2, monstruo1);
+		
+							/*8000 - 100 = 7900*/
+		int vidaEsperada = 7900;
+		
+		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+		assertFalse(monstruo1.estaDestruida());
+		assertTrue(monstruo2.estaDestruida());
+		assertTrue(refuerzos.estaDestruida());
+		
+	}
 	
 //	@Test
 //	public void test23ExtraerTodasLasCartasFinalizaPartida() {}
