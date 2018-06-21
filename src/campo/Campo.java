@@ -139,18 +139,13 @@ public class Campo {
 		
 	}
 
-	public Jugador obtenerDuenio() {
-	
-		return jugador;
-	}
-
 	public void hacerDanioAlJugador(Puntos puntosDeDanio) {
 		
 		jugador.recibirAtaque( puntosDeDanio.obtenerPuntosActuales() );
 		
 	}
 	
-	public Jugador obtenerJugador() {
+	public Jugador obtenerDuenio() {
 		return this.jugador;
 	}
 

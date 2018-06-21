@@ -85,7 +85,7 @@ public class Partida {
 		    
 		    //No se verifica quien gano
 		    
-			if (jugadorEnTurno.estaMuerto() || jugadorEnTurno.obtenerJugadorEnemigo().estaMuerto() || 
+			if (jugadorEnTurno.estaDerrotado() || jugadorEnTurno.obtenerJugadorEnemigo().estaDerrotado() || 
 					jugadorEnTurno.obtenerCartasMazo() <= 0 || jugadorEnTurno.obtenerJugadorEnemigo().obtenerCartasMazo() <= 0 ||
 					jugadorEnTurno.tieneAExodiaEnMano()) {
 				this.finalizar();

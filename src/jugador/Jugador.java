@@ -176,20 +176,31 @@ public class Jugador implements Daniable{
 	}
 	
 	public Jugador obtenerJugadorEnemigo() {
-		return this.campoEnemigo.obtenerJugador();
+		return this.campoEnemigo.obtenerDuenio();
 	}
 	
 	public int obtenerCartasMazo() {
 		return this.campoPropio.obtenerCantidadDeCartasEnMazo();
 	}
 	
-	public boolean estaMuerto() {
+	public boolean estaDerrotado() {
 		return (this.vida <= 0);
 	}
 	
 	public boolean tieneAExodiaEnMano() {
 		boolean tieneAExodiaEnMano = this.mano.tieneAExodia();
+		
+		if (tieneAExodiaEnMano) {
+			campoEnemigo.obtenerDuenio().derrotarse();
+		}
+		
 		return tieneAExodiaEnMano;
+	}
+	
+	public void derrotarse() {
+		
+		this.recibirAtaque(this.vida);
+	
 	}
 	
 /*
