@@ -755,10 +755,36 @@ de los puntos de ataque de los monstruos*/
 		
 	}
 	
-//	@Test
-//	public void test23ExtraerTodasLasCartasFinalizaPartida() {}
+	@Test
+	public void test23ExtraerTodasLasCartasFinalizaPartida() {
+		Jugador jugador = new Jugador();
+		for(int i=0; i<36; i++) {
+			jugador.tomarCartaDelMazo();
+		}
+		
+		int cartasManoEsperadas = 40;
+		assertEquals(cartasManoEsperadas, jugador.obtenerCantidadDeCartasEnLaMano());
+		assertTrue(jugador.estaDerrotado());
+	}
 	
-//	@Test
-//	public void test24LasCincoPartesDeExodiaEnManoFinalizanPartida() {}
+	@Test
+	public void test24LasCincoPartesDeExodiaEnManoFinalizanPartida() {
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		for(int i=0; i<35; i++) {
+			jugador1.tomarCartaDelMazo();
+		}
+		
+		int cartasManoEsperadas = 40;
+		assertEquals(cartasManoEsperadas, jugador1.obtenerCantidadDeCartasEnLaMano());
+		assertTrue(jugador1.tieneAExodiaEnMano());
+		assertFalse(jugador1.estaDerrotado());
+		assertTrue(jugador2.estaDerrotado());
+		
+	}
 	
 }
