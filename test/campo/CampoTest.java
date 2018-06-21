@@ -148,17 +148,17 @@ public class CampoTest {
 	}
 	
 	@Test
-	public void testColocarUnaCartaMagicaBocaArribaQuedaColocada() {
+	public void testColocarUnaCartaMagicaBocaArribaSeActivaYSeVaAlCementerio() {
 		Campo campo = new Campo();
-		CartaMagica carta = new CartaMagica();
+		
+		Activable carta = new CartaMagica();
 		//No se guarda el efecto de la carta magica al colocarla boca arriba
-		carta.colocarBocaArriba();
 		
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 
 		campo.colocarCarta(carta, bocaArriba);
 		
-		assertEquals( 1, campo.obtenerCantidadDeCartasEnZonaMagicasYTrampas() );
+		assertEquals( 1, campo.obtenerCantidadDeCartasEnCementerio() );
 	
 	}
 	
@@ -201,8 +201,8 @@ public class CampoTest {
 		
 		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
 		
-		Atacable cartaMonstruo1 =	fabrica.crearDragonBlancoDeOjosAzules();
-		Atacable cartaMonstruo2 = fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable cartaMonstruo1 = fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearHeroeElementalAvian();
 		
 		
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
@@ -211,7 +211,7 @@ public class CampoTest {
 		campo.colocarCarta(cartaMonstruo2,bocaArriba);
 		int cartasEnCampoEsperadas = 2;
 		
-		assertEquals(cartasEnCampoEsperadas, campo.obtenerCantidadDeCartasEnJuego());
+		assertEquals(cartasEnCampoEsperadas, campo.obtenerCantidadDeCartasEnZonaMonstruos());
 	}
 	
 	@Test
