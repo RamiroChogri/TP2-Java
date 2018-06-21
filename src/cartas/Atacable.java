@@ -38,4 +38,6 @@ public interface Atacable extends Destruible, Colocable,Daniable{
 
 	public void aumentarAtaqueEn(Puntos puntosAumentar);
 
+	public Modo obtenerModo();
+
 }

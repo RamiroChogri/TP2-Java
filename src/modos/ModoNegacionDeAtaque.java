@@ -4,6 +4,14 @@ import cartas.Atacable;
 
 public class ModoNegacionDeAtaque extends Modo {
 
+	private Modo modoAnterior;
+	
+	public ModoNegacionDeAtaque(Modo modoPrevio) {
+		
+		this.modoAnterior = modoPrevio;
+		
+	}
+
 	@Override
 	public boolean estaEnModoAtaque() {
 
@@ -26,11 +34,15 @@ public class ModoNegacionDeAtaque extends Modo {
 		return new ModoAtaque();
 	}
 	
+	public Modo colocarEnModoAnterior() {
+		return modoAnterior;
+	}
+	
 	@Override
 	public void recibirAtaque(Atacable cartaAtacante, Atacable cartaAtacada) {
 		
 		//Deberia volver al modo que tenia antes.
-		cartaAtacada.cambiarA(this.colocarEnModoAtaque());
+		cartaAtacada.cambiarA(this.colocarEnModoAnterior());
 	}
 
 }

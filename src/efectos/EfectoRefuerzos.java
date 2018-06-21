@@ -15,6 +15,7 @@ public class EfectoRefuerzos extends Efecto {
 
 	@Override
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado) {
+		
 		this.puntosAumentar = new Puntos( 500 );
 		atacado.aumentarAtaqueEn( puntosAumentar );
 		

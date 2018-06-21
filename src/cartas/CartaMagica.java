@@ -13,6 +13,7 @@ import campo.ZonaMonstruos;
 import efectos.*;
 import exceptions.*;
 import jugador.Jugador;
+import modos.Modo;
 
 public class CartaMagica implements Activable{
 	
@@ -116,5 +117,6 @@ public class CartaMagica implements Activable{
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado) {
 		
 	}
+
 
 }

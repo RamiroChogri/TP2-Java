@@ -203,5 +203,11 @@ public class CartaMonstruo implements Atacable{
 	public void atacar(Jugador jugador) {
 		jugador.recibirAtaque(this);
 	}
+
+	@Override
+	public Modo obtenerModo() {
+
+		return this.modo;
+	}
  	
 }
