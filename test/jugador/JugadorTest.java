@@ -1,15 +1,11 @@
 package jugador;
 import org.junit.Test;
 
-import cartas.Atacable;
-import cartas.CartaMagica;
-import cartas.CartaMonstruo;
-import cartas.CartaTrampa;
-import estadoCarta.EstadoCarta;
-import estadoCarta.EstadoCartaColocadaBocaArriba;
-import factories.CartaMonstruoFactory;
-import modos.Modo;
-import modos.ModoAtaque;
+import cartas.*;
+import estadoCarta.*;
+import factories.*;
+import modos.*;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -25,25 +21,40 @@ public class JugadorTest {
 		
 		
 		@Test
-		public void testJugadorAtacaAlMonstruoDeOtroJugador() {
-			
-			CartaMonstruo atacante = new CartaMonstruo(200,100);
-			CartaMonstruo atacado = new CartaMonstruo(100,100);
+		public void testJugadorAtacaAlMonstruoDeOtroJugadorYLoDestruye() {
+			CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+			Atacable atacante = fabrica.crearBetaElGuerreroMagnetico();
+			Atacable atacado = fabrica.crearDragonDeKoumori();
 			Jugador jugador1 = new Jugador();
 			Jugador jugador2 = new Jugador();
 			
-			atacante.colocarEnModoAtaque();
-			atacado.colocarEnModoAtaque();
 			jugador1.enfrentarseA(jugador2);
 			jugador2.enfrentarseA(jugador1);
-			jugador1.colocarMonstruoEnModoAtaque(atacante);
-			jugador2.colocarMonstruoEnModoAtaque(atacado);
+			jugador1.colocar(atacado, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
+			jugador2.colocar(atacante, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
 			
-			jugador1.atacar(atacante, atacado);
+			jugador2.atacar(atacante, atacado);
 			
 			assertTrue(atacado.estaDestruida());
-			assertEquals( 8000, jugador1.obtenerVidaRestante() );
-			assertEquals( 7900, jugador2.obtenerVidaRestante() );
+		}
+		
+		@Test
+		public void testJugadorAtacaAlMonstruoDeOtroJugadorYLeInflingeDanioALosPuntosDeVida() {
+			CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+			Atacable atacante = fabrica.crearBetaElGuerreroMagnetico();
+			Atacable atacado = fabrica.crearDragonDeKoumori();
+			Jugador jugador1 = new Jugador();
+			Jugador jugador2 = new Jugador();
+			
+			jugador1.enfrentarseA(jugador2);
+			jugador2.enfrentarseA(jugador1);
+			jugador1.colocar(atacado, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
+			jugador2.colocar(atacante, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
+			
+			jugador2.atacar(atacante, atacado);
+			
+			int vidaEsperada = 8000 - 200;
+			assertEquals(vidaEsperada, jugador1.obtenerVidaRestante());
 		}
 		
 		@Test
@@ -58,31 +69,37 @@ public class JugadorTest {
 		@Test
 		public void testElJugadorTieneCartasEnElCampo() {
 			Jugador jugador1 = new Jugador();
-			CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 3000, 3);
-			CartaMonstruo cartaMonstruo2 = new CartaMonstruo(1000, 3000, 3);
-			CartaMagica cartaMagica = new CartaMagica();
-			CartaTrampa cartaTrampa = new CartaTrampa();
-
-			jugador1.colocarMonstruoEnModoAtaque(cartaMonstruo1);
-			jugador1.colocarMonstruoBocaAbajoEnModoDefensa(cartaMonstruo2);
-			jugador1.colocarCartaMagicaBocaAbajo(cartaMagica);
-			jugador1.colocarCartaTrampaBocaAbajo(cartaTrampa);
+			CartaMonstruoFactory fabricaMonstruo = new CartaMonstruoFactory();
+			CartaMagicaFactory fabricaMagicas = new CartaMagicaFactory();
 			
-			assertTrue(jugador1.tieneCartasEnCampo());
+			Atacable monstruo1 = fabricaMonstruo.crearDragonDeBrillo();
+			Atacable monstruo2 = fabricaMonstruo.crearDuendeMistico();
+			Activable cartaMagica1 = fabricaMagicas.crearAgujeroNegro();
+			Activable cartaMagica2 = fabricaMagicas.crearOllaDeLaCodicia();
+			
+			jugador1.colocar(monstruo1, new EstadoCartaColocadaBocaArriba( ), new ModoAtaque() );
+			jugador1.colocar(monstruo2, new EstadoCartaColocadaBocaAbajo(), new ModoDefensa() );
+			jugador1.colocar(cartaMagica1, new EstadoCartaColocadaBocaAbajo() );
+			jugador1.colocar(cartaMagica2, new EstadoCartaColocadaBocaAbajo() );
+			
+			assertTrue( jugador1.tieneCartasEnCampo() );
 		}
 		
 		@Test
 		public void testObtenerCantidadDeCartasEnCampo() {
 			Jugador jugador1 = new Jugador();
-			CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 3000, 3);
-			CartaMonstruo cartaMonstruo2 = new CartaMonstruo(1000, 3000, 3);
-			CartaMagica cartaMagica = new CartaMagica();
-			CartaTrampa cartaTrampa = new CartaTrampa();
-
-			jugador1.colocarMonstruoEnModoAtaque(cartaMonstruo1);
-			jugador1.colocarMonstruoBocaAbajoEnModoDefensa(cartaMonstruo2);
-			jugador1.colocarCartaMagicaBocaAbajo(cartaMagica);
-			jugador1.colocarCartaTrampaBocaAbajo(cartaTrampa);
+			CartaMonstruoFactory fabricaMonstruo = new CartaMonstruoFactory();
+			CartaMagicaFactory fabricaMagicas = new CartaMagicaFactory();
+			
+			Atacable monstruo1 = fabricaMonstruo.crearDragonDeBrillo();
+			Atacable monstruo2 = fabricaMonstruo.crearDuendeMistico();
+			Activable cartaMagica1 = fabricaMagicas.crearAgujeroNegro();
+			Activable cartaMagica2 = fabricaMagicas.crearOllaDeLaCodicia();
+			
+			jugador1.colocar(monstruo1, new EstadoCartaColocadaBocaArriba( ), new ModoAtaque() );
+			jugador1.colocar(monstruo2, new EstadoCartaColocadaBocaAbajo(), new ModoDefensa() );
+			jugador1.colocar(cartaMagica1, new EstadoCartaColocadaBocaAbajo() );
+			jugador1.colocar(cartaMagica2, new EstadoCartaColocadaBocaAbajo() );
 			
 			assertEquals(4, jugador1.obtenerCantidadCartasEnCampo());
 		}
@@ -106,7 +123,7 @@ public class JugadorTest {
 	 		jugador1.atacar(unMonstruo, jugador2);
 	 		
 	 		int vidaEsperada = 7000;
-			assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
+			assertEquals( vidaEsperada , jugador2.obtenerVidaRestante() );
 		}
 		
 }
