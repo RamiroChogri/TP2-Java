@@ -4,45 +4,55 @@ import campo.*;
 import cartas.*;
 import efectos.EfectoJinzo7;
 import estadoCarta.EstadoCarta;
+import estadoCarta.EstadoCartaColocadaBocaAbajo;
 import estadoCarta.EstadoCartaColocadaBocaArriba;
 import factories.CartaMonstruoFactory;
 import jugador.Jugador;
 import modos.Modo;
 import modos.ModoAtaque;
+import modos.ModoDefensa;
 
 public class CartaMonstruoTest {
 	
 	@Test
-	public void testColocarCartaMonstruoEnModoAtaqueEstaEnModoAtaque() {
-		CartaMonstruo cartaMonstruo = new CartaMonstruo(9000, 5);
-		cartaMonstruo.colocarEnModoAtaque();
-		assertEquals(true, cartaMonstruo.estaColocadaEnModoAtaque());
+	public void test01ColocarCartaMonstruoEnModoAtaqueEstaEnModoAtaque() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo = fabrica.crearHeroeElementalAvian();
+		Modo modoAtaque = new ModoAtaque();
+		cartaMonstruo.cambiarA(modoAtaque);
+		assertTrue(cartaMonstruo.estaEnModoAtaque());
 	}
 	
 	@Test
-	public void testColocarCartaMonstruoBocaAbajoEnModoDefensaNoEstaEnModoAtaque() {
-		CartaMonstruo cartaMonstruo = new CartaMonstruo(9000, 5);
-		cartaMonstruo.colocarBocaAbajoEnModoDefensa();
-		assertFalse(cartaMonstruo.estaColocadaEnModoAtaque());
+	public void test02ColocarCartaMonstruoBocaAbajoEnModoDefensaNoEstaEnModoAtaque() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo = fabrica.crearHeroeElementalAvian();
+		Modo modoDefensa = new ModoDefensa();
+		cartaMonstruo.cambiarA(modoDefensa);
+		assertFalse(cartaMonstruo.estaEnModoAtaque());
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroEnModoAtaqueConMenosAtaqueYLoDestruye() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 400);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarEnModoAtaque();
+	public void test03MonstruoAtacaAOtroEnModoAtaqueConMenosAtaqueYLoDestruye() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 = fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearHeroeElementalAvian();
+		Modo modoAtaque = new ModoAtaque();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoAtaque);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
 		assertTrue(cartaMonstruo2.estaDestruida());
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroEnModoAtaqueConMenosAtaqueYNoSeDestruyeLaCartaQueAtaca() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 400);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarEnModoAtaque();
+	public void test04MonstruoAtacaAOtroEnModoAtaqueConMenosAtaqueYNoSeDestruyeLaCartaQueAtaca() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 = fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable cartaMonstruo2 = fabrica.crearHeroeElementalAvian();
+		Modo modoAtaque = new ModoAtaque();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoAtaque);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
 		assertFalse(cartaMonstruo1.estaDestruida());
@@ -50,33 +60,43 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMenosDefensaYLoDestruye() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 400);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarBocaArribaEnModoDefensa();
+	public void test05MonstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMenosDefensaYLoDestruye() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 =fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable cartaMonstruo2 = fabrica.crearHeroeElementalAvian();
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoDefensa);
 		cartaMonstruo1.atacar(cartaMonstruo2);
+		
 		
 		assertTrue(cartaMonstruo2.estaDestruida());		
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYNoLoDestruye() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarBocaArribaEnModoDefensa();
+	public void test06MonstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYNoLoDestruye() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 =fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearDragonBlancoDeOjosAzules();
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoDefensa);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
 		assertFalse(cartaMonstruo2.estaDestruida());				
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYNoSeDestruyeLaQueAtaco() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarBocaArribaEnModoDefensa();
+	public void test07MonstruoAtacaAOtroMonstruoBocaArribaEnModoDefensaConMasDefensaYNoSeDestruyeLaQueAtaco() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 =fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearDragonBlancoDeOjosAzules();
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoDefensa);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
 		assertFalse(cartaMonstruo1.estaDestruida());					
@@ -84,94 +104,122 @@ public class CartaMonstruoTest {
 	
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMenosDefensaYLoDestruye() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 400);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarBocaAbajoEnModoDefensa();
-		cartaMonstruo1.atacar(cartaMonstruo2);
+	public void test08MonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMenosDefensaYLoDestruye() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 =fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable cartaMonstruo2 = fabrica.crearHeroeElementalAvian();
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoDefensa);
 		
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		cartaMonstruo2.ponerEn(bocaAbajo);
+		cartaMonstruo1.atacar(cartaMonstruo2);
 		assertTrue(cartaMonstruo2.estaDestruida());		
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYNoLoDestruye() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarBocaAbajoEnModoDefensa();
+	public void test09MonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYNoLoDestruye() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 =fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearDragonBlancoDeOjosAzules();
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		cartaMonstruo2.ponerEn(bocaAbajo);
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoDefensa);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
 		assertFalse(cartaMonstruo2.estaDestruida());				
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYSeDestruyeLaQueAtaco() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarBocaAbajoEnModoDefensa();
+	public void test10MonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYNoSeDestruyeLaQueAtaco() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 = fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearDragonBlancoDeOjosAzules();
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoDefensa);
+		cartaMonstruo2.ponerEn(bocaAbajo);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
 		assertFalse(cartaMonstruo1.estaDestruida());					
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYLoDaVuelta() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(500, 1200);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarBocaAbajoEnModoDefensa();
+	public void test11MonstruoAtacaAOtroMonstruoBocaAbajoEnModoDefensaConMasDefensaYLoDaVuelta() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 = fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearDragonBlancoDeOjosAzules();
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoDefensa);
+		cartaMonstruo2.ponerEn(bocaAbajo);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
-		assertTrue(cartaMonstruo2.estaColocadaBocaArribaEnModoDefensa());					
+		assertTrue(cartaMonstruo2.estaColocadaBocaArriba());					
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYLoDestruye() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(1000, 400);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarEnModoAtaque();
+	public void test12MonstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYLoDestruye() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 = fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearHeroeElementalAvian();
+		Modo modoAtaque = new ModoAtaque();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoAtaque);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
 		assertTrue(cartaMonstruo2.estaDestruida());
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYSeDestruye() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(1000, 800);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(1000, 400);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarEnModoAtaque();
+	public void test13MonstruoAtacaAOtroMonstruoEnModoAtaqueConMismoAtaqueYSeDestruye() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 = fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearHeroeElementalAvian();
+		Modo modoAtaque = new ModoAtaque();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoAtaque);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
 		assertTrue(cartaMonstruo1.estaDestruida());
 	}
 	
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoEnModoDefensaConMismoAtaqueQueDefensaYNoSeDestruye() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(2000, 1000);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(0, 2000);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarBocaAbajoEnModoDefensa();
+	public void test14MonstruoAtacaAOtroMonstruoEnModoDefensaConMismoAtaqueQueDefensaYNoSeDestruye() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 = fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 = fabrica.crearHeroeElementalAvian();
+		Modo modoAtaque = new ModoAtaque();
+		Modo modoDefensa = new ModoDefensa();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoDefensa);
 		cartaMonstruo1.atacar(cartaMonstruo2);
-		
 		assertFalse(cartaMonstruo1.estaDestruida());
 	}
 	@Test
-	public void testMonstruoAtacaAOtroMonstruoEnModoAtaqueLaDestruyeYDejaElDanioCorrespondiente() {
-		CartaMonstruo cartaMonstruo1 = new CartaMonstruo(2000, 1000);
-		CartaMonstruo cartaMonstruo2 = new CartaMonstruo(100, 2000);
-		cartaMonstruo1.colocarEnModoAtaque();
-		cartaMonstruo2.colocarEnModoAtaque();
+	public void test15MonstruoAtacaAOtroMonstruoEnModoAtaqueLaDestruyeYDejaElDanioCorrespondiente() {
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		Atacable cartaMonstruo1 = fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable cartaMonstruo2 = fabrica.crearHeroeElementalAvian();
+		Modo modoAtaque = new ModoAtaque();
+		cartaMonstruo1.cambiarA(modoAtaque);
+		cartaMonstruo2.cambiarA(modoAtaque);
 		cartaMonstruo1.atacar(cartaMonstruo2);
 		
-		assertEquals(2000 - 100 ,cartaMonstruo2.obtenerDanioAlHaberSidoDestruida());
+		assertEquals(2000 ,cartaMonstruo2.obtenerDanioAlHaberSidoDestruida());
 	}
 	
 	@Test
-	public void testJinzo7AtacaDirectamenteAJugador() {
+	public void test16Jinzo7AtacaDirectamenteAJugador() {
 		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
 		Atacable jinzo7 = fabrica.crearJinzo7();
 		Jugador jugador = new Jugador();

@@ -220,7 +220,7 @@ public class CampoTest {
 		
 		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
 		
-		Atacable cartaMonstruo =	fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable cartaMonstruo =	fabrica.crearHeroeElementalAvian();
 		CartaMagica cartaMagica = new CartaMagica();
 		CartaTrampa cartaTrampa = new CartaTrampa();
 		
@@ -241,9 +241,9 @@ public class CampoTest {
 		Campo campo = new Campo();
 		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
 		
-		Atacable cartaMonstruo1 =  fabrica.crearDragonBlancoDeOjosAzules();
-		Atacable cartaMonstruo2 =  fabrica.crearDragonBlancoDeOjosAzules();
-		Atacable cartaMonstruo3 =  fabrica.crearDragonBlancoDeOjosAzules();
+		Atacable cartaMonstruo1 =  fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo2 =  fabrica.crearHeroeElementalAvian();
+		Atacable cartaMonstruo3 =  fabrica.crearHeroeElementalAvian();
 		
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
 		
