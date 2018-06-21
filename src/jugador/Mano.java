@@ -30,46 +30,20 @@ public class Mano {
 	public boolean tieneAExodia() {
 		boolean tieneAExodia = false;
 		
-		String nombreCabeza = "Cabeza de Exodia";
-		String nombreBrazoIzquierdo = "Brazo izquierdo de Exodia";
-		String nombreBrazoDerecho = "Brazo derecho de Exodia";
-		String nombrePiernaIzquierda = "Pierna izquierda de Exodia";
-		String nombrePiernaDerecha = "Pierna derecha de Exodia";
-		
-		boolean tieneCabeza = false;
-		boolean tieneBrazoIzquierdo = false;
-		boolean tieneBrazoDerecho = false;
-		boolean tienePiernaIzquierda = false;
-		boolean tienePiernaDerecha = false;
-		
-		String nombreCartaActual;
+		String exodia = "Exodia";
+		int cantidadCartasExodiaEnMano = 0;
 		Colocable cartaActual = null;
 		
 		Iterator<Colocable> posicionesIterador = this.cartasEnMano.iterator();
 		while(posicionesIterador.hasNext()) {
 			cartaActual = posicionesIterador.next();
 			nombreCartaActual = cartaActual.obtenerNombre();
-			if (nombreCartaActual == nombreCabeza) {
-				tieneCabeza = true;
-			}
-			if (nombreCartaActual == nombreBrazoIzquierdo) {
-				tieneBrazoIzquierdo = true;
-			}
-			if (nombreCartaActual == nombreBrazoDerecho) {
-				tieneBrazoDerecho = true;
-			}
-			if (nombreCartaActual == nombrePiernaIzquierda) {
-				tienePiernaIzquierda = true;
-			}
-			if (nombreCartaActual == nombrePiernaDerecha) {
-				tienePiernaDerecha = true;
+			if (nombreCartaActual.contains(exodia)) {
+				cantidadCartasExodiaEnMano++;
 			}
 		}
 		
-		if (tieneCabeza && tieneBrazoIzquierdo && tieneBrazoDerecho && tienePiernaIzquierda && tienePiernaDerecha) {
-			tieneAExodia = true;
-		}
-		
+		tieneAExodia = (cantidadCartasExodiaEnMano == 5);
 		return tieneAExodia;
 	}
 
