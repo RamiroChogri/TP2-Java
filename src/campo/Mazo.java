@@ -65,12 +65,6 @@ public class Mazo {
 		this.mazo.add(fabricaMonstruos.crearZoa());
 		this.mazo.add(fabricaMonstruos.crearJineteVorse());
 		
-//		
-//		
-//		while(this.mazo.size()<40) {
-//			Colocable cartaActual = new CartaMonstruo();
-//			this.mazo.add(cartaActual);
-//		}
 		Collections.shuffle(mazo);
 	}
 	
