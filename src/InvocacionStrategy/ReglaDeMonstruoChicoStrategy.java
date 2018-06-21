@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import campo.ZonaMonstruos;
 import cartas.CartaMonstruo;
 import cartas.Destruible;
+import exceptions.NoHayLugarVacioException;
 
 public class ReglaDeMonstruoChicoStrategy extends ReglaDeInvocacionStrategy {
 	
@@ -16,7 +17,7 @@ public class ReglaDeMonstruoChicoStrategy extends ReglaDeInvocacionStrategy {
 	@Override
 	public LinkedList<Destruible> colocarCarta(ZonaMonstruos zonaMonstruos, CartaMonstruo cartaAColocar) {
 		if(!zonaMonstruos.hayEspacioDisponible()) {
-			//lanzar excepcion de que no hay espacio para invocar un monstruo
+			throw new NoHayLugarVacioException();
 		}
 		zonaMonstruos.colocarCarta(cartaAColocar);
 		
