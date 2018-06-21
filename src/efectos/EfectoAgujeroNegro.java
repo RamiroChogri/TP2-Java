@@ -2,7 +2,7 @@ package efectos;
 import campo.*;
 import cartas.Atacable;
 
-public class EfectoAgujeroNegro implements Efecto {
+public class EfectoAgujeroNegro extends Efecto {
 
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo) {
 		campoPropio.vaciarZonaMonstruos();

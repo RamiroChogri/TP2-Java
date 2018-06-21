@@ -4,7 +4,7 @@ import campo.Campo;
 import cartas.Atacable;
 import modos.ModoNegacionDeAtaque;
 
-public class EfectoCilindroMagico implements Efecto {
+public class EfectoCilindroMagico extends Efecto {
 
 	@Override
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo) {

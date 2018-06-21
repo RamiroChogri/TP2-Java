@@ -3,7 +3,7 @@ package efectos;
 import campo.Campo;
 import cartas.*;
 
-public class EfectoWasteland implements Efecto {
+public class EfectoWasteland extends Efecto {
 	
 	@Override
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo) {
