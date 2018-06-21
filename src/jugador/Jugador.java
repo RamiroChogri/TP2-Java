@@ -76,7 +76,11 @@ public class Jugador implements Daniable{
 	}
 	
 	public void tomarCartaDelMazo() {
-		mano.agregarCartaEnMano(campoPropio.levantarCartaDelMazo());
+		try {
+			mano.agregarCartaEnMano(campoPropio.levantarCartaDelMazo());
+		} catch (NoQuedanCartasEnElMazoException error) {
+			this.vida = 0;
+		}
 	}
 
 	public int obtenerVidaRestante() {
@@ -165,6 +169,19 @@ public class Jugador implements Daniable{
 	public void recibirAtaque(int danioRecibido) {
 		this.vida -= danioRecibido;
 	}
+	
+	public Jugador obtenerJugadorEnemigo() {
+		return this.campoEnemigo.obtenerJugador();
+	}
+	
+	public int obtenerCartasMazo() {
+		return this.campoPropio.obtenerCantidadDeCartasEnMazo();
+	}
+	
+	public boolean estaMuerto() {
+		return (this.vida <= 0);
+	}
+	
 /*
 	public void atacar(Atacable cartaAtacable) {
 		//Forzado

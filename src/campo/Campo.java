@@ -134,5 +134,8 @@ public class Campo {
 		return monstruoConMenorAtaque;
 	}
 	
+	public Jugador obtenerJugador() {
+		return this.jugador;
+	}
 
 }
