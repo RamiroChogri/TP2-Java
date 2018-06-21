@@ -8,6 +8,7 @@ public class CartaTrampa extends CartaMagica{
 		super();
 	}
 	
+	
 	public CartaTrampa(Efecto efectoAColocar) {
 		super(efectoAColocar);
 	}
