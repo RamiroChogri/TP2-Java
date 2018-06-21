@@ -2,7 +2,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import campo.*;
 import cartas.*;
-import efectos.EfectoJinzo7;
 import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaColocadaBocaAbajo;
 import estadoCarta.EstadoCartaColocadaBocaArriba;

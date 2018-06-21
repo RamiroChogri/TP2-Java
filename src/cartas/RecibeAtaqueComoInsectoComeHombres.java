@@ -9,9 +9,9 @@ import estadoCarta.EstadoCartaColocadaBocaArriba;
 import jugador.Jugador;
 import modos.Modo;
 
-public class EfectoInsectoComeHombres extends CartaMonstruoDecorator {
+public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 
-	public EfectoInsectoComeHombres(Atacable atacableAColocar) {
+	public RecibeAtaqueComoInsectoComeHombres(Atacable atacableAColocar) {
 		super(atacableAColocar);
 	}
 
@@ -128,6 +128,11 @@ public class EfectoInsectoComeHombres extends CartaMonstruoDecorator {
 	public String obtenerNombre() {
 		String nombre = getAtacable().obtenerNombre();
 		return nombre;
+	}
+	
+	@Override
+	public void aumentarAtaqueEn(Puntos puntosAumentar) {
+		getAtacable().aumentarAtaqueEn(puntosAumentar);
 	}
 
 	//Efecto Insecto Come-Hombres

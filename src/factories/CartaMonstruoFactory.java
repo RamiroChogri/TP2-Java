@@ -1,11 +1,11 @@
 package factories;
 
+import cartas.AtacaComoJinzo7;
 import cartas.Atacable;
 import cartas.CartaMonstruo;
-import cartas.EfectoInsectoComeHombres;
+import cartas.RecibeAtaqueComoInsectoComeHombres;
 import cartas.Puntos;
 import efectos.Efecto;
-import efectos.EfectoJinzo7;
 import InvocacionStrategy.*;
 public class CartaMonstruoFactory {
 
@@ -188,7 +188,7 @@ public class CartaMonstruoFactory {
 			
 			Atacable jinzo7 = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Jinzo 7");
 			
-			jinzo7 = new EfectoJinzo7(jinzo7);
+			jinzo7 = new AtacaComoJinzo7(jinzo7);
 			
 			return jinzo7;
 			
@@ -202,7 +202,7 @@ public class CartaMonstruoFactory {
 			
 			Atacable insectoComeHombres = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Insecto Come Hombres");
 			
-			insectoComeHombres = new EfectoInsectoComeHombres(insectoComeHombres);
+			insectoComeHombres = new RecibeAtaqueComoInsectoComeHombres(insectoComeHombres);
 			
 			return insectoComeHombres;
 		}

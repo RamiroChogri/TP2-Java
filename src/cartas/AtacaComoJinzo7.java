@@ -1,4 +1,4 @@
-package efectos;
+package cartas;
 
 import campo.Cementerio;
 import campo.ZonaCampo;
@@ -9,9 +9,9 @@ import estadoCarta.EstadoCarta;
 import jugador.*;
 import modos.Modo;
 
-public class EfectoJinzo7 extends CartaMonstruoDecorator { 
+public class AtacaComoJinzo7 extends CartaMonstruoDecorator { 
 	
-	public EfectoJinzo7(Atacable cartaMonstruo) {
+	public AtacaComoJinzo7(Atacable cartaMonstruo) {
 		super(cartaMonstruo);
 	}
 
@@ -127,6 +127,11 @@ public class EfectoJinzo7 extends CartaMonstruoDecorator {
 		String nombre = getAtacable().obtenerNombre();
 		return nombre;
 	}
+
+	@Override
+	public void aumentarAtaqueEn(Puntos puntosAumentar) {
+		getAtacable().aumentarAtaqueEn(puntosAumentar);
+	}
 	
 	//Efecto Jinzo7
 	
@@ -136,5 +141,6 @@ public class EfectoJinzo7 extends CartaMonstruoDecorator {
 		int ataqueDirecto = puntosDeAtaque.obtenerPuntosActuales();
 		jugador.recibirAtaque(ataqueDirecto);
 	}
+
 
 }
