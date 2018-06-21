@@ -101,4 +101,21 @@ public class CartaMagica implements Activable{
 		}
 	}
 
+	public boolean esDeTrampa() {
+		
+		return false;
+	}
+
+	@Override
+	public String obtenerNombre() {
+		
+		return nombre;
+	}
+
+	@Override
+	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

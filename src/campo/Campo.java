@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import efectos.*;
 import cartas.*;
-import cartas.Destruible;
 import estadoCarta.EstadoCarta;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.NoHayLugarVacioException;
@@ -132,6 +131,23 @@ public class Campo {
 	public Atacable obtenerCartaMonstruoConMenorAtaque() throws NoHayMonstruoParaSacrificarException {
 		Atacable monstruoConMenorAtaque = this.monstruos.obtenerMonstruoConMenorAtaque();
 		return monstruoConMenorAtaque;
+	}
+
+	public Activable obtenerCartaTrampa() {
+		
+		return magicasYTrampas.obtenerCartaTrampa();
+		
+	}
+
+	public Jugador obtenerDuenio() {
+	
+		return jugador;
+	}
+
+	public void hacerDanioAlJugador(Puntos puntosDeDanio) {
+		
+		jugador.recibirAtaque( puntosDeDanio.obtenerPuntosActuales() );
+		
 	}
 	
 

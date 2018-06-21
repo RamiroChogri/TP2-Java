@@ -4,39 +4,38 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import cartas.Destruible;
+import cartas.Activable;
 import cartas.CartaMagica;
 import cartas.CartaMonstruo;
+import cartas.CartaTrampa;
 import cartas.Colocable;
+import exceptions.NoHayCartasTrampaException;
 import exceptions.NoHayLugarVacioException;
 
 public class ZonaMagicasYTrampas extends Zona{
 
-	private LinkedList<CartaMagica> posiciones;
+	private LinkedList<Activable> posiciones;
 	private boolean hayEspacio;
 	
 	public ZonaMagicasYTrampas() {
-		posiciones = new LinkedList<CartaMagica>();
+		posiciones = new LinkedList<Activable>();
 		hayEspacio = true;
 	}
 	
-	public void colocarCarta(Colocable cartaMonstruoAColocar) {
-		//MetodoForzadoPorZona
-	}
-	
-	public void colocarCarta(CartaMagica cartaMonstruoAColocar) {
+	public void colocarCarta(Activable cartaAColocar) {
 		hayEspacio = this.hayEspacioDisponible();
 		try {
 			if ( !hayEspacio ) {
 				throw new NoHayLugarVacioException();
 			}
-			posiciones.add(cartaMonstruoAColocar);
+			posiciones.add(cartaAColocar);
 		} catch (NoHayLugarVacioException noHay) {
 		//	throw new ZonaMagicaLlenaException();
 		}
 	}
 		
 	public boolean hayEspacioDisponible() {	
-		return (posiciones.size() < 5);
+		return ( posiciones.size() < 5);
 	}
 		
 	public int obtenerCantidadDeCartas() {
@@ -45,8 +44,8 @@ public class ZonaMagicasYTrampas extends Zona{
 
 	public LinkedList<Destruible> recolectarCartasDestruidas() {
 		LinkedList<Destruible>cartasDestruidas = new LinkedList<Destruible>();
-		Iterator<CartaMagica> posicionesIterador = this.posiciones.iterator();		
-	    CartaMagica cartaMagicaActual;
+		Iterator<Activable> posicionesIterador = this.posiciones.iterator();		
+		Activable cartaMagicaActual;
 	    while (posicionesIterador.hasNext()) {
 	    	cartaMagicaActual = posicionesIterador.next();
 	    	if(cartaMagicaActual.estaDestruida()) {
@@ -59,12 +58,46 @@ public class ZonaMagicasYTrampas extends Zona{
 	}
 	
 	public void vaciar() {
-		Iterator<CartaMagica> posicionesIterador = this.posiciones.iterator();		
-	    CartaMagica cartaActivableActual;
+		Iterator<Activable> posicionesIterador = this.posiciones.iterator();		
+		Colocable cartaActivableActual;
 	    while (posicionesIterador.hasNext()) {
 	    	cartaActivableActual = posicionesIterador.next();
 	    	cartaActivableActual.destruirCarta();
 	    }
+	}
+
+	public Activable obtenerCartaTrampa() {
+		
+		Iterator<Activable> posicionesIterador = this.posiciones.iterator();		
+	    Activable carta = null;
+	    boolean encontreCartaTrampa = false;
+	   
+	    while( posicionesIterador.hasNext() && !encontreCartaTrampa ) {
+	    
+	    	carta = posicionesIterador.next();
+	    	
+	    	if ( carta.esDeTrampa() ) {
+	    
+	    		encontreCartaTrampa = true;
+	    	}
+	    	
+	    }	    
+	    if( !encontreCartaTrampa ) { throw new NoHayCartasTrampaException(); };	    
+		return carta;
+		
+	}
+
+	@Override
+	public void colocarCarta(Colocable cartaAColocar) {
+		hayEspacio = this.hayEspacioDisponible();
+		try {
+			if ( !hayEspacio ) {
+				throw new NoHayLugarVacioException();
+			}
+			posiciones.add((Activable) cartaAColocar);
+		} catch (NoHayLugarVacioException noHay) {
+		//	throw new ZonaMagicaLlenaException();
+		}
 	}
 
 }

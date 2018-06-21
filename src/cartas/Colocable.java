@@ -8,4 +8,10 @@ public interface Colocable {
 	
 	public void colocarse(Jugador jugador, ZonaMonstruos monstruos ,ZonaMagicasYTrampas magicasYTrampas, ZonaCampo campo, Cementerio cementerio, EstadoCarta estadoAColocar);
 
+	public void destruirCarta();
+
+	public boolean estaDestruida();
+	
+	public String obtenerNombre();
+
 }

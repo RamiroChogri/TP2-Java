@@ -41,6 +41,11 @@ public class Jugador implements Daniable{
 	
 	public void atacar(Atacable atacante, Atacable atacado) {
 		
+		try {
+			Activable trampa = campoEnemigo.obtenerCartaTrampa();
+			trampa.aplicarEfecto( campoPropio, campoEnemigo, atacante, atacado );
+		}catch( NoHayCartasTrampaException e ) { };
+		
 		atacante.atacar(atacado);
 		
 		this.campoPropio.enviarCartasDestruidasAlCementerio();
@@ -174,4 +179,5 @@ public class Jugador implements Daniable{
 		//Forzado
 	}
  */
+	
 }

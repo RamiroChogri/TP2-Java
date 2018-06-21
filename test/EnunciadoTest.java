@@ -13,6 +13,7 @@ import estadoCarta.*;
 import jugador.Jugador;
 import exceptions.*;
 import factories.CartaMonstruoFactory;
+import factories.CartaTrampaFactory;
 
 
 public class EnunciadoTest {
@@ -645,8 +646,43 @@ de los puntos de ataque de los monstruos*/
 //	@Test
 //	public void test20InsectoBocaAbajoEnModoDefensaDestruyeAlAtacante() {}
 	
-//	@Test
-//	public void test21CilindroDaniaDirectamenteAlOponenteAlSerAtacada() {}
+	@Test
+	public void test21CilindroDaniaDirectamenteAlOponenteAlSerAtacada() {
+		
+		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+		CartaTrampaFactory fabricaTrampas = new CartaTrampaFactory();
+		
+		Activable cilindroMagico = fabricaTrampas.crearCilindroMagico();
+		
+		Atacable monstruo1 = fabrica.crearBueyDeBatalla();
+ 		Atacable monstruo2 = fabrica.crearConejoOscuro();
+ 		
+ 		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		jugador1.enfrentarseA(jugador2);
+		jugador2.enfrentarseA(jugador1);
+		
+		Modo modoAtaque = new ModoAtaque();
+		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+		EstadoCarta bocaAbajo = new EstadoCartaColocadaBocaAbajo();
+		
+		jugador1.colocar(monstruo1, bocaArriba, modoAtaque);
+		jugador2.colocar(monstruo2, bocaArriba, modoAtaque);
+		jugador2.colocar(cilindroMagico, bocaAbajo);
+		
+		jugador1.atacar(monstruo1, monstruo2);
+		
+							/*8000 - 1700 = 6300*/
+		int vidaEsperada = 8000 - monstruo1.obtenerPuntosAtaque().obtenerPuntosActuales();
+		
+		assertEquals(vidaEsperada, jugador1.obtenerVidaRestante());
+		assertEquals(8000, jugador2.obtenerVidaRestante());
+		assertFalse(monstruo1.estaDestruida());
+		assertFalse(monstruo2.estaDestruida());
+		assertTrue(cilindroMagico.estaDestruida());
+		
+	}
 	
 	/* Coloco un monstruo en posición de ataque y la carta trampa Reinforcements de mi
 	lado del campo, coloco un monstruo en el campo enemigo (con 400 puntos mas de
