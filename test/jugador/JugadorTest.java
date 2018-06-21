@@ -126,4 +126,21 @@ public class JugadorTest {
 			assertEquals( vidaEsperada , jugador2.obtenerVidaRestante() );
 		}
 		
+		@Test
+		public void testColocarUnacartaCampoDestruyeLaCartaCampoEnemiga() {
+			CartaCampoFactory fabrica = new CartaCampoFactory();
+			Jugador jugador1 = new Jugador();
+			Jugador jugador2 = new Jugador();
+			CartaCampo campo1 = fabrica.crearSogen();
+			CartaCampo campo2 = fabrica.crearWasteland();
+			
+			jugador1.enfrentarseA(jugador2);
+			jugador2.enfrentarseA(jugador1);
+			
+			EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+			jugador1.colocar(campo1, bocaArriba);
+			jugador2.colocar(campo2, bocaArriba);
+			
+			assertEquals(1,jugador1.obtenerCantidadDeCartasEnCementerio());
+		}
 }

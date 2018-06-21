@@ -148,5 +148,10 @@ public class Campo {
 	public Jugador obtenerDuenio() {
 		return this.jugador;
 	}
+	
+	public void vaciarZonaCampo() {
+		this.espacioCampo.destruirCarta();
+		this.enviarCartasDestruidasAlCementerio();
+	}
 
 }
