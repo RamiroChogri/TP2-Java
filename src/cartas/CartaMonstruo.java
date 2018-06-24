@@ -1,7 +1,6 @@
 package cartas;
 
 import estadoCarta.*;
-import estrategias.*;
 import exceptions.MonstruoEnModoDefensaNoPuedeAtacarException;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.ZonaMonstruoLlenaException;
