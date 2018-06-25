@@ -2,7 +2,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-
 import modos.*;
 import campo.Campo;
 import cartas.*;
@@ -18,15 +17,9 @@ import invocacionStrategy.ReglaDeMonstruoGrandeStrategy;
 public class EnunciadoTest {
 	
 	
-	//Colocar una carta de monstruo en posiciÃ³n de ataque.
+	//Colocar una carta de monstruo en posicion de ataque.
 	@Test
 	public void test01ColocarCartaMonstruoEnModoAtaque() {			
-		//Agregada nueva clase "puntos" en carta para el manejo de puntos de ataque y defensa
-		//en cartas monstruo
-		//Agregado nuevo EstadoCartaInvocada (No tiene nada implementado)
-		//Agregadas clases Estrategias y Modos (no implementados, deben relacionarse con el
-		//campo todavia)	
-		//Falta cambiar todo lo que diga "Utilizable" por "Activable"
 		
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
@@ -39,7 +32,6 @@ public class EnunciadoTest {
 		Atacable monstruoEnemigo = new CartaMonstruo(ataqueMonstruo2, defensaMonstruo2, estrellasMonstruo);
 		Modo modoAtaque = new ModoAtaque();
 		EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
-		//campo recibe estrategia y modo
 		
 		jugador1.enfrentarseA(jugador2);
 		jugador2.enfrentarseA(jugador1);
@@ -50,32 +42,13 @@ public class EnunciadoTest {
 		monstruoPropio.atacar(monstruoEnemigo);
 		jugador2.enviarCartasDestruidasAlCementerio();
 		
-		//Como esta en modo ataque y tiene mas puntos de ataque que la carta enemiga la mata
-		//y la envia al cementerio <--- Esta bien que tenga que aclarar que es lo que esta
-		//pasando? El codigo deberia ser mas claro o el comentario sobra?
-		
-		assertEquals( 1, jugador2.obtenerCantidadDeCartasEnCementerio() );
-		
-		
-		
-		//REPENSAR ESTE TESTS ( Y LOS PARECIDOS ) SE DEBE TESTEAR COMPORTAMIENTO
-		
-		//-Hay que rehacer "EstadoCarta", separar en "POSICION-BOCAARRIBA/ABAJO-ATAQUE/DEFENSA"
-		//-Colocar en modo ataque implica que puede atacar
-		//-Puntos de ataque/defensa que no sean integers el comportamiento que podrÃ­an tener
-		// para que no sean solo clases contenedoras es el de aumentar/decrementar su valor 
-		// hasta que "pase el turno" (es decir, se puede hacer que cuando se construya tenga
-		// un valor original y posea un metodo que sea "aumentarEn(puntosExtra)" y otro que
-		// sea "eliminarAumento" o algo del estilo)
-		//-Les convence una clase que sea "ModoDeCartaMonstruo"? O es muy especifica?
-		//
+		assertEquals( 1, jugador2.obtenerCantidadDeCartasEnCementerio() );		
 	}
 	
 	@Test
 	public void test02ColocarMonstruoBocaAbajoEnModoDefensa() {		
 
 		//CartaEnModoDefensaNoPuedeAtacar
-		//cambia algo el que este boca abajo? Que comportamiento le agrega?
 		
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
@@ -197,12 +170,12 @@ de los puntos de ataque de los monstruos*/
 		assertFalse(monstruoConMayorAtaque.estaDestruida());
 		assertTrue(monstruoConMenorAtaque.estaDestruida());
 		
-		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	
 	}
- /*	Colocar una carta de monstruo en posiciï¿½n de ataque, el oponente coloca otra carta
-	de monstruo en posiciï¿½n de ataque (con menor ataque), atacar al primer monstruo,
-	el monstruo atacante es destruido y el atacante recibe daï¿½o a los
+ /*	Colocar una carta de monstruo en posicion de ataque, el oponente coloca otra carta
+	de monstruo en posicion de ataque (con menor ataque), atacar al primer monstruo,
+	el monstruo atacante es destruido y el atacante recibe danio a los
 	puntos de vida igual a la diferencia de ataques.
   * 
   */
@@ -234,13 +207,13 @@ de los puntos de ataque de los monstruos*/
 		assertFalse(monstruoConMayorAtaque.estaDestruida());
 		assertTrue(monstruoConMenorAtaque.estaDestruida());
 		
-		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
 	/*
-	Colocar una carta de monstruo en posiciï¿½n de ataque, el oponente coloca otra carta
-	de monstruo en posiciï¿½n de ataque (con igual ataque), atacar al primer monstruo,
-	ambos monstruos son destruidos y nadie recibe daï¿½o a los puntos de
+	Colocar una carta de monstruo en posicion de ataque, el oponente coloca otra carta
+	de monstruo en posicion de ataque (con igual ataque), atacar al primer monstruo,
+	ambos monstruos son destruidos y nadie recibe danio a los puntos de
 	vida.
 	*/
 	
@@ -274,14 +247,14 @@ de los puntos de ataque de los monstruos*/
 		assertTrue(monstruoConMilDeAtaque.estaDestruida());
 		assertTrue(otroMonstruoConMilDeAtaque.estaDestruida());
 		
-		assertEquals( vidaEsperada, jugador2.obtenerVidaRestante());
-		assertEquals( vidaEsperada, jugador1.obtenerVidaRestante() );
+		assertTrue(jugador2.tieneVida(vidaEsperada));
+		assertTrue(jugador1.tieneVida(vidaEsperada));
 	}
 	
-	/*Colocar una carta de monstruo en posiciÃ³n de defensa, el oponente coloca otra carta
-	de monstruo en posiciÃ³n de ataque (con mayor ataque que la defensa del primer
-	monstruo), atacar al primer monstruo y verificar que este se destruyÃ³ y no sufriÃ³
-	ningÃºn daÃ±o vital.*/
+	/*Colocar una carta de monstruo en posicion de defensa, el oponente coloca otra carta
+	de monstruo en posicion de ataque (con mayor ataque que la defensa del primer
+	monstruo), atacar al primer monstruo y verificar que este se destruyo y no sufrio
+	ningun danio vital.*/
 	@Test
 	public void test09MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMayorAtaqueQueSuDefensa() {
 		Puntos ataqueMonstruo1 = new Puntos(2000);
@@ -310,13 +283,13 @@ de los puntos de ataque de los monstruos*/
 		assertFalse(unMonstuo.estaDestruida());
 		assertTrue(otroMonstruo.estaDestruida());
 		
-		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
-	/*Colocar una carta de monstruo en posiciÃ³n de defensa, el oponente coloca otra carta
-	de monstruo en posiciÃ³n de ataque (con menor ataque que la defensa del primer
-	monstruo), atacar al primer monstruo y verificar que este no se destruyÃ³ y no sufriÃ³
-	ningÃºn daÃ±o vital.*/
+	/*Colocar una carta de monstruo en posicion de defensa, el oponente coloca otra carta
+	de monstruo en posicion de ataque (con menor ataque que la defensa del primer
+	monstruo), atacar al primer monstruo y verificar que este no se destruyo y no sufrio
+	ningun danio vital.*/
 	@Test
 	public void test10MonstruoSeDefiendeDeOtroMonstruoEnModoAtaqueConMenorAtaqueQueSuDefensa() {
 		Puntos ataqueMonstruo1 = new Puntos(2000);
@@ -345,12 +318,12 @@ de los puntos de ataque de los monstruos*/
 		assertFalse(unMonstuo.estaDestruida());
 		assertFalse(otroMonstruo.estaDestruida());
 		
-		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
-	/*Colocar monstruos en ambos lados del campo. Colocar â€œAgujero negroâ€� boca arriba
+	/*Colocar monstruos en ambos lados del campo. Colocar Agujero negro boca arriba
 	(es decir, se activa el efecto). Verificar que se destruyeron todos los monstruos de
-	ambos lados del campo, y que nadie recibiÃ³ daÃ±o alguno.*/
+	ambos lados del campo, y que nadie recibio danio alguno.*/
 	@Test
 	public void test11MonstruosDelCampoSeDestruyenAlColocarAgujeroNegro() {
 		Puntos ataqueMonstruo1 = new Puntos(2000);
@@ -381,8 +354,8 @@ de los puntos de ataque de los monstruos*/
 	}
 	
 	/*Se coloca un monstruo en el campo, se quiere colocar un monstruo de 5 o 6
-	estrellas que requiere sacrificio. se verifica que se convocÃ³ al monstruo y se
-	destruyÃ³ el primero.*/
+	estrellas que requiere sacrificio. se verifica que se convoco al monstruo y se
+	destruyo el primero.*/
 	@Test
 	public void test12ColocarMonstruoQueRequiereUnSacrificioDestruyeElMonstruoAnterior() {
 		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
@@ -407,13 +380,13 @@ de los puntos de ataque de los monstruos*/
  		
  		int vidaEsperada = 7000;
  		assertEquals(1,jugador1.obtenerCantidadCartasEnCampo());
-		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 
 	}
 	
-	/*Se colocan 2 monstruos en el campo, se quiere colocar un monstruo de 7 o mÃ¡s
+	/*Se colocan 2 monstruos en el campo, se quiere colocar un monstruo de 7 o mas
 	estrellas que requiere 2 sacrificios. 
-	se verifica que se convocÃ³ al monstruo y sedestruyeron los demÃ¡s. */
+	se verifica que se convoco al monstruo y se destruyeron los demas. */
 	@Test
 	public void test13ColocarMonstruoQueRequiereDosSacrificiosDestruyeLosDosMonstruosAnteriores() {
 		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
@@ -439,7 +412,7 @@ de los puntos de ataque de los monstruos*/
  		
  		int vidaEsperada = 7400;
  		assertEquals(1,jugador1.obtenerCantidadCartasEnCampo());
-		assertEquals(vidaEsperada , jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
 	@Test
@@ -471,7 +444,7 @@ de los puntos de ataque de los monstruos*/
 		jugador1.atacar(unMonstruo, otroMonstruo);
 		
 		int vidaEsperada = 7300;
-		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
 	@Test
@@ -503,7 +476,7 @@ de los puntos de ataque de los monstruos*/
 		jugador1.atacar(unMonstruo, otroMonstruo);
 		
 		int vidaEsperada = 7700;
-		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
 	@Test
@@ -548,9 +521,6 @@ de los puntos de ataque de los monstruos*/
 		
 		jugador1.colocar(fisura, bocaArriba);
 		
-		//Hay que hacer otro caso como para verificar que efecto de fisura no es destruir
-		//la segunda carta colocada (que no esta hardcodeado)
-		
 		assertTrue(monstruoCon1000DeAtaque.estaDestruida());
 		assertFalse(monstruoCon1100DeAtaque.estaDestruida());
 		assertFalse(monstruoCon1700DeAtaque.estaDestruida());
@@ -577,13 +547,10 @@ de los puntos de ataque de los monstruos*/
 		jugador2.colocar(monstruoCon1700DeAtaque, bocaArriba, modoAtaque);
 		jugador2.colocar(monstruoCon1100DeAtaque, bocaArriba, modoAtaque);
 		
-		//Si no es jinzo7 debe tirar excepcion de que hay cartas monstruo vivas en el
-		//tablero enemigo que deben destruirse antes de poder atacar directamente al 
-		//jugador enemigo
 		jugador1.atacar(jinzo7, jugador2);
 		
 		int vidaEsperada = 7500;
-		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
 	@Test
@@ -622,7 +589,7 @@ de los puntos de ataque de los monstruos*/
 		
 		int vidaEsperada =3500;
 		
-		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
 	@Test
@@ -649,8 +616,8 @@ de los puntos de ataque de los monstruos*/
 		
 		assertEquals(1 , jugador1.obtenerCantidadCartasEnZonaMonstruos());
 		assertEquals (0, jugador2.obtenerCantidadCartasEnZonaMonstruos());
-		assertEquals(vidaEsperada, jugador1.obtenerVidaRestante() );
-		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante() );
+		assertTrue(jugador1.tieneVida(vidaEsperada));
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 }
 	
 	@Test
@@ -683,8 +650,8 @@ de los puntos de ataque de los monstruos*/
 							/*8000 - 1700 = 6300*/
 		int vidaEsperada = 8000 - monstruo1.obtenerPuntosAtaque().obtenerPuntosActuales();
 		
-		assertEquals(vidaEsperada, jugador1.obtenerVidaRestante());
-		assertEquals(8000, jugador2.obtenerVidaRestante());
+		assertTrue(jugador1.tieneVida(vidaEsperada));
+		assertTrue(jugador2.tieneVida(8000));
 		assertFalse(monstruo1.estaDestruida());
 		assertFalse(monstruo2.estaDestruida());
 		assertTrue(cilindroMagico.estaDestruida());
@@ -698,7 +665,6 @@ de los puntos de ataque de los monstruos*/
 	vida del otro jugador.*/	
 	@Test
 	public void test22UnMonstruoEsAtacadoYSeActivaReinforcementsElAtacanteEsDestruido() {
-		
 		
 		CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
 		CartaTrampaFactory fabricaTrampas = new CartaTrampaFactory();
@@ -727,7 +693,7 @@ de los puntos de ataque de los monstruos*/
 							/*8000 - 100 = 7900*/
 		int vidaEsperada = 7900;
 		
-		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 		assertFalse(monstruo1.estaDestruida());
 		assertTrue(monstruo2.estaDestruida());
 		assertTrue(refuerzos.estaDestruida());

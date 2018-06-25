@@ -45,7 +45,7 @@ public class CartaCampoTest {
 		jugador1.atacar(unMonstruo, otroMonstruo);
 		
 		int vidaEsperada = 7300;
-		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
 	@Test
@@ -77,7 +77,7 @@ public class CartaCampoTest {
 		jugador1.atacar(unMonstruo, otroMonstruo);
 		
 		int vidaEsperada = 7700;
-		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
 }

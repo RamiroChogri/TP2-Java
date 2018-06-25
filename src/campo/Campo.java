@@ -43,8 +43,6 @@ public class Campo {
 		this.jugador = jugadorDuenio;
 	}
 
-	////////////////////////////////////
-	
 	public void aumentarAtaqueMonstruosPorEfectoCampo(Puntos puntosAtaque) {
 		this.monstruos.aumentarAtaqueMonstruoPorEfectoCampo(puntosAtaque);
 	}
@@ -57,13 +55,9 @@ public class Campo {
 		cartaAColocar.colocarse(this.jugador, this.monstruos, this.magicasYTrampas, this.espacioCampo, this.cementerio, estadoAColocar);
 	}
 	
-	//////////////////////////////////
-	//Seguir con la excepcion
-	
 	public int obtenerCantidadDeCartasEnZonaMonstruos() {
 		return monstruos.obtenerCantidadDeCartas();
 	}
-	
 	
 	public int obtenerCantidadDeCartasEnZonaMagicasYTrampas() {
 		return magicasYTrampas.obtenerCantidadDeCartas();

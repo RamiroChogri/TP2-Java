@@ -55,7 +55,7 @@ public class JugadorTest {
 			jugador2.atacar(atacante, atacado);
 			
 			int vidaEsperada = 8000 - 200;
-			assertEquals(vidaEsperada, jugador1.obtenerVidaRestante());
+			assertTrue(jugador1.tieneVida(vidaEsperada));
 		}
 		
 		@Test
@@ -124,7 +124,7 @@ public class JugadorTest {
 	 		jugador1.atacar(unMonstruo, jugador2);
 	 		
 	 		int vidaEsperada = 7000;
-			assertEquals( vidaEsperada , jugador2.obtenerVidaRestante() );
+			assertTrue( jugador2.tieneVida(vidaEsperada) );
 		}
 		
 		@Test

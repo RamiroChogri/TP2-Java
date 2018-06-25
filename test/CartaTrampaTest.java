@@ -44,7 +44,7 @@ public class CartaTrampaTest {
 							/*8000 - 1700 = 6300*/
 		int vidaEsperada = 8000 - monstruo1.obtenerPuntosAtaque().obtenerPuntosActuales();
 		
-		assertEquals(vidaEsperada, jugador1.obtenerVidaRestante());
+		assertTrue(jugador1.tieneVida(vidaEsperada));
 	}
 	
 	@Test
@@ -145,7 +145,7 @@ public class CartaTrampaTest {
 							/*8000 - 100 = 7900*/
 		int vidaEsperada = 7900;
 		
-		assertEquals(vidaEsperada, jugador2.obtenerVidaRestante());
+		assertTrue(jugador2.tieneVida(vidaEsperada));
 	}
 	
 }

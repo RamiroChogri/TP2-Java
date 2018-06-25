@@ -37,7 +37,6 @@ public class Jugador implements Daniable{
 	}
 	
 	public void enfrentarseA(Jugador jugadorEnemigo) {
-		
 		jugadorEnemigo.setCampoEnemigo(this.campoPropio);
 	}
 	
@@ -51,7 +50,12 @@ public class Jugador implements Daniable{
 		atacante.atacar(atacado);
 		
 		this.campoPropio.enviarCartasDestruidasAlCementerio();
-		this.campoEnemigo.enviarCartasDestruidasAlCementerio();
+
+		try {
+			this.campoEnemigo.enviarCartasDestruidasAlCementerio();
+		} catch (NullPointerException error) {
+			throw new FaltaJugadorEnemigoException();
+		}
 	}
 	
 	public void atacar(Atacable atacante, Jugador atacado) {
@@ -59,17 +63,20 @@ public class Jugador implements Daniable{
 		atacante.atacar(atacado);
 		
 		this.campoPropio.enviarCartasDestruidasAlCementerio();
-		this.campoEnemigo.enviarCartasDestruidasAlCementerio();
+
+		try {
+			this.campoEnemigo.enviarCartasDestruidasAlCementerio();
+		} catch (NullPointerException error) {
+			throw new FaltaJugadorEnemigoException();
+		}
 	}
 	
-	
-	
-	//Desde el jugador no vamos a colocar genericamente la carta, desde el jugador
-	//vamos a colocar la carta de la manera que quiera el jugador y despues la colocacion
-	//es generica en el campo.
-	
 	public void setCampoEnemigo(Campo campo) {
-		this.campoEnemigo = campo;
+		try {
+			this.campoEnemigo = campo;
+		} catch (NullPointerException error) {
+			throw new FaltaJugadorEnemigoException();
+		}
 	}
 	
 	public int obtenerCantidadDeCartasEnLaMano() {
@@ -79,21 +86,26 @@ public class Jugador implements Daniable{
 	
 	public void tomarCartaDelMazo() {
 		try {
-			mano.agregarCartaEnMano(campoPropio.levantarCartaDelMazo());
-			this.tieneAExodiaEnMano = this.mano.tieneAExodia();
+			try {
+				mano.agregarCartaEnMano(campoPropio.levantarCartaDelMazo());
+				this.tieneAExodiaEnMano = this.mano.tieneAExodia();
 			
-			if (tieneAExodiaEnMano) {
-				campoEnemigo.obtenerDuenio().derrotarse();
+				if (tieneAExodiaEnMano) {
+					campoEnemigo.obtenerDuenio().derrotarse();
+				}
+			
+			} catch (NoQuedanCartasEnElMazoException error) {
+				this.vida = 0;
 			}
-			
-		} catch (NoQuedanCartasEnElMazoException error) {
-			this.vida = 0;
+
+		} catch (NullPointerException error) {
+			throw new FaltaJugadorEnemigoException();
 		}
 	}
 
-	public int obtenerVidaRestante() {
+	public boolean tieneVida(int vidaRecibida) {
 		
-		return this.vida;
+		return (this.vida == vidaRecibida);
 	}
 	
 	public void colocar(Atacable carta, EstadoCarta estado, Modo modo) {
@@ -153,7 +165,11 @@ public class Jugador implements Daniable{
 	}
 	
 	public Jugador obtenerJugadorEnemigo() {
-		return this.campoEnemigo.obtenerDuenio();
+		try {
+			return this.campoEnemigo.obtenerDuenio();
+		} catch (NullPointerException error) {
+			throw new FaltaJugadorEnemigoException();
+		}
 	}
 	
 	public int obtenerCartasMazo() {
@@ -176,7 +192,11 @@ public class Jugador implements Daniable{
 	}
 
 	public void destruirCartaCampoEnemiga() {
-		this.campoEnemigo.vaciarZonaCampo();
+		try {
+			this.campoEnemigo.vaciarZonaCampo();
+		} catch (NullPointerException error) {
+			throw new FaltaJugadorEnemigoException();
+		}
 	}
 	
 }

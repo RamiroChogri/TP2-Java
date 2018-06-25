@@ -226,7 +226,7 @@ public class CartaMonstruoTest {
 		cartaMonstruo.atacar(jugador);
 		
 		int vidaEsperada = 8000 - 1100;
-		assertEquals(vidaEsperada, jugador.obtenerVidaRestante());
+		assertTrue(jugador.tieneVida(vidaEsperada));
 	
 		
 	}
@@ -245,7 +245,7 @@ public class CartaMonstruoTest {
 		jinzo7.atacar(jugador);
 		
 		int vidaEsperada = 8000 - 500;
-		assertEquals(vidaEsperada, jugador.obtenerVidaRestante());
+		assertTrue(jugador.tieneVida(vidaEsperada));
 	
 	}
 	
@@ -268,7 +268,7 @@ public class CartaMonstruoTest {
 		jugadorPropio.atacar(jinzo7, cartaMonstruoEnemiga);
 		
 		int vidaEsperada = 8000 - (1100 - 500);
-		assertEquals(vidaEsperada, jugadorPropio.obtenerVidaRestante());
+		assertTrue(jugadorPropio.tieneVida(vidaEsperada));
 		
 	}
 	
