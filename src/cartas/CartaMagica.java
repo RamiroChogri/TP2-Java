@@ -41,11 +41,6 @@ public class CartaMagica implements Activable{
 		this.nombre = nombreDeLaCarta;
 	}
 	
-	public void colocarEn(ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, EstadoCarta estadoAColocar) {
-		this.estado = estadoAColocar;
-		zonaMagicasYTrampas.colocarCarta(this);
-	}
-	
 	public void destruirCarta() {
 	
 		this.estado = new EstadoCartaDestruida();
