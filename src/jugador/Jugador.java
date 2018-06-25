@@ -14,6 +14,7 @@ public class Jugador implements Daniable{
 		private Mano mano;
 		private int vida;
 		private boolean tieneAExodiaEnMano;
+		private String nombre;
 
 	public Jugador() {
 		
@@ -197,6 +198,14 @@ public class Jugador implements Daniable{
 		} catch (NullPointerException error) {
 			throw new FaltaJugadorEnemigoException();
 		}
+	}
+	
+	public void setName(String nombreAColocar) {
+		this.nombre = nombreAColocar;
+	}
+	
+	public String obtenerNombre() {
+		return this.nombre;
 	}
 	
 }
