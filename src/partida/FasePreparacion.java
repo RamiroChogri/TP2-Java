@@ -17,8 +17,30 @@ public class FasePreparacion extends Fase {
 	@Override
 	public void ejecutarFase(Jugador jugadorEnTurno) {
 		Scanner teclado = new Scanner(System.in);
-		System.out.println("Estas cartas estan en tu mano:");
-		LinkedList<String> listaDeCartas = jugadorEnTurno.obtenerNombresDeCartasEnMano();
+		
+		/////////////////////////////////////////
+		
+		//Busco las cartas monstruo (Se puede jugar solo 1)
+		System.out.println("Estas cartas de Monstruos estan en tu mano, ingrese el nombre de la carta"); 
+		System.out.println("que quiera jugar o ingrese 'no' para salir");
+		LinkedList<String> listaDeCartasAtacables = jugadorEnTurno.obtenerNombresDeCartasAtacablesEnMano();
+		for (int i=0; i<listaDeCartasAtacables.size(); i++) {
+			System.out.print(listaDeCartasAtacables.get(i));
+		}
+		String nombreCartaMonstruoElegida = teclado.nextLine();
+		while (!listaDeCartasAtacables.contains(nombreCartaMonstruoElegida)) {
+			System.out.println("Ingrese el nombre de una carta valida");
+			nombreCartaMonstruoElegida = teclado.nextLine();
+		}
+		
+		//Pedir estado y modo
+		
+		///////////////////////////////////
+		
+		//Busco las cartas activables (se pueden jugar las que se quieran)
+		System.out.println("Estas cartas activables estan en tu mano, ingrese el nombre de la carta");
+		System.out.println("que quiera jugar o ingrese 'no' para salir");
+		LinkedList<String> listaDeCartas = jugadorEnTurno.obtenerNombresDeCartasActivablesEnMano();
 		for (int i=0; i<listaDeCartas.size(); i++) {
 			System.out.print(listaDeCartas.get(i));
 		}
@@ -29,9 +51,9 @@ public class FasePreparacion extends Fase {
 		}
 		
 		
+		//Pedir estado
 		
-		
-		
+		////////////////////////////////////////
 		
 	}
 
