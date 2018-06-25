@@ -20,11 +20,11 @@ public class Vista extends Application{
 		 ContenedorDeBienvenida contenedorBienvenida = new ContenedorDeBienvenida(stage,escenaDelDuelo);
 		
 		 
-		 Scene escenaDeBienvenida = new Scene(contenedorBienvenida,640,480);
+		 Scene escenaDeBienvenida = new Scene(contenedorBienvenida,1190,670);
 		 stage.setScene(escenaDeBienvenida);
 	     stage.setFullScreenExitHint("Presione la tecla ESC para salir del modo pantalla completa");
 	     stage.setFullScreen(true);
-	     escenaDeBienvenida.getStylesheets().add("view/ButtonStyle.css");
+	     escenaDeBienvenida.getStylesheets().add("view/Style.css");
 		 stage.show();
 	 }
 }

@@ -24,3 +24,8 @@
 	-fx-background-color: linear-gradient(#CD853F, #CD853F);
 	-fx-text-fill: #ffffff;
 }
+
+.root{
+    -fx-background-image: url("file:///C:/Users/marcelo/Documents/Desktop/Algo%203/TP2-Java/src/viewSupportFiles/yugioh%20wpp.png");
+    -fx-background-size: cover;
+}

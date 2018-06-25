@@ -48,10 +48,10 @@ public class ContenedorDeBienvenida extends VBox implements PathArchivos {
         this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
-        
-        Image imagen = new Image(pathAImagenDeFondo);
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.ROUND, BackgroundRepeat.ROUND, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(imagenDeFondo));
+// Agregado en css
+//        Image imagen = new Image(pathAImagenDeFondo);
+//        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.ROUND, BackgroundRepeat.ROUND, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+//        this.setBackground(new Background(imagenDeFondo));
 
         Button botonComenzarElDuelo = new Button("Es hora del duelo");
         BotonComenzarElDueloHandler botonEntrarHandler = new BotonComenzarElDueloHandler(stage, proximaEscena,reproductor);
