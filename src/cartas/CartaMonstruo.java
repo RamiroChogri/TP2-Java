@@ -1,6 +1,7 @@
 package cartas;
 
 import estadoCarta.*;
+import exceptions.CartaBocaArribaNoSePuedeVoltearException;
 import exceptions.MonstruoEnModoDefensaNoPuedeAtacarException;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.ZonaMonstruoLlenaException;
@@ -209,6 +210,24 @@ public class CartaMonstruo implements Atacable{
 	public Modo obtenerModo() {
 
 		return this.modo;
+	}
+
+	@Override
+	public void voltear() {
+		
+		this.colocarBocaArriba();
+	}
+
+	@Override
+	public void colocarBocaArriba() {
+		if(this.estaColocadaBocaArriba() ) {
+			throw new CartaBocaArribaNoSePuedeVoltearException();
+		}
+		
+		this.estado.colocarCartaBocaArriba();
+		
+		this.modo.colocarEnModoAtaque();
+		
 	}
  	
 }

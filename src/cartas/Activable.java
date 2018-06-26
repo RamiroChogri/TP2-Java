@@ -9,5 +9,7 @@ public interface Activable extends Destruible, Colocable{
 	public boolean esDeTrampa();
 
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado);
+
+	public void voltear(Campo campoPropio, Campo campoEnemigo);
 	
 }

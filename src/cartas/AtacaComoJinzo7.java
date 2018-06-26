@@ -6,6 +6,7 @@ import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
 import cartas.*;
 import estadoCarta.EstadoCarta;
+import exceptions.CartaBocaArribaNoSePuedeVoltearException;
 import jugador.*;
 import modos.Modo;
 
@@ -148,5 +149,17 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 		jugador.recibirAtaque(ataqueDirecto);
 	}
 
+	@Override
+	public void voltear() {
+		
+		getAtacable().voltear();
+	
+	}
 
+	@Override
+	public void colocarBocaArriba() {
+		
+		getAtacable().colocarBocaArriba();
+		
+	}
 }

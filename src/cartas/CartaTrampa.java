@@ -2,6 +2,7 @@ package cartas;
 
 import campo.Campo;
 import efectos.Efecto;
+import exceptions.CartaTrampaNoPuedeVoltearseException;
 
 public class CartaTrampa extends CartaMagica{
 	
@@ -26,6 +27,11 @@ public class CartaTrampa extends CartaMagica{
 		return true;
 	}
 
+	@Override
+	public void voltear(Campo campoPropio, Campo campoEnemigo) {
+		
+		throw new CartaTrampaNoPuedeVoltearseException();
+	}
 
 
 }

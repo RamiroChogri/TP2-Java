@@ -153,6 +153,19 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 			getAtacable().recibirAtaque(cartaAtacante);
 		}
 	}
+	
+	@Override
+	public void voltear() {
+		
+		getAtacable().voltear();
+	
+	}
 
+	@Override
+	public void colocarBocaArriba() {
+		
+		getAtacable().colocarBocaArriba();
+		
+	}
 
 }

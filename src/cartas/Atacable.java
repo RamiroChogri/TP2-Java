@@ -40,4 +40,8 @@ public interface Atacable extends Destruible, Colocable,Daniable{
 
 	public Modo obtenerModo();
 
+	public void voltear();
+	
+	public void colocarBocaArriba();
+
 }

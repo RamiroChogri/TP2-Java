@@ -113,5 +113,14 @@ public class CartaMagica implements Activable{
 		
 	}
 
+	@Override
+	public void voltear(Campo campoPropio, Campo campoEnemigo) {
+		if(this.estaColocadaBocaArriba()) {
+			throw new CartaBocaArribaNoSePuedeVoltearException();
+		}
+		
+		this.colocarBocaArriba();
+		this.aplicarEfecto(campoPropio, campoEnemigo);
+	}
 
 }
