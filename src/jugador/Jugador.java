@@ -259,4 +259,11 @@ public class Jugador implements Daniable{
 		}
 		this.campoPropio.colocarCarta(carta, estado);
 	}
+
+	public LinkedList<Activable> verCartasMagicasActivables() {
+		
+		LinkedList<Activable> cartasMagicasActivables = this.campoPropio.obtenerCartasMagicasActivables();
+		
+		return cartasMagicasActivables;
+	}
 }
