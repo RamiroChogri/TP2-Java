@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import viewSupportFiles.PathArchivos;
@@ -48,8 +49,15 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	perfilJugador1.setAlignment(Pos.BOTTOM_LEFT);
 	    	VistaJugador perfilJugador2 = new VistaJugador(kaibaView,true);
 	    	perfilJugador2.setAlignment(Pos.TOP_RIGHT);
-	    	this.setLeft(perfilJugador1);
-	    	this.setRight(perfilJugador2);
+	    	
+	    	VBox cajav = new VBox();
+	    	cajav.setAlignment(Pos.TOP_LEFT);
+	    	cajav.getChildren().addAll(perfilJugador2,perfilJugador1);
+	    	VBox.setVgrow(perfilJugador1, Priority.ALWAYS);
+	    	
+	    	this.setLeft(cajav);
+//	    	this.setLeft(perfilJugador1);
+//	    	this.setRight(perfilJugador2);
 	    }
 	    
 	    public void setTableros() {

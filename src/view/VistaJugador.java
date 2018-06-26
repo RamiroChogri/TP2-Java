@@ -19,7 +19,7 @@ public class VistaJugador extends HBox{
 		 vida.setFont(Font.font("Arial", FontWeight.BOLD,18 ));
 		 vida.setTextFill(Color.web("#000000"));
 		 this.getChildren().addAll(this.imagenDelJugador,this.vida);
-		 this.setStyle("-fx-background-color: DARKVIOLET;");
+//		 this.setStyle("-fx-background-color: DARKVIOLET;");
 	}
 	
 	public VistaJugador(ImageView imagenDelJugador,Boolean estaArriba) {
@@ -29,7 +29,7 @@ public class VistaJugador extends HBox{
 		 vida.setFont(Font.font("Arial", FontWeight.BOLD,18 ));
 		 vida.setTextFill(Color.web("#000000"));
 		 this.getChildren().addAll(this.vida,this.imagenDelJugador);
-		 this.setStyle("-fx-background-color: DARKRED;");
+//		 this.setStyle("-fx-background-color: DARKRED;");
 	}
 
 	public void updateVida(String vidaNueva){
