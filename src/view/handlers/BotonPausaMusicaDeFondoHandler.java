@@ -18,8 +18,15 @@ public class BotonPausaMusicaDeFondoHandler implements EventHandler<ActionEvent>
 		this.botonPlay = botonPlay;
 	}
 	
+	public BotonPausaMusicaDeFondoHandler(Media musicaDeFondo , MediaPlayer reproductor) {
+		this.musicaDeFondo = musicaDeFondo;
+		this.reproductor = reproductor;
+		this.botonPlay = null;
+	}
+	
 	public void handle(ActionEvent arg0) {
 		this.reproductor.pause();
+		if(this.botonPlay != null)
 		this.botonPlay.requestFocus();
 	}
 

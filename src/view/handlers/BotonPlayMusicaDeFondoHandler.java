@@ -24,6 +24,7 @@ public class BotonPlayMusicaDeFondoHandler implements EventHandler<ActionEvent> 
 	
 	public void handle(ActionEvent arg0) {
 		this.reproductor.play();
+		if(botonPausa != null)
 		this.botonPausa.requestFocus();
 	}
 

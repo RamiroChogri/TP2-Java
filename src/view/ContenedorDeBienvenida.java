@@ -48,7 +48,7 @@ public class ContenedorDeBienvenida extends VBox implements PathArchivos {
         this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
-// Agregado en css
+// 		  Agregado en css
 //        Image imagen = new Image(pathAImagenDeFondo);
 //        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.ROUND, BackgroundRepeat.ROUND, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 //        this.setBackground(new Background(imagenDeFondo));

@@ -1,8 +1,8 @@
 package view;
 
+
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Vista extends Application{
@@ -15,11 +15,10 @@ public class Vista extends Application{
 	 public void start(Stage stage) throws Exception {
 		 stage.setTitle("Al-go-oh! Prototype");
 		 
-		 VBox verticalBox = new VBox();
-		 Scene escenaDelDuelo = new Scene(verticalBox,640,480);
+		 ContenedorDelDuelo contenedorDelDuelo = new ContenedorDelDuelo(stage);
+		 Scene escenaDelDuelo = new Scene(contenedorDelDuelo,1190,670);
 		 ContenedorDeBienvenida contenedorBienvenida = new ContenedorDeBienvenida(stage,escenaDelDuelo);
 		
-		 
 		 Scene escenaDeBienvenida = new Scene(contenedorBienvenida,1190,670);
 		 stage.setScene(escenaDeBienvenida);
 	     stage.setFullScreenExitHint("Presione la tecla ESC para salir del modo pantalla completa");

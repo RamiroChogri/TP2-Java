@@ -15,13 +15,15 @@
 
 .button:focused {
 	
-    -fx-background-color:BLACK ,-fx-outer-border, -fx-inner-border, -fx-body-color; 
+    -fx-background-color: BLACK;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 5, 4, 3;
+    -fx-text-fill: #FFFFF0;
+
 }
 
 .button:focused:hover{
-	-fx-background-color: linear-gradient(#CD853F, #CD853F);
+	-fx-background-color: linear-gradient(WHITE, BLACK);
 	-fx-text-fill: #ffffff;
 }
 
