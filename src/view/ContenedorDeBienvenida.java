@@ -56,13 +56,6 @@ public class ContenedorDeBienvenida extends VBox implements PathArchivos {
         Button botonComenzarElDuelo = new Button("Es hora del duelo");
         BotonComenzarElDueloHandler botonEntrarHandler = new BotonComenzarElDueloHandler(stage, proximaEscena,reproductor);
         botonComenzarElDuelo.setOnAction(botonEntrarHandler);
-        botonComenzarElDuelo.setOnKeyPressed(
-        					event ->{
-        						switch(event.getCode()) {
-        						case ENTER:
-        							System.exit(0);
-        						}
-        					});
         
         Label etiqueta = new Label();
         etiqueta.setFont(Font.font("Arial", FontWeight.BOLD,22 ));
