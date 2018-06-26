@@ -12,7 +12,7 @@ import viewSupportFiles.PathArchivos;
 public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 
 		MenuDelDuelo menuBar;
-	    String pathMusicaDeBatalla = pathDeMusica+"Hollow%20Knight%20OST%20-%20False%20Knight.mp3";
+	    String pathMusicaDeBatalla = pathDeMusica+"Hollow%20Knight%20OST%20-%20False%20Knight.wav";
 	    String pathImagenYugi = pathDeImagenes+"yugiPerfil.png";
 	    String pathImagenKaiba = pathDeImagenes+"kaiba%20perfil.png";
 	    

@@ -24,7 +24,7 @@ public class ContenedorDeBienvenida extends VBox implements PathArchivos {
 
     Stage stage;
     String pathAImagenDeFondo = pathDeImagenes+"yugioh%20wpp.png";
-    String pathAMusicaDeFondo = pathDeMusica+ "Hollow%20Knight%20OST%20-%20Greenpath.mp3";
+    String pathAMusicaDeFondo = pathDeMusica+ "Hollow%20Knight%20OST%20-%20Greenpath.wav";
     Media musicaDeFondo;
 	MediaPlayer reproductor;
 	
