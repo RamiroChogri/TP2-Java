@@ -224,9 +224,8 @@ public class CartaMonstruo implements Atacable{
 			throw new CartaBocaArribaNoSePuedeVoltearException();
 		}
 		
-		this.estado.colocarCartaBocaArriba();
-		
-		this.modo.colocarEnModoAtaque();
+		this.estado.colocarCartaBocaArriba();	
+		this.modo = this.modo.colocarEnModoAtaque();
 		
 	}
  	
