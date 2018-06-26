@@ -188,4 +188,90 @@ public class JugadorTest {
 			
 			assertFalse(jugador1.estaDerrotado());
 		}
+		
+		@Test
+		public void testJugadorColocaAgujeroNegroBocaAbajoYLuegoLaVolteaYDestruyeSuMonstruo() {
+			CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+			CartaMagicaFactory magicas = new CartaMagicaFactory();
+			Atacable beta = fabrica.crearBetaElGuerreroMagnetico();
+			Atacable dragonKoumori = fabrica.crearDragonDeKoumori();
+			Activable agujeroNegro = magicas.crearAgujeroNegro();
+			
+			Jugador jugador1 = new Jugador();
+			Jugador jugador2 = new Jugador();
+			
+			jugador1.enfrentarseA(jugador2);
+			jugador2.enfrentarseA(jugador1);
+			jugador2.colocar(dragonKoumori, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
+			jugador2.colocar(beta, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
+			
+			jugador2.colocar(agujeroNegro, new EstadoCartaColocadaBocaAbajo() );
+			
+			jugador2.voltearCarta(agujeroNegro);
+			
+			assertEquals(3, jugador2.obtenerCantidadDeCartasEnCementerio());
+
+		}
+		
+		@Test
+		public void testJugadorColocaFisuraBocaAbajoYLuegoLaVolteaYDestruyeMonstruoMasDebil() {
+			CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+			CartaMagicaFactory magicas = new CartaMagicaFactory();
+			Atacable monstruoCon1900Atk = fabrica.crearDragonDeBrillo();
+			Atacable monstruoCon1100Atk = fabrica.crearConejoOscuro();
+			Activable fisura = magicas.crearFisura();
+			
+			Jugador jugador1 = new Jugador();
+			Jugador jugador2 = new Jugador();
+			
+			jugador1.enfrentarseA(jugador2);
+			jugador2.enfrentarseA(jugador1);
+			jugador1.colocar(monstruoCon1900Atk, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
+			jugador1.colocar(monstruoCon1100Atk, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
+			
+			jugador2.colocar(fisura, new EstadoCartaColocadaBocaAbajo() );
+			
+			jugador2.voltearCarta(fisura);
+			
+			assertTrue( monstruoCon1100Atk.estaDestruida() );
+		}
+		
+		@Test
+		public void testJugadorColocaOllaDeLaCodiciaBocaAbajoLuegoLaVolteaYtomaDosCartas() {
+			CartaMagicaFactory magicas = new CartaMagicaFactory();
+			Activable potOfGreed = magicas.crearOllaDeLaCodicia();
+			
+			Jugador jugador1 = new Jugador();
+			Jugador jugador2 = new Jugador();
+			
+			jugador1.enfrentarseA(jugador2);
+			jugador2.enfrentarseA(jugador1);
+			
+			jugador1.colocar(potOfGreed, new EstadoCartaColocadaBocaAbajo() );
+			
+			jugador1.voltearCarta(potOfGreed);
+			
+			assertEquals(7, jugador1.obtenerCantidadDeCartasEnLaMano());
+		}
+		
+		@Test
+		public void testJugadorColocaUnMonstruoBocaAbajoLuegoLoVolteaYQuedaBocaArribaEnModoAtaque() {
+			CartaMonstruoFactory fabrica = new CartaMonstruoFactory();
+			Atacable atacante = fabrica.crearBetaElGuerreroMagnetico();
+			Atacable atacado = fabrica.crearDragonDeKoumori();
+			Jugador jugador1 = new Jugador();
+			Jugador jugador2 = new Jugador();
+			
+			jugador1.enfrentarseA(jugador2);
+			jugador2.enfrentarseA(jugador1);
+			
+			jugador1.colocar(atacado, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
+			jugador2.colocar(atacante, new EstadoCartaColocadaBocaAbajo(), new ModoDefensa());
+			
+			jugador2.voltearCarta(atacante);
+			jugador2.atacar(atacante, atacado);
+			
+			int vidaEsperada = 8000 - 200;
+			assertTrue(jugador1.tieneVida(vidaEsperada));
+		}
 }
