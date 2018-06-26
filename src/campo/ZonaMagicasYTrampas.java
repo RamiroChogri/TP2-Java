@@ -100,4 +100,22 @@ public class ZonaMagicasYTrampas extends Zona{
 		}
 	}
 
+	public LinkedList<Activable> obtenerCartasMagicas() {
+		
+		LinkedList<Activable> cartasMagicas = new LinkedList<Activable>();
+		Activable cartaActual;
+		
+		Iterator<Activable> posicionesIterator = this.posiciones.iterator();
+		while ( posicionesIterator.hasNext() ) {
+			
+			cartaActual = posicionesIterator.next();
+			
+			if(!cartaActual.esDeTrampa() ) {
+				cartasMagicas.add(cartaActual);
+			}
+		}
+		
+		return cartasMagicas;
+	}
+
 }

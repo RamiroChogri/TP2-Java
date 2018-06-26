@@ -148,4 +148,11 @@ public class Campo {
 		this.enviarCartasDestruidasAlCementerio();
 	}
 
+	public LinkedList<Activable> obtenerCartasMagicasActivables() {
+		
+		LinkedList<Activable> magicasActivables = this.magicasYTrampas.obtenerCartasMagicas();
+		
+		return magicasActivables;
+	}
+
 }
