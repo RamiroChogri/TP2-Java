@@ -208,4 +208,13 @@ public class Jugador implements Daniable{
 		return this.nombre;
 	}
 	
+	public void voltearCarta(Atacable cartaAVoltear) {
+		cartaAVoltear.voltear();
+	}
+	
+	public void voltearCarta(Activable cartaAVoltear) {
+		
+		cartaAVoltear.voltear(this.campoPropio, this.campoEnemigo);
+	}
+	
 }
