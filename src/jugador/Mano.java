@@ -48,4 +48,34 @@ public class Mano {
 		return tieneAExodia;
 	}
 
+	////////////////////////////////////
+	
+	public Colocable obtenerCarta(String nombreCartaActivable) {
+		Colocable cartaActual = null;
+		Colocable cartaADevolver = null;
+		
+		Iterator<Colocable> posicionesIterador = this.cartasEnMano.iterator();
+		while(posicionesIterador.hasNext()) {
+			cartaActual = posicionesIterador.next();
+			if (cartaActual.obtenerNombre() == nombreCartaActivable) {
+				cartaADevolver = cartaActual;
+			}
+		}
+		return cartaADevolver;
+	}
+	
+	
+	public LinkedList<String> obtenerNombresDeCartasAtacables() {
+		LinkedList<String> listaADevolver = new LinkedList<String>();
+		//COMO CARAJO DISTINGO ENTRE ACTIVABLES Y ATACABLES EN LISTA DE COLOCABLES?
+		
+		return listaADevolver;
+	}
+	
+	public LinkedList<String> obtenerNombresDeCartasActivables() {
+		LinkedList<String> listaADevolver = new LinkedList<String>();
+		
+		
+		return listaADevolver;
+	}
 }

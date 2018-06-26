@@ -1,5 +1,7 @@
 package jugador;
 
+import java.util.LinkedList;
+
 import campo.*;
 import cartas.*;
 import exceptions.*;
@@ -111,13 +113,13 @@ public class Jugador implements Daniable{
 	
 	public void colocar(Atacable carta, EstadoCarta estado, Modo modo) {
 		carta.cambiarA(modo);
-		campoPropio.colocarCarta(carta, estado);
-		campoPropio.enviarCartasDestruidasAlCementerio();
+		this.campoPropio.colocarCarta(carta, estado);
+		this.campoPropio.enviarCartasDestruidasAlCementerio();
 		
 	}
 	
 	public void colocar(Activable carta, EstadoCarta estado) {
-		campoPropio.colocarCarta(carta, estado);
+		this.campoPropio.colocarCarta(carta, estado);
 		
 	}
 	
@@ -217,4 +219,44 @@ public class Jugador implements Daniable{
 		cartaAVoltear.voltear(this.campoPropio, this.campoEnemigo);
 	}
 	
+	///////////////////////////////////////
+	
+	public LinkedList<String> obtenerNombresDeCartasAtacablesEnMano() {
+		return this.mano.obtenerNombresDeCartasAtacables();
+	}
+	
+	public LinkedList<String> obtenerNombresDeCartasActivablesEnMano() {
+		return this.mano.obtenerNombresDeCartasActivables();
+	}
+	
+	public void colocar(String nombreCartaAtacable, String nombreEstado, String nombreModo) {
+		Colocable carta = this.mano.obtenerCarta(nombreCartaAtacable);
+		EstadoCarta estado;
+		if (nombreEstado == "arriba") {
+			estado = new EstadoCartaColocadaBocaArriba();
+		} else {
+			estado = new EstadoCartaColocadaBocaAbajo();
+		}
+		Modo modo;
+		if (nombreModo == "ataque") {
+			modo = new ModoAtaque();
+		} else {
+			modo = new ModoDefensa();
+		}
+		
+		
+		
+		this.campoPropio.colocarCarta(carta, estado);
+	}
+	
+	public void colocar(String nombreCartaActivable, String nombreEstado) {
+		Colocable carta = this.mano.obtenerCarta(nombreCartaActivable);
+		EstadoCarta estado;
+		if (nombreEstado == "arriba") {
+			estado = new EstadoCartaColocadaBocaArriba();
+		} else {
+			estado = new EstadoCartaColocadaBocaAbajo();
+		}
+		this.campoPropio.colocarCarta(carta, estado);
+	}
 }
