@@ -14,7 +14,7 @@ public class BotonComenzarElDueloHandler  implements EventHandler<ActionEvent> ,
 	    Scene nuevaEscena;
 	    Media musicaComienzoDelDuelo;
 	    MediaPlayer reproductor;
-	    String pathAHoraDelDuelo = pathDeMusica+ "ES%20HORA%20DE%20DE%20DE%20DE%20DE%20DEL%20DUELO!.mp3";
+	    String pathAHoraDelDuelo = pathDeMusica+ "ES%20HORA%20DE%20DE%20DE%20DE%20DE%20DEL%20DUELO!.wav";
 	    MediaPlayer reproductorDeMusicaDeFondo;
 	    
 	    public BotonComenzarElDueloHandler(Stage stage, Scene escenaSiguiente,MediaPlayer reproductorDeMusicaDeFondo) {
