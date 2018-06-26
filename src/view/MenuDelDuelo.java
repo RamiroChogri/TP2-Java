@@ -26,7 +26,7 @@ public class MenuDelDuelo extends MenuBar {
 	    	
 	    	this.musicaDeBatalla = new Media(pathMusicaBatalla);
 	    	this.reproductor = new MediaPlayer(this.musicaDeBatalla);
-	    	this.reproductor.setVolume(0.3);
+	    	this.reproductor.setVolume(0.2);
 	    	
 	    	
 	        Menu menuPantalla = new Menu("Pantalla");

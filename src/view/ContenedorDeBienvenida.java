@@ -5,12 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -41,17 +35,13 @@ public class ContenedorDeBienvenida extends VBox implements PathArchivos {
         this.musicaDeFondo = new Media(this.pathAMusicaDeFondo);
         this.reproductor= new MediaPlayer(this.musicaDeFondo);
         this.reproductor.setAutoPlay(true);
-        this.reproductor.setVolume(0.3);
+        this.reproductor.setVolume(0.2);
         
         this.stage = stage;
 
         this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
-// 		  Agregado en css
-//        Image imagen = new Image(pathAImagenDeFondo);
-//        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.ROUND, BackgroundRepeat.ROUND, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-//        this.setBackground(new Background(imagenDeFondo));
 
         Button botonComenzarElDuelo = new Button("Es hora del duelo");
         BotonComenzarElDueloHandler botonEntrarHandler = new BotonComenzarElDueloHandler(stage, proximaEscena,reproductor);
