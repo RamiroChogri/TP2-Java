@@ -1,6 +1,7 @@
 package view;
 
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
@@ -20,8 +21,8 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	yugiView.setFitHeight(150);
     	
     	final ImageView kaibaView = new ImageView();
-    	kaibaView.setFitWidth(125);
-    	kaibaView.setFitHeight(125);
+    	kaibaView.setFitWidth(150);
+    	kaibaView.setFitHeight(150);
     	
     	Image kaiba = new Image(pathImagenKaiba);
     	kaibaView.setImage(kaiba);
@@ -33,9 +34,15 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	VistaJugador perfilJugador2 = new VistaJugador(kaibaView);
     	perfilJugador2.setAlignment(Pos.TOP_RIGHT);
     	
+    	Button botonFinalizarTurno = new Button("Finalizar Turno");
+    	botonFinalizarTurno.getStylesheets().add("view/StyleButtonCajaJugador.css");
+    	Button botonSiguienteFase = new Button("Siguiente fase");
+    	botonSiguienteFase.getStylesheets().add("view/StyleButtonCajaJugador.css");
+    	
     	this.setAlignment(Pos.TOP_LEFT);
-    	this.getChildren().addAll(perfilJugador2,perfilJugador1);
     	VBox.setVgrow(perfilJugador1, Priority.ALWAYS);
+    	VBox.setVgrow(perfilJugador2, Priority.ALWAYS);
+    	this.getChildren().addAll(perfilJugador2,botonSiguienteFase,botonFinalizarTurno,perfilJugador1);
     	this.setStyle("-fx-background-color: linear-gradient(DARKRED, DARKVIOLET);");
 	}
 }

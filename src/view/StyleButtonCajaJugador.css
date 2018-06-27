@@ -1,0 +1,26 @@
+
+.button {
+	-fx-font-family: "Arial";
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+	-fx-background-color: linear-gradient(#9EA7E5, #FFFFF0);
+	-fx-text-fill: #383640;
+	-fx-focus-color: RED;
+}
+
+.button:hover {
+	-fx-background-color: linear-gradient(#CD853F, #CD853F);
+	-fx-text-fill: #ffffff;
+}
+
+.button:focused {
+    -fx-background-color: BLACK;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+    -fx-text-fill: #FFFFF0;
+}
+
+.button:focused:hover{
+	-fx-background-color: linear-gradient(WHITE, BLACK);
+	-fx-text-fill: #ffffff;
+}

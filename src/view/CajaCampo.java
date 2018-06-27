@@ -13,13 +13,18 @@ public class CajaCampo extends VBox{
 		ManoJugador manoJugador2 = new ManoJugador();
 		manoJugador2.setAlignment(Pos.TOP_CENTER);
 		
-		EspacioCarta espacioTest = new EspacioCarta();
+		EspacioCartasCampo campoJ1 = new EspacioCartasCampo();
+		EspacioCartasCampo campoJ2 = new EspacioCartasCampo(180);
 		
 		this.setSpacing(15);
 		this.setAlignment(Pos.CENTER);
 		VBox.setVgrow(manoJugador2, Priority.ALWAYS);
 		VBox.setVgrow(manoJugador1, Priority.ALWAYS);
-		this.getChildren().addAll(manoJugador2,espacioTest,manoJugador1);
+		VBox.setVgrow(campoJ1, Priority.ALWAYS);
+		
+		this.getChildren().addAll(manoJugador2,campoJ2,campoJ1,manoJugador1);
+		
+		this.setStyle("-fx-background-color: BLACK");
 		
 	}
 }
