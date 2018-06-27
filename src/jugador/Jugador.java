@@ -255,6 +255,13 @@ public class Jugador implements Daniable{
 	public int obtenerVida() {
 		return this.vida;
 	}
+
+	public LinkedList<String> obtenerNombresDeCartasAtacablesEnZonaMonstruos() {
+		
+		LinkedList<String> nombresDeAtacables = this.campoPropio.obtenerNombresDeCartasAtacables();
+		
+		return nombresDeAtacables;
+	}
 	
 	
 }
