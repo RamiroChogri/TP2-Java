@@ -188,4 +188,20 @@ public class ZonaMonstruos extends Zona {
 			return carta;
 	}
 
+	public LinkedList<String> obtenerNombresDeCartasAtacables() {
+		
+		LinkedList<String> cartasAtacables = new LinkedList<String>();
+		Atacable cartaActual;
+		
+		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
+		while ( posicionesIterator.hasNext() ) {
+			
+			cartaActual = posicionesIterator.next();
+			cartasAtacables.add(cartaActual.obtenerNombre());
+
+		}
+		
+		return cartasAtacables;
+	}
+
 }

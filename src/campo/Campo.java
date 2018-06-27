@@ -165,5 +165,12 @@ public class Campo {
 		return magicasYTrampas.obtenerCarta( nombreCartaMonstruoAtacante );
 	}
 
+	public LinkedList<String> obtenerNombresDeCartasAtacables() {
+	
+		LinkedList<String> nombresDeCartas = this.monstruos.obtenerNombresDeCartasAtacables();
+		
+		return nombresDeCartas;
+	}
+
 
 }
