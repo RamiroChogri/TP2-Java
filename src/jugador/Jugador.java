@@ -224,9 +224,15 @@ public class Jugador implements Daniable{
 		return campoPropio.obtenerCartaDeZonaMonstruo( nombreCartaMonstruoAtacante );
 	}
 	
+<<<<<<< HEAD
 	public Activable obtenerCartaDeZonaMagicaYTrampas( String nombreCartaActivable ) {
 		
 		return campoPropio.obtenerCartaDeZonaMagicaYTrampas( nombreCartaActivable );
+=======
+	public Activable obtenerCartaDeZonaMagicasYTrampas( String nombreCartaActivable ) {
+		
+		return campoPropio.obtenerCartaDeZonaMagicasYTrampas( nombreCartaActivable );
+>>>>>>> 7b3d4c728d0693682577a7bf6c1933d9998912ef
 	}
 	
 	
@@ -244,10 +250,16 @@ public class Jugador implements Daniable{
 		return this.mano.obtenerCarta(nombreCarta);
 	}
 
-	public LinkedList<Activable> verCartasMagicasActivables() {
+	public LinkedList<String> obtenerNombresDeCartasMagicasEnCampoPropio() {
 		
-		LinkedList<Activable> cartasMagicasActivables = this.campoPropio.obtenerCartasMagicasActivables();
+		LinkedList<String> cartasMagicasActivables = this.campoPropio.obtenerNombresDeCartasMagicasEnCampoPropio();
 		
 		return cartasMagicasActivables;
 	}
+	
+	public int obtenerVida() {
+		return this.vida;
+	}
+	
+	
 }
