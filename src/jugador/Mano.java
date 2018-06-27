@@ -105,4 +105,27 @@ public class Mano {
 	
 		return listaADevolver;
 	}
+
+	public void eliminarCarta(String nombreCartaElegida) {
+		
+		Colocable cartaActual = null;
+		String nombreCartaActual;
+		boolean encontrado = false;
+		
+		Iterator<Colocable> posicionesIterador = this.cartasEnMano.iterator();
+		while(posicionesIterador.hasNext() && !encontrado) {
+			cartaActual = posicionesIterador.next();
+			nombreCartaActual = cartaActual.obtenerNombre();
+			if (nombreCartaActual.equals(nombreCartaElegida)) {
+				this.cartasEnMano.remove(cartaActual);
+				encontrado = true;
+			}
+		}
+		
+		if (!encontrado) {
+			throw new CartaNoEncontradaException();	//No existe una carta con el nombre recibido
+		}
+		
+	}
+	
 }

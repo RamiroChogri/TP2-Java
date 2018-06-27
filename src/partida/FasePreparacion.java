@@ -79,6 +79,7 @@ public class FasePreparacion extends Fase {
 			if (!nombreCartaMonstruoElegida.equals("no")) {
 			
 				this.colocar(jugadorEnTurno, nombreCartaMonstruoElegida);
+				jugadorEnTurno.eliminarCartaDeLaMano(nombreCartaMonstruoElegida);
 								
 			}
 		} 
@@ -117,6 +118,7 @@ public class FasePreparacion extends Fase {
 				//No esta hecho que el jugador elimine la carta de su mano
 				this.colocar(jugadorEnTurno, nombreCartaElegida);
 				listaDeCartasActivables.remove(nombreCartaElegida);
+				jugadorEnTurno.eliminarCartaDeLaMano(nombreCartaElegida);
 			}
 		}
 	}

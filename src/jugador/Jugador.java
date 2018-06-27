@@ -263,5 +263,10 @@ public class Jugador implements Daniable{
 		return nombresDeAtacables;
 	}
 	
+	public void eliminarCartaDeLaMano(String nombreCartaElegida) {
+		
+		this.mano.eliminarCarta(nombreCartaElegida);
+		
+	}
 	
 }
