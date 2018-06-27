@@ -1,29 +1,37 @@
 package view;
 
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class EspacioCartasCampo extends GridPane{
 	
-	public EspacioCartasCampo() {
-		EspacioCarta espacioMosntruo1 = new EspacioCarta();
-		EspacioCarta espacioMosntruo2 = new EspacioCarta();
-		EspacioCarta espacioMosntruo3 = new EspacioCarta();
-		EspacioCarta espacioMosntruo4 = new EspacioCarta();
-		EspacioCarta espacioMosntruo5 = new EspacioCarta();
+	CajaInformacion cajaInformacion;
+	EspacioCarta espacioMosntruo1;
+	EspacioCarta espacioMosntruo2;
+	EspacioCarta espacioMosntruo3;
+	EspacioCarta espacioMosntruo4;
+	EspacioCarta espacioMosntruo5;
+	
+	EspacioCartaMagica espacioMagico1;
+	EspacioCartaMagica espacioMagico2;
+	EspacioCartaMagica espacioMagico3;
+	EspacioCartaMagica espacioMagico4;
+	EspacioCartaMagica espacioMagico5;
+	
+	EspacioCementerio espacioCementerio;
+	Rectangle espacioMazo;
+	Rectangle espacioCampo;
+	Rectangle espacioRelleno;
+	
+	public EspacioCartasCampo(CajaInformacion cajaInformacion) {
 		
-		EspacioCartaMagica espacioMagico1 = new EspacioCartaMagica();
-		EspacioCartaMagica espacioMagico2 = new EspacioCartaMagica();
-		EspacioCartaMagica espacioMagico3 = new EspacioCartaMagica();
-		EspacioCartaMagica espacioMagico4 = new EspacioCartaMagica();
-		EspacioCartaMagica espacioMagico5 = new EspacioCartaMagica();
+		this.cajaInformacion = cajaInformacion;
 		
-		Rectangle espacioCementerio = new Rectangle(60,100,Color.GREY);
-		Rectangle espacioMazo = new Rectangle(60,100,Color.BROWN);
-		Rectangle espacioCampo = new Rectangle(60,100,Color.GREEN);
-		Rectangle espacioRelleno = new Rectangle(60,100,Color.BLACK);
+		this.setEspaciosDeCampo();
 		
 		this.setHgap(10);
 		this.setVgap(10);
@@ -33,23 +41,9 @@ public class EspacioCartasCampo extends GridPane{
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	public EspacioCartasCampo(int gradosDeRotacion) {
-		EspacioCarta espacioMosntruo1 = new EspacioCarta();
-		EspacioCarta espacioMosntruo2 = new EspacioCarta();
-		EspacioCarta espacioMosntruo3 = new EspacioCarta();
-		EspacioCarta espacioMosntruo4 = new EspacioCarta();
-		EspacioCarta espacioMosntruo5 = new EspacioCarta();
+	public EspacioCartasCampo(int gradosDeRotacion,CajaInformacion cajaInformacion) {
 		
-		EspacioCartaMagica espacioMagico1 = new EspacioCartaMagica();
-		EspacioCartaMagica espacioMagico2 = new EspacioCartaMagica();
-		EspacioCartaMagica espacioMagico3 = new EspacioCartaMagica();
-		EspacioCartaMagica espacioMagico4 = new EspacioCartaMagica();
-		EspacioCartaMagica espacioMagico5 = new EspacioCartaMagica();
-		
-		Rectangle espacioCementerio = new Rectangle(60,100,Color.GREY);
-		Rectangle espacioMazo = new Rectangle(60,100,Color.BROWN);
-		Rectangle espacioCampo = new Rectangle(60,100,Color.GREEN);
-		Rectangle espacioRelleno = new Rectangle(60,100,Color.BLACK);
+		this.setEspaciosDeCampo();
 		
 		this.setHgap(10);
 		this.setVgap(10);
@@ -57,5 +51,44 @@ public class EspacioCartasCampo extends GridPane{
 		this.addRow(0,espacioMazo,espacioMagico5,espacioMagico4,espacioMagico3,espacioMagico2,espacioMagico1,espacioRelleno);
 		
 		this.setAlignment(Pos.CENTER);
+	}
+	
+	private void setEspaciosDeCampo() {
+		this.espacioMosntruo1 = new EspacioCarta(cajaInformacion);
+		this.espacioMosntruo2 = new EspacioCarta(cajaInformacion);
+		this.espacioMosntruo3 = new EspacioCarta(cajaInformacion);
+		this.espacioMosntruo4 = new EspacioCarta(cajaInformacion);
+		this.espacioMosntruo5 = new EspacioCarta(cajaInformacion);
+		
+		this.espacioMagico1 = new EspacioCartaMagica();
+		this.espacioMagico2 = new EspacioCartaMagica();
+		this.espacioMagico3 = new EspacioCartaMagica();
+		this.espacioMagico4 = new EspacioCartaMagica();
+		this.espacioMagico5 = new EspacioCartaMagica();
+		
+		this. espacioCementerio = new EspacioCementerio();
+		this. espacioMazo = new Rectangle(60,100,Color.BROWN);
+		this. espacioCampo = new Rectangle(60,100,Color.GREEN);
+		this.espacioRelleno = new Rectangle(60,100,Color.BLACK);
+	}
+
+	public EspacioCarta getEspacioCartaMosntruo(int posicionDeCartaMonstruo) {
+		EspacioCarta cartaBuscada = null;
+	    ObservableList<Node> childrens = this.getChildren();
+
+	  if(posicionDeCartaMonstruo == 1)
+		  cartaBuscada = this.espacioMosntruo1;
+	  else if(posicionDeCartaMonstruo == 2)
+	  	cartaBuscada = this.espacioMosntruo2;
+	  else if(posicionDeCartaMonstruo == 3)
+		  cartaBuscada = this.espacioMosntruo3;
+	  else if(posicionDeCartaMonstruo == 4)
+		  	cartaBuscada = this.espacioMosntruo4;
+	  else if(posicionDeCartaMonstruo == 5)
+		  	cartaBuscada = this.espacioMosntruo5;
+	  else
+		  cartaBuscada = null;
+
+	    return cartaBuscada;
 	}
 }

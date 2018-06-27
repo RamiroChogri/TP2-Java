@@ -6,4 +6,5 @@ public interface PathArchivos {
 	//CAMBIAR EL PATH EN ARCHIVO .CSS SECCION ROOT 
 	String pathDeImagenes = "file:///C:/Users/marcelo/Documents/Desktop/Algo%203/TP2-Java/src/viewSupportFiles/";
 	String pathDeMusica = "file:///C://Users//marcelo//Documents//Desktop//Algo%203//TP2-Java//src//viewSupportFiles/";
+	String pathDePackCartas ="file:///C:/Users/marcelo/Documents/Desktop/Algo%203/TP2-Java/src/viewSupportFiles/imagenesCartas/";
 }

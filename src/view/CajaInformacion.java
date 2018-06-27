@@ -26,14 +26,12 @@ public class CajaInformacion extends StackPane{
 	public void zoomAImagen(Image imagen) {
 		this.imagenV = new ImageView(imagen);
 		imagenV.setFitWidth(250);
-		imagenV.setFitHeight(250);
+		imagenV.setFitHeight(400);
 		
-//		this.getChildren().remove(this.baseDeInfoCarta);
 		this.getChildren().add(imagenV);
 	}
 	
 	public void quitarImagen() {
 		this.getChildren().remove(this.imagenV);
-//		this.getChildren().add(this.baseDeInfoCarta);
 	}
 }

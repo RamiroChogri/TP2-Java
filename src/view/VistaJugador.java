@@ -14,6 +14,7 @@ public class VistaJugador extends HBox{
 	ImageView imagenDelJugador;
 	Label vida;
 	
+    
 	public VistaJugador(ImageView imagenDelJugador,CajaInformacion cajaInformacion) {
 		this.imagenDelJugador = imagenDelJugador;
 		
@@ -25,7 +26,7 @@ public class VistaJugador extends HBox{
 		 
 		 MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(this.imagenDelJugador,cajaInformacion);
 		 this.imagenDelJugador.setOnMouseEntered(ponerEnZoom);
-	
+		 
 		 MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
 		 this.imagenDelJugador.setOnMouseExited(sacarDeZoom);
 		 
