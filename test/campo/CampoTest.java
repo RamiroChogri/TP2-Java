@@ -21,9 +21,9 @@ public class CampoTest {
 	
 	
 	@Test
-	public void testComienzaLaPartidaCon35CartasEnElMazo() {
+	public void testComienzaLaPartidaCon40CartasEnElMazo() {
 		Campo campoTest = new Campo();
-		assertEquals(35, campoTest.obtenerCantidadDeCartasEnMazo());
+		assertEquals(40, campoTest.obtenerCantidadDeCartasEnMazo());
 	}
 	
 	@Test

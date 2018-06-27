@@ -14,10 +14,10 @@ import static org.junit.Assert.assertTrue;
 public class JugadorTest {
 
 		@Test
-		public void testSeCreaJugadorConUnCampoYTieneCincoCartasEnLaMano() {
+		public void testSeCreaJugadorConUnCampoYNoTieneCartasEnLaMano() {
 			Jugador jugador1 = new Jugador();
 			
-			assertEquals( 5, jugador1.obtenerCantidadDeCartasEnLaMano() );
+			assertEquals( 0, jugador1.obtenerCantidadDeCartasEnLaMano() );
 		}
 		
 		
@@ -59,12 +59,12 @@ public class JugadorTest {
 		}
 		
 		@Test
-		public void testJugadorTomaDosCartasDelMazoYTieneSieteCartasEnLaMano() {
+		public void testJugadorTomaDosCartasDelMazoYTieneDosCartasEnLaMano() {
 			Jugador jugador1 = new Jugador();
 			jugador1.tomarCartaDelMazo();
 			jugador1.tomarCartaDelMazo();
 			
-			assertEquals(7, jugador1.obtenerCantidadDeCartasEnLaMano());
+			assertEquals(2, jugador1.obtenerCantidadDeCartasEnLaMano());
 		}
 		
 		@Test
