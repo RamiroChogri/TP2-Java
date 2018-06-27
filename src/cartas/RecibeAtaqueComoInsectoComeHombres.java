@@ -54,7 +54,8 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 	public void colocarse(Jugador jugador, ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas,
 			ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
 		
-		getAtacable().colocarse(jugador, zonaMonstruos, zonaMagicasYTrampas, zonaCampo, cementerio, estadoAColocar);
+		getAtacable().ponerEn(estadoAColocar);
+		zonaMonstruos.colocarCarta(this);
 	}	
 
 	@Override
