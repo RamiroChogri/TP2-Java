@@ -98,7 +98,6 @@ public class Mano {
 		while(posicionesIterador.hasNext()) {
 			cartaActual = posicionesIterador.next();
 			if (cartaActual.esActivable()) {
-				System.out.println("Encontre una carta Activable");
 				listaADevolver.add(cartaActual.obtenerNombre());
 			}
 		}
