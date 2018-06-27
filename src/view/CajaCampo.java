@@ -2,7 +2,6 @@ package view;
 
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import viewSupportFiles.PathArchivos;
@@ -39,10 +38,17 @@ public class CajaCampo extends VBox implements PathArchivos{
 		this.setStyle("-fx-background-color: BLACK");
 		
 		this.pintarCartaMonstruoEnCampoJugador1(1);
+//		this.enviarCartaMonstruoAlCementerio(1); //NO LLamar a este metodo x ahora
 	}
 	
 	public void pintarCartaMonstruoEnCampoJugador1(int posicionDeCartaMonstruo) {
 		Image imagen= new Image(pathDePackCartas +"bueyDeBatalla.jpg");
 		this.campoJ1.getEspacioCartaMosntruo(1).pintarCartaEnModoAtaque(imagen);
+	}
+	
+	public void enviarCartaMonstruoAlCementerio(int posicionDeCartaMonstruo) {
+		EspacioCementerio cementerio = this.campoJ1.getCementerio();
+		this.campoJ1.getEspacioCartaMosntruo(1).enviarAl(cementerio);
+		
 	}
 }
