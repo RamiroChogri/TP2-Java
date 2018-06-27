@@ -49,23 +49,10 @@ public class Partida {
 		int vidaJugadorEnTurno;
 		
 		while (this.estado.continuaLaPartida()) {
-//			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
-//			System.out.println("Turno del jugador " + nombreJugadorEnTurno);
-//			
-//			this.faseInicial.ejecutarFase(jugadorEnTurno); 
-//			this.fasePreparacion.ejecutarFase(jugadorEnTurno);
-//			this.faseAtaqueYTrampas.ejecutarFase(jugadorEnTurno);
-//			this.faseFinal.ejecutarFase(jugadorEnTurno);
-//		
-//			vidaJugadorEnTurno = jugadorEnTurno.obtenerVida();
-//			System.out.println("Al jugador " + nombreJugadorEnTurno + "le quedan " + vidaJugadorEnTurno + "puntos de vida");
-//			
-//			jugadorEnTurno = jugadorEnTurno.obtenerJugadorEnemigo();		
-			
+		
 			
 			jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno(jugadorEnTurno);
 			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
-//			System.out.println("Turno del jugador " + nombreJugadorEnTurno);
 			
 			this.estado = this.faseActual.ejecutarFase(jugadorEnTurno, this.estado);
 			vidaJugadorEnTurno = jugadorEnTurno.obtenerVida();
@@ -73,8 +60,7 @@ public class Partida {
 			System.out.println("Al jugador " + jugadorEnTurno.obtenerJugadorEnemigo().obtenerNombre() + " le quedan " +jugadorEnTurno.obtenerJugadorEnemigo().obtenerVida() + " puntos de vida" );
 			
 			this.faseActual = this.faseActual.obtenerFaseSiguiente();
-			//Falta ver que se activen directamente las cartas magicas boca arriba 
-			
+		
 		}
 		
 		if (jugadorKaiba.estaDerrotado()) {
