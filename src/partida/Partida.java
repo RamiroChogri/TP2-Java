@@ -7,14 +7,12 @@ public class Partida {
 	private Fase faseInicial;
 	private Fase fasePreparacion;
 	private Fase faseAtaqueYTrampas; 
-	private Fase faseTrampas;
 	private Fase faseFinal;
 	
 	public Partida() {
 		this.faseInicial = new FaseInicial();
 		this.fasePreparacion = new FasePreparacion();
 		this.faseAtaqueYTrampas = new FaseAtaqueYTrampas();
-		this.faseTrampas = new FaseTrampas();
 		this.faseFinal = new FaseFinal();
 	}
 	
@@ -47,7 +45,6 @@ public class Partida {
 			this.faseInicial.ejecutarFase(jugadorEnTurno); //Recibir excepcion por mazo vacio
 			this.fasePreparacion.ejecutarFase(jugadorEnTurno);
 			this.faseAtaqueYTrampas.ejecutarFase(jugadorEnTurno);
-			this.faseTrampas.ejecutarFase(jugadorEnTurno);
 			this.faseFinal.ejecutarFase(jugadorEnTurno);
 		
 			jugadorEnTurno = jugadorEnTurno.obtenerJugadorEnemigo();		
