@@ -197,12 +197,30 @@ public class ZonaMonstruos extends Zona {
 		while ( posicionesIterator.hasNext() ) {
 			
 			cartaActual = posicionesIterator.next();
-			if (cartaActual.estaEnModoAtaque()) {
-				cartasAtacables.add(cartaActual.obtenerNombre());
-			}
+			cartasAtacables.add(cartaActual.obtenerNombre());
+	
 		}
 		
 		return cartasAtacables;
 	}
+	
+	public LinkedList<String> obtenerNombresDeCartasAtacablesEnModoAtaque() {
+		
+		LinkedList<String> cartasAtacables = new LinkedList<String>();
+		Atacable cartaActual;
+		
+		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
+		while ( posicionesIterator.hasNext() ) {
+			
+			cartaActual = posicionesIterator.next();
+			if (cartaActual.estaEnModoAtaque()) {
+				cartasAtacables.add(cartaActual.obtenerNombre());
+			}
+	
+		}
+		
+		return cartasAtacables;
+	}
+	
 
 }

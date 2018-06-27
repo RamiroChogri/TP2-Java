@@ -22,7 +22,7 @@ public class FaseAtaqueYTrampas extends Fase {
 	public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaActual) {
 		String respuesta = "si";
 		EstadoPartida estadoPartidaADevolver = estadoPartidaActual;
-		LinkedList<String> listaDeCartasAtacables = jugadorEnTurno.obtenerNombresDeCartasAtacablesEnZonaMonstruos();
+		LinkedList<String> listaDeCartasAtacables = jugadorEnTurno.obtenerNombresDeCartasAtacablesEnModoAtaqueEnZonaMonstruos();
 		
 		while (!(listaDeCartasAtacables.isEmpty()) && !respuesta.equals("no")) {
 		
@@ -43,7 +43,6 @@ public class FaseAtaqueYTrampas extends Fase {
 				if (nombreAtacado.equals("jugador")) {
 				
 					try {
-					
 						jugadorEnTurno.atacar( atacante , jugadorEnTurno.obtenerJugadorEnemigo());
 						listaDeCartasAtacables.remove(nombreAtacante);
 						System.out.print("Desea seguir atacando? (si/no)");

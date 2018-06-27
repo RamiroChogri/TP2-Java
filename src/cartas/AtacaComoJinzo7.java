@@ -176,6 +176,7 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 	
 	@Override
 	public void atacar(Jugador jugador) {
+		System.out.println("Estoy atacando como Jinzo 7");
 		Puntos puntosDeAtaque = getAtacable().obtenerPuntosAtaque();
 		int ataqueDirecto = puntosDeAtaque.obtenerPuntosActuales();
 		jugador.recibirAtaque(ataqueDirecto);

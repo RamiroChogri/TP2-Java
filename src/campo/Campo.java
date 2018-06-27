@@ -171,6 +171,14 @@ public class Campo {
 		
 		return nombresDeCartas;
 	}
+	
+	public LinkedList<String> obtenerNombresDeCartasAtacablesEnModoAtaque() {
+		
+		LinkedList<String> nombresDeCartas = this.monstruos.obtenerNombresDeCartasAtacablesEnModoAtaque();
+		
+		return nombresDeCartas;
+	}
+	
 
 
 }

@@ -263,6 +263,14 @@ public class Jugador implements Daniable{
 		return nombresDeAtacables;
 	}
 	
+	public LinkedList<String> obtenerNombresDeCartasAtacablesEnModoAtaqueEnZonaMonstruos() {
+		
+		LinkedList<String> nombresDeAtacables = this.campoPropio.obtenerNombresDeCartasAtacablesEnModoAtaque();
+		
+		return nombresDeAtacables;
+	}
+	
+	
 	public void eliminarCartaDeLaMano(String nombreCartaElegida) {
 		
 		this.mano.eliminarCarta(nombreCartaElegida);
