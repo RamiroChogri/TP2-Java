@@ -41,6 +41,10 @@ public class CartaCampo extends CartaMagica {
 		this.nombre = nombreDeLaCarta;
 	}
 	
+	public String obtenerNombre() {
+		return this.nombre;
+	}
+	
 	public void colocarse(Jugador jugador, ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
 		zonaCampo.destruirCarta();
 		zonaCampo.enviarCampoAlCementerio(cementerio);
