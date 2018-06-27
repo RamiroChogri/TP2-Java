@@ -44,6 +44,7 @@ public class FasePreparacion extends Fase {
 		}
 	
 		String nombreCartaMonstruoElegida = this.teclado.nextLine();
+//		System.out.println(nombreCartaMonstruoElegida);
 		while ((!listaDeCartasAtacables.contains(nombreCartaMonstruoElegida)) && (nombreCartaMonstruoElegida != "no")) {
 			System.out.println("Ingrese el nombre de una carta valida");
 			nombreCartaMonstruoElegida = this.teclado.nextLine();

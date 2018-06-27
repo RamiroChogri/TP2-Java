@@ -72,7 +72,6 @@ public class FaseAtaqueYTrampas extends Fase {
 			if ((jugadorEnTurno.estaDerrotado()) || (jugadorEnTurno.obtenerJugadorEnemigo()).estaDerrotado()) {
 				estadoPartidaADevolver = new EstadoPartidaTerminada();
 			}
-		
 			
 		}
 				
@@ -116,7 +115,7 @@ public class FaseAtaqueYTrampas extends Fase {
 		String nombreCartaMonstruoAdversario = "jugador";
 		LinkedList<String> listaDeCartasAdversario= jugadorEnemigo.obtenerNombresDeCartasAtacablesEnZonaMonstruos();
 		
-		if (listaDeCartasAdversario.size() == 0) {
+		if (listaDeCartasAdversario.size() > 0) {
 	
 			System.out.println("Estas cartas de Monstruos estan en la Zona de Monstruos de tu adversario, ingrese el nombre de la carta"); 
 			System.out.println("a la que quiera atacar o ingrese 'jugador' para atacar directamente al adversario");

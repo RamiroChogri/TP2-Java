@@ -51,15 +51,19 @@ public class Mano {
 
 	////////////////////////////////////
 	
-	public Colocable obtenerCarta(String nombreCartaActivable) {
+	public Colocable obtenerCarta(String nombreCartaColocable) {
 		Colocable cartaActual = null;
+		String nombreCartaActual;
 		Colocable cartaADevolver = null;
 		boolean encontrado = false;
 		
 		Iterator<Colocable> posicionesIterador = this.cartasEnMano.iterator();
 		while(posicionesIterador.hasNext() && !encontrado) {
 			cartaActual = posicionesIterador.next();
-			if (cartaActual.obtenerNombre() == nombreCartaActivable) {
+			nombreCartaActual = cartaActual.obtenerNombre();
+			System.out.println("Se chequea si " + cartaActual.obtenerNombre() + " es igual a " + nombreCartaColocable);
+			if (nombreCartaActual == nombreCartaColocable) {
+				System.out.println("Se entro al if");
 				cartaADevolver = cartaActual;
 				encontrado = true;
 			}

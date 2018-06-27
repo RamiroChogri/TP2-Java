@@ -27,6 +27,11 @@ public class Partida {
 		this.estado = new EstadoPartidaEnJuego();
 	}
 	
+	public static void main(String[] args) {
+		Partida partida = new Partida();
+		partida.comienzaElDuelo();
+	}
+	
 	public void comienzaElDuelo() {
 		Jugador jugadorEnTurno = null;
 		String nombreJugadorEnTurno;
@@ -57,13 +62,15 @@ public class Partida {
 //			
 //			jugadorEnTurno = jugadorEnTurno.obtenerJugadorEnemigo();		
 			
+			
 			jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno(jugadorEnTurno);
 			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
-			System.out.println("Turno del jugador " + nombreJugadorEnTurno);
+//			System.out.println("Turno del jugador " + nombreJugadorEnTurno);
 			
 			this.estado = this.faseActual.ejecutarFase(jugadorEnTurno, this.estado);
 			vidaJugadorEnTurno = jugadorEnTurno.obtenerVida();
-			System.out.println("Al jugador " + nombreJugadorEnTurno + " le quedan " + vidaJugadorEnTurno + "puntos de vida");
+			System.out.println("Al jugador " + nombreJugadorEnTurno + " le quedan " + vidaJugadorEnTurno + " puntos de vida");
+			System.out.println("Al jugador " + jugadorEnTurno.obtenerJugadorEnemigo().obtenerNombre() + " le quedan " +jugadorEnTurno.obtenerJugadorEnemigo().obtenerVida() );
 			
 			this.faseActual = this.faseActual.obtenerFaseSiguiente();
 			
