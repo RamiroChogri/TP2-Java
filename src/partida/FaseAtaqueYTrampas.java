@@ -12,14 +12,32 @@ public class FaseAtaqueYTrampas extends Fase {
 	
 	private Scanner teclado;
 	private Fase faseSiguiente;
+	private boolean esPrimerTurno;
 	
 	public FaseAtaqueYTrampas() {
 		this.teclado = new Scanner(System.in);
 		this.faseSiguiente = null;
+		this.esPrimerTurno = true;
 	}
 	
 	@Override
 	public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaActual) {
+		EstadoPartida estadoADevolver = estadoPartidaActual;
+		if (!esPrimerTurno) {
+			
+			estadoADevolver = this.ejecutarFaseCuandoNoEsPrimerTurno(jugadorEnTurno, estadoPartidaActual);
+			
+		} else {
+			esPrimerTurno = false;
+		}
+		
+		return estadoADevolver;
+					
+	}
+	
+	
+	public EstadoPartida ejecutarFaseCuandoNoEsPrimerTurno(Jugador jugadorEnTurno, EstadoPartida estadoPartidaActual) {
+
 		String respuesta = "si";
 		EstadoPartida estadoPartidaADevolver = estadoPartidaActual;
 		LinkedList<String> listaDeCartasAtacables = jugadorEnTurno.obtenerNombresDeCartasAtacablesEnModoAtaqueEnZonaMonstruos();
@@ -75,9 +93,8 @@ public class FaseAtaqueYTrampas extends Fase {
 		}
 				
 		return estadoPartidaADevolver;
-			
+
 	}
-	
 	
 	public String pedirRespuestaValida() {
 		
