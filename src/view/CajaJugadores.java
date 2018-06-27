@@ -29,9 +29,9 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	
     	Image yugi = new Image(pathImagenYugi);
     	yugiView.setImage(yugi);
-		VistaJugador perfilJugador1 = new VistaJugador(yugiView,cajaInformacion);
+		VistaJugador perfilJugador1 = new VistaJugador(yugiView,cajaInformacion); //Mensaje para rama: borrar caja info de jugador
     	perfilJugador1.setAlignment(Pos.BOTTOM_LEFT);
-    	VistaJugador perfilJugador2 = new VistaJugador(kaibaView,cajaInformacion);
+    	VistaJugador perfilJugador2 = new VistaJugador(kaibaView,cajaInformacion); //Mensaje para rama: borrar caja info de jugador
     	perfilJugador2.setAlignment(Pos.TOP_RIGHT);
     	
     	Button botonFinalizarTurno = new Button("Finalizar Turno");

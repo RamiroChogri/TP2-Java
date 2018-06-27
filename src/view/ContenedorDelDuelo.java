@@ -36,28 +36,29 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 //	        this.setCampo();
 	    }
 	    
-	    public void setZoomCartaHover() {
-			CajaInformacion cajaDerecha = new CajaInformacion();
-			this.setRight(cajaDerecha);
-		}
-	    
-	    public void setMenu(Stage stage) {
-	            this.menuBar = new MenuDelDuelo(stage,this.pathMusicaDeBatalla);
-	            this.setTop(menuBar);
-	    }
-	    
-	    public void setPerfilJugadores() {
-	    	CajaJugadores cajaIzquierda = new CajaJugadores(this.cajaDerecha);
-	    	this.setLeft(cajaIzquierda);
-	    }
-	    
-	    public void setCampo() {
-	    	CajaCampo cajaCentro = new CajaCampo();
-	    	this.setCenter(cajaCentro);
-	    }
-
-		public MenuDelDuelo getBarraDeMenu() {
+	    public MenuDelDuelo getBarraDeMenu() {
 			return this.menuBar;
 		}
 	    
+	    
+//	    public void setZoomCartaHover() {
+//			CajaInformacion cajaDerecha = new CajaInformacion();
+//			this.setRight(cajaDerecha);
+//		}
+//	    
+//	    public void setMenu(Stage stage) {
+//	            this.menuBar = new MenuDelDuelo(stage,this.pathMusicaDeBatalla);
+//	            this.setTop(menuBar);
+//	    }
+//	    
+//	    public void setPerfilJugadores() {
+//	    	CajaJugadores cajaIzquierda = new CajaJugadores(this.cajaDerecha);
+//	    	this.setLeft(cajaIzquierda);
+//	    }
+//	    
+//	    public void setCampo() {
+//	    	CajaCampo cajaCentro = new CajaCampo();
+//	    	this.setCenter(cajaCentro);
+//	    }
+//
 }
