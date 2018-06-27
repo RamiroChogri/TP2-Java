@@ -18,6 +18,15 @@ public class CartaTrampa extends CartaMagica{
 		super(efectoAColocar);
 	}
 	
+	public void setNombreDeLaImagen(String nombreDeLaImagen) {
+		super.setNombreDeLaImagen(nombreDeLaImagen);
+	}
+	
+	public String getNombreDeLaImagen() {
+		return super.getNombreDeLaImagen();
+	}
+	
+	
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo, Atacable atacante, Atacable atacado) {
 		
 		efecto.aplicarEfecto(campoPropio, campoEnemigo, atacante, atacado);

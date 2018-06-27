@@ -17,6 +17,8 @@ public class CartaTrampaFactory {
 		
 		cilindroMagico.setNombre("Cilindro Magico");
 		
+		cilindroMagico.setNombreDeLaImagen("cilindroMagico.jpg");
+		
 		return cilindroMagico;
 	}
 	
@@ -27,6 +29,8 @@ public class CartaTrampaFactory {
 		CartaTrampa refuerzos = new CartaTrampa(efecto);
 		
 		refuerzos.setNombre("Refuerzos");
+		
+		refuerzos.setNombreDeLaImagen("refuerzos.jpg");
 		
 		return refuerzos;
 	}

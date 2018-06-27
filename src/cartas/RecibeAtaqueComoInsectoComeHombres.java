@@ -185,4 +185,18 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 	}
 
 
+	@Override
+	public void setNombreDeLaImagen(String nombreDeLaImagen) {
+		
+		getAtacable().setNombreDeLaImagen(nombreDeLaImagen);
+	}
+
+
+	@Override
+	public String getNombreDeLaImagen() {
+		
+		return getAtacable().getNombreDeLaImagen();
+	}
+
+
 }

@@ -22,6 +22,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable dragonBlancoDefinitivo = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Dragon Definitivo De Ojos Azules");
 			
+			dragonBlancoDefinitivo.setNombreDeLaImagen("dragonBlancoDefinitivoDeOjosAzules.png");
+			
 			return dragonBlancoDefinitivo;			
 		}
 		public Atacable crearDragonBlancoDeOjosAzules() {
@@ -32,6 +34,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoGrandeStrategy();
 			
 			Atacable dragonBlancoDeOjosAzules = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Dragon Blanco De Ojos Azules");
+			
+			dragonBlancoDeOjosAzules.setNombreDeLaImagen("dragonBlancoDeOjosAzules.jpg");
 			
 			return dragonBlancoDeOjosAzules;
 		}
@@ -44,6 +48,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable magoOscuro = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Mago Oscuro");
 			
+			magoOscuro.setNombreDeLaImagen("magoOscuro.png");
+			
 			return magoOscuro;
 		}
 		
@@ -55,6 +61,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable zoa = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Zoa");
 			
+			zoa.setNombreDeLaImagen("zoa.jpg");
+			
 			return zoa;
 		}
 	
@@ -65,6 +73,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoMedianoStrategy();
 			
 			Atacable craneoConvocado = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Craneo Convocado");
+			
+			craneoConvocado.setNombreDeLaImagen("craneoConvocado.jpg");
 			
 			return craneoConvocado;	
 		}
@@ -78,6 +88,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable espadachinVengador = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Espadachin Vengador");
 			
+			espadachinVengador.setNombreDeLaImagen("espadachinVengador.jpg");
+			
 			return espadachinVengador;
 		}
 		
@@ -88,6 +100,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
 			Atacable bueyDeBatalla = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Buey De Batalla");
+			
+			bueyDeBatalla.setNombreDeLaImagen("bueyDeBatalla.jpg");
 			
 			return bueyDeBatalla;
 		}
@@ -100,6 +114,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable conejoOscuro = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Conejo Oscuro");
 			
+			conejoOscuro.setNombreDeLaImagen("conejoOscuro.jpg");
+			
 			return conejoOscuro;
 		}
 		
@@ -110,6 +126,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
 			Atacable dragonDeBrillo = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Dragon De Brillo");
+			
+			dragonDeBrillo.setNombreDeLaImagen("dragonDeBrillo.png");
 			
 			return dragonDeBrillo;
 		}
@@ -122,6 +140,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable duendeMistico = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Duende Mistico");
 			
+			duendeMistico.setNombreDeLaImagen("duendeMistico.png");
+			
 			return duendeMistico;
 		}
 		
@@ -132,6 +152,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
 			Atacable betaElGuerreroMagnetico = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Beta El Guerrero Magnetico");
+			
+			betaElGuerreroMagnetico.setNombreDeLaImagen("betaElGuerreroMagnetico.png");
 			
 			return betaElGuerreroMagnetico;
 		}
@@ -144,6 +166,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable jineteVorse = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Jinete Vorse");
 			
+			jineteVorse.setNombreDeLaImagen("jineteVorse.png");
+			
 			return jineteVorse;
 		}
 		
@@ -154,6 +178,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
 			Atacable avian = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Heroe Elemental Avian");
+			
+			avian.setNombreDeLaImagen("heroeElementalAvian.png");
 			
 			return avian;
 		}
@@ -166,6 +192,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable damaArpia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla,"Dama Arpia");
 			
+			damaArpia.setNombreDeLaImagen("damaArpia.jpg");
+			
 			return damaArpia;
 		}
 		
@@ -176,6 +204,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
 			Atacable dragonDeKoumori = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Dragon De Koumori");
+			
+			dragonDeKoumori.setNombreDeLaImagen("dragonDeKoumori.jpg");
 			
 			return dragonDeKoumori;
 		}
@@ -189,6 +219,8 @@ public class CartaMonstruoFactory {
 			Atacable jinzo7 = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Jinzo 7");
 			
 			jinzo7 = new AtacaComoJinzo7(jinzo7);
+			
+			jinzo7.setNombreDeLaImagen("jinzo7.jpg");
 			
 			return jinzo7;
 			
@@ -204,6 +236,8 @@ public class CartaMonstruoFactory {
 			
 			insectoComeHombres = new RecibeAtaqueComoInsectoComeHombres(insectoComeHombres);
 			
+			insectoComeHombres.setNombreDeLaImagen("insectoComeHombres.jpg");
+			
 			return insectoComeHombres;
 		}
 		
@@ -214,6 +248,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
 			Atacable cabezaDeExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Exodia , El Prohibido");
+			
+			cabezaDeExodia.setNombreDeLaImagen("cabezaDeExodia.jpg");
 			
 			return cabezaDeExodia;	
 		}
@@ -226,6 +262,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable brazoIzquierdoExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Brazo Izquierdo De Exodia");
 			
+			brazoIzquierdoExodia.setNombreDeLaImagen("brazoIzquierdoDeExodia.jpg");
+			
 			return brazoIzquierdoExodia;
 		}
 		
@@ -236,6 +274,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
 			Atacable brazoDerechoExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Brazo Derecho De Exodia");
+			
+			brazoDerechoExodia.setNombreDeLaImagen("brazoDerechoDeExodia.jpg");
 			
 			return brazoDerechoExodia;
 		}
@@ -248,6 +288,8 @@ public class CartaMonstruoFactory {
 			
 			Atacable piernaIzquierdaExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Pierna Izquierda De Exodia");
 			
+			piernaIzquierdaExodia.setNombreDeLaImagen("piernaIzquierdaDeExodia.jpg");
+			
 			return piernaIzquierdaExodia;
 		}
 		
@@ -258,6 +300,8 @@ public class CartaMonstruoFactory {
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
 			Atacable piernaDerechaExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Pierna Derecha De Exodia");
+			
+			piernaDerechaExodia.setNombreDeLaImagen("piernaDerechaDeExodia.jpg");
 			
 			return piernaDerechaExodia;
 		}

@@ -24,6 +24,7 @@ public class CartaMonstruo implements Atacable{
 	private String nombre;
 	private ReglaDeInvocacionStrategy regla;
 	private Scanner teclado;
+	private String nombreImagen;
 	
 	public CartaMonstruo() {
 		
@@ -35,6 +36,7 @@ public class CartaMonstruo implements Atacable{
 		this.nombre = "MonstruoGenericoACME";
 		this.regla = new ReglaDeMonstruoChicoStrategy();
 		this.teclado = new Scanner(System.in);
+		this.nombreImagen = " ";
 	}
 	
 	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar, int estrellasAColocar) {
@@ -45,6 +47,7 @@ public class CartaMonstruo implements Atacable{
 		this.nombre = "MonstruoGenericoACME";
 		this.modo = new ModoAtaque();
 		this.regla = new ReglaDeMonstruoChicoStrategy();
+		this.nombreImagen = " ";
 	}
 	
 	///////constructor que recibe la regla para colocarse ////////
@@ -57,6 +60,7 @@ public class CartaMonstruo implements Atacable{
 		this.nombre = "MonstruoGenericoACME";
 		this.modo = new ModoAtaque();
 		this.regla = reglaDeInvocacion;	
+		this.nombreImagen = " ";
 	}
 	//Constructor que recibe todo lo anterior + el nombre
 	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar,
@@ -67,8 +71,17 @@ public class CartaMonstruo implements Atacable{
 	this.estrellas = estrellasAColocar;
 	this.nombre = nombreAColocar;
 	this.modo = new ModoAtaque();
-	this.regla = reglaDeInvocacion;	
+	this.regla = reglaDeInvocacion;
+	this.nombreImagen = " ";
 	
+	}
+	public void setNombreDeLaImagen(String nombreDeLaImagen) {
+		this.nombreImagen = nombreDeLaImagen;
+	}
+	
+	public String getNombreDeLaImagen() {
+		
+		return this.nombreImagen;
 	}
 	
 	public void setNombre(String nombreDeLaCarta) {

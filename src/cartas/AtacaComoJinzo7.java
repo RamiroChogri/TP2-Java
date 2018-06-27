@@ -181,4 +181,16 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 		jugador.recibirAtaque(ataqueDirecto);
 	}
 
+	@Override
+	public void setNombreDeLaImagen(String nombreDeLaImagen) {
+		getAtacable().setNombreDeLaImagen(nombreDeLaImagen);
+		
+	}
+
+	@Override
+	public String getNombreDeLaImagen() {
+		
+		return getAtacable().getNombreDeLaImagen();
+	}
+
 }

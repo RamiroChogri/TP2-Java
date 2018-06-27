@@ -16,6 +16,7 @@ import jugador.Jugador;
 public class CartaCampo extends CartaMagica {
 	
 	private String nombre;
+
 	
 	public CartaCampo() {
 		super();
@@ -25,6 +26,16 @@ public class CartaCampo extends CartaMagica {
 		super(efectoAColocar);
 	
 	}
+
+	///////////
+	public void setNombreDeLaImagen(String nombreDeLaImagen) {
+		super.setNombreDeLaImagen(nombreDeLaImagen);
+	}
+	
+	public String getNombreDeLaImagen() {
+		return super.getNombreDeLaImagen();
+	}
+	///////////
 	
 	public void setNombre(String nombreDeLaCarta) {
 		this.nombre = nombreDeLaCarta;

@@ -25,6 +25,7 @@ public class CartaMagica implements Activable{
 	protected Efecto efecto;
 	private String nombre;
 	private Scanner teclado;
+	private String nombreImagen;
 	
 	public CartaMagica() {
 		
@@ -33,6 +34,7 @@ public class CartaMagica implements Activable{
 		this.efecto = efectoNulo;
 		this.nombre = " ";
 		this.teclado = new Scanner(System.in);
+		this.nombreImagen = " ";
 	}
 	
 	public CartaMagica(Efecto efectoAColocar) {
@@ -40,8 +42,18 @@ public class CartaMagica implements Activable{
 		this.estado = new EstadoCartaNoJugada();
 		this.efecto = efectoAColocar;
 		this.nombre = " ";
+		this.nombreImagen = " ";
 	
 	}
+	
+	public void setNombreDeLaImagen(String nombreDeLaImagen) {
+		this.nombreImagen = nombreDeLaImagen;
+	}
+	
+	public String getNombreDeLaImagen() {
+		return this.nombreImagen;
+	}
+	
 	public void setNombre(String nombreDeLaCarta) {
 		this.nombre = nombreDeLaCarta;
 	}

@@ -17,6 +17,8 @@ public class CartaMagicaFactory {
 		
 		agujeroNegro.setNombre("Agujero Negro");
 		
+		agujeroNegro.setNombreDeLaImagen("agujeroNegro.jpg");
+		
 		return agujeroNegro;
 	}
 	
@@ -27,6 +29,8 @@ public class CartaMagicaFactory {
 		
 		ollaDeLaCodicia.setNombre("Olla De La Codicia");
 		
+		ollaDeLaCodicia.setNombreDeLaImagen("ollaDeLaCodicia.jpg");
+		
 		return ollaDeLaCodicia;
 	}
 	
@@ -36,6 +40,8 @@ public class CartaMagicaFactory {
 		CartaMagica fisura = new CartaMagica(efecto);
 		
 		fisura.setNombre("Fisura");
+		
+		fisura.setNombreDeLaImagen("fisura.jpg");
 		
 		return fisura;
 	}

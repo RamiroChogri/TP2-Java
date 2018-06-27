@@ -17,6 +17,8 @@ public class CartaCampoFactory {
 		
 		wasteland.setNombre("Wasteland");
 		
+		wasteland.setNombreDeLaImagen("wasteland.png");
+		
 		return wasteland;
 	}
 	
@@ -26,6 +28,8 @@ public class CartaCampoFactory {
 		CartaCampo sogen = new CartaCampo(efecto);
 		
 		sogen.setNombre("Sogen");
+		
+		sogen.setNombreDeLaImagen("sogen.jpg");
 		
 		return sogen;
 	}

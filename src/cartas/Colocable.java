@@ -21,5 +21,12 @@ public interface Colocable {
 	public boolean esActivable();
 	
 	public boolean esAtacable();
-
+	
+	
+	//los metodos para poner los nombres de las imagenes para que la interfaz
+	//la busque cuando se saca la carta del mazo
+	//y no tenemos 80 imagenes cargadas todo el tiempo
+	public void setNombreDeLaImagen(String nombreDeLaImagen);
+	
+	public String getNombreDeLaImagen();
 }
