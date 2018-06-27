@@ -114,7 +114,7 @@ public class FaseAtaqueYTrampas extends Fase {
 		System.out.println("que quiera utilizar para atacar");
 	
 		for (int i=0; i<listaDeCartasAtacables.size(); i++) {
-			System.out.print(listaDeCartasAtacables.get(i));
+			System.out.println(listaDeCartasAtacables.get(i));
 		}
 		
 		String nombreCartaMonstruoAtacante = this.teclado.nextLine();
@@ -137,7 +137,7 @@ public class FaseAtaqueYTrampas extends Fase {
 			System.out.println("a la que quiera atacar o ingrese 'jugador' para atacar directamente al adversario");
 			
 			for (int i=0; i<listaDeCartasAdversario.size(); i++) {
-				System.out.print(listaDeCartasAdversario.get(i));
+				System.out.println(listaDeCartasAdversario.get(i));
 			}
 			
 			nombreCartaMonstruoAdversario = teclado.nextLine();

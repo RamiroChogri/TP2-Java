@@ -6,6 +6,7 @@ import campo.ZonaMonstruos;
 import cartas.CartaMonstruo;
 import cartas.Destruible;
 import exceptions.NoHayMonstruoParaSacrificarException;
+import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 
 public class ReglaDeMonstruoMedianoStrategy extends ReglaDeInvocacionStrategy {
 	
@@ -20,7 +21,7 @@ public class ReglaDeMonstruoMedianoStrategy extends ReglaDeInvocacionStrategy {
 		int cantidadDeMonstruosASacrificar = 1;
 		
 		if(!zonaMonstruos.tieneMonstruosColocados(cantidadDeMonstruosASacrificar)) {
-			throw new NoHayMonstruoParaSacrificarException();
+			throw new NoHaySuficientesMonstruosParaSacrificarException();
 		}
 		LinkedList<Destruible> monstruoSacrificado = new LinkedList<Destruible>();
 		

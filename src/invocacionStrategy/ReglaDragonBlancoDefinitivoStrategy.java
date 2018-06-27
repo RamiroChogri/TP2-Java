@@ -6,6 +6,7 @@ import campo.ZonaMonstruos;
 import cartas.CartaMonstruo;
 import cartas.Destruible;
 import exceptions.NoHaySuficientesDragonesBlancosParaSacrificarException;
+import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 
 public class ReglaDragonBlancoDefinitivoStrategy extends ReglaDeInvocacionStrategy {
 
@@ -14,7 +15,7 @@ public class ReglaDragonBlancoDefinitivoStrategy extends ReglaDeInvocacionStrate
 		
 		String nombreMonstruoASacrificar = "Dragon Blanco De Ojos Azules";
 		if(!zonaMonstruos.tieneElMonstruoTantasVeces( nombreMonstruoASacrificar , 3) ) {
-			throw new NoHaySuficientesDragonesBlancosParaSacrificarException();
+			throw new NoHaySuficientesMonstruosParaSacrificarException();
 		}
 		LinkedList<Destruible> monstruosSacrificados = new LinkedList<Destruible>();
 		

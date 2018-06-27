@@ -70,7 +70,7 @@ public class Partida {
 			this.estado = this.faseActual.ejecutarFase(jugadorEnTurno, this.estado);
 			vidaJugadorEnTurno = jugadorEnTurno.obtenerVida();
 			System.out.println("Al jugador " + nombreJugadorEnTurno + " le quedan " + vidaJugadorEnTurno + " puntos de vida");
-			System.out.println("Al jugador " + jugadorEnTurno.obtenerJugadorEnemigo().obtenerNombre() + " le quedan " +jugadorEnTurno.obtenerJugadorEnemigo().obtenerVida() );
+			System.out.println("Al jugador " + jugadorEnTurno.obtenerJugadorEnemigo().obtenerNombre() + " le quedan " +jugadorEnTurno.obtenerJugadorEnemigo().obtenerVida() + " puntos de vida" );
 			
 			this.faseActual = this.faseActual.obtenerFaseSiguiente();
 			//Falta ver que se activen directamente las cartas magicas boca arriba 
