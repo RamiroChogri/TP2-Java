@@ -4,6 +4,7 @@ package view;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.handlers.EscOnKeyPressedHandler;
 
 public class Vista extends Application{
 
@@ -18,6 +19,9 @@ public class Vista extends Application{
 		 ContenedorDelDuelo contenedorDelDuelo = new ContenedorDelDuelo(stage);
 		 Scene escenaDelDuelo = new Scene(contenedorDelDuelo,1190,670);
 		 ContenedorDeBienvenida contenedorBienvenida = new ContenedorDeBienvenida(stage,escenaDelDuelo);
+		 
+		 EscOnKeyPressedHandler salirPantallaCompleta = new EscOnKeyPressedHandler(stage,contenedorDelDuelo.getBarraDeMenu());
+		 escenaDelDuelo.setOnKeyPressed(salirPantallaCompleta);
 		
 		 Scene escenaDeBienvenida = new Scene(contenedorBienvenida,1190,670);
 		 stage.setScene(escenaDeBienvenida);

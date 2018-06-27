@@ -33,5 +33,9 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	CajaCampo cajaCentro = new CajaCampo();
 	    	this.setCenter(cajaCentro);
 	    }
+
+		public MenuDelDuelo getBarraDeMenu() {
+			return this.menuBar;
+		}
 	    
 }

@@ -39,6 +39,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	Button botonSiguienteFase = new Button("Siguiente fase");
     	botonSiguienteFase.getStylesheets().add("view/StyleButtonCajaJugador.css");
     	
+    	this.setSpacing(10);
     	this.setAlignment(Pos.TOP_LEFT);
     	VBox.setVgrow(perfilJugador1, Priority.ALWAYS);
     	VBox.setVgrow(perfilJugador2, Priority.ALWAYS);

@@ -14,11 +14,11 @@ public class EspacioCartasCampo extends GridPane{
 		EspacioCarta espacioMosntruo4 = new EspacioCarta();
 		EspacioCarta espacioMosntruo5 = new EspacioCarta();
 		
-		EspacioCarta espacioMagico1 = new EspacioCarta();
-		EspacioCarta espacioMagico2 = new EspacioCarta();
-		EspacioCarta espacioMagico3 = new EspacioCarta();
-		EspacioCarta espacioMagico4 = new EspacioCarta();
-		EspacioCarta espacioMagico5 = new EspacioCarta();
+		EspacioCartaMagica espacioMagico1 = new EspacioCartaMagica();
+		EspacioCartaMagica espacioMagico2 = new EspacioCartaMagica();
+		EspacioCartaMagica espacioMagico3 = new EspacioCartaMagica();
+		EspacioCartaMagica espacioMagico4 = new EspacioCartaMagica();
+		EspacioCartaMagica espacioMagico5 = new EspacioCartaMagica();
 		
 		Rectangle espacioCementerio = new Rectangle(60,100,Color.GREY);
 		Rectangle espacioMazo = new Rectangle(60,100,Color.BROWN);
@@ -40,11 +40,11 @@ public class EspacioCartasCampo extends GridPane{
 		EspacioCarta espacioMosntruo4 = new EspacioCarta();
 		EspacioCarta espacioMosntruo5 = new EspacioCarta();
 		
-		EspacioCarta espacioMagico1 = new EspacioCarta();
-		EspacioCarta espacioMagico2 = new EspacioCarta();
-		EspacioCarta espacioMagico3 = new EspacioCarta();
-		EspacioCarta espacioMagico4 = new EspacioCarta();
-		EspacioCarta espacioMagico5 = new EspacioCarta();
+		EspacioCartaMagica espacioMagico1 = new EspacioCartaMagica();
+		EspacioCartaMagica espacioMagico2 = new EspacioCartaMagica();
+		EspacioCartaMagica espacioMagico3 = new EspacioCartaMagica();
+		EspacioCartaMagica espacioMagico4 = new EspacioCartaMagica();
+		EspacioCartaMagica espacioMagico5 = new EspacioCartaMagica();
 		
 		Rectangle espacioCementerio = new Rectangle(60,100,Color.GREY);
 		Rectangle espacioMazo = new Rectangle(60,100,Color.BROWN);
