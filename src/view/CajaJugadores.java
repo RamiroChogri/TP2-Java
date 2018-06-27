@@ -14,7 +14,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
 	 String pathImagenKaiba = pathDeImagenes+"kaiba%20perfil.png";
 	    
 	    
-	public CajaJugadores() {
+	public CajaJugadores(CajaInformacion cajaInformacion) {
 		
 		final ImageView yugiView = new ImageView();
     	yugiView.setFitWidth(150);
@@ -29,9 +29,9 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	
     	Image yugi = new Image(pathImagenYugi);
     	yugiView.setImage(yugi);
-		VistaJugador perfilJugador1 = new VistaJugador(yugiView);
+		VistaJugador perfilJugador1 = new VistaJugador(yugiView,cajaInformacion);
     	perfilJugador1.setAlignment(Pos.BOTTOM_LEFT);
-    	VistaJugador perfilJugador2 = new VistaJugador(kaibaView);
+    	VistaJugador perfilJugador2 = new VistaJugador(kaibaView,cajaInformacion);
     	perfilJugador2.setAlignment(Pos.TOP_RIGHT);
     	
     	Button botonFinalizarTurno = new Button("Finalizar Turno");

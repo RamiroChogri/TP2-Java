@@ -6,18 +6,40 @@ import viewSupportFiles.PathArchivos;
 
 public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 
-		MenuDelDuelo menuBar;
-	    String pathMusicaDeBatalla = pathDeMusica+"Hollow%20Knight%20OST%20-%20False%20Knight.wav";
-	    String pathImagenYugi = pathDeImagenes+"yugiPerfil.png";
-	    String pathImagenKaiba = pathDeImagenes+"kaiba%20perfil.png";
-	    
+		private MenuDelDuelo menuBar;
+		private  String pathMusicaDeBatalla = pathDeMusica+"Hollow%20Knight%20OST%20-%20False%20Knight.wav";
+		private CajaInformacion cajaDerecha;
+		private CajaCampo cajaCentro;
+		private CajaJugadores cajaIzquierda;
+		
 	    public ContenedorDelDuelo(Stage stage) {
 	    	super();
 	    	
-	        this.setMenu(stage);
-	        this.setPerfilJugadores();
-	        this.setCampo();
+	    	this.cajaCentro=null;
+	    	this.cajaDerecha=null;
+	    	this.cajaIzquierda=null;
+	    	
+	    	this.cajaDerecha = new CajaInformacion();
+			this.setRight(cajaDerecha);
+	    	
+			this.menuBar = new MenuDelDuelo(stage,this.pathMusicaDeBatalla);
+            this.setTop(menuBar);
+            
+            this.cajaIzquierda = new CajaJugadores(this.cajaDerecha);
+	    	this.setLeft(cajaIzquierda);
+            
+	    	this.cajaCentro = new CajaCampo();
+	    	this.setCenter(cajaCentro);
+//	    	this.setZoomCartaHover();
+//	        this.setMenu(stage);
+//	        this.setPerfilJugadores();
+//	        this.setCampo();
 	    }
+	    
+	    public void setZoomCartaHover() {
+			CajaInformacion cajaDerecha = new CajaInformacion();
+			this.setRight(cajaDerecha);
+		}
 	    
 	    public void setMenu(Stage stage) {
 	            this.menuBar = new MenuDelDuelo(stage,this.pathMusicaDeBatalla);
@@ -25,7 +47,7 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    }
 	    
 	    public void setPerfilJugadores() {
-	    	CajaJugadores cajaIzquierda = new CajaJugadores();
+	    	CajaJugadores cajaIzquierda = new CajaJugadores(this.cajaDerecha);
 	    	this.setLeft(cajaIzquierda);
 	    }
 	    
