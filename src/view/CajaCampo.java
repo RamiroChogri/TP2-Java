@@ -5,8 +5,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import viewSupportFiles.PathArchivos;
 
-public class CajaCampo extends VBox{
+public class CajaCampo extends VBox implements PathArchivos{
 
 	CajaInformacion cajaInformacion;
 	
@@ -41,7 +42,7 @@ public class CajaCampo extends VBox{
 	}
 	
 	public void pintarCartaMonstruoEnCampoJugador1(int posicionDeCartaMonstruo) {
-		Image imagen= new Image("file:///C:/Users/marcelo/Documents/Desktop/Algo%203/TP2-Java/src/viewSupportFiles/imagenesCartas/bueyDeBatalla.jpg");
+		Image imagen= new Image(pathDePackCartas +"bueyDeBatalla.jpg");
 		this.campoJ1.getEspacioCartaMosntruo(1).pintarCartaEnModoAtaque(imagen);
 	}
 }
