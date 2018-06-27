@@ -26,6 +26,8 @@ public class VistaJugador extends HBox{
 //	         System.out.println("Tile pressed ");
 //	     });
 		 
+		 
+		 //REFACTORIZAR POR FAVOR
 		 this.imagenDelJugador.setOnMouseEntered((EventHandler<? super MouseEvent>) new EventHandler<MouseEvent>
 		    () {
 
