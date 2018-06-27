@@ -41,6 +41,7 @@ public class FaseFinal extends Fase {
 				if (cartasMagicas.contains(nombreCartaElegida)) {
 					Activable cartaMagica = jugadorEnTurno.obtenerCartaDeZonaMagicasYTrampas(nombreCartaElegida);
 					jugadorEnTurno.voltearCarta(cartaMagica);
+					cartasMagicas.remove(nombreCartaElegida);
 				}
 			
 			}
