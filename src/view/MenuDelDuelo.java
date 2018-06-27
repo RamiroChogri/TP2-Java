@@ -69,4 +69,8 @@ public class MenuDelDuelo extends MenuBar {
 	    	botonPantallaCompleta.setDisable(false);
 
 	    }
+
+		public MenuItem getPantallaCompletaItem() {
+			return this.botonPantallaCompleta;
+		}
 }

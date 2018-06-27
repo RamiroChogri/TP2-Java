@@ -1,12 +1,13 @@
 package view;
 
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import viewSupportFiles.PathArchivos;
 
 public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 
-		private MenuDelDuelo menuBar;
+		private MenuDelDuelo barraMenu;
 		private  String pathMusicaDeBatalla = pathDeMusica+"Hollow%20Knight%20OST%20-%20False%20Knight.wav";
 		private CajaInformacion cajaDerecha;
 		private CajaCampo cajaCentro;
@@ -22,8 +23,8 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	this.cajaDerecha = new CajaInformacion();
 			this.setRight(cajaDerecha);
 	    	
-			this.menuBar = new MenuDelDuelo(stage,this.pathMusicaDeBatalla);
-            this.setTop(menuBar);
+			this.barraMenu = new MenuDelDuelo(stage,this.pathMusicaDeBatalla);
+            this.setTop(barraMenu);
             
             this.cajaIzquierda = new CajaJugadores(this.cajaDerecha);
 	    	this.setLeft(cajaIzquierda);
@@ -37,9 +38,12 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    }
 	    
 	    public MenuDelDuelo getBarraDeMenu() {
-			return this.menuBar;
+			return this.barraMenu;
 		}
 	    
+	    public MenuItem getPantallaCompletaItem() {
+	    	return this.barraMenu.getPantallaCompletaItem();
+	    }
 	    
 //	    public void setZoomCartaHover() {
 //			CajaInformacion cajaDerecha = new CajaInformacion();

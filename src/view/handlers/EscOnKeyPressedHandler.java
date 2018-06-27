@@ -19,6 +19,7 @@ public class EscOnKeyPressedHandler implements EventHandler<KeyEvent>{
 	public void handle(KeyEvent event) {
 
 		if (event.getCode() == KeyCode.ESCAPE) {
+			menu.getPantallaCompletaItem().setText("Pantalla Completa");
 			stage.setMaximized(true);
 			menu.aplicacionMaximizada();
 		}

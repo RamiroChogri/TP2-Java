@@ -1,13 +1,13 @@
 package view;
 
-import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import view.handlers.MouseArribaDeImagenHandler;
+import view.handlers.MouseSalirArribaDeImagenHandler;
 
 public class VistaJugador extends HBox{
 	
@@ -22,30 +22,13 @@ public class VistaJugador extends HBox{
 		 vida.setTextFill(Color.web("WHITE"));
 		 this.getChildren().addAll(this.imagenDelJugador,this.vida);
 		 
-//		 this.imagenDelJugador.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-//	         System.out.println("Tile pressed ");
-//	     });
 		 
+		 MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(this.imagenDelJugador,cajaInformacion);
+		 this.imagenDelJugador.setOnMouseEntered(ponerEnZoom);
+	
+		 MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
+		 this.imagenDelJugador.setOnMouseExited(sacarDeZoom);
 		 
-		 //REFACTORIZAR POR FAVOR
-		 this.imagenDelJugador.setOnMouseEntered((EventHandler<? super MouseEvent>) new EventHandler<MouseEvent>
-		    () {
-
-		        @Override
-		        public void handle(MouseEvent t) {
-		        	cajaInformacion.zoomAImagen(imagenDelJugador.getImage());
-		        	
-		        }
-		    });
-
-		 this.imagenDelJugador.setOnMouseExited(new EventHandler<MouseEvent>
-		    () {
-
-		        @Override
-		        public void handle(MouseEvent t) {
-		        	cajaInformacion.quitarImagen();
-		        }
-		    });
 	}
 	
 	public void updateVida(String vidaNueva){
