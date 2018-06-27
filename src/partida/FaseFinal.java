@@ -8,17 +8,26 @@ import jugador.Jugador;
 public class FaseFinal extends Fase {
 
 		private Scanner teclado;
+		private Fase faseSiguiente;
 		
 		public FaseFinal() {
 			this.teclado = new Scanner(System.in);
+			this.faseSiguiente = null;
 		}
 	
 		@Override
-		public void ejecutarFase(Jugador jugadorEnTurno) {
+		public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaRecibido) {
 			
 			LinkedList<String> magicasActivables = jugadorEnTurno.obtenerNombresDeCartasMagicasEnCampoPropio();
+			EstadoPartida estadoPartidaADevolver = estadoPartidaRecibido;
 			
 			this.activarCartasMagicas(jugadorEnTurno , magicasActivables);
+			
+			if ((jugadorEnTurno.estaDerrotado()) || (jugadorEnTurno.obtenerJugadorEnemigo()).estaDerrotado()) {
+				estadoPartidaADevolver = new EstadoPartidaTerminada();
+			}
+				
+			return estadoPartidaADevolver;
 			
 		}
 		
@@ -55,5 +64,15 @@ public class FaseFinal extends Fase {
 			}
 			
 			return nombreCartaElegida;
+		}
+		
+		@Override
+		public void setFaseSiguiente(Fase faseSiguienteAColocar) {
+			this.faseSiguiente = faseSiguienteAColocar;
+		}
+
+		@Override
+		public Fase obtenerFaseSiguiente() {
+			return this.faseSiguiente;
 		}
 }

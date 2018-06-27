@@ -11,9 +11,11 @@ import jugador.*;
 public class FasePreparacion extends Fase {
 
 	private Scanner teclado;
+	private Fase faseSiguiente;
 	
 	public FasePreparacion() {
 		this.teclado = new Scanner(System.in);
+		this.faseSiguiente = null;
 	}
 	
 	/*
@@ -24,11 +26,12 @@ public class FasePreparacion extends Fase {
 	 */
 	
 	@Override
-	public void ejecutarFase(Jugador jugadorEnTurno) {
+	public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaRecibido) {
 		
 		this.colocarCartaAtacable(jugadorEnTurno);
 		this.colocarCartasMagicasYTrampas(jugadorEnTurno);
 	
+		return estadoPartidaRecibido;
 	}
 	
 	
@@ -107,6 +110,16 @@ public class FasePreparacion extends Fase {
 		EstadoCarta estadoDeCarta = cartaAColocar.elegirComoColocar();
 		jugadorEnTurno.colocar(cartaAColocar, estadoDeCarta);
 			
+	}
+	
+	@Override
+	public void setFaseSiguiente(Fase faseSiguienteAColocar) {
+		this.faseSiguiente = faseSiguienteAColocar;
+	}
+
+	@Override
+	public Fase obtenerFaseSiguiente() {
+		return this.faseSiguiente;
 	}
 	
 }

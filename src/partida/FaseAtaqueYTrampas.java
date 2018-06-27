@@ -9,17 +9,23 @@ import jugador.Jugador;
 public class FaseAtaqueYTrampas extends Fase {
 	
 	private Scanner teclado;
-
+	private Fase faseSiguiente;
+	
 	public FaseAtaqueYTrampas() {
-		teclado = new Scanner(System.in);
+		this.teclado = new Scanner(System.in);
+		this.faseSiguiente = null;
 	}
 	
 	@Override
-	public void ejecutarFase(Jugador jugadorEnTurno) {
+	public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaActual) {
 		String respuesta;
+		EstadoPartida estadoPartidaADevolver = estadoPartidaActual;
 		
 		System.out.print("Desea atacar? (si/no)");
 		respuesta = teclado.nextLine();
+		
+		//FALTA VER QUE SE PUEDA ATACAR DIRECTAMENTE AL JUGADOR
+		//FALTA VER QUE SI NO TE QUEDAN CARTAS PARA ATACAR QUE NO TE PREGUNTE
 		
 		while ( respuesta == "si" ) {
 			
@@ -39,6 +45,12 @@ public class FaseAtaqueYTrampas extends Fase {
 			System.out.print("Desea seguir atacando? (si/no)");
 			respuesta = teclado.nextLine();
 		}	
+		
+		if ((jugadorEnTurno.estaDerrotado()) || (jugadorEnTurno.obtenerJugadorEnemigo()).estaDerrotado()) {
+			estadoPartidaADevolver = new EstadoPartidaTerminada();
+		}
+			
+		return estadoPartidaADevolver;
 			
 	}
 	
@@ -79,6 +91,16 @@ public class FaseAtaqueYTrampas extends Fase {
 		}
 		
 		return nombreCartaMonstruoAdversario;
+	}
+
+	@Override
+	public void setFaseSiguiente(Fase faseSiguienteAColocar) {
+		this.faseSiguiente = faseSiguienteAColocar;
+	}
+
+	@Override
+	public Fase obtenerFaseSiguiente() {
+		return this.faseSiguiente;
 	}
 	
 }
