@@ -1,8 +1,6 @@
 package view;
 
-import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -74,8 +72,8 @@ public class EspacioCartasCampo extends GridPane{
 
 	public EspacioCarta getEspacioCartaMosntruo(int posicionDeCartaMonstruo) {
 		EspacioCarta cartaBuscada = null;
-	    ObservableList<Node> childrens = this.getChildren();
 
+	    //No hay manera de hacerlo sin if
 	  if(posicionDeCartaMonstruo == 1)
 		  cartaBuscada = this.espacioMosntruo1;
 	  else if(posicionDeCartaMonstruo == 2)
@@ -90,5 +88,9 @@ public class EspacioCartasCampo extends GridPane{
 		  cartaBuscada = null;
 
 	    return cartaBuscada;
+	}
+	
+	public EspacioCementerio getCementerio() {
+		return this.espacioCementerio;
 	}
 }
