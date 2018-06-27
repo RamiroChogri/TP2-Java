@@ -8,12 +8,14 @@ public class Partida {
 	private Fase fasePreparacion;
 	private Fase faseAtaqueYTrampas; 
 	private Fase faseFinal;
+	private EstadoPartida estado;
 	
 	public Partida() {
 		this.faseInicial = new FaseInicial();
 		this.fasePreparacion = new FasePreparacion();
 		this.faseAtaqueYTrampas = new FaseAtaqueYTrampas();
 		this.faseFinal = new FaseFinal();
+		this.estado = new EstadoPartidaEnJuego();
 	}
 	
 	public void comienzaElDuelo() {
@@ -25,21 +27,14 @@ public class Partida {
 		jugadorKaiba.setName("Kaiba");
 		String ganador;
 		
-		if (Math.random() < 0.5) {
-			jugadorEnTurno = jugadorYugi;
-			nombreJugadorEnTurno = "Yugi";
-		} else {
-			jugadorEnTurno = jugadorKaiba;
-			nombreJugadorEnTurno = "Kaiba";
-		}
+		jugadorEnTurno = this.elegirQuienComienza(jugadorYugi, jugadorKaiba);
 		
 		jugadorYugi.enfrentarseA(jugadorKaiba);
 		jugadorKaiba.enfrentarseA(jugadorYugi);
 		
-		boolean partidaTerminada = false;
 		int vidaJugadorEnTurno;
 		
-		while (!partidaTerminada) {
+		while (this.estado.continuaLaPartida()) {
 			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
 			System.out.println("Turno del jugador " + nombreJugadorEnTurno);
 			
@@ -70,5 +65,15 @@ public class Partida {
 		
 	}
 	
+	public Jugador elegirQuienComienza(Jugador unJugador, Jugador otroJugador) {
+		
+		Jugador jugadorQueComienza = unJugador ;
+		
+		if(Math.random() < 0.5) {
+			jugadorQueComienza = otroJugador;
+		}
+		
+		return jugadorQueComienza;
+	}
 	
 }
