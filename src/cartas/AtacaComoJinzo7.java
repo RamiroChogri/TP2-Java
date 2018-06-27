@@ -1,5 +1,7 @@
 package cartas;
 
+import java.util.LinkedList;
+
 import campo.Cementerio;
 import campo.ZonaCampo;
 import campo.ZonaMagicasYTrampas;
@@ -54,7 +56,8 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 	public void colocarse(Jugador jugador, ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas,
 			ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
 		
-		getAtacable().colocarse(jugador, zonaMonstruos, zonaMagicasYTrampas, zonaCampo, cementerio, estadoAColocar);
+		getAtacable().ponerEn(estadoAColocar);
+		zonaMonstruos.colocarCarta(this);
 	}
 
 	@Override
@@ -176,7 +179,6 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 	
 	@Override
 	public void atacar(Jugador jugador) {
-		System.out.println("Estoy atacando como Jinzo 7");
 		Puntos puntosDeAtaque = getAtacable().obtenerPuntosAtaque();
 		int ataqueDirecto = puntosDeAtaque.obtenerPuntosActuales();
 		jugador.recibirAtaque(ataqueDirecto);
@@ -192,6 +194,23 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 	public String getNombreDeLaImagen() {
 		
 		return getAtacable().getNombreDeLaImagen();
+	}
+
+	@Override
+	public void aumentarDefensaEn(Puntos puntosDeDefensaExtra) {
+		getAtacable().aumentarDefensaEn(puntosDeDefensaExtra);
+		
+	}
+
+	@Override
+	public void eliminarModificadorDeAtaque() {
+		getAtacable().eliminarModificadorDeAtaque();
+		
+	}
+
+	@Override
+	public void eliminarModificadorDeDefensa() {
+		getAtacable().eliminarModificadorDeDefensa();
 	}
 
 }

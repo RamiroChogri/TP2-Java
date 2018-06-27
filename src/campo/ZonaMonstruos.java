@@ -8,13 +8,13 @@ import exceptions.ZonaMonstruoLlenaException;
 
 public class ZonaMonstruos extends Zona {
 	
-	private LinkedList<CartaMonstruo> posiciones;
+	private LinkedList<Atacable> posiciones;
 	private boolean hayEspacio;
 	private Puntos puntosDeAtaqueExtra;
 	private Puntos puntosDeDefensaExtra;
 	
 	public ZonaMonstruos() {
-		this.posiciones = new LinkedList<CartaMonstruo>();
+		this.posiciones = new LinkedList<Atacable>();
 		this.hayEspacio = true;
 		this.puntosDeAtaqueExtra = new Puntos(0);
 		this.puntosDeDefensaExtra = new Puntos(0);
@@ -24,7 +24,7 @@ public class ZonaMonstruos extends Zona {
 		//MetodoForzadoPorZona
 	}
 	
-	public void colocarCarta(CartaMonstruo cartaMonstruoAColocar) {
+	public void colocarCarta(Atacable cartaMonstruoAColocar) {
 		this.hayEspacio = this.hayEspacioDisponible();
 			if ( !this.hayEspacio ) {
 				throw new NoHayLugarVacioException();
@@ -45,8 +45,8 @@ public class ZonaMonstruos extends Zona {
 	
 	public LinkedList<Destruible> recolectarCartasDestruidas() {
 		LinkedList<Destruible>cartasDestruidas = new LinkedList<Destruible>();
-		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
-	    CartaMonstruo cartaMonstruoActual;
+		Iterator<Atacable> posicionesIterador = this.posiciones.iterator();		
+	    Atacable cartaMonstruoActual;
 	    while (posicionesIterador.hasNext()) {
 	    	cartaMonstruoActual = posicionesIterador.next();
 	    	if(cartaMonstruoActual.estaDestruida()) {
@@ -61,8 +61,8 @@ public class ZonaMonstruos extends Zona {
 	}
 
 	public void vaciar() {
-		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
-	    CartaMonstruo cartaMonstruoActual;
+		Iterator<Atacable> posicionesIterador = this.posiciones.iterator();		
+		Atacable cartaMonstruoActual;
 	    while (posicionesIterador.hasNext()) {
 	    	cartaMonstruoActual = posicionesIterador.next();
 	    	cartaMonstruoActual.destruirCarta();
@@ -71,8 +71,8 @@ public class ZonaMonstruos extends Zona {
 
 	public int obtenerDanioRecibido() {
 		int danio = 0;
-		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
-	    CartaMonstruo cartaMonstruoActual;
+		Iterator<Atacable> posicionesIterador = this.posiciones.iterator();		
+		Atacable cartaMonstruoActual;
 	    
 	    while (posicionesIterador.hasNext()) {
 	    	cartaMonstruoActual = posicionesIterador.next();
@@ -99,8 +99,8 @@ public class ZonaMonstruos extends Zona {
 	public void aumentarAtaqueMonstruoPorEfectoCampo(Puntos puntosAtaqueAColocar) {
 		this.puntosDeAtaqueExtra = puntosAtaqueAColocar;
 		this.puntosDeDefensaExtra = new Puntos(0);
-		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
-	    CartaMonstruo cartaMonstruoActual;
+		Iterator<Atacable> posicionesIterador = this.posiciones.iterator();		
+		Atacable cartaMonstruoActual;
 	    while (posicionesIterador.hasNext()) {
 	    	cartaMonstruoActual = posicionesIterador.next();
 	    	cartaMonstruoActual.eliminarModificadorDeAtaque();
@@ -112,8 +112,8 @@ public class ZonaMonstruos extends Zona {
 	public void aumentarDefensaMonstruoPorEfectoCampo(Puntos puntosDefensaAColocar) {
 		this.puntosDeAtaqueExtra = new Puntos(0);
 		this.puntosDeDefensaExtra = puntosDefensaAColocar;
-		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
-	    CartaMonstruo cartaMonstruoActual;
+		Iterator<Atacable> posicionesIterador = this.posiciones.iterator();		
+		Atacable cartaMonstruoActual;
 	    while (posicionesIterador.hasNext()) {
 	    	cartaMonstruoActual = posicionesIterador.next();
 	    	cartaMonstruoActual.eliminarModificadorDeAtaque();
@@ -126,12 +126,12 @@ public class ZonaMonstruos extends Zona {
 		
 		if( posiciones.isEmpty() ) { throw new NoHayMonstruoException(); };
 		
-		Iterator<CartaMonstruo> posicionesIterador = this.posiciones.iterator();		
-	    CartaMonstruo cartaMonstruoMenorPuntaje = posicionesIterador.next();
+		Iterator<Atacable> posicionesIterador = this.posiciones.iterator();		
+		Atacable cartaMonstruoMenorPuntaje = posicionesIterador.next();
 	        
 	    while ( posicionesIterador.hasNext() ) {
 	    	
-	    	CartaMonstruo cartaActual = posicionesIterador.next();
+	    	Atacable cartaActual = posicionesIterador.next();
 	    	if(cartaMonstruoMenorPuntaje.tieneMasPuntosDeAtaqueQue(cartaActual)) {
 	    		
 	    		cartaMonstruoMenorPuntaje = cartaActual;
@@ -144,8 +144,8 @@ public class ZonaMonstruos extends Zona {
 	
 	public boolean tieneElMonstruoTantasVeces(String nombreDelMonstruo, int cantidadDeVeces) {
 		int vecesEncontrada = 0;
-		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
-		CartaMonstruo monstruoActual;
+		Iterator<Atacable> posicionesIterator = this.posiciones.iterator();
+		Atacable monstruoActual;
 		while(posicionesIterator.hasNext()) {
 			monstruoActual = posicionesIterator.next();
 			if( nombreDelMonstruo == monstruoActual.obtenerNombre() ) {
@@ -158,8 +158,8 @@ public class ZonaMonstruos extends Zona {
 	
 	public void sacrificarA(String nombreDelMonstruo) {
 		boolean destruido = false;
-		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
-		CartaMonstruo monstruoActual;
+		Iterator<Atacable> posicionesIterator = this.posiciones.iterator();
+		Atacable monstruoActual;
 		while(posicionesIterator.hasNext() && !destruido) {
 			monstruoActual = posicionesIterator.next();
 			if( nombreDelMonstruo == monstruoActual.obtenerNombre() ) {
@@ -172,7 +172,7 @@ public class ZonaMonstruos extends Zona {
 	public Atacable obtenerCarta(String nombre) {
 		Atacable carta = null;
 		boolean encontrado = false;
-		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
+		Iterator<Atacable> posicionesIterator = this.posiciones.iterator();
 		Atacable monstruoActual;
 	
 		while( posicionesIterator.hasNext() && !encontrado ) {
@@ -193,7 +193,7 @@ public class ZonaMonstruos extends Zona {
 		LinkedList<String> cartasAtacables = new LinkedList<String>();
 		Atacable cartaActual;
 		
-		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
+		Iterator<Atacable> posicionesIterator = this.posiciones.iterator();
 		while ( posicionesIterator.hasNext() ) {
 			
 			cartaActual = posicionesIterator.next();
@@ -209,7 +209,7 @@ public class ZonaMonstruos extends Zona {
 		LinkedList<String> cartasAtacables = new LinkedList<String>();
 		Atacable cartaActual;
 		
-		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
+		Iterator<Atacable> posicionesIterator = this.posiciones.iterator();
 		while ( posicionesIterator.hasNext() ) {
 			
 			cartaActual = posicionesIterator.next();

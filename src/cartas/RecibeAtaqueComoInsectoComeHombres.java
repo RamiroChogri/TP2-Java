@@ -199,4 +199,20 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 	}
 
 
+	@Override
+	public void aumentarDefensaEn(Puntos puntosDeDefensaExtra) {
+		getAtacable().aumentarDefensaEn(puntosDeDefensaExtra);
+		
+	}
+
+	@Override
+	public void eliminarModificadorDeAtaque() {
+		getAtacable().eliminarModificadorDeAtaque();
+		
+	}
+
+	@Override
+	public void eliminarModificadorDeDefensa() {
+		getAtacable().eliminarModificadorDeDefensa();
+	}
 }

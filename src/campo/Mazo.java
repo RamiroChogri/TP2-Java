@@ -66,8 +66,6 @@ public class Mazo {
 		this.mazo.add(fabricaMonstruos.crearJineteVorse());
 		
 		Collections.shuffle(mazo);
-		this.mazo.add(fabricaMonstruos.crearJinzo7());
-		
 	}
 	
 	public int obtenerCantidaDeCartas() {

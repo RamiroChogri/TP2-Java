@@ -44,4 +44,10 @@ public interface Atacable extends Destruible, Colocable,Daniable{
 	
 	public void colocarBocaArriba();
 
+	public void aumentarDefensaEn(Puntos puntosDeDefensaExtra);
+
+	public void eliminarModificadorDeAtaque();
+
+	public void eliminarModificadorDeDefensa();
+
 }
