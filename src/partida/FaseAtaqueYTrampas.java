@@ -11,16 +11,17 @@ public class FaseAtaqueYTrampas extends Fase {
 	private Scanner teclado;
 
 	public FaseAtaqueYTrampas() {
-		Scanner teclado = new Scanner(System.in);
+		teclado = new Scanner(System.in);
 	}
 	
 	@Override
 	public void ejecutarFase(Jugador jugadorEnTurno) {
 		String respuesta;
 		
-		do {
-			System.out.print("Desea atacar? (si/no)");
-			respuesta = teclado.nextLine();
+		System.out.print("Desea atacar? (si/no)");
+		respuesta = teclado.nextLine();
+		
+		while ( respuesta == "si" ) {
 			
 			Jugador jugadorEnemigo = jugadorEnTurno.obtenerJugadorEnemigo(); 
 		
@@ -35,8 +36,10 @@ public class FaseAtaqueYTrampas extends Fase {
 		
 			jugadorEnTurno.atacar( atacante , atacado );
 			
-		} while ( respuesta == "si" );
-		
+			System.out.print("Desea seguir atacando? (si/no)");
+			respuesta = teclado.nextLine();
+		}	
+			
 	}
 	
 	
