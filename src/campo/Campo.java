@@ -148,9 +148,9 @@ public class Campo {
 		this.enviarCartasDestruidasAlCementerio();
 	}
 
-	public LinkedList<Activable> obtenerCartasMagicasActivables() {
+	public LinkedList<String> obtenerNombresDeCartasMagicas() {
 		
-		LinkedList<Activable> magicasActivables = this.magicasYTrampas.obtenerCartasMagicas();
+		LinkedList<String> magicasActivables = this.magicasYTrampas.obtenerNombresDeCartasMagicas();
 		
 		return magicasActivables;
 	}
@@ -160,7 +160,7 @@ public class Campo {
 		return monstruos.obtenerCarta( nombreCartaMonstruoAtacante );
 	}
 
-	public Activable obtenerCartaDeZonaMagicaYTrampas(String nombreCartaMonstruoAtacante) {
+	public Activable obtenerCartaDeZonaMagicasYTrampas(String nombreCartaMonstruoAtacante) {
 		
 		return magicasYTrampas.obtenerCarta( nombreCartaMonstruoAtacante );
 	}

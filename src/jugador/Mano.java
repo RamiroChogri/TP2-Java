@@ -54,16 +54,18 @@ public class Mano {
 	public Colocable obtenerCarta(String nombreCartaActivable) {
 		Colocable cartaActual = null;
 		Colocable cartaADevolver = null;
+		boolean encontrado = false;
 		
 		Iterator<Colocable> posicionesIterador = this.cartasEnMano.iterator();
-		while(posicionesIterador.hasNext()) {
+		while(posicionesIterador.hasNext() && !encontrado) {
 			cartaActual = posicionesIterador.next();
 			if (cartaActual.obtenerNombre() == nombreCartaActivable) {
 				cartaADevolver = cartaActual;
+				encontrado = true;
 			}
 		}
 		
-		if (cartaADevolver == null) {
+		if (!encontrado) {
 			throw new CartaNoEncontradaException();	//No existe una carta con el nombre recibido
 		}
 		

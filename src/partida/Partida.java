@@ -37,6 +37,7 @@ public class Partida {
 		jugadorKaiba.enfrentarseA(jugadorYugi);
 		
 		boolean partidaTerminada = false;
+		int vidaJugadorEnTurno;
 		
 		while (!partidaTerminada) {
 			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
@@ -47,8 +48,11 @@ public class Partida {
 			this.faseAtaqueYTrampas.ejecutarFase(jugadorEnTurno);
 			this.faseFinal.ejecutarFase(jugadorEnTurno);
 		
+			vidaJugadorEnTurno = jugadorEnTurno.obtenerVida();
+			System.out.println("Al jugador " + nombreJugadorEnTurno + "le quedan " + vidaJugadorEnTurno + "puntos de vida");
+			
 			jugadorEnTurno = jugadorEnTurno.obtenerJugadorEnemigo();		
-		
+			
 		}
 		
 		if (jugadorKaiba.estaDerrotado()) {
