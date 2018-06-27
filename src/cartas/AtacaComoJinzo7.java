@@ -140,15 +140,6 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 		return modo;
 	}
 	
-	//este es el metodo Redefinido
-	
-	@Override
-	public void atacar(Jugador jugador) {
-		Puntos puntosDeAtaque = getAtacable().obtenerPuntosAtaque();
-		int ataqueDirecto = puntosDeAtaque.obtenerPuntosActuales();
-		jugador.recibirAtaque(ataqueDirecto);
-	}
-
 	@Override
 	public void voltear() {
 		
@@ -162,4 +153,32 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 		getAtacable().colocarBocaArriba();
 		
 	}
+	
+	@Override
+	public EstadoCarta elegirComoColocar() {
+		
+		EstadoCarta estadoADevolver = getAtacable().elegirComoColocar();
+		return estadoADevolver;
+		
+	}	
+	
+	@Override
+	public boolean esActivable() {
+		return getAtacable().esActivable();
+	}
+	
+	@Override
+	public boolean esAtacable() {
+		return getAtacable().esAtacable();
+	}
+	
+	//este es el metodo Redefinido
+	
+	@Override
+	public void atacar(Jugador jugador) {
+		Puntos puntosDeAtaque = getAtacable().obtenerPuntosAtaque();
+		int ataqueDirecto = puntosDeAtaque.obtenerPuntosActuales();
+		jugador.recibirAtaque(ataqueDirecto);
+	}
+
 }

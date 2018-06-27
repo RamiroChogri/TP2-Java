@@ -118,7 +118,7 @@ public class Jugador implements Daniable{
 		
 	}
 	
-	public void colocar(Activable carta, EstadoCarta estado) {
+	public void colocar(Colocable carta, EstadoCarta estado) {
 		this.campoPropio.colocarCarta(carta, estado);
 		
 	}
@@ -229,35 +229,8 @@ public class Jugador implements Daniable{
 		return this.mano.obtenerNombresDeCartasActivables();
 	}
 	
-	public void colocar(String nombreCartaAtacable, String nombreEstado, String nombreModo) {
-		Colocable carta = this.mano.obtenerCarta(nombreCartaAtacable);
-		EstadoCarta estado;
-		if (nombreEstado == "arriba") {
-			estado = new EstadoCartaColocadaBocaArriba();
-		} else {
-			estado = new EstadoCartaColocadaBocaAbajo();
-		}
-		Modo modo;
-		if (nombreModo == "ataque") {
-			modo = new ModoAtaque();
-		} else {
-			modo = new ModoDefensa();
-		}
-		
-		
-		
-		this.campoPropio.colocarCarta(carta, estado);
-	}
-	
-	public void colocar(String nombreCartaActivable, String nombreEstado) {
-		Colocable carta = this.mano.obtenerCarta(nombreCartaActivable);
-		EstadoCarta estado;
-		if (nombreEstado == "arriba") {
-			estado = new EstadoCartaColocadaBocaArriba();
-		} else {
-			estado = new EstadoCartaColocadaBocaAbajo();
-		}
-		this.campoPropio.colocarCarta(carta, estado);
+	public Colocable obtenerCartaDeMano(String nombreCarta) {
+		return this.mano.obtenerCarta(nombreCarta);
 	}
 
 	public LinkedList<Activable> verCartasMagicasActivables() {

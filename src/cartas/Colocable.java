@@ -13,5 +13,13 @@ public interface Colocable {
 	public boolean estaDestruida();
 	
 	public String obtenerNombre();
+	
+	////////////////////////////////
+	
+	public EstadoCarta elegirComoColocar();
+	
+	public boolean esActivable();
+	
+	public boolean esAtacable();
 
 }

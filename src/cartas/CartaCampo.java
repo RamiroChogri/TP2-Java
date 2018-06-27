@@ -7,6 +7,8 @@ import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
 import efectos.Efecto;
 import estadoCarta.EstadoCarta;
+import estadoCarta.EstadoCartaColocadaBocaAbajo;
+import estadoCarta.EstadoCartaColocadaBocaArriba;
 import estadoCarta.EstadoCartaNoJugada;
 import exceptions.CartaBocaAbajoNoPuedeActivarEfectoException;
 import jugador.Jugador;
@@ -50,4 +52,18 @@ public class CartaCampo extends CartaMagica {
 		campo.enviarCartasDestruidasAlCementerio();
 		campoEnemigo.enviarCartasDestruidasAlCementerio();
 	}
+	
+	///////////////////////////////
+	
+	@Override
+	public EstadoCarta elegirComoColocar() {
+	
+		EstadoCarta estadoADevolver = new EstadoCartaColocadaBocaArriba();
+		return estadoADevolver;
+		
+	}
+
+	// Considerar si conviene que se devuelva el estado y que lo maneje el jugador
+	// para colocarlo con el metodo ya existente
+	
 }

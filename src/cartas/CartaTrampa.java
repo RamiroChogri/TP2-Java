@@ -2,6 +2,9 @@ package cartas;
 
 import campo.Campo;
 import efectos.Efecto;
+import estadoCarta.EstadoCarta;
+import estadoCarta.EstadoCartaColocadaBocaAbajo;
+import estadoCarta.EstadoCartaColocadaBocaArriba;
 import exceptions.CartaTrampaNoPuedeVoltearseException;
 
 public class CartaTrampa extends CartaMagica{
@@ -33,5 +36,12 @@ public class CartaTrampa extends CartaMagica{
 		throw new CartaTrampaNoPuedeVoltearseException();
 	}
 
-
+	@Override
+	public EstadoCarta elegirComoColocar() {
+	
+		EstadoCarta estadoADevolver = new EstadoCartaColocadaBocaAbajo();
+		return estadoADevolver;
+		
+	}
+	
 }

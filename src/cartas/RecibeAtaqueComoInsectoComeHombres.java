@@ -141,19 +141,6 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 		return modo;
 	}
 	
-	//Efecto Insecto Come-Hombres
-
-	@Override
-	public void recibirAtaque(Atacable cartaAtacante) {
-		if (getAtacable().estaColocadaBocaAbajo()) {
-			cartaAtacante.destruirCarta();
-			EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
-			this.ponerEn(bocaArriba);
-		} else {
-			getAtacable().recibirAtaque(cartaAtacante);
-		}
-	}
-	
 	@Override
 	public void voltear() {
 		
@@ -167,5 +154,35 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 		getAtacable().colocarBocaArriba();
 		
 	}
+	
+	@Override
+	public EstadoCarta elegirComoColocar() {
+		EstadoCarta estadoADevolver = getAtacable().elegirComoColocar();
+		return estadoADevolver;
+	}
+	
+	@Override
+	public boolean esActivable() {
+		return getAtacable().esActivable();
+	}
+	
+	@Override
+	public boolean esAtacable() {
+		return getAtacable().esAtacable();
+	}
+	
+	//Efecto Insecto Come-Hombres
+
+	@Override
+	public void recibirAtaque(Atacable cartaAtacante) {
+		if (getAtacable().estaColocadaBocaAbajo()) {
+			cartaAtacante.destruirCarta();
+			EstadoCarta bocaArriba = new EstadoCartaColocadaBocaArriba();
+			this.ponerEn(bocaArriba);
+		} else {
+			getAtacable().recibirAtaque(cartaAtacante);
+		}
+	}
+
 
 }

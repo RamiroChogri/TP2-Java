@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 import cartas.Colocable;
+import estadoCarta.EstadoCarta;
 import jugador.*;
 
 public class FasePreparacion extends Fase {
@@ -47,29 +48,7 @@ public class FasePreparacion extends Fase {
 
 		return nombreCartaMonstruoElegida;
 	}
-	
-	public String pedirEstadoCarta() {
-		System.out.println("Ingrese 'arriba' o ' abajo' para indicar como quiere colocar la carta");
-		String estado = teclado.nextLine();
-		while ((estado != "arriba") && (estado != "abajo")) {
-			System.out.println("Ingrese un estado valido");
-			estado = teclado.nextLine();
-		}
 		
-		return estado;
-	}
-	
-	public String pedirModoCartaAtacable() {
-		System.out.println("Ingrese 'ataque' o 'defensa' para indicar el modo de la carta");
-		String modo = teclado.nextLine();
-		while ((modo != "ataque") && (modo != "defensa")) {
-			System.out.println("Ingrese un modo valido");
-			modo = teclado.nextLine();
-		}
-		
-		return modo;
-	}
-	
 	
 	public void colocarCartaAtacable(Jugador jugadorEnTurno) {	
 		
@@ -81,18 +60,8 @@ public class FasePreparacion extends Fase {
 		
 			if (nombreCartaMonstruoElegida != "no") {
 			
-				String estado = this.pedirEstadoCarta();
-				String modo;
-				if (estado == "arriba") {
-				
-					modo = this.pedirModoCartaAtacable();
-				
-				} else {
-					modo = "defensa";
-				}
-				
-				jugadorEnTurno.colocar(nombreCartaMonstruoElegida, estado, modo);
-				
+				this.colocar(jugadorEnTurno, nombreCartaMonstruoElegida);
+								
 			}
 		} 
 	}
@@ -120,21 +89,24 @@ public class FasePreparacion extends Fase {
 		//Busco las cartas activables (se pueden jugar las que se quieran)
 		LinkedList<String> listaDeCartasActivables = jugadorEnTurno.obtenerNombresDeCartasActivablesEnMano();
 		String nombreCartaElegida = null;
-		String estado = null;
 		while (!(listaDeCartasActivables.isEmpty()) && (nombreCartaElegida != "no")) {
 			
 			nombreCartaElegida = this.pedirNombreCartaActivable(listaDeCartasActivables);
 			
 			if (listaDeCartasActivables.contains(nombreCartaElegida)) {
-				estado = this.pedirEstadoCarta();
-				jugadorEnTurno.colocar(nombreCartaElegida, estado);
+
+				this.colocar(jugadorEnTurno, nombreCartaElegida);
+				
 			}
 		}
 	}
 	
-	Iterator<Colocable> posicionesIterador = this.cartasEnMano.iterator();
-	while(posicionesIterador.hasNext()) {
-		cartaActual = posicionesIterador.next();
-	
+	private void colocar(Jugador jugadorEnTurno, String nombreCartaElegida) {
+
+		Colocable cartaAColocar = jugadorEnTurno.obtenerCartaDeMano(nombreCartaElegida);
+		EstadoCarta estadoDeCarta = cartaAColocar.elegirComoColocar();
+		jugadorEnTurno.colocar(cartaAColocar, estadoDeCarta);
+			
+	}
 	
 }

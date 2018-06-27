@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import cartas.*;
+import exceptions.CartaNoEncontradaException;
 
 public class Mano {
 	
@@ -61,21 +62,42 @@ public class Mano {
 				cartaADevolver = cartaActual;
 			}
 		}
+		
+		if (cartaADevolver == null) {
+			throw new CartaNoEncontradaException();	//No existe una carta con el nombre recibido
+		}
+		
 		return cartaADevolver;
 	}
 	
 	
 	public LinkedList<String> obtenerNombresDeCartasAtacables() {
 		LinkedList<String> listaADevolver = new LinkedList<String>();
-		//COMO CARAJO DISTINGO ENTRE ACTIVABLES Y ATACABLES EN LISTA DE COLOCABLES?
+		Colocable cartaActual = null;
+		
+		Iterator<Colocable> posicionesIterador = this.cartasEnMano.iterator();
+		while(posicionesIterador.hasNext()) {
+			cartaActual = posicionesIterador.next();
+			if (cartaActual.esAtacable()) {
+				listaADevolver.add(cartaActual.obtenerNombre());
+			}
+		}
 		
 		return listaADevolver;
 	}
 	
 	public LinkedList<String> obtenerNombresDeCartasActivables() {
 		LinkedList<String> listaADevolver = new LinkedList<String>();
+		Colocable cartaActual = null;
 		
-		
+		Iterator<Colocable> posicionesIterador = this.cartasEnMano.iterator();
+		while(posicionesIterador.hasNext()) {
+			cartaActual = posicionesIterador.next();
+			if (cartaActual.esActivable()) {
+				listaADevolver.add(cartaActual.obtenerNombre());
+			}
+		}
+	
 		return listaADevolver;
 	}
 }
