@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import cartas.Colocable;
 import estadoCarta.EstadoCarta;
+import exceptions.NoHayMonstruoParaSacrificarException;
+import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 import jugador.*;
 
 public class FasePreparacion extends Fase {
@@ -27,8 +29,21 @@ public class FasePreparacion extends Fase {
 	
 	@Override
 	public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaRecibido) {
-		
-		this.colocarCartaAtacable(jugadorEnTurno);
+		//Falta catchear excepcion de dragon
+		boolean sePudoColocarLaCartaMonstruo = false;
+		while (!sePudoColocarLaCartaMonstruo) {
+			try {
+				try {
+					this.colocarCartaAtacable(jugadorEnTurno);
+					sePudoColocarLaCartaMonstruo = true;
+				} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
+					System.out.println("No se puede colocar ese monstruo");
+				}
+			
+			}catch (NoHayMonstruoParaSacrificarException e) {
+				System.out.println("No se puede colocar ese monstruo");
+			}
+		}
 		this.colocarCartasMagicasYTrampas(jugadorEnTurno);
 	
 		return estadoPartidaRecibido;
@@ -44,8 +59,7 @@ public class FasePreparacion extends Fase {
 		}
 	
 		String nombreCartaMonstruoElegida = this.teclado.nextLine();
-//		System.out.println(nombreCartaMonstruoElegida);
-		while ((!listaDeCartasAtacables.contains(nombreCartaMonstruoElegida)) && (nombreCartaMonstruoElegida != "no")) {
+		while ((!listaDeCartasAtacables.contains(nombreCartaMonstruoElegida)) && (!nombreCartaMonstruoElegida.equals("no"))) {
 			System.out.println("Ingrese el nombre de una carta valida");
 			nombreCartaMonstruoElegida = this.teclado.nextLine();
 		}
@@ -62,7 +76,7 @@ public class FasePreparacion extends Fase {
 			
 			String nombreCartaMonstruoElegida = this.pedirNombreCartaMonstruo(listaDeCartasAtacables);
 		
-			if (nombreCartaMonstruoElegida != "no") {
+			if (!nombreCartaMonstruoElegida.equals("no")) {
 			
 				this.colocar(jugadorEnTurno, nombreCartaMonstruoElegida);
 								
@@ -78,7 +92,7 @@ public class FasePreparacion extends Fase {
 			System.out.println(listaDeCartasActivables.get(i));
 		}
 		String nombreCartaElegida = teclado.nextLine();
-		while ((!listaDeCartasActivables.contains(nombreCartaElegida)) && (nombreCartaElegida != "no")) {
+		while ((!listaDeCartasActivables.contains(nombreCartaElegida)) && (!nombreCartaElegida.equals("no"))) {
 			System.out.println("Ingrese el nombre de una carta valida");
 			nombreCartaElegida = teclado.nextLine();
 		}
@@ -92,15 +106,17 @@ public class FasePreparacion extends Fase {
 		
 		//Busco las cartas activables (se pueden jugar las que se quieran)
 		LinkedList<String> listaDeCartasActivables = jugadorEnTurno.obtenerNombresDeCartasActivablesEnMano();
-		String nombreCartaElegida = null;
-		while (!(listaDeCartasActivables.isEmpty()) && (nombreCartaElegida != "no")) {
+		String nombreCartaElegida = " ";
+		
+		while (!(listaDeCartasActivables.isEmpty()) && (!nombreCartaElegida.equals("no"))) {
 			
 			nombreCartaElegida = this.pedirNombreCartaActivable(listaDeCartasActivables);
 			
 			if (listaDeCartasActivables.contains(nombreCartaElegida)) {
 
+				//No esta hecho que el jugador elimine la carta de su mano
 				this.colocar(jugadorEnTurno, nombreCartaElegida);
-				
+				listaDeCartasActivables.remove(nombreCartaElegida);
 			}
 		}
 	}

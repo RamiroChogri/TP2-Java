@@ -179,7 +179,7 @@ public class ZonaMonstruos extends Zona {
 	
 			monstruoActual = posicionesIterator.next();
 	
-			if( nombre == monstruoActual.obtenerNombre() ) {
+			if( nombre.equals(monstruoActual.obtenerNombre()) ) {
 				carta = monstruoActual;
 				encontrado = true;
 			}
@@ -197,8 +197,9 @@ public class ZonaMonstruos extends Zona {
 		while ( posicionesIterator.hasNext() ) {
 			
 			cartaActual = posicionesIterator.next();
-			cartasAtacables.add(cartaActual.obtenerNombre());
-
+			if (cartaActual.estaEnModoAtaque()) {
+				cartasAtacables.add(cartaActual.obtenerNombre());
+			}
 		}
 		
 		return cartasAtacables;

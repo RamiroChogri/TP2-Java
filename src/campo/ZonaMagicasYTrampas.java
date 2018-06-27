@@ -130,7 +130,7 @@ public class ZonaMagicasYTrampas extends Zona{
 	
 			cartaActual = posicionesIterator.next();
 	
-			if( nombre == cartaActual.obtenerNombre() ) {
+			if( nombre.equals(cartaActual.obtenerNombre()) ) {
 				carta = cartaActual;
 				encontrado = true;
 			}

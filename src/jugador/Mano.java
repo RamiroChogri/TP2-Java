@@ -61,9 +61,7 @@ public class Mano {
 		while(posicionesIterador.hasNext() && !encontrado) {
 			cartaActual = posicionesIterador.next();
 			nombreCartaActual = cartaActual.obtenerNombre();
-			System.out.println("Se chequea si " + cartaActual.obtenerNombre() + " es igual a " + nombreCartaColocable);
-			if (nombreCartaActual == nombreCartaColocable) {
-				System.out.println("Se entro al if");
+			if (nombreCartaActual.equals(nombreCartaColocable)) {
 				cartaADevolver = cartaActual;
 				encontrado = true;
 			}
@@ -100,6 +98,7 @@ public class Mano {
 		while(posicionesIterador.hasNext()) {
 			cartaActual = posicionesIterador.next();
 			if (cartaActual.esActivable()) {
+				System.out.println("Encontre una carta Activable");
 				listaADevolver.add(cartaActual.obtenerNombre());
 			}
 		}

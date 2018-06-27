@@ -33,8 +33,8 @@ public class FaseFinal extends Fase {
 		
 		public void activarCartasMagicas(Jugador jugadorEnTurno , LinkedList<String> cartasMagicas) {
 			
-			String nombreCartaElegida = null;
-			while (!(cartasMagicas.isEmpty()) && (nombreCartaElegida != "no")) {
+			String nombreCartaElegida = " ";
+			while (!(cartasMagicas.isEmpty()) && (!nombreCartaElegida.equals("no"))) {
 			
 				nombreCartaElegida = this.pedirNombreCartaMagicaAActivar(cartasMagicas);
 			
@@ -56,7 +56,7 @@ public class FaseFinal extends Fase {
 			}
 			
 			String nombreCartaElegida = this.teclado.nextLine();
-			while (!(cartasMagicas.contains(nombreCartaElegida)) && (nombreCartaElegida != "no")) {
+			while (!(cartasMagicas.contains(nombreCartaElegida)) && (!nombreCartaElegida.equals("no"))) {
 				
 				System.out.println("Ingrese el nombre de una carta valida");
 				nombreCartaElegida = this.teclado.nextLine();

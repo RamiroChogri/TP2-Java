@@ -20,17 +20,17 @@ public class FaseAtaqueYTrampas extends Fase {
 	
 	@Override
 	public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaActual) {
-		String respuesta = null;
+		String respuesta = "si";
 		EstadoPartida estadoPartidaADevolver = estadoPartidaActual;
 		LinkedList<String> listaDeCartasAtacables = jugadorEnTurno.obtenerNombresDeCartasAtacablesEnZonaMonstruos();
 		
-		while (!(listaDeCartasAtacables.isEmpty()) && respuesta!="no") {
+		while (!(listaDeCartasAtacables.isEmpty()) && !respuesta.equals("no")) {
 		
 			System.out.print("Desea atacar? (si/no)");
 			respuesta = this.pedirRespuestaValida();
 			
 			
-			while ( !(listaDeCartasAtacables.isEmpty()) && respuesta == "si" ) {
+			while ( !(listaDeCartasAtacables.isEmpty()) && respuesta.equals("si") ) {
 				
 				Jugador jugadorEnemigo = jugadorEnTurno.obtenerJugadorEnemigo(); 
 			
@@ -40,7 +40,7 @@ public class FaseAtaqueYTrampas extends Fase {
 				Atacable atacante;
 				atacante = jugadorEnTurno.obtenerCartaDeZonaMonstruo( nombreAtacante ); 
 				
-				if (nombreAtacado == "jugador") {
+				if (nombreAtacado.equals("jugador")) {
 				
 					try {
 					
@@ -83,7 +83,7 @@ public class FaseAtaqueYTrampas extends Fase {
 	public String pedirRespuestaValida() {
 		
 		String respuesta = teclado.nextLine();
-		while ((respuesta != "no") && (respuesta != "si")) {
+		while ((!respuesta.equals("no")) && (!respuesta.equals("si"))) {
 			System.out.println("Ingrese una respuesta valida (si/no):");
 			respuesta = teclado.nextLine();
 		}
@@ -125,7 +125,7 @@ public class FaseAtaqueYTrampas extends Fase {
 			}
 			
 			nombreCartaMonstruoAdversario = teclado.nextLine();
-			while (!listaDeCartasAdversario.contains(nombreCartaMonstruoAdversario) && (nombreCartaMonstruoAdversario != "jugador")) {
+			while (!listaDeCartasAdversario.contains(nombreCartaMonstruoAdversario) && (!nombreCartaMonstruoAdversario.equals("jugador"))) {
 				System.out.println("Ingrese el nombre de una carta valida");
 				nombreCartaMonstruoAdversario = teclado.nextLine();
 			}

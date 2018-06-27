@@ -43,7 +43,8 @@ public class CartaMagica implements Activable{
 		this.efecto = efectoAColocar;
 		this.nombre = " ";
 		this.nombreImagen = " ";
-	
+		this.teclado = new Scanner(System.in);
+		
 	}
 	
 	public void setNombreDeLaImagen(String nombreDeLaImagen) {
@@ -163,7 +164,7 @@ public class CartaMagica implements Activable{
 		
 		System.out.println("Ingrese 'arriba' o ' abajo' para indicar como quiere colocar la carta");
 		String nombreEstado = teclado.nextLine();
-		while ((nombreEstado != "arriba") && (nombreEstado != "abajo")) {
+		while ((!nombreEstado.equals("arriba")) && (!nombreEstado.equals("abajo"))) {
 			System.out.println("Ingrese un estado valido");
 			nombreEstado = this.teclado.nextLine();
 		}

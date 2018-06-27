@@ -48,6 +48,7 @@ public class CartaMonstruo implements Atacable{
 		this.modo = new ModoAtaque();
 		this.regla = new ReglaDeMonstruoChicoStrategy();
 		this.nombreImagen = " ";
+		this.teclado = new Scanner(System.in);
 	}
 	
 	///////constructor que recibe la regla para colocarse ////////
@@ -61,6 +62,7 @@ public class CartaMonstruo implements Atacable{
 		this.modo = new ModoAtaque();
 		this.regla = reglaDeInvocacion;	
 		this.nombreImagen = " ";
+		this.teclado = new Scanner(System.in);
 	}
 	//Constructor que recibe todo lo anterior + el nombre
 	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar,
@@ -73,7 +75,7 @@ public class CartaMonstruo implements Atacable{
 	this.modo = new ModoAtaque();
 	this.regla = reglaDeInvocacion;
 	this.nombreImagen = " ";
-	
+	this.teclado = new Scanner(System.in);
 	}
 	public void setNombreDeLaImagen(String nombreDeLaImagen) {
 		this.nombreImagen = nombreDeLaImagen;
@@ -251,7 +253,7 @@ public class CartaMonstruo implements Atacable{
 	
 		String estado = this.pedirEstadoCarta();
 		EstadoCarta estadoADevolver = null;
-		if (estado == "arriba") {
+		if (estado.equals("arriba")) {
 			estadoADevolver = new EstadoCartaColocadaBocaArriba();
 			this.pedirModo();
 		
@@ -268,7 +270,7 @@ public class CartaMonstruo implements Atacable{
 		
 		System.out.println("Ingrese 'arriba' o ' abajo' para indicar como quiere colocar la carta");
 		String nombreEstado = teclado.nextLine();
-		while ((nombreEstado != "arriba") && (nombreEstado != "abajo")) {
+		while ((!nombreEstado.equals("arriba")) && (!nombreEstado.equals("abajo"))) {
 			System.out.println("Ingrese un estado valido");
 			nombreEstado = this.teclado.nextLine();
 		}
@@ -280,12 +282,12 @@ public class CartaMonstruo implements Atacable{
 		
 		System.out.println("Ingrese 'ataque' o 'defensa' para indicar el modo de la carta");
 		String nombreModo = this.teclado.nextLine();
-		while ((nombreModo != "ataque") && (nombreModo != "defensa")) {
+		while ((!nombreModo.equals("ataque")) && (!nombreModo.equals("defensa"))) {
 			System.out.println("Ingrese un modo valido");
 			nombreModo = this.teclado.nextLine();
 		}
 		
-		if (nombreModo == "ataque") {
+		if (nombreModo.equals("ataque")) {
 			this.modo = new ModoAtaque();
 		} else {
 			this.modo = new ModoDefensa();
