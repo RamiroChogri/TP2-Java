@@ -224,17 +224,11 @@ public class Jugador implements Daniable{
 		return campoPropio.obtenerCartaDeZonaMonstruo( nombreCartaMonstruoAtacante );
 	}
 	
-<<<<<<< HEAD
+
 	public Activable obtenerCartaDeZonaMagicaYTrampas( String nombreCartaActivable ) {
 		
 		return campoPropio.obtenerCartaDeZonaMagicaYTrampas( nombreCartaActivable );
-=======
-	public Activable obtenerCartaDeZonaMagicasYTrampas( String nombreCartaActivable ) {
-		
-		return campoPropio.obtenerCartaDeZonaMagicasYTrampas( nombreCartaActivable );
->>>>>>> 7b3d4c728d0693682577a7bf6c1933d9998912ef
 	}
-	
 	
 	///////////////////////////////////////
 	
