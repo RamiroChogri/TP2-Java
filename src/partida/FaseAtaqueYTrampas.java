@@ -11,7 +11,8 @@ public class FaseAtaqueYTrampas extends Fase {
 	
 	@Override
 	public void ejecutarFase(Jugador jugadorEnTurno) {
-	
+		
+		Jugador jugadorEnemigo = jugadorEnTurno.obtenerJugadorEnemigo(); 
 		Scanner teclado = new Scanner(System.in);
 		
 		System.out.println("Estas cartas de Monstruos estan en tu Zona de Monstruos, ingrese el nombre de la carta"); 
@@ -30,7 +31,7 @@ public class FaseAtaqueYTrampas extends Fase {
 		
 		System.out.println("Estas cartas de Monstruos estan en la Zona de Monstruos de tu adversario, ingrese el nombre de la carta"); 
 		System.out.println("a la que quiera atacar");
-		LinkedList<String> listaDeCartasAdversario= jugadorEnTurno.obtenerJugadorEnemigo().obtenerNombresDeCartasAtacablesEnZonaMonstruos();
+		LinkedList<String> listaDeCartasAdversario= jugadorEnemigo.obtenerNombresDeCartasAtacablesEnZonaMonstruos();
 	
 		for (int i=0; i<listaDeCartasAtacables.size(); i++) {
 			System.out.print(listaDeCartasAtacables.get(i));
@@ -44,7 +45,11 @@ public class FaseAtaqueYTrampas extends Fase {
 		
 		
 		Atacable atacante, atacado;
-		//De alguna manera deberia conseguir referencia a las cartas a partir del nombre
+		
+		atacante = jugadorEnTurno.obtenerCartaDeZonaMonstruo( nombreCartaMonstruoAtacante ); 
+		
+		atacado = jugadorEnemigo.obtenerCartaDeZonaMonstruo( nombreCartaMonstruoAdversario ); 
+		
 		jugadorEnTurno.atacar( atacante , atacado );
 		
 		// Repetir esto hasta que el jugador decida dejar de atacar...

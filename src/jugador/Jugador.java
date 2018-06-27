@@ -224,9 +224,9 @@ public class Jugador implements Daniable{
 		return campoPropio.obtenerCartaDeZonaMonstruo( nombreCartaMonstruoAtacante );
 	}
 	
-	public Activable obtenerCartaDeZonaMagicaYTrampas( String nombreCartaMonstruoAtacante ) {
+	public Activable obtenerCartaDeZonaMagicaYTrampas( String nombreCartaActivable ) {
 		
-		return campoPropio.obtenerCartaDeZonaMagicaYTrampas( nombreCartaMonstruoAtacante );
+		return campoPropio.obtenerCartaDeZonaMagicaYTrampas( nombreCartaActivable );
 	}
 	
 	
