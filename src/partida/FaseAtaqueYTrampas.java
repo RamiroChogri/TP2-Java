@@ -30,7 +30,7 @@ public class FaseAtaqueYTrampas extends Fase {
 			respuesta = this.pedirRespuestaValida();
 			
 			
-			while ( respuesta == "si" ) {
+			while ( !(listaDeCartasAtacables.isEmpty()) && respuesta == "si" ) {
 				
 				Jugador jugadorEnemigo = jugadorEnTurno.obtenerJugadorEnemigo(); 
 			
