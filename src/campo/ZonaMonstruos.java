@@ -168,4 +168,24 @@ public class ZonaMonstruos extends Zona {
 			}
 		}
 	}
+	
+	public Atacable obtenerCarta(String nombre) {
+		Atacable carta = null;
+		boolean encontrado = false;
+		Iterator<CartaMonstruo> posicionesIterator = this.posiciones.iterator();
+		Atacable monstruoActual;
+	
+		while( posicionesIterator.hasNext() && !encontrado ) {
+	
+			monstruoActual = posicionesIterator.next();
+	
+			if( nombre == monstruoActual.obtenerNombre() ) {
+				carta = monstruoActual;
+				encontrado = true;
+			}
+		}
+		if( !encontrado ) { throw new NoHayMonstruoException(); };
+			return carta;
+	}
+
 }

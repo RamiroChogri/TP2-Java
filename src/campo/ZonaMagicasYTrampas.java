@@ -11,6 +11,7 @@ import cartas.CartaTrampa;
 import cartas.Colocable;
 import exceptions.NoHayCartasTrampaException;
 import exceptions.NoHayLugarVacioException;
+import exceptions.NoHayMonstruoException;
 
 public class ZonaMagicasYTrampas extends Zona{
 
@@ -118,4 +119,23 @@ public class ZonaMagicasYTrampas extends Zona{
 		return cartasMagicas;
 	}
 
+	
+	public Activable obtenerCarta(String nombre) {
+		Activable carta = null;
+		boolean encontrado = false;
+		Iterator<Activable> posicionesIterator = this.posiciones.iterator();
+		Activable cartaActual;
+	
+		while( posicionesIterator.hasNext() && !encontrado ) {
+	
+			cartaActual = posicionesIterator.next();
+	
+			if( nombre == cartaActual.obtenerNombre() ) {
+				carta = cartaActual;
+				encontrado = true;
+			}
+		}
+		if( !encontrado ) { throw new NoHayMonstruoException(); };
+			return carta;
+	}
 }

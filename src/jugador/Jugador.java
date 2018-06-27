@@ -219,6 +219,17 @@ public class Jugador implements Daniable{
 		cartaAVoltear.voltear(this.campoPropio, this.campoEnemigo);
 	}
 	
+	public Atacable obtenerCartaDeZonaMonstruo( String nombreCartaMonstruoAtacante ) {
+		
+		return campoPropio.obtenerCartaDeZonaMonstruo( nombreCartaMonstruoAtacante );
+	}
+	
+	public Activable obtenerCartaDeZonaMagicaYTrampas( String nombreCartaMonstruoAtacante ) {
+		
+		return campoPropio.obtenerCartaDeZonaMagicaYTrampas( nombreCartaMonstruoAtacante );
+	}
+	
+	
 	///////////////////////////////////////
 	
 	public LinkedList<String> obtenerNombresDeCartasAtacablesEnMano() {

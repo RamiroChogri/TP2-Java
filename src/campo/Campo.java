@@ -154,5 +154,16 @@ public class Campo {
 		
 		return magicasActivables;
 	}
+	
+	public Atacable obtenerCartaDeZonaMonstruo(String nombreCartaMonstruoAtacante) {
+		
+		return monstruos.obtenerCarta( nombreCartaMonstruoAtacante );
+	}
+
+	public Activable obtenerCartaDeZonaMagicaYTrampas(String nombreCartaMonstruoAtacante) {
+		
+		return magicasYTrampas.obtenerCarta( nombreCartaMonstruoAtacante );
+	}
+
 
 }
