@@ -37,7 +37,7 @@ public class FaseAtaqueYTrampas extends Fase {
 	
 	
 	public EstadoPartida ejecutarFaseCuandoNoEsPrimerTurno(Jugador jugadorEnTurno, EstadoPartida estadoPartidaActual) {
-
+		Jugador jugadorEnemigo = jugadorEnTurno.obtenerJugadorEnemigo(); 
 		String respuesta = "si";
 		EstadoPartida estadoPartidaADevolver = estadoPartidaActual;
 		LinkedList<String> listaDeCartasAtacables = jugadorEnTurno.obtenerNombresDeCartasAtacablesEnModoAtaqueEnZonaMonstruos();
@@ -50,7 +50,7 @@ public class FaseAtaqueYTrampas extends Fase {
 			
 			while ( !(listaDeCartasAtacables.isEmpty()) && respuesta.equals("si") ) {
 				
-				Jugador jugadorEnemigo = jugadorEnTurno.obtenerJugadorEnemigo(); 
+				
 			
 				String nombreAtacante = this.pedirNombreCartaAtacante(jugadorEnTurno, listaDeCartasAtacables); 
 				String nombreAtacado = this.pedirNombreCartaAdversario(jugadorEnemigo);
@@ -61,7 +61,7 @@ public class FaseAtaqueYTrampas extends Fase {
 				if (nombreAtacado.equals("jugador")) {
 				
 					try {
-						jugadorEnTurno.atacar( atacante , jugadorEnTurno.obtenerJugadorEnemigo());
+						jugadorEnTurno.atacar( atacante , jugadorEnemigo);
 						listaDeCartasAtacables.remove(nombreAtacante);
 						System.out.print("Desea seguir atacando? (si/no)");
 						respuesta = this.pedirRespuestaValida();
@@ -86,7 +86,7 @@ public class FaseAtaqueYTrampas extends Fase {
 
 			}	
 			
-			if ((jugadorEnTurno.estaDerrotado()) || (jugadorEnTurno.obtenerJugadorEnemigo()).estaDerrotado()) {
+			if ((jugadorEnTurno.estaDerrotado()) || jugadorEnemigo.estaDerrotado()) {
 				estadoPartidaADevolver = new EstadoPartidaTerminada();
 			}
 			
