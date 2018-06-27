@@ -247,7 +247,7 @@ public class CartaMonstruoFactory {
 			int estrellas = 3;
 			ReglaDeInvocacionStrategy regla = new ReglaDeMonstruoChicoStrategy();
 			
-			Atacable cabezaDeExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Exodia , El Prohibido");
+			Atacable cabezaDeExodia = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Exodia, El Prohibido");
 			
 			cabezaDeExodia.setNombreDeLaImagen("cabezaDeExodia.jpg");
 			
