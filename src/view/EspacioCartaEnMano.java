@@ -12,16 +12,19 @@ import view.handlers.ClickEnCartaEnManoHandler;
 import view.handlers.MouseArribaDeImagenHandler;
 import view.handlers.MouseSalirArribaDeImagenHandler;
 import viewSupportFiles.PathArchivos;
+import jugador.*;
 
 public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 	
-	ImageView imagenCarta;
-	Image cardBack;
-	CajaInformacion cajaInformacion;
-	Partida partida;
-	Colocable carta;
+	private ImageView imagenCarta;
+	private Image cardBack;
+	private CajaInformacion cajaInformacion;
+	private Partida partida;
+	private Colocable carta;
+	private Jugador jugador;
+	private CajaCampo cajaCampo;
 	
-	public EspacioCartaEnMano(CajaInformacion informacion, Partida duelo, Colocable cartaActual) {
+	public EspacioCartaEnMano(CajaInformacion informacion, Partida duelo, Colocable cartaActual, Jugador jugadorAColocar, CajaCampo cajaCampoRecibida) {
 		
 		this.cajaInformacion = informacion;
 		
@@ -32,9 +35,11 @@ public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 		
 		this.imagenCarta = null;
 		this.cardBack = new Image( pathDePackCartas + "cardBackAlgo.png" );
+		this.cajaCampo = cajaCampoRecibida;
 		
 		this.partida = duelo;
 		this.carta = cartaActual;
+		this.jugador = jugadorAColocar;
 		
 		this.getChildren().addAll(rectanguloAtaque);
 		this.setAlignment(Pos.CENTER);
@@ -66,10 +71,9 @@ public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
 		imagenCarta.setOnMouseExited(sacarDeZoom);
 		
-		if (!this.partida.seJugoUnaCartaMonstruoEsteTurno()) {
-			ClickEnCartaEnManoHandler verOpcionesDeColocacion = new ClickEnCartaEnManoHandler(this.partida, this.carta);
-			imagenCarta.setOnMouseClicked(verOpcionesDeColocacion);
-		}
+		ClickEnCartaEnManoHandler verOpcionesDeColocacion = new ClickEnCartaEnManoHandler(this.cajaInformacion, this.partida, this.carta, this.jugador, this.cajaCampo);
+		imagenCarta.setOnMouseClicked(verOpcionesDeColocacion);
+		
 		
 		this.getChildren().add(imagenCarta);
 	}

@@ -16,6 +16,7 @@ public class Partida {
 	private Fase faseFinal;
 	private Fase faseActual;
 	private EstadoPartida estado;
+	private boolean seJugoCartaMonstruo;
 	Jugador jugadorEnTurno;
 	String nombreJugadorEnTurno;
 	Jugador jugadorYugi;
@@ -38,7 +39,7 @@ public class Partida {
 		
 		this.estado = new EstadoPartidaEnJuego();
 		
-		this.jugadorEnTurno = null;
+		
 		this.jugadorYugi = new Jugador();
 		this.jugadorKaiba = new Jugador();
 		this.jugadorYugi.setName("Yugi");
@@ -49,6 +50,8 @@ public class Partida {
 		this.jugadorKaiba.enfrentarseA(jugadorYugi);
 		
 		this.vidaDeJugadorEnTurno = 8000;
+		
+		this.seJugoCartaMonstruo = false;
 		
 	}
 	
@@ -75,7 +78,9 @@ public class Partida {
 		
 		while (this.estado.continuaLaPartida()) {
 		
-			
+			if (faseActual.esFasePreparacion()) {
+				this.seJugoCartaMonstruo = false;
+			}
 			
 			jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno(jugadorEnTurno);
 			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
@@ -104,6 +109,11 @@ public class Partida {
 		
 	}
 	
+	public boolean estaEnFaseDePreparacion() {
+		return this.faseActual.esFasePreparacion();
+	}
+	
+	
 	public Jugador elegirQuienComienza(Jugador unJugador, Jugador otroJugador) {
 		
 		Jugador jugadorQueComienza = unJugador ;
@@ -123,4 +133,24 @@ public class Partida {
 		return this.jugadorKaiba;
 	}
 	
+	public boolean estaYugiEnTurno() {
+		return (this.jugadorEnTurno == this.jugadorYugi);
+	}
+	
+	public void setSeJugoCartaMonstruo() {
+		this.seJugoCartaMonstruo = true;
+	}
+	
+	public boolean seJugoUnaCartaMonstruoEsteTurno() {
+		return this.seJugoCartaMonstruo;
+	}
+	
+	public void avanzarFase() {
+		this.faseActual = faseActual.obtenerFaseSiguiente();
+	}
+	
+	public void finalizarTurno() {
+		this.jugadorEnTurno = this.jugadorEnTurno.obtenerJugadorEnemigo();
+		this.faseActual = this.faseInicial;
+	}
 }

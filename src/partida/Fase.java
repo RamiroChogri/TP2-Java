@@ -6,6 +6,10 @@ public abstract class Fase {
 
 	private Fase faseSiguiente;
 	
+	public boolean esFasePreparacion() {
+		return false;
+	}
+	
 	public abstract void setFaseSiguiente(Fase faseSiguienteAColocar); 
 	
 	public abstract Fase obtenerFaseSiguiente();

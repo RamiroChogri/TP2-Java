@@ -230,4 +230,8 @@ public class FasePreparacion extends Fase {
 		return this.faseSiguiente;
 	}
 	
+	@Override
+	public boolean esFasePreparacion() {
+		return true;
+	}
 }

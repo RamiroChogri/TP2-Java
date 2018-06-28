@@ -30,10 +30,10 @@ public class CajaCampo extends VBox implements PathArchivos{
 		this.duelo = duelo;
 		this.cajaInformacion = cajaInformacion;
 		
-		this.manoYugi = new ManoJugador(duelo,duelo.getJugadorYugi());
+		this.manoYugi = new ManoJugador(duelo,duelo.getJugadorYugi(), this);
 		this.manoYugi.setAlignment(Pos.BOTTOM_CENTER);
 		
-		this.manoKaiba = new ManoJugador(duelo,duelo.getJugadorKaiba());
+		this.manoKaiba = new ManoJugador(duelo,duelo.getJugadorKaiba(), this);
 		this.manoKaiba.setAlignment(Pos.TOP_CENTER);
 		
 		this.campoJ1 = new EspacioCartasCampo(cajaInformacion,duelo.getJugadorYugi());
@@ -48,8 +48,13 @@ public class CajaCampo extends VBox implements PathArchivos{
 		
 		this.setStyle("-fx-background-color: BLACK");
 		
-		manoYugi.pintarCartasEnManoJugador(cajaInformacion);
-		manoKaiba.pintarCartasEnManoJugador(cajaInformacion);
+		if (duelo.estaYugiEnTurno()) {
+			manoYugi.pintarCartasEnManoJugador(cajaInformacion);
+			manoKaiba.darVueltaCartasEnManoJugador(cajaInformacion);
+		} else {
+			manoKaiba.pintarCartasEnManoJugador(cajaInformacion);
+			manoYugi.darVueltaCartasEnManoJugador(cajaInformacion);
+		}
 	}
 	
 	
