@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import jugador.Jugador;
 import viewSupportFiles.PathArchivos;
 
 public class CajaCampo extends VBox implements PathArchivos{
@@ -55,6 +56,39 @@ public class CajaCampo extends VBox implements PathArchivos{
 		this.campoJ1.getEspacioCartaMosntruo(1).enviarAl(cementerio);
 		
 	}
+	
+	public void actualizarVistaYugiEnTurno(Jugador yugi, Jugador kaiba) {
+		
+		this.actualizarCartasEnCampoCentral(yugi, kaiba);
+		
+		this.manoJugador1.pintarCartasEnManoJugador(cajaInformacion, yugi.obtenerCartasEnMano());
+		this.manoJugador2.darVueltaCartasEnManoJugador(this.cajaInformacion, kaiba.obtenerCartasEnMano());
+		
+	}
+	
+	public void actualizarVistaKaibaEnTurno(Jugador kaiba, Jugador yugi) {
+		
+		this.actualizarCartasEnCampoCentral(yugi, kaiba);
+		
+		this.manoJugador1.darVueltaCartasEnManoJugador(this.cajaInformacion, yugi.obtenerCartasEnMano());
+		this.manoJugador2.pintarCartasEnManoJugador(cajaInformacion, kaiba.obtenerCartasEnMano());
+		
+		
+	}
+
+	public void actualizarCartasEnCampoCentral(Jugador yugi, Jugador kaiba) {
+		
+		this.campoJ1.pintarCartasEnZonaMonstruos(this.cajaInformacion, yugi.obtenerCartasEnZonaMonstruo());
+		this.campoJ2.pintarCartasEnZonaMonstruos(this.cajaInformacion, kaiba.obtenerCartasEnZonaMonstruo());
+		
+		this.campoJ1.pintarCartasEnZonaMagicasYTrampas(this.cajaInformacion, yugi.obtenerCartasEnZonaMagiasYTrampas());
+		this.campoJ2.pintarCartasEnZonaMagicasYTrampas(this.cajaInformacion, yugi.obtenerCartasEnZonaMagiasYTrampas());
+		
+		this.campoJ1.pintarCartaZonaCampo(this.cajaInformacion, yugi.obtenerCartaEnZonaCampo);
+		this.campoJ2.pintarCartaZonaCampo(this.cajaInformacion, kaiba.obtenerCartaEnZonaCampo);
+		
+	}
+	
 	//ESTOS METODOS SON DE PRUEBA, SOLO PINTAN UNA CARTA ESPECIFICA QUE HARDCODIE
 	public void pintarCartaMagicaBocaAbajoEnCampoJugador1(int posicionDeCartaMagica) {
 		Image imagen = new Image(pathDePackCartas + "fisura.jpg");

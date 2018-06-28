@@ -45,10 +45,17 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	return this.barraMenu.getPantallaCompletaItem();
 	    }
 	    
-	    public void actualizarVistaYugi(Jugador yugi, Jugador Kaiba) {
+	    public void actualizarVistaYugiEnTurno(Jugador yugi, Jugador kaiba) {
 	    	
+	    	this.cajaCentro.actualizarVistaYugiEnTurno(yugi, kaiba);
+	    	this.cajaIzquierda.actualizarVida(yugi, kaiba);
+	    
+	    }
+	    
+	    public void actualizarVistaKaibaEnTurno(Jugador kaiba, Jugador yugi) {
 	    	
-	    	
+	    	this.cajaCentro.actualizarVistaKaibaEnTurno(kaiba, yugi);
+	    	this.cajaIzquierda.actualizarVida(yugi, kaiba);
 	    	
 	    }
 	    

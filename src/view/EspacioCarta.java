@@ -39,7 +39,7 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 		}
 		
 		public void pintarCartaEnModoAtaque(Image imagen) {
-			ImageView imagenCarta = new ImageView(imagen);
+			this.imagenCarta = new ImageView(imagen);
 			imagenCarta.setFitWidth(60);
 			imagenCarta.setFitHeight(100);
 			
@@ -53,7 +53,7 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 		}
 		
 		public void pintarCartaEnModoDefensaBocaArriba(Image imagen) {
-			ImageView imagenCarta = new ImageView(imagen);
+			this.imagenCarta = new ImageView(imagen);
 			imagenCarta.setFitWidth(100);
 			imagenCarta.setFitHeight(60);
 			
@@ -78,8 +78,8 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 		}
 		
 		public void enviarAl(EspacioCementerio cementerio) {
-			this.getChildren().remove(imagenCarta);
 			cementerio.recibirCarta(imagenCarta);
+			this.getChildren().remove(imagenCarta);
 			this.imagenCarta = null;
 		}
 			
