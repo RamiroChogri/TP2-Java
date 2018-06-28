@@ -37,7 +37,7 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
 	}
 	
 	public void handle(ContextMenuEvent t) {
-        if (true){
+        if (duelo.estaEnFaseDePreparacion()) {
         	if (this.carta.esAtacable() && !this.duelo.seJugoUnaCartaMonstruoEsteTurno()) {
         		this.menuCartaAtacable(t);
         	} else if (this.carta.getClass() == CartaMagica.class) {
@@ -70,7 +70,8 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	MenuItem bocaArribaModoAtaque = new MenuItem("Colocar boca arriba en Modo Ataque");
     	MenuItem bocaArribaModoDefensa = new MenuItem("Colocar boca arriba en Modo Defensa");
     	MenuItem bocaAbajoModoDefensa = new MenuItem("Colocar boca abajo en Modo Defensa");
-    	contextMenu.getItems().addAll(bocaArribaModoAtaque, bocaArribaModoDefensa, bocaAbajoModoDefensa);    	
+    	MenuItem cancelar = new MenuItem("Cancelar");
+    	contextMenu.getItems().addAll(bocaArribaModoAtaque, bocaArribaModoDefensa, bocaAbajoModoDefensa, cancelar);    	
     	
     	BotonModoAtaqueBocaArribaHandler modoAtaqueBocaArriba = new BotonModoAtaqueBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
     	bocaArribaModoAtaque.setOnAction(modoAtaqueBocaArriba);
@@ -108,7 +109,12 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
         		}
     	    }
     	});
-    	
+    	cancelar.setOnAction(new EventHandler<ActionEvent>() {
+    		@Override
+    		public void handle(ActionEvent event) {
+    			//no hace nada
+    		}
+    	});
     	
     	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
 	}
@@ -117,7 +123,8 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
 		ContextMenu contextMenu = new ContextMenu();
     	MenuItem bocaArriba = new MenuItem("Boca Arriba");
     	MenuItem bocaAbajo = new MenuItem("Boca Abajo");
-    	contextMenu.getItems().addAll(bocaArriba, bocaAbajo);
+    	MenuItem cancelar = new MenuItem("Cancelar");
+    	contextMenu.getItems().addAll(bocaArriba, bocaAbajo, cancelar);
     	bocaArriba.setOnAction(new EventHandler<ActionEvent>() {
     	    @Override
     	    public void handle(ActionEvent event) {
@@ -143,6 +150,12 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
         			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
         		}
     	    }
+    	});
+    	cancelar.setOnAction(new EventHandler<ActionEvent>() {
+    		@Override
+    		public void handle(ActionEvent event) {
+    			//no hace nada
+    		}
     	});
       	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
     }

@@ -134,17 +134,25 @@ public class Partida {
 		this.seJugoCartaMonstruo = true;
 	}
 	
+	public void setNoSeJugoUnaCartaMonstruo() {
+		this.seJugoCartaMonstruo = false;
+	}
+	
 	public boolean seJugoUnaCartaMonstruoEsteTurno() {
 		return this.seJugoCartaMonstruo;
 	}
 	
 	public void avanzarFase() {
 		this.faseActual = faseActual.obtenerFaseSiguiente();
+		if (faseActual.getNombreFase().equals("Fase Inicial")) {
+			this.seJugoCartaMonstruo = false;
+		}
 	}
 	
 	public void finalizarTurno() {
 		this.jugadorEnTurno = this.jugadorEnTurno.obtenerJugadorEnemigo();
 		this.faseActual = new FaseInicial(this.jugadorEnTurno);
+		this.seJugoCartaMonstruo = false;
 	}
 	
 	public String getNombreFase() {
