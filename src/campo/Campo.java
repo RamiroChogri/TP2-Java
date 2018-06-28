@@ -178,6 +178,23 @@ public class Campo {
 		
 		return nombresDeCartas;
 	}
+
+	public LinkedList<Atacable> obtenerCartasEnZonaMonstruo() {
+		
+		LinkedList<Atacable>monstruosColocados = monstruos.obtenerMonstruosColocados();
+		
+		return monstruosColocados;
+	}
+
+	public LinkedList<Activable> obtenerMagicasYTrampasColocadas() {
+		
+		return this.magicasYTrampas.obtenerCartasColocadas();
+	}
+
+	public LinkedList<Activable> obtenerCartaCampoColocada() {
+		
+		return this.espacioCampo.obtenerCartaColocada();
+	}
 	
 
 

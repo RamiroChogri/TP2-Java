@@ -26,10 +26,6 @@ public interface Atacable extends Destruible, Colocable,Daniable{
 	
 	public void destruirCarta(int danio);
 	
-	public boolean estaColocadaBocaArriba();
-	
-	public boolean estaColocadaBocaAbajo();
-	
 	public boolean estaEnModoAtaque();
 	
 	public boolean estaEnModoDefensa();

@@ -4,6 +4,7 @@ import cartas.Destruible;
 
 import java.util.LinkedList;
 
+import cartas.Activable;
 import cartas.CartaCampo;
 import cartas.Colocable;
 
@@ -61,5 +62,15 @@ public class ZonaCampo extends Zona{
 
 	public void enviarCampoAlCementerio(Cementerio cementerio) {
 		cementerio.agregarCarta(this.cartaCampo);
+	}
+
+	public LinkedList<Activable> obtenerCartaColocada() {
+		LinkedList<Activable> cartaColocada = new LinkedList<Activable>();
+		
+		if(this.hayCartaCampo) {
+			cartaColocada.add(this.cartaCampo);
+		}
+		
+		return cartaColocada;
 	}
 }

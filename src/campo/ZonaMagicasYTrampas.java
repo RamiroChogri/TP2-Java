@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import cartas.Destruible;
 import cartas.Activable;
+import cartas.Atacable;
 import cartas.CartaMagica;
 import cartas.CartaMonstruo;
 import cartas.CartaTrampa;
@@ -137,5 +138,20 @@ public class ZonaMagicasYTrampas extends Zona{
 		}
 		if( !encontrado ) { throw new NoHayMonstruoException(); };
 			return carta;
+	}
+
+	public LinkedList<Activable> obtenerCartasColocadas() {
+		
+		LinkedList<Activable> cartasColocadas = new LinkedList<Activable>();
+		Activable cartaActual;
+		Iterator<Activable> posicionesIterator = this.posiciones.iterator();
+		
+		while(posicionesIterator.hasNext()) {
+			
+			cartaActual = posicionesIterator.next();
+			cartasColocadas.add(cartaActual);
+		}
+		
+		return cartasColocadas;
 	}
 }

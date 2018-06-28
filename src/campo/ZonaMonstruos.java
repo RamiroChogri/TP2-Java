@@ -221,6 +221,21 @@ public class ZonaMonstruos extends Zona {
 		
 		return cartasAtacables;
 	}
+
+	public LinkedList<Atacable> obtenerMonstruosColocados() {
+		LinkedList<Atacable> cartasColocadas = new LinkedList<Atacable>();
+		Atacable cartaActual;
+		
+		Iterator<Atacable> posicionesIterator = this.posiciones.iterator();
+		while(posicionesIterator.hasNext()) {
+			
+			cartaActual = posicionesIterator.next();
+			cartasColocadas.add(cartaActual);
+		}
+		
+		
+		return cartasColocadas;
+	}
 	
 
 }

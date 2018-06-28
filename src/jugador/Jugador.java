@@ -281,4 +281,23 @@ public class Jugador implements Daniable{
 		return this.mano.obtenerCartas();
 	}
 	
+	public LinkedList<Atacable> obtenerMonstruosColocados(){
+		LinkedList<Atacable> monstruosColocados = new LinkedList<Atacable>();
+		
+		monstruosColocados = this.campoPropio.obtenerCartasEnZonaMonstruo();
+		
+		return monstruosColocados;
+	}
+	
+	public LinkedList<Activable> obtenerMagicasYTrampasColocadas(){
+		LinkedList<Activable> cartasColocadas = this.campoPropio.obtenerMagicasYTrampasColocadas();
+		
+		return cartasColocadas;
+	}
+	
+	public LinkedList<Activable> obtenerCartaCampoColocada(){
+		
+		return this.campoPropio.obtenerCartaCampoColocada();
+	}
+	
 }

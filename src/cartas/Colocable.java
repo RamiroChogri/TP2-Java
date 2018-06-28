@@ -22,6 +22,10 @@ public interface Colocable {
 	
 	public boolean esAtacable();
 	
+	public boolean estaColocadaBocaArriba();
+	
+	public boolean estaColocadaBocaAbajo();
+	
 	
 	//los metodos para poner los nombres de las imagenes para que la interfaz
 	//la busque cuando se saca la carta del mazo
