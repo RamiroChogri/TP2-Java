@@ -12,14 +12,13 @@ public class FaseAtaqueYTrampas extends Fase {
 	
 	private Scanner teclado;
 	private Fase faseSiguiente;
-	private boolean esPrimerTurno;
+	public static boolean esPrimerTurno;
 	private String nombreFase;
 	private Jugador jugadorEnTurno;
 	
 	public FaseAtaqueYTrampas(Jugador jugadorRecibido) {
 		this.teclado = new Scanner(System.in);
 		this.faseSiguiente = null;
-		this.esPrimerTurno = true;
 		this.nombreFase = "Fase Ataque y Trampas";
 		this.jugadorEnTurno = jugadorRecibido;
 	}
@@ -36,7 +35,7 @@ public class FaseAtaqueYTrampas extends Fase {
 			estadoADevolver = this.ejecutarFaseCuandoNoEsPrimerTurno(jugadorEnTurno, estadoPartidaActual);
 			
 		} else {
-			esPrimerTurno = false;
+			FaseAtaqueYTrampas.esPrimerTurno = false;
 		}
 		
 		return estadoADevolver;

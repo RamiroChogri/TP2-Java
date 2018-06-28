@@ -153,7 +153,7 @@ public class CartaMagica implements Activable{
 		String estado = this.pedirEstadoCarta();
 		EstadoCarta estadoADevolver = null;
 		
-		if (estado == "arriba") {
+		if (estado.equals("arriba")) {
 			estadoADevolver = new EstadoCartaColocadaBocaArriba();
 		
 		} else {

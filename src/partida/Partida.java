@@ -27,6 +27,7 @@ public class Partida {
 		
 		this.jugadorYugi = new Jugador();
 		this.jugadorKaiba = new Jugador();
+		
 		this.jugadorYugi.setName("Yugi");
 		this.jugadorKaiba.setName("Kaiba");
 		this.jugadorEnTurno = this.elegirQuienComienza(jugadorYugi, jugadorKaiba);
@@ -38,6 +39,8 @@ public class Partida {
 		
 		this.seJugoCartaMonstruo = false;
 		
+		FaseAtaqueYTrampas.esPrimerTurno = true;
+		
 		this.faseActual = new FaseInicial(this.jugadorEnTurno);
 		
 		this.estado = this.faseActual.ejecutarFase(this.estado);
@@ -45,26 +48,26 @@ public class Partida {
 		
 	}
 	
-//	public static void main(String[] args) {
-//		Partida partida = new Partida();
-//		partida.comienzaElDuelo();
-//	}
+	public static void main(String[] args) {
+		Partida partida = new Partida();
+		partida.comienzaElDuelo();
+	}
 	
 	public void comienzaElDuelo() {
-		Jugador jugadorEnTurno = null;
-		String nombreJugadorEnTurno;
-		Jugador jugadorYugi = new Jugador();
-		Jugador jugadorKaiba = new Jugador();
-		jugadorYugi.setName("Yugi");
-		jugadorKaiba.setName("Kaiba");
-		String ganador;
-		
-		jugadorEnTurno = this.elegirQuienComienza(jugadorYugi, jugadorKaiba);
-		
-		jugadorYugi.enfrentarseA(jugadorKaiba);
-		jugadorKaiba.enfrentarseA(jugadorYugi);
-		
-		int vidaJugadorEnTurno;
+//		Jugador jugadorEnTurno = null;
+//		String nombreJugadorEnTurno;
+//		Jugador jugadorYugi = new Jugador();
+//		Jugador jugadorKaiba = new Jugador();
+//		jugadorYugi.setName("Yugi");
+//		jugadorKaiba.setName("Kaiba");
+//		String ganador;
+//		
+//		jugadorEnTurno = this.elegirQuienComienza(jugadorYugi, jugadorKaiba);
+//		
+//		jugadorYugi.enfrentarseA(jugadorKaiba);
+//		jugadorKaiba.enfrentarseA(jugadorYugi);
+//		
+//		int vidaJugadorEnTurno;
 		
 		while (this.estado.continuaLaPartida()) {
 		
@@ -76,8 +79,8 @@ public class Partida {
 			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
 			
 			this.estado = this.faseActual.ejecutarFase(this.estado);
-			vidaJugadorEnTurno = jugadorEnTurno.obtenerVida();
-			System.out.println("Al jugador " + nombreJugadorEnTurno + " le quedan " + vidaJugadorEnTurno + " puntos de vida");
+			vidaDeJugadorEnTurno = jugadorEnTurno.obtenerVida();
+			System.out.println("Al jugador " + nombreJugadorEnTurno + " le quedan " + vidaDeJugadorEnTurno + " puntos de vida");
 			System.out.println("Al jugador " + jugadorEnTurno.obtenerJugadorEnemigo().obtenerNombre() + " le quedan " +jugadorEnTurno.obtenerJugadorEnemigo().obtenerVida() + " puntos de vida" );
 			
 			this.faseActual = this.faseActual.obtenerFaseSiguiente();
