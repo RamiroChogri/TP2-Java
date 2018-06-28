@@ -27,6 +27,22 @@ public class ManoJugador extends HBox implements PathArchivos {
 		
 	}
 	
+	public void darVueltaCartasEnManoJugador(CajaInformacion cajaInformacion, LinkedList<Colocable> cartasEnMano) {
+		this.limpiarPosiciones();
+		Colocable cartaActual = null;
+		Image imagen;
+		Iterator<Colocable> posicionesIterador = cartasEnMano.iterator();
+		while(posicionesIterador.hasNext()) {
+			cartaActual = posicionesIterador.next();
+			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
+			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion));
+			this.espaciosEnMano.getLast().pintarCartaBocaAbajo(imagen);
+			this.getChildren().add(this.espaciosEnMano.getLast());
+		}
+		
+		
+		
+	}
 	
 	public void pintarCartasEnManoJugador(CajaInformacion cajaInformacion, LinkedList<Colocable> cartasEnMano) {
 		
