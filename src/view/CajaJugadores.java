@@ -8,6 +8,9 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import jugador.Jugador;
 import partida.Partida;
+import view.handlers.BotonFinalizarTurnoHandler;
+import view.handlers.BotonPlayMusicaDeFondoHandler;
+import view.handlers.BotonSiguienteFaseHandler;
 import viewSupportFiles.PathArchivos;
 
 public class CajaJugadores extends VBox implements PathArchivos{
@@ -16,10 +19,11 @@ public class CajaJugadores extends VBox implements PathArchivos{
 	 String pathImagenKaiba = pathDeImagenes+"kaiba%20perfil.png";
 	 VistaJugador perfilJugador1;   
 	 VistaJugador perfilJugador2;
-	 
+	 Partida duelo;
 	    
-	public CajaJugadores(CajaInformacion cajaInformacion,Partida duelo) {
+	public CajaJugadores(CajaInformacion cajaInformacion, Partida dueloRecibido) {
 		
+		this.duelo = dueloRecibido;
 		final ImageView yugiView = new ImageView();
     	yugiView.setFitWidth(150);
     	yugiView.setFitHeight(150);
@@ -40,8 +44,15 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	
     	Button botonFinalizarTurno = new Button("Finalizar Turno");
     	botonFinalizarTurno.getStylesheets().add("view/StyleButtonCajaJugador.css");
+    	BotonFinalizarTurnoHandler finalizarTurno = new BotonFinalizarTurnoHandler(this.duelo);
+        botonFinalizarTurno.setOnAction(finalizarTurno);
+    	
+    	
     	Button botonSiguienteFase = new Button("Siguiente fase");
     	botonSiguienteFase.getStylesheets().add("view/StyleButtonCajaJugador.css");
+    	BotonSiguienteFaseHandler siguienteFase = new BotonSiguienteFaseHandler(this.duelo);
+    	botonSiguienteFase.setOnAction(siguienteFase);
+    	
     	
     	this.setSpacing(10);
     	this.setAlignment(Pos.TOP_LEFT);
