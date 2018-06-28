@@ -15,15 +15,19 @@ import viewSupportFiles.PathArchivos;
 
 public class CajaJugadores extends VBox implements PathArchivos{
 
-	 String pathImagenYugi = pathDeImagenes+"yugiPerfil.png";
-	 String pathImagenKaiba = pathDeImagenes+"kaiba%20perfil.png";
-	 VistaJugador perfilJugador1;   
-	 VistaJugador perfilJugador2;
-	 Partida duelo;
+	private String pathImagenYugi = pathDeImagenes+"yugiPerfil.png";
+	private String pathImagenKaiba = pathDeImagenes+"kaiba%20perfil.png";
+	private VistaJugador perfilJugador1;   
+	private VistaJugador perfilJugador2;
+	private Partida duelo;
+	private Jugador jugador; 
+	ContenedorDelDuelo contenedorDelDuelo;
 	    
-	public CajaJugadores(CajaInformacion cajaInformacion, Partida dueloRecibido) {
+	public CajaJugadores(CajaInformacion cajaInformacion, Partida dueloRecibido, Jugador jugadorEnTurno, ContenedorDelDuelo contenedorAColocar) {
 		
 		this.duelo = dueloRecibido;
+		this.jugador = jugadorEnTurno;
+		this.contenedorDelDuelo = contenedorAColocar;
 		final ImageView yugiView = new ImageView();
     	yugiView.setFitWidth(150);
     	yugiView.setFitHeight(150);
@@ -37,20 +41,24 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	
     	Image yugi = new Image(pathImagenYugi);
     	yugiView.setImage(yugi);
-		this.perfilJugador1 = new VistaJugador(yugiView,cajaInformacion); 
+		
+    	String nombreFase = duelo.getNombreFase();
+    	
+    	this.perfilJugador1 = new VistaJugador(yugiView,cajaInformacion, nombreFase); 
     	perfilJugador1.setAlignment(Pos.BOTTOM_LEFT);
-    	this.perfilJugador2 = new VistaJugador(kaibaView,cajaInformacion); 
+    	
+    	this.perfilJugador2 = new VistaJugador(kaibaView,cajaInformacion, nombreFase); 
     	perfilJugador2.setAlignment(Pos.TOP_RIGHT);
     	
     	Button botonFinalizarTurno = new Button("Finalizar Turno");
     	botonFinalizarTurno.getStylesheets().add("view/StyleButtonCajaJugador.css");
-    	BotonFinalizarTurnoHandler finalizarTurno = new BotonFinalizarTurnoHandler(this.duelo);
+    	BotonFinalizarTurnoHandler finalizarTurno = new BotonFinalizarTurnoHandler(this.duelo, this.jugador, this.contenedorDelDuelo);
         botonFinalizarTurno.setOnAction(finalizarTurno);
     	
     	
     	Button botonSiguienteFase = new Button("Siguiente fase");
     	botonSiguienteFase.getStylesheets().add("view/StyleButtonCajaJugador.css");
-    	BotonSiguienteFaseHandler siguienteFase = new BotonSiguienteFaseHandler(this.duelo);
+    	BotonSiguienteFaseHandler siguienteFase = new BotonSiguienteFaseHandler(this.duelo, this.jugador, this.contenedorDelDuelo);
     	botonSiguienteFase.setOnAction(siguienteFase);
     	
     	
@@ -65,5 +73,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
 	public void actualizarVida(Jugador yugi, Jugador kaiba) {
 		this.perfilJugador1.updateVida(Integer.toString(yugi.obtenerVida()));
 		this.perfilJugador2.updateVida(Integer.toString(kaiba.obtenerVida()));
+		this.perfilJugador1.updateFase(this.duelo.getNombreFase());
+		this.perfilJugador2.updateFase(this.duelo.getNombreFase());
 	}
 }

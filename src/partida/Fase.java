@@ -5,19 +5,18 @@ import jugador.Jugador;
 public abstract class Fase {
 
 	private Fase faseSiguiente;
+	private Jugador jugadorEnTurno;
 	
 	public boolean esFasePreparacion() {
 		return false;
 	}
 	
-	public abstract void setFaseSiguiente(Fase faseSiguienteAColocar); 
+	public abstract String getNombreFase();
 	
 	public abstract Fase obtenerFaseSiguiente();
 	
-	public abstract EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaActual);
+	public abstract EstadoPartida ejecutarFase(EstadoPartida estadoPartidaActual);
 	
-	public Jugador obtenerJugadorEnTurno(Jugador jugadorEnTurno) {
-		return jugadorEnTurno;
-	}
+	public abstract Jugador obtenerJugadorEnTurno();
 	
 }

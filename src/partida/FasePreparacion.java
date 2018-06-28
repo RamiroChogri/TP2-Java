@@ -19,10 +19,18 @@ public class FasePreparacion extends Fase {
 
 	private Scanner teclado;
 	private Fase faseSiguiente;
+	private String nombreFase;
+	private Jugador jugadorEnTurno;
 	
-	public FasePreparacion() {
+	public FasePreparacion(Jugador jugadorRecibido) {
 		this.teclado = new Scanner(System.in);
 		this.faseSiguiente = null;
+		this.nombreFase = "Fase Preparacion";
+		this.jugadorEnTurno = jugadorRecibido;
+	}
+	
+	public String getNombreFase() {
+		return this.nombreFase;
 	}
 	
 	/*
@@ -33,7 +41,7 @@ public class FasePreparacion extends Fase {
 	 */
 	
 	@Override
-	public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaRecibido) {
+	public EstadoPartida ejecutarFase(EstadoPartida estadoPartidaRecibido) {
 		boolean sePudoColocarLaCartaMonstruo = false;
 		while (!sePudoColocarLaCartaMonstruo && (jugadorEnTurno.obtenerCantidadCartasEnZonaMonstruos() < 5)) {
 			try {
@@ -219,19 +227,20 @@ public class FasePreparacion extends Fase {
 		jugadorEnTurno.colocar(cartaAColocar, estadoDeCarta);
 			
 	}
-	
-	@Override
-	public void setFaseSiguiente(Fase faseSiguienteAColocar) {
-		this.faseSiguiente = faseSiguienteAColocar;
-	}
 
 	@Override
 	public Fase obtenerFaseSiguiente() {
-		return this.faseSiguiente;
+		Fase faseADevolver = new FaseAtaqueYTrampas(this.jugadorEnTurno);
+		return faseADevolver;
 	}
 	
 	@Override
 	public boolean esFasePreparacion() {
 		return true;
+	}
+	
+	@Override
+	public Jugador obtenerJugadorEnTurno() {
+		return this.jugadorEnTurno;
 	}
 }

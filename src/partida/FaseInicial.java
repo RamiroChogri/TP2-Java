@@ -5,13 +5,21 @@ import jugador.Jugador;
 public class FaseInicial extends Fase {
 
 	private Fase faseSiguiente;
+	private String nombreFase;
+	private Jugador jugadorEnTurno;
 	
-	public FaseInicial() {
+	public FaseInicial(Jugador jugadorRecibido) {
 		this.faseSiguiente = null;
+		this.nombreFase = "Fase Inicial";
+		this.jugadorEnTurno = jugadorRecibido;
+	}
+	
+	public String getNombreFase() {
+		return this.nombreFase;
 	}
 	
 	@Override
-	public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaActual) {
+	public EstadoPartida ejecutarFase(EstadoPartida estadoPartidaActual) {
 		
 		String nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
 		System.out.println("Turno del jugador " + nombreJugadorEnTurno);
@@ -26,19 +34,16 @@ public class FaseInicial extends Fase {
 		return estadoPartidaADevolver;
 	}
 
-	@Override
-	public void setFaseSiguiente(Fase faseSiguienteAColocar) {
-		this.faseSiguiente = faseSiguienteAColocar;
-	}
-
+	
 	@Override
 	public Fase obtenerFaseSiguiente() {
-		return this.faseSiguiente;
+		Fase faseADevolver = new FasePreparacion(this.jugadorEnTurno);
+		return faseADevolver;
 	}
 
 	@Override
-	public Jugador obtenerJugadorEnTurno(Jugador jugadorEnTurno) {
-		return jugadorEnTurno.obtenerJugadorEnemigo();
+	public Jugador obtenerJugadorEnTurno() {
+		return jugadorEnTurno;
 	}
 
 }

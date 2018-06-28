@@ -25,8 +25,14 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	
 			this.barraMenu = new MenuDelDuelo(stage,this.pathMusicaDeBatalla);
             this.setTop(barraMenu);
+            Jugador jugadorEnTurno;
+            if (duelo.estaYugiEnTurno()) {
+            	jugadorEnTurno = duelo.getJugadorYugi();
+            } else {
+            	jugadorEnTurno = duelo.getJugadorKaiba();
+            }
             
-            this.cajaIzquierda = new CajaJugadores(this.cajaDerecha,duelo);
+            this.cajaIzquierda = new CajaJugadores(this.cajaDerecha,duelo,jugadorEnTurno, this);
 	    	this.setLeft(cajaIzquierda);
             
 	    	this.cajaCentro = new CajaCampo(cajaDerecha,duelo);

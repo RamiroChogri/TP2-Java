@@ -10,10 +10,7 @@ import view.handlers.EscOnKeyPressedHandler;
 
 public class Partida {
 
-	private Fase faseInicial;
-	private Fase fasePreparacion;
-	private Fase faseAtaqueYTrampas; 
-	private Fase faseFinal;
+	
 	private Fase faseActual;
 	private EstadoPartida estado;
 	private boolean seJugoCartaMonstruo;
@@ -25,20 +22,8 @@ public class Partida {
 	int vidaDeJugadorEnTurno;
 	
 	public Partida() {
-		this.faseInicial = new FaseInicial();
-		this.fasePreparacion = new FasePreparacion();
-		this.faseAtaqueYTrampas = new FaseAtaqueYTrampas();
-		this.faseFinal = new FaseFinal();
-		
-		this.faseInicial.setFaseSiguiente(this.fasePreparacion);
-		this.fasePreparacion.setFaseSiguiente(this.faseAtaqueYTrampas);
-		this.faseAtaqueYTrampas.setFaseSiguiente(this.faseFinal);
-		this.faseFinal.setFaseSiguiente(this.faseInicial);
-		
-		this.faseActual = this.faseInicial;
 		
 		this.estado = new EstadoPartidaEnJuego();
-		
 		
 		this.jugadorYugi = new Jugador();
 		this.jugadorKaiba = new Jugador();
@@ -52,6 +37,11 @@ public class Partida {
 		this.vidaDeJugadorEnTurno = 8000;
 		
 		this.seJugoCartaMonstruo = false;
+		
+		this.faseActual = new FaseInicial(this.jugadorEnTurno);
+		
+		this.estado = this.faseActual.ejecutarFase(this.estado);
+		
 		
 	}
 	
@@ -82,10 +72,10 @@ public class Partida {
 				this.seJugoCartaMonstruo = false;
 			}
 			
-			jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno(jugadorEnTurno);
+			jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno();
 			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
 			
-			this.estado = this.faseActual.ejecutarFase(jugadorEnTurno, this.estado);
+			this.estado = this.faseActual.ejecutarFase(this.estado);
 			vidaJugadorEnTurno = jugadorEnTurno.obtenerVida();
 			System.out.println("Al jugador " + nombreJugadorEnTurno + " le quedan " + vidaJugadorEnTurno + " puntos de vida");
 			System.out.println("Al jugador " + jugadorEnTurno.obtenerJugadorEnemigo().obtenerNombre() + " le quedan " +jugadorEnTurno.obtenerJugadorEnemigo().obtenerVida() + " puntos de vida" );
@@ -151,6 +141,15 @@ public class Partida {
 	
 	public void finalizarTurno() {
 		this.jugadorEnTurno = this.jugadorEnTurno.obtenerJugadorEnemigo();
-		this.faseActual = this.faseInicial;
+		this.faseActual = new FaseInicial(this.jugadorEnTurno);
+	}
+	
+	public String getNombreFase() {
+		return this.faseActual.getNombreFase();
+	}
+	
+	public Jugador obtenerJugadorEnTurno() {
+		this.jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno();
+		return this.jugadorEnTurno;
 	}
 }

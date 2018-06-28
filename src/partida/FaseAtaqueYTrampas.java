@@ -13,15 +13,23 @@ public class FaseAtaqueYTrampas extends Fase {
 	private Scanner teclado;
 	private Fase faseSiguiente;
 	private boolean esPrimerTurno;
+	private String nombreFase;
+	private Jugador jugadorEnTurno;
 	
-	public FaseAtaqueYTrampas() {
+	public FaseAtaqueYTrampas(Jugador jugadorRecibido) {
 		this.teclado = new Scanner(System.in);
 		this.faseSiguiente = null;
 		this.esPrimerTurno = true;
+		this.nombreFase = "Fase Ataque y Trampas";
+		this.jugadorEnTurno = jugadorRecibido;
+	}
+	
+	public String getNombreFase() {
+		return this.nombreFase;
 	}
 	
 	@Override
-	public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaActual) {
+	public EstadoPartida ejecutarFase(EstadoPartida estadoPartidaActual) {
 		EstadoPartida estadoADevolver = estadoPartidaActual;
 		if (!esPrimerTurno) {
 			
@@ -153,13 +161,14 @@ public class FaseAtaqueYTrampas extends Fase {
 	}
 
 	@Override
-	public void setFaseSiguiente(Fase faseSiguienteAColocar) {
-		this.faseSiguiente = faseSiguienteAColocar;
-	}
-
-	@Override
 	public Fase obtenerFaseSiguiente() {
-		return this.faseSiguiente;
+		Fase faseADevolver = new FaseFinal(this.jugadorEnTurno);
+		return faseADevolver;
+	}
+	
+	@Override
+	public Jugador obtenerJugadorEnTurno() {
+		return this.jugadorEnTurno;
 	}
 	
 }

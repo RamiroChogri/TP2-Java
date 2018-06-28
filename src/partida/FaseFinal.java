@@ -9,14 +9,22 @@ public class FaseFinal extends Fase {
 
 		private Scanner teclado;
 		private Fase faseSiguiente;
+		private Jugador jugadorEnTurno;
+		private String nombreFase;
 		
-		public FaseFinal() {
+		public FaseFinal(Jugador jugadorRecibido) {
 			this.teclado = new Scanner(System.in);
 			this.faseSiguiente = null;
+			this.nombreFase = "Fase Final";
+			this.jugadorEnTurno = jugadorRecibido;
+		}
+		
+		public String getNombreFase() {
+			return this.nombreFase;
 		}
 	
 		@Override
-		public EstadoPartida ejecutarFase(Jugador jugadorEnTurno, EstadoPartida estadoPartidaRecibido) {
+		public EstadoPartida ejecutarFase(EstadoPartida estadoPartidaRecibido) {
 			
 			LinkedList<String> magicasActivables = jugadorEnTurno.obtenerNombresDeCartasMagicasEnCampoPropio();
 			EstadoPartida estadoPartidaADevolver = estadoPartidaRecibido;
@@ -67,13 +75,15 @@ public class FaseFinal extends Fase {
 			return nombreCartaElegida;
 		}
 		
-		@Override
-		public void setFaseSiguiente(Fase faseSiguienteAColocar) {
-			this.faseSiguiente = faseSiguienteAColocar;
-		}
 
 		@Override
 		public Fase obtenerFaseSiguiente() {
-			return this.faseSiguiente;
+			Fase faseADevolver = new FaseInicial(jugadorEnTurno.obtenerJugadorEnemigo());
+			return faseADevolver;
+		}
+		
+		@Override
+		public Jugador obtenerJugadorEnTurno() {
+			return this.jugadorEnTurno;
 		}
 }
