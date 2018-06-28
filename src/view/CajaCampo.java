@@ -19,28 +19,28 @@ public class CajaCampo extends VBox implements PathArchivos{
 	
 	EspacioCartasCampo campoJ1;
 	EspacioCartasCampo campoJ2;
-	ManoJugador manoJugador1;
-	ManoJugador manoJugador2;
+	ManoJugador manoYugi;
+	ManoJugador manoKaiba;
 	
 	public CajaCampo(CajaInformacion cajaInformacion,Partida duelo) {
 		
 		this.cajaInformacion = cajaInformacion;
 		
-		this.manoJugador1 = new ManoJugador();
-		this.manoJugador1.setAlignment(Pos.BOTTOM_CENTER);
+		this.manoYugi = new ManoJugador(duelo,duelo.getJugadorYugi());
+		this.manoYugi.setAlignment(Pos.BOTTOM_CENTER);
 		
-		this.manoJugador2 = new ManoJugador();
-		this.manoJugador2.setAlignment(Pos.TOP_CENTER);
+		this.manoKaiba = new ManoJugador(duelo,duelo.getJugadorKaiba());
+		this.manoKaiba.setAlignment(Pos.TOP_CENTER);
 		
-		this.campoJ1 = new EspacioCartasCampo(cajaInformacion);
-		this.campoJ2 = new EspacioCartasCampo(180,cajaInformacion);
+		this.campoJ1 = new EspacioCartasCampo(cajaInformacion,duelo);
+		this.campoJ2 = new EspacioCartasCampo(180,cajaInformacion,duelo);
 		
 		this.setSpacing(15);
 		this.setAlignment(Pos.CENTER);
-		VBox.setVgrow(manoJugador2, Priority.ALWAYS);
-		VBox.setVgrow(manoJugador1, Priority.ALWAYS);
+		VBox.setVgrow(manoKaiba, Priority.ALWAYS);
+		VBox.setVgrow(manoYugi, Priority.ALWAYS);
 		
-		this.getChildren().addAll(manoJugador2,campoJ2,campoJ1,manoJugador1);
+		this.getChildren().addAll(manoKaiba,campoJ2,campoJ1,manoYugi);
 		
 		this.setStyle("-fx-background-color: BLACK");
 		
@@ -64,8 +64,8 @@ public class CajaCampo extends VBox implements PathArchivos{
 		
 		this.actualizarCartasEnCampoCentral(yugi, kaiba);
 		
-		this.manoJugador1.pintarCartasEnManoJugador(cajaInformacion, yugi.obtenerCartasEnMano());
-		this.manoJugador2.darVueltaCartasEnManoJugador(this.cajaInformacion, kaiba.obtenerCartasEnMano());
+		this.manoYugi.pintarCartasEnManoJugador(cajaInformacion);
+		this.manoKaiba.darVueltaCartasEnManoJugador(this.cajaInformacion);
 		
 	}
 	
@@ -73,8 +73,8 @@ public class CajaCampo extends VBox implements PathArchivos{
 		
 		this.actualizarCartasEnCampoCentral(yugi, kaiba);
 		
-		this.manoJugador1.darVueltaCartasEnManoJugador(this.cajaInformacion, yugi.obtenerCartasEnMano());
-		this.manoJugador2.pintarCartasEnManoJugador(cajaInformacion, kaiba.obtenerCartasEnMano());
+		this.manoYugi.darVueltaCartasEnManoJugador(this.cajaInformacion);
+		this.manoKaiba.pintarCartasEnManoJugador(cajaInformacion);
 		
 		
 	}

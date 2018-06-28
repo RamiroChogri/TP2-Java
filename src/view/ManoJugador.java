@@ -7,27 +7,27 @@ import cartas.Colocable;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import jugador.Jugador;
+import partida.Partida;
 import viewSupportFiles.PathArchivos;
 
 public class ManoJugador extends HBox implements PathArchivos {
 
 	private LinkedList<EspacioCartaEnMano> espaciosEnMano;
+	private Jugador jugadorDeLaMano;
 	
-	public ManoJugador() {
+	public ManoJugador(Partida duelo, Jugador jugadorDeLaMano) {
 		this.setAlignment(Pos.BOTTOM_CENTER);
 		this.setSpacing(15);
 		this.espaciosEnMano = new LinkedList<EspacioCartaEnMano>();
-
+		this.jugadorDeLaMano = jugadorDeLaMano;
 	}
 	
-	public void agregarCarta() {
+	
+	public void darVueltaCartasEnManoJugador(CajaInformacion cajaInformacion) {
 		
-	}
-	
-	public void darVueltaCartasEnManoJugador(CajaInformacion cajaInformacion, LinkedList<Colocable> cartasEnMano) {
+		LinkedList<Colocable> cartasEnMano = this.jugadorDeLaMano.obtenerCartasEnMano();
+		
 		this.limpiarPosiciones();
 		Colocable cartaActual = null;
 		Image imagen;
@@ -44,7 +44,9 @@ public class ManoJugador extends HBox implements PathArchivos {
 		
 	}
 	
-	public void pintarCartasEnManoJugador(CajaInformacion cajaInformacion, LinkedList<Colocable> cartasEnMano) {
+	public void pintarCartasEnManoJugador(CajaInformacion cajaInformacion) {
+		
+		LinkedList<Colocable> cartasEnMano = this.jugadorDeLaMano.obtenerCartasEnMano();
 		
 		this.limpiarPosiciones();
 		Colocable cartaActual = null;
