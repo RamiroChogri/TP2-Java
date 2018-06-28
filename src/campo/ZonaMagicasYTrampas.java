@@ -26,14 +26,11 @@ public class ZonaMagicasYTrampas extends Zona{
 	
 	public void colocarCarta(Activable cartaAColocar) {
 		hayEspacio = this.hayEspacioDisponible();
-		try {
-			if ( !hayEspacio ) {
-				throw new NoHayLugarVacioException();
-			}
-			posiciones.add(cartaAColocar);
-		} catch (NoHayLugarVacioException noHay) {
-		//	throw new ZonaMagicaLlenaException();
+		if ( !hayEspacio ) {
+			throw new NoHayLugarVacioException();
 		}
+		posiciones.add(cartaAColocar);
+		
 	}
 		
 	public boolean hayEspacioDisponible() {	
@@ -92,14 +89,11 @@ public class ZonaMagicasYTrampas extends Zona{
 	@Override
 	public void colocarCarta(Colocable cartaAColocar) {
 		hayEspacio = this.hayEspacioDisponible();
-		try {
-			if ( !hayEspacio ) {
-				throw new NoHayLugarVacioException();
-			}
-			posiciones.add((Activable) cartaAColocar);
-		} catch (NoHayLugarVacioException noHay) {
-		//	throw new ZonaMagicaLlenaException();
+		if ( !hayEspacio ) {
+			throw new NoHayLugarVacioException();
 		}
+		posiciones.add((Activable) cartaAColocar);
+		
 	}
 
 	public LinkedList<String> obtenerNombresDeCartasMagicas() {

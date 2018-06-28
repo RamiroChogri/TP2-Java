@@ -5,6 +5,7 @@ import cartas.CartaMagica;
 import cartas.CartaTrampa;
 import cartas.Colocable;
 import estadoCarta.*;
+import exceptions.NoHayLugarVacioException;
 import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -45,12 +46,16 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
         		this.menuCartaMagica(t);
         	} else if (this.carta.getClass() == CartaTrampa.class) {
         		EstadoCarta estadoCarta = new EstadoCartaColocadaBocaAbajo();
-        		this.jugador.colocar(carta, estadoCarta);
-        		this.jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-        		if (duelo.estaYugiEnTurno()) {
-        			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        		} else {
-        			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+        		try {
+        			this.jugador.colocar(carta, estadoCarta);
+        			this.jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+        			if (duelo.estaYugiEnTurno()) {
+        				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+        			} else {
+        				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+        			}
+        		} catch (NoHayLugarVacioException e) {
+        			
         		}
         	} else {
         		EstadoCarta estadoCarta = new EstadoCartaColocadaBocaArriba();
@@ -84,18 +89,22 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	        Modo modoACambiar = new ModoDefensa();
     	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaArriba();
     	        try {
-    	        	carta.cambiarA(modoACambiar);
-    	        	jugador.colocar(carta, estadoACambiar);
-    	        	jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-    	        	duelo.setSeJugoCartaMonstruo();
-    	        	if (duelo.estaYugiEnTurno()) {
-    	        		cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-    	        	} else {
-    	        		cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-    	        	}
-    	        } catch (NoHaySuficientesMonstruosParaSacrificarException e) {
-    	    		
-    	    	}
+    	        	try {
+    	        		carta.cambiarA(modoACambiar);
+    	        		jugador.colocar(carta, estadoACambiar);
+    	        		jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+    	        		duelo.setSeJugoCartaMonstruo();
+    	        		if (duelo.estaYugiEnTurno()) {
+    	        			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    	        		} else {
+    	        			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    	        		}
+    	        	} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
+    	        	
+    	        	} 
+    	        }catch (NoHayLugarVacioException e) {
+    	    	
+    	        }
     	    }
     	});
     	bocaAbajoModoDefensa.setOnAction(new EventHandler<ActionEvent>() {
@@ -104,18 +113,22 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	        Modo modoACambiar = new ModoDefensa();
     	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaAbajo();
     	    	try {
-    	    		carta.cambiarA(modoACambiar);
-    	    		jugador.colocar(carta, estadoACambiar);
-    	    		jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-    	    		duelo.setSeJugoCartaMonstruo();
-    	    		if (duelo.estaYugiEnTurno()) {
-    	    			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-    	    		} else {
-    	    			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-    	    		}
-    	    	} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
+    	    		try {
+    	    			carta.cambiarA(modoACambiar);
+    	    			jugador.colocar(carta, estadoACambiar);
+    	    			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+    	    			duelo.setSeJugoCartaMonstruo();
+    	    			if (duelo.estaYugiEnTurno()) {
+    	    				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    	    			} else {
+    	    				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    	    			}
+    	    		} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
     	    		
-    	    	}    	    
+    	    		}
+    	    	}  catch (NoHayLugarVacioException e) {
+    	    		
+    	    	}
     	    }
     	});
     	cancelar.setOnAction(new EventHandler<ActionEvent>() {
@@ -138,12 +151,16 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	    @Override
     	    public void handle(ActionEvent event) {
     	    	EstadoCarta estadoCarta = new EstadoCartaColocadaBocaArriba();
-        		jugador.colocar(carta, estadoCarta);
-        		jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-        		if (duelo.estaYugiEnTurno()) {
-        			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        		} else {
-        			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+        		try {
+        			jugador.colocar(carta, estadoCarta);
+        			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+        			if (duelo.estaYugiEnTurno()) {
+        				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+        			} else {
+        				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+        			}
+        		} catch (NoHayLugarVacioException e) {
+        			
         		}
     	    }
     	});
@@ -151,12 +168,16 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	    @Override
     	    public void handle(ActionEvent event) {
     	    	EstadoCarta estadoCarta = new EstadoCartaColocadaBocaAbajo();
-        		jugador.colocar(carta, estadoCarta);
-        		jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-        		if (duelo.estaYugiEnTurno()) {
-        			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        		} else {
-        			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+        		try {
+        			jugador.colocar(carta, estadoCarta);
+        			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+        			if (duelo.estaYugiEnTurno()) {
+        				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+        			} else {
+        				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+        			}
+        		} catch (NoHayLugarVacioException e) {
+        			
         		}
     	    }
     	});
