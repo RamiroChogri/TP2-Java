@@ -15,12 +15,14 @@ public class ManoJugador extends HBox implements PathArchivos {
 
 	private LinkedList<EspacioCartaEnMano> espaciosEnMano;
 	private Jugador jugadorDeLaMano;
+	private Partida partida;
 	
 	public ManoJugador(Partida duelo, Jugador jugadorDeLaMano) {
 		this.setAlignment(Pos.BOTTOM_CENTER);
 		this.setSpacing(15);
 		this.espaciosEnMano = new LinkedList<EspacioCartaEnMano>();
 		this.jugadorDeLaMano = jugadorDeLaMano;
+		this.partida = duelo; 
 	}
 	
 	
@@ -35,7 +37,7 @@ public class ManoJugador extends HBox implements PathArchivos {
 		while(posicionesIterador.hasNext()) {
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion));
+			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion, this.partida, cartaActual));
 			this.espaciosEnMano.getLast().pintarCartaBocaAbajo(imagen);
 			this.getChildren().add(this.espaciosEnMano.getLast());
 		}
@@ -55,7 +57,7 @@ public class ManoJugador extends HBox implements PathArchivos {
 		while(posicionesIterador.hasNext()) {
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion));
+			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion, this.partida, cartaActual));
 			this.espaciosEnMano.getLast().pintarCartaBocaArriba(imagen);
 			this.getChildren().add(this.espaciosEnMano.getLast());
 		}
