@@ -4,7 +4,7 @@ import estadoCarta.EstadoCarta;
 import jugador.Jugador;
 import modos.Modo;
 
-public interface Atacable extends Destruible, Colocable,Daniable{
+public interface Atacable extends Destruible, Colocable{
 
 	public int obtenerDanioAlHaberSidoDestruida();
 	
@@ -45,5 +45,7 @@ public interface Atacable extends Destruible, Colocable,Daniable{
 	public void eliminarModificadorDeAtaque();
 
 	public void eliminarModificadorDeDefensa();
+
+	public void recibirAtaque(Atacable atacante);
 
 }

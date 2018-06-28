@@ -9,7 +9,7 @@ import modos.*;
 import efectos.Efecto;
 import estadoCarta.*;
 
-public class Jugador implements Daniable{
+public class Jugador {
 
 		private Campo campoPropio;
 		private Campo campoEnemigo;
