@@ -115,4 +115,10 @@ public class EspacioCartasCampo extends GridPane{
 
 	    return cartaBuscada;
 	}
+	
+	public void limpiarCampo() {
+		this.setEspaciosDeCampo();
+	}
+	
+	
 }

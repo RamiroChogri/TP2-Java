@@ -1,5 +1,10 @@
 package view;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
+import cartas.Activable;
+import cartas.Atacable;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Priority;
@@ -41,9 +46,6 @@ public class CajaCampo extends VBox implements PathArchivos{
 		this.pintarCartaMonstruoEnCampoJugador1(1);
 //		this.enviarCartaMonstruoAlCementerio(1); //NO LLamar a este metodo x ahora
 		
-		//esto es para probar si se pintan las zonas
-		this.pintarCartaMagicaBocaAbajoEnCampoJugador1(2);
-		this.pintarCartaMagicaBocaArribaEnCampoJugador2(3);
 	}
 	
 	public void pintarCartaMonstruoEnCampoJugador1(int posicionDeCartaMonstruo) {
@@ -78,27 +80,129 @@ public class CajaCampo extends VBox implements PathArchivos{
 
 	public void actualizarCartasEnCampoCentral(Jugador yugi, Jugador kaiba) {
 		
-		this.campoJ1.pintarCartasEnZonaMonstruos(this.cajaInformacion, yugi.obtenerCartasEnZonaMonstruo());
-		this.campoJ2.pintarCartasEnZonaMonstruos(this.cajaInformacion, kaiba.obtenerCartasEnZonaMonstruo());
+		this.campoJ1.limpiarCampo();
+		this.pintarCartasEnZonaMonstruosJugador1(yugi.obtenerMonstruosColocados());
+		this.pintarCartasEnZonaMonstruosJugador2(kaiba.obtenerMonstruosColocados());
 		
-		this.campoJ1.pintarCartasEnZonaMagicasYTrampas(this.cajaInformacion, yugi.obtenerCartasEnZonaMagiasYTrampas());
-		this.campoJ2.pintarCartasEnZonaMagicasYTrampas(this.cajaInformacion, yugi.obtenerCartasEnZonaMagiasYTrampas());
+		this.pintarCartasEnZonaMagicasYTrampasJugador1(yugi.obtenerMagicasYTrampasColocadas());
+		this.pintarCartasEnZonaMagicasYTrampasJugador2(kaiba.obtenerMagicasYTrampasColocadas());
 		
-		this.campoJ1.pintarCartaZonaCampo(this.cajaInformacion, yugi.obtenerCartaEnZonaCampo);
-		this.campoJ2.pintarCartaZonaCampo(this.cajaInformacion, kaiba.obtenerCartaEnZonaCampo);
+		this.pintarCartaZonaCampoJugador1(yugi.obtenerCartaCampoColocada());
+		this.pintarCartaZonaCampoJugador2(kaiba.obtenerCartaCampoColocada());
 		
 	}
 	
-	//ESTOS METODOS SON DE PRUEBA, SOLO PINTAN UNA CARTA ESPECIFICA QUE HARDCODIE
-	public void pintarCartaMagicaBocaAbajoEnCampoJugador1(int posicionDeCartaMagica) {
-		Image imagen = new Image(pathDePackCartas + "fisura.jpg");
+	public void pintarCartasEnZonaMonstruosJugador1(LinkedList<Atacable> monstruosYugi) {
 		
-		this.campoJ1.getEspacioCartaMagica(posicionDeCartaMagica).pintarCartaBocaAbajo(imagen);
+		Iterator<Atacable> posicionesIterador = monstruosYugi.iterator();
+		int posicionActual = 0;
+		Atacable cartaActual;
+		Image imagen;
+		while(posicionesIterador.hasNext()) {
+		
+			posicionActual++;
+			cartaActual = posicionesIterador.next();
+			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
+			if (cartaActual.estaColocadaBocaAbajo()) {
+				campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
+			} else if (cartaActual.estaEnModoAtaque()) {
+				campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoAtaque(imagen);
+			} else {
+				campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
+			}
+		
+		}
 	}
 	
-	public void pintarCartaMagicaBocaArribaEnCampoJugador2(int posicionDeCartaMagica) {
-		Image imagen = new Image(pathDePackCartas + "fisura.jpg");
+	
+	public void pintarCartasEnZonaMonstruosJugador2(LinkedList<Atacable> monstruosKaiba) {
 		
-		this.campoJ2.getEspacioCartaMagica(posicionDeCartaMagica).pintarCartaBocaArriba(imagen);
+		Iterator<Atacable> posicionesIterador = monstruosKaiba.iterator();
+		int posicionActual = 0;
+		Atacable cartaActual;
+		Image imagen;
+		while(posicionesIterador.hasNext()) {
+		
+			posicionActual++;
+			cartaActual = posicionesIterador.next();
+			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
+			if (cartaActual.estaColocadaBocaAbajo()) {
+				campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
+			} else if (cartaActual.estaEnModoAtaque()) {
+				campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoAtaque(imagen);
+			} else {
+				campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
+			}
+		
+		}
 	}
+	
+	public void pintarCartasEnZonaMagicasYTrampasJugador1(LinkedList<Activable> activablesYugi) {
+		
+		Iterator<Activable> posicionesIterador = activablesYugi.iterator();
+		int posicionActual = 0;
+		Activable cartaActual;
+		Image imagen;
+		while(posicionesIterador.hasNext()) {
+		
+			posicionActual++;
+			cartaActual = posicionesIterador.next();
+			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
+			if (cartaActual.estaColocadaBocaAbajo()) {
+				campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaAbajo(imagen);
+			} else {
+				campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen);
+			}
+		
+		}
+	}
+	
+	public void pintarCartasEnZonaMagicasYTrampasJugador2(LinkedList<Activable> activablesKaiba) {
+		
+		Iterator<Activable> posicionesIterador = activablesKaiba.iterator();
+		int posicionActual = 0;
+		Activable cartaActual;
+		Image imagen;
+		while(posicionesIterador.hasNext()) {
+		
+			posicionActual++;
+			cartaActual = posicionesIterador.next();
+			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
+			if (cartaActual.estaColocadaBocaAbajo()) {
+				campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaAbajo(imagen);
+			} else {
+				campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen);
+			}
+		
+		}
+	}
+	
+	public void pintarCartaZonaCampoJugador1(LinkedList<Activable> activableYugi) {
+		Iterator<Activable> posicionesIterador = activableYugi.iterator();
+		int posicionActual = 0;
+		Activable cartaActual;
+		Image imagen;
+		while(posicionesIterador.hasNext()) {
+			posicionActual++;
+			cartaActual = posicionesIterador.next();
+			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
+			campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen);
+		}
+	}
+	
+	public void pintarCartaZonaCampoJugador2(LinkedList<Activable> activableKaiba) {
+		Iterator<Activable> posicionesIterador = activableKaiba.iterator();
+		int posicionActual = 0;
+		Activable cartaActual;
+		Image imagen;
+		while(posicionesIterador.hasNext()) {
+			posicionActual++;
+			cartaActual = posicionesIterador.next();
+			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
+			campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen);
+		}
+	}
+	
+	
+
 }
