@@ -24,7 +24,7 @@ public class EspacioCartasCampo extends GridPane{
 	
 	private	EspacioCementerio espacioCementerio;
 	private	Rectangle espacioMazo;
-	private	Rectangle espacioCampo;
+	private	EspacioCartaMagica espacioCampo;
 	private	Rectangle espacioRelleno;
 	private Jugador jugador;
 	
@@ -74,7 +74,7 @@ public class EspacioCartasCampo extends GridPane{
 		
 		this. espacioCementerio = new EspacioCementerio();
 		this. espacioMazo = new Rectangle(60,100,Color.BROWN);
-		this. espacioCampo = new Rectangle(60,100,Color.GREEN);
+		this. espacioCampo = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
 		this.espacioRelleno = new Rectangle(60,100,Color.BLACK);
 	}
 
@@ -120,6 +120,10 @@ public class EspacioCartasCampo extends GridPane{
 		  cartaBuscada = null;
 
 	    return cartaBuscada;
+	}
+	
+	public EspacioCartaMagica getEspacioCartaCampo() {
+		return this.espacioCampo;
 	}
 	
 	public void limpiarCampo() {

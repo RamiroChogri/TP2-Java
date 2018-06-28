@@ -9,8 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import jugador.Jugador;
 import modos.*;
@@ -18,8 +18,9 @@ import partida.Partida;
 import view.CajaCampo;
 import view.CajaInformacion;
 import view.ManoJugador;
+import view.handlers.*;
 
-public class ClickEnCartaEnManoHandler implements EventHandler<MouseEvent> {
+public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent> {
 	
 	private Partida duelo;
 	private Colocable carta;
@@ -35,12 +36,12 @@ public class ClickEnCartaEnManoHandler implements EventHandler<MouseEvent> {
 		this.cajaInf = cajaInfRecibida;
 	}
 	
-	public void handle(MouseEvent t) {
-        if (duelo.estaEnFaseDePreparacion()){
+	public void handle(ContextMenuEvent t) {
+        if (true){
         	if (this.carta.esAtacable() && !this.duelo.seJugoUnaCartaMonstruoEsteTurno()) {
-        		this.menuCartaAtacable();
+        		this.menuCartaAtacable(t);
         	} else if (this.carta.getClass() == CartaMagica.class) {
-        		this.menuCartaMagica();
+        		this.menuCartaMagica(t);
         	} else if (this.carta.getClass() == CartaTrampa.class) {
         		EstadoCarta estadoCarta = new EstadoCartaColocadaBocaAbajo();
         		this.jugador.colocar(carta, estadoCarta);
@@ -64,29 +65,17 @@ public class ClickEnCartaEnManoHandler implements EventHandler<MouseEvent> {
         }
     }
 	
-	private void menuCartaAtacable() {
-		TextField textField = new TextField("Elija como colocar carta Atacable");
-    	final ContextMenu contextMenu = new ContextMenu();
+	public void menuCartaAtacable(ContextMenuEvent t) {
+		ContextMenu contextMenu = new ContextMenu();
     	MenuItem bocaArribaModoAtaque = new MenuItem("Colocar boca arriba en Modo Ataque");
     	MenuItem bocaArribaModoDefensa = new MenuItem("Colocar boca arriba en Modo Defensa");
     	MenuItem bocaAbajoModoDefensa = new MenuItem("Colocar boca abajo en Modo Defensa");
-    	contextMenu.getItems().addAll(bocaArribaModoAtaque, bocaAbajoModoDefensa, bocaAbajoModoDefensa);
-    	bocaArribaModoAtaque.setOnAction(new EventHandler<ActionEvent>() {
-    	    @Override
-    	    public void handle(ActionEvent event) {
-    	        Modo modoACambiar = new ModoAtaque();
-    	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaArriba();
-    	    	carta.cambiarA(modoACambiar);
-    	    	jugador.colocar(carta, estadoACambiar);
-    	    	jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-    	    	duelo.setSeJugoCartaMonstruo(); //Se reinicia cada fase
-        		if (duelo.estaYugiEnTurno()) {
-        			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        		} else {
-        			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        		}
-        	}
-    	});
+    	contextMenu.getItems().addAll(bocaArribaModoAtaque, bocaArribaModoDefensa, bocaAbajoModoDefensa);    	
+    	
+    	BotonModoAtaqueBocaArribaHandler modoAtaqueBocaArriba = new BotonModoAtaqueBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	bocaArribaModoAtaque.setOnAction(modoAtaqueBocaArriba);
+    	
+    	
     	bocaArribaModoDefensa.setOnAction(new EventHandler<ActionEvent>() {
     	    @Override
     	    public void handle(ActionEvent event) {
@@ -119,12 +108,13 @@ public class ClickEnCartaEnManoHandler implements EventHandler<MouseEvent> {
         		}
     	    }
     	});
-    	textField.setContextMenu(contextMenu);
+    	
+    	
+    	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
 	}
 	
-	private void menuCartaMagica() {
-		TextField textField = new TextField("Elija como colocar la carta magica");
-    	final ContextMenu contextMenu = new ContextMenu();
+	public void menuCartaMagica(ContextMenuEvent t) {
+		ContextMenu contextMenu = new ContextMenu();
     	MenuItem bocaArriba = new MenuItem("Boca Arriba");
     	MenuItem bocaAbajo = new MenuItem("Boca Abajo");
     	contextMenu.getItems().addAll(bocaArriba, bocaAbajo);
@@ -154,6 +144,6 @@ public class ClickEnCartaEnManoHandler implements EventHandler<MouseEvent> {
         		}
     	    }
     	});
-    	textField.setContextMenu(contextMenu);
-	}
+      	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
+    }
 }

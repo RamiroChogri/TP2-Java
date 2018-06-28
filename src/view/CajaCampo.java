@@ -99,6 +99,7 @@ public class CajaCampo extends VBox implements PathArchivos{
 	public void actualizarCartasEnCampoCentral(Jugador yugi, Jugador kaiba) {
 		
 		this.campoJ1.limpiarCampo();
+		this.campoJ2.limpiarCampo();
 		this.pintarCartasEnZonaMonstruosJugador1(yugi.obtenerMonstruosColocados());
 		this.pintarCartasEnZonaMonstruosJugador2(kaiba.obtenerMonstruosColocados());
 		
@@ -197,27 +198,23 @@ public class CajaCampo extends VBox implements PathArchivos{
 	
 	public void pintarCartaZonaCampoJugador1(LinkedList<Activable> activableYugi) {
 		Iterator<Activable> posicionesIterador = activableYugi.iterator();
-		int posicionActual = 0;
 		Activable cartaActual;
 		Image imagen;
 		while(posicionesIterador.hasNext()) {
-			posicionActual++;
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen);
+			campoJ1.getEspacioCartaCampo().pintarCartaBocaArriba(imagen);
 		}
 	}
 	
 	public void pintarCartaZonaCampoJugador2(LinkedList<Activable> activableKaiba) {
 		Iterator<Activable> posicionesIterador = activableKaiba.iterator();
-		int posicionActual = 0;
 		Activable cartaActual;
 		Image imagen;
 		while(posicionesIterador.hasNext()) {
-			posicionActual++;
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen);
+			campoJ2.getEspacioCartaCampo().pintarCartaBocaArriba(imagen);
 		}
 	}
 	

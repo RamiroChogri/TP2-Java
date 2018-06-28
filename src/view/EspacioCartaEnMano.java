@@ -72,7 +72,7 @@ public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 		imagenCarta.setOnMouseExited(sacarDeZoom);
 		
 		ClickEnCartaEnManoHandler verOpcionesDeColocacion = new ClickEnCartaEnManoHandler(this.cajaInformacion, this.partida, this.carta, this.jugador, this.cajaCampo);
-		imagenCarta.setOnMouseClicked(verOpcionesDeColocacion);
+		imagenCarta.setOnContextMenuRequested(verOpcionesDeColocacion);
 		
 		
 		this.getChildren().add(imagenCarta);
