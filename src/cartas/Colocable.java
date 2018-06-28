@@ -3,6 +3,7 @@ package cartas;
 import campo.*;
 import estadoCarta.EstadoCarta;
 import jugador.Jugador;
+import modos.Modo;
 
 public interface Colocable {
 	
@@ -33,4 +34,6 @@ public interface Colocable {
 	public void setNombreDeLaImagen(String nombreDeLaImagen);
 	
 	public String getNombreDeLaImagen();
+
+	public void cambiarA(Modo modoACambiar);
 }

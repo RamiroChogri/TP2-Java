@@ -29,11 +29,11 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent actionEvent) {
         if (duelo.estaEnFaseDePreparacion()){
         	if (this.carta.esAtacable()) {
-        		TextField textField = new TextField("Type Something");
+        		TextField textField = new TextField("Elegir como colocar carta Atacable");
             	final ContextMenu contextMenu = new ContextMenu();
-            	MenuItem bocaArribaModoAtaque = new MenuItem("Boca Arriba en Modo Ataque");
-            	MenuItem bocaArribaModoDefensa = new MenuItem("Boca Arriba en Modo Defensa");
-            	MenuItem bocaAbajoModoDefensa = new MenuItem("Boca Abajo en Modo Defensa");
+            	MenuItem bocaArribaModoAtaque = new MenuItem("Colocar boca arriba en Modo Ataque");
+            	MenuItem bocaArribaModoDefensa = new MenuItem("Colocar boca arriba en Modo Defensa");
+            	MenuItem bocaAbajoModoDefensa = new MenuItem("Colocar boca abajo en Modo Defensa");
             	contextMenu.getItems().addAll(bocaArribaModoAtaque, bocaAbajoModoDefensa, bocaAbajoModoDefensa);
             	bocaArribaModoAtaque.setOnAction(new EventHandler<ActionEvent>() {
             	    @Override
@@ -41,10 +41,34 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ActionEvent> {
             	        Modo modoACambiar = new ModoAtaque();
             	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaArriba();
             	    	carta.cambiarA(modoACambiar);
-            	    	jugador.colocar();
-            	    	//Colocar normal, eliminar de la mano, modo???
+            	    	jugador.colocar(carta, estadoACambiar);
+            	    	duelo.seJugoCartaMonstruo();
+                		duelo.actualizarVista();
             	    }
-            	});	
+            	});
+            	bocaArribaModoDefensa.setOnAction(new EventHandler<ActionEvent>() {
+            	    @Override
+            	    public void handle(ActionEvent event) {
+            	        Modo modoACambiar = new ModoDefensa();
+            	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaArriba();
+            	    	carta.cambiarA(modoACambiar);
+            	    	jugador.colocar(carta, estadoACambiar);
+            	    	duelo.seJugoCartaMonstruo();
+                		duelo.actualizarVista();
+            	    }
+            	});
+            	bocaAbajoModoDefensa.setOnAction(new EventHandler<ActionEvent>() {
+            	    @Override
+            	    public void handle(ActionEvent event) {
+            	        Modo modoACambiar = new ModoDefensa();
+            	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaAbajo();
+            	    	carta.cambiarA(modoACambiar);
+            	    	jugador.colocar(carta, estadoACambiar);
+            	    	duelo.seJugoCartaMonstruo();
+                		duelo.actualizarVista();
+            	    }
+            	});
+            	textField.setContextMenu(contextMenu);
         	} else if (this.carta.getClass() == CartaMagica.class) {
         		TextField textField = new TextField("Type Something");
             	final ContextMenu contextMenu = new ContextMenu();
@@ -57,29 +81,33 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ActionEvent> {
             	    	EstadoCarta estadoCarta = new EstadoCartaColocadaBocaArriba();
                 		jugador.colocar(carta, estadoCarta);
                 		jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+                		duelo.actualizarVista();
             	    }
             	});
-            	bocaAbajo.setOnAction((new EventHandler<ActionEvent>() {
+            	bocaAbajo.setOnAction(new EventHandler<ActionEvent>() {
             	    @Override
             	    public void handle(ActionEvent event) {
             	    	EstadoCarta estadoCarta = new EstadoCartaColocadaBocaAbajo();
-                		this.jugador.colocar(carta, estadoCarta);
-                		this.jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+                		jugador.colocar(carta, estadoCarta);
+                		jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+                		duelo.actualizarVista();
             	    }
             	});
+            	textField.setContextMenu(contextMenu);
         	} else if (this.carta.getClass() == CartaTrampa.class) {
         		EstadoCarta estadoCarta = new EstadoCartaColocadaBocaAbajo();
         		this.jugador.colocar(carta, estadoCarta);
         		this.jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+        		duelo.actualizarVista();
         	} else {
         		EstadoCarta estadoCarta = new EstadoCartaColocadaBocaArriba();
         		this.jugador.colocar(carta, estadoCarta);
         		this.jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+        		duelo.actualizarVista();
         	}
         	
         	
 
-        	textField.setContextMenu(contextMenu);
         }
     }
 }

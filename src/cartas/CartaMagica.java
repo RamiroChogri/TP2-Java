@@ -115,6 +115,10 @@ public class CartaMagica implements Activable{
 		}
 	}
 
+	public void cambiarA(Modo modoACambiar) {
+		//metodo forzado
+	}
+	
 	public boolean esDeTrampa() {
 		
 		return false;
@@ -179,5 +183,6 @@ public class CartaMagica implements Activable{
 	public boolean esAtacable() {
 		return false;
 	}
+	
 	
 }
