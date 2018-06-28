@@ -22,7 +22,7 @@ public class CartaMonstruoFactory {
 			
 			Atacable dragonBlancoDefinitivo = new CartaMonstruo(puntosDeAtaque, puntosDeDefensa, estrellas, regla, "Dragon Definitivo De Ojos Azules");
 			
-			dragonBlancoDefinitivo.setNombreDeLaImagen("dragonBlancoDefinitivoDeOjosAzules.png");
+			dragonBlancoDefinitivo.setNombreDeLaImagen("dragonDefinitivoDeOjosAzules.png");
 			
 			return dragonBlancoDefinitivo;			
 		}
