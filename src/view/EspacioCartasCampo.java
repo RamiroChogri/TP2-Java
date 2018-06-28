@@ -60,11 +60,11 @@ public class EspacioCartasCampo extends GridPane{
 		this.espacioMosntruo4 = new EspacioCarta(cajaInformacion);
 		this.espacioMosntruo5 = new EspacioCarta(cajaInformacion);
 		
-		this.espacioMagico1 = new EspacioCartaMagica();
-		this.espacioMagico2 = new EspacioCartaMagica();
-		this.espacioMagico3 = new EspacioCartaMagica();
-		this.espacioMagico4 = new EspacioCartaMagica();
-		this.espacioMagico5 = new EspacioCartaMagica();
+		this.espacioMagico1 = new EspacioCartaMagica(cajaInformacion);
+		this.espacioMagico2 = new EspacioCartaMagica(cajaInformacion);
+		this.espacioMagico3 = new EspacioCartaMagica(cajaInformacion);
+		this.espacioMagico4 = new EspacioCartaMagica(cajaInformacion);
+		this.espacioMagico5 = new EspacioCartaMagica(cajaInformacion);
 		
 		this. espacioCementerio = new EspacioCementerio();
 		this. espacioMazo = new Rectangle(60,100,Color.BROWN);
@@ -94,5 +94,25 @@ public class EspacioCartasCampo extends GridPane{
 	
 	public EspacioCementerio getCementerio() {
 		return this.espacioCementerio;
+	}
+
+	public EspacioCartaMagica getEspacioCartaMagica(int posicionDeCartaMagica) {
+		EspacioCartaMagica cartaBuscada = null;
+
+	    //No hay manera de hacerlo sin if
+	  if(posicionDeCartaMagica == 1)
+		  cartaBuscada = this.espacioMagico1;
+	  else if(posicionDeCartaMagica == 2)
+	  	cartaBuscada = this.espacioMagico2;
+	  else if(posicionDeCartaMagica == 3)
+		  cartaBuscada = this.espacioMagico3;
+	  else if(posicionDeCartaMagica == 4)
+		  	cartaBuscada = this.espacioMagico4;
+	  else if(posicionDeCartaMagica == 5)
+		  	cartaBuscada = this.espacioMagico5;
+	  else
+		  cartaBuscada = null;
+
+	    return cartaBuscada;
 	}
 }

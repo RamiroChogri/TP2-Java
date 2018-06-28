@@ -39,6 +39,10 @@ public class CajaCampo extends VBox implements PathArchivos{
 		
 		this.pintarCartaMonstruoEnCampoJugador1(1);
 //		this.enviarCartaMonstruoAlCementerio(1); //NO LLamar a este metodo x ahora
+		
+		//esto es para probar si se pintan las zonas
+		this.pintarCartaMagicaBocaAbajoEnCampoJugador1(2);
+		this.pintarCartaMagicaBocaArribaEnCampoJugador2(3);
 	}
 	
 	public void pintarCartaMonstruoEnCampoJugador1(int posicionDeCartaMonstruo) {
@@ -50,5 +54,17 @@ public class CajaCampo extends VBox implements PathArchivos{
 		EspacioCementerio cementerio = this.campoJ1.getCementerio();
 		this.campoJ1.getEspacioCartaMosntruo(1).enviarAl(cementerio);
 		
+	}
+	//ESTOS METODOS SON DE PRUEBA, SOLO PINTAN UNA CARTA ESPECIFICA QUE HARDCODIE
+	public void pintarCartaMagicaBocaAbajoEnCampoJugador1(int posicionDeCartaMagica) {
+		Image imagen = new Image(pathDePackCartas + "fisura.jpg");
+		
+		this.campoJ1.getEspacioCartaMagica(posicionDeCartaMagica).pintarCartaBocaAbajo(imagen);
+	}
+	
+	public void pintarCartaMagicaBocaArribaEnCampoJugador2(int posicionDeCartaMagica) {
+		Image imagen = new Image(pathDePackCartas + "fisura.jpg");
+		
+		this.campoJ2.getEspacioCartaMagica(posicionDeCartaMagica).pintarCartaBocaArriba(imagen);
 	}
 }
