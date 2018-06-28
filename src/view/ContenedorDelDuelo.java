@@ -1,8 +1,12 @@
 package view;
 
+import java.util.LinkedList;
+
+import cartas.*;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import jugador.*;
 import viewSupportFiles.PathArchivos;
 
 public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
@@ -39,6 +43,13 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    
 	    public MenuItem getPantallaCompletaItem() {
 	    	return this.barraMenu.getPantallaCompletaItem();
+	    }
+	    
+	    public void actualizarVistaYugi(Jugador yugi, Jugador Kaiba) {
+	    	
+	    	
+	    	
+	    	
 	    }
 	    
 }

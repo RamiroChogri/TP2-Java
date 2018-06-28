@@ -1,8 +1,14 @@
 package partida;
 
 import jugador.Jugador;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import view.ContenedorDeBienvenida;
+import view.ContenedorDelDuelo;
+import view.handlers.EscOnKeyPressedHandler;
 
-public class Partida {
+public class Partida extends Application {
 
 	private Fase faseInicial;
 	private Fase fasePreparacion;
@@ -30,6 +36,7 @@ public class Partida {
 	public static void main(String[] args) {
 		Partida partida = new Partida();
 		partida.comienzaElDuelo();
+		launch(args);
 	}
 	
 	public void comienzaElDuelo() {
@@ -50,6 +57,7 @@ public class Partida {
 		
 		while (this.estado.continuaLaPartida()) {
 		
+			
 			
 			jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno(jugadorEnTurno);
 			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
@@ -77,6 +85,24 @@ public class Partida {
 		
 		
 	}
+	
+	public void start(Stage stage) throws Exception {
+		 stage.setTitle("Al-go-oh! Prototype");
+		 
+		 ContenedorDelDuelo contenedorDelDuelo = new ContenedorDelDuelo(stage);
+		 Scene escenaDelDuelo = new Scene(contenedorDelDuelo,1190,670);
+		 ContenedorDeBienvenida contenedorBienvenida = new ContenedorDeBienvenida(stage,escenaDelDuelo);
+		 
+		 EscOnKeyPressedHandler salirPantallaCompleta = new EscOnKeyPressedHandler(stage,contenedorDelDuelo.getBarraDeMenu());
+		 escenaDelDuelo.setOnKeyPressed(salirPantallaCompleta);
+		
+		 Scene escenaDeBienvenida = new Scene(contenedorBienvenida,1190,670);
+		 stage.setScene(escenaDeBienvenida);
+	     stage.setFullScreenExitHint("Presione la tecla ESC para salir del modo pantalla completa");
+	     stage.setFullScreen(true);
+	     escenaDeBienvenida.getStylesheets().add("view/Style.css");
+		 stage.show();
+	 }
 	
 	public Jugador elegirQuienComienza(Jugador unJugador, Jugador otroJugador) {
 		
