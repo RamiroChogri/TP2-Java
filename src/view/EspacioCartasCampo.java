@@ -127,7 +127,14 @@ public class EspacioCartasCampo extends GridPane{
 	}
 	
 	public void limpiarCampo() {
-		this.setEspaciosDeCampo(this.jugador);
+		for(int i = 1; i<=5;i++) {
+			EspacioCarta espacioActual = this.getEspacioCartaMosntruo(i);
+			espacioActual.limpiar();
+		}
+		for(int i = 1; i<=5;i++) {
+			EspacioCartaMagica espacioActual = this.getEspacioCartaMagica(i);
+			espacioActual.limpiar();
+		}
 	}
 	
 	

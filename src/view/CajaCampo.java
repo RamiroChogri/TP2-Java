@@ -123,11 +123,11 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
+				this.campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
 			} else if (cartaActual.estaEnModoAtaque()) {
-				campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoAtaque(imagen);
+				this.campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoAtaque(imagen);
 			} else {
-				campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
+				this.campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
 			}
 		
 		}
@@ -146,11 +146,11 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
+				this.campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
 			} else if (cartaActual.estaEnModoAtaque()) {
-				campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoAtaque(imagen);
+				this.campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoAtaque(imagen);
 			} else {
-				campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
+				this.campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
 			}
 		
 		}

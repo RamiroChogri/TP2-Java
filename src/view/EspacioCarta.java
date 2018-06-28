@@ -36,7 +36,7 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 			rectanguloDefensa.setStroke(Color.WHITE);
 			
 			this.imagenCarta = null;
-			this.cardBack = new Image(pathDePackCartas+"cardBackAlgo");
+			this.cardBack = new Image(pathDePackCartas+"cardBackAlgo.png");
 			
 			this.getChildren().addAll(rectanguloAtaque,rectanguloDefensa);
 			this.setAlignment(Pos.CENTER);
@@ -59,23 +59,32 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 		
 		public void pintarCartaEnModoDefensaBocaArriba(Image imagen) {
 			this.imagenCarta = new ImageView(imagen);
-			imagenCarta.setFitWidth(100);
-			imagenCarta.setFitHeight(60);
+			this.imagenCarta.setFitWidth(60);
+			this.imagenCarta.setFitHeight(100);
+			this.imagenCarta.setRotate(90);
 			
 			MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(imagenCarta,cajaInformacion);
-			imagenCarta.setOnMouseEntered(ponerEnZoom);
+			this.imagenCarta.setOnMouseEntered(ponerEnZoom);
 			 
 			 MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
-			 imagenCarta.setOnMouseExited(sacarDeZoom);
+			 this.imagenCarta.setOnMouseExited(sacarDeZoom);
 			
 			this.getChildren().add(imagenCarta);
 		}
 		
 		public void pintarCartaEnModoDefensaBocaAbajo(Image imagen) {
-			ImageView imagenCarta = new ImageView(cardBack);
-			imagenCarta.setFitWidth(100);
-			imagenCarta.setFitHeight(60);
-			this.getChildren().add(imagenCarta);
+			ImageView cardBackImagen = new ImageView(cardBack);
+			cardBackImagen.setFitWidth(60);
+			cardBackImagen.setFitHeight(100);
+			cardBackImagen.setRotate(90);
+			this.imagenCarta = new ImageView(imagen);
+			
+			MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(imagenCarta,cajaInformacion);
+			cardBackImagen.setOnMouseEntered(ponerEnZoom);
+			 
+			 MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
+			cardBackImagen.setOnMouseExited(sacarDeZoom);
+			this.getChildren().add(cardBackImagen);
 		}
 		
 		public void limpiar() {

@@ -20,6 +20,7 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 	
 	public void handle(ActionEvent actionEvent) {
         this.duelo.finalizarTurno();
+        this.jugadorEnTurno = this.duelo.obtenerJugadorEnTurno();
         
         if (this.duelo.estaYugiEnTurno()) {
         	this.contenedorDelDuelo.actualizarVistaYugiEnTurno(this.jugadorEnTurno, this.jugadorEnTurno.obtenerJugadorEnemigo());

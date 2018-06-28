@@ -2,10 +2,14 @@ package view;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import jugador.Jugador;
 import partida.Partida;
 import view.handlers.BotonFinalizarTurnoHandler;
@@ -22,6 +26,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
 	private Partida duelo;
 	private Jugador jugador; 
 	ContenedorDelDuelo contenedorDelDuelo;
+	private Label fase;
 	    
 	public CajaJugadores(CajaInformacion cajaInformacion, Partida dueloRecibido, Jugador jugadorEnTurno, ContenedorDelDuelo contenedorAColocar) {
 		
@@ -43,6 +48,10 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	yugiView.setImage(yugi);
 		
     	String nombreFase = duelo.getNombreFase();
+    	
+    	this.fase = new Label(nombreFase);
+		fase.setFont(Font.font("Arial", FontWeight.BOLD,18 ));
+		fase.setTextFill(Color.web("WHITE"));
     	
     	this.perfilJugador1 = new VistaJugador(yugiView,cajaInformacion, nombreFase); 
     	perfilJugador1.setAlignment(Pos.BOTTOM_LEFT);
@@ -66,14 +75,18 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	this.setAlignment(Pos.TOP_LEFT);
     	VBox.setVgrow(perfilJugador1, Priority.ALWAYS);
     	VBox.setVgrow(perfilJugador2, Priority.ALWAYS);
-    	this.getChildren().addAll(perfilJugador2,botonSiguienteFase,botonFinalizarTurno,perfilJugador1);
+    	this.getChildren().addAll(perfilJugador2,botonSiguienteFase,fase,botonFinalizarTurno,perfilJugador1);
     	this.setStyle("-fx-background-color: linear-gradient(DARKRED, DARKVIOLET);");
 	}
 	
 	public void actualizarVida(Jugador yugi, Jugador kaiba) {
 		this.perfilJugador1.updateVida(Integer.toString(yugi.obtenerVida()));
 		this.perfilJugador2.updateVida(Integer.toString(kaiba.obtenerVida()));
-		this.perfilJugador1.updateFase(this.duelo.getNombreFase());
-		this.perfilJugador2.updateFase(this.duelo.getNombreFase());
+		this.updateFase(this.duelo.getNombreFase());
+		this.updateFase(this.duelo.getNombreFase());
+	}
+	
+	public void updateFase(String faseRecibida) {
+		this.fase.setText(faseRecibida);
 	}
 }

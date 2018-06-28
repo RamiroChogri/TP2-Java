@@ -17,9 +17,12 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 		private CajaInformacion cajaDerecha;
 		private CajaCampo cajaCentro;
 		private CajaJugadores cajaIzquierda;
+		Partida duelo;
 		
 	    public ContenedorDelDuelo(Stage stage , Partida duelo) {
 	    	super();
+	    	this.duelo = duelo;
+	    	
 	    	this.cajaDerecha = new CajaInformacion();
 			this.setRight(cajaDerecha);
 	    	
@@ -59,6 +62,11 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	this.cajaCentro.actualizarVistaKaibaEnTurno(kaiba, yugi);
 	    	this.cajaIzquierda.actualizarVida(yugi, kaiba);
 	    	
+	    }
+	    
+	    public void actualizarCajas() {
+	    	this.cajaCentro.actualizarCaja();
+	    	this.cajaIzquierda.actualizarVida(this.duelo.getJugadorYugi(), this.duelo.getJugadorKaiba());
 	    }
 	    
 }
