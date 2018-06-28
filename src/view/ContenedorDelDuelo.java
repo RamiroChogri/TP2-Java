@@ -7,6 +7,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import jugador.*;
+import partida.Partida;
 import viewSupportFiles.PathArchivos;
 
 public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
@@ -17,7 +18,7 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 		private CajaCampo cajaCentro;
 		private CajaJugadores cajaIzquierda;
 		
-	    public ContenedorDelDuelo(Stage stage) {
+	    public ContenedorDelDuelo(Stage stage , Partida duelo) {
 	    	super();
 	    	
 	    	this.cajaCentro=null;
@@ -30,10 +31,10 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 			this.barraMenu = new MenuDelDuelo(stage,this.pathMusicaDeBatalla);
             this.setTop(barraMenu);
             
-            this.cajaIzquierda = new CajaJugadores(this.cajaDerecha);
+            this.cajaIzquierda = new CajaJugadores(this.cajaDerecha,duelo);
 	    	this.setLeft(cajaIzquierda);
             
-	    	this.cajaCentro = new CajaCampo(cajaDerecha);
+	    	this.cajaCentro = new CajaCampo(cajaDerecha,duelo);
 	    	this.setCenter(cajaCentro);
 	    }
 	    

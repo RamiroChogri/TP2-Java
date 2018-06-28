@@ -16,6 +16,12 @@ public class Partida {
 	private Fase faseFinal;
 	private Fase faseActual;
 	private EstadoPartida estado;
+	Jugador jugadorEnTurno;
+	String nombreJugadorEnTurno;
+	Jugador jugadorYugi;
+	Jugador jugadorKaiba;
+	String ganador;
+	int vidaDeJugadorEnTurno;
 	
 	public Partida() {
 		this.faseInicial = new FaseInicial();
@@ -31,12 +37,25 @@ public class Partida {
 		this.faseActual = this.faseInicial;
 		
 		this.estado = new EstadoPartidaEnJuego();
+		
+		this.jugadorEnTurno = null;
+		this.jugadorYugi = new Jugador();
+		this.jugadorKaiba = new Jugador();
+		this.jugadorYugi.setName("Yugi");
+		this.jugadorKaiba.setName("Kaiba");
+		this.jugadorEnTurno = this.elegirQuienComienza(jugadorYugi, jugadorKaiba);
+		
+		this.jugadorYugi.enfrentarseA(jugadorKaiba);
+		this.jugadorKaiba.enfrentarseA(jugadorYugi);
+		
+		this.vidaDeJugadorEnTurno = 8000;
+		
 	}
 	
-	public static void main(String[] args) {
-		Partida partida = new Partida();
-		partida.comienzaElDuelo();
-	}
+//	public static void main(String[] args) {
+//		Partida partida = new Partida();
+//		partida.comienzaElDuelo();
+//	}
 	
 	public void comienzaElDuelo() {
 		Jugador jugadorEnTurno = null;

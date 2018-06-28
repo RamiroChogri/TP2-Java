@@ -4,6 +4,7 @@ package view;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import partida.Partida;
 import view.handlers.EscOnKeyPressedHandler;
 
 public class Vista extends Application{
@@ -16,7 +17,9 @@ public class Vista extends Application{
 	 public void start(Stage stage) throws Exception {
 		 stage.setTitle("Al-go-oh! Prototype");
 		 
-		 ContenedorDelDuelo contenedorDelDuelo = new ContenedorDelDuelo(stage);
+		 Partida duelo = new Partida();
+		 
+		 ContenedorDelDuelo contenedorDelDuelo = new ContenedorDelDuelo(stage,duelo);
 		 Scene escenaDelDuelo = new Scene(contenedorDelDuelo,1190,670);
 		 ContenedorDeBienvenida contenedorBienvenida = new ContenedorDeBienvenida(stage,escenaDelDuelo);
 		 

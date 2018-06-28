@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import jugador.Jugador;
+import partida.Partida;
 import viewSupportFiles.PathArchivos;
 
 public class CajaCampo extends VBox implements PathArchivos{
@@ -21,7 +22,7 @@ public class CajaCampo extends VBox implements PathArchivos{
 	ManoJugador manoJugador1;
 	ManoJugador manoJugador2;
 	
-	public CajaCampo(CajaInformacion cajaInformacion) {
+	public CajaCampo(CajaInformacion cajaInformacion,Partida duelo) {
 		
 		this.cajaInformacion = cajaInformacion;
 		

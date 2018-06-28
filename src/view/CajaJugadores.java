@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import jugador.Jugador;
+import partida.Partida;
 import viewSupportFiles.PathArchivos;
 
 public class CajaJugadores extends VBox implements PathArchivos{
@@ -17,7 +18,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
 	 VistaJugador perfilJugador2;
 	 
 	    
-	public CajaJugadores(CajaInformacion cajaInformacion) {
+	public CajaJugadores(CajaInformacion cajaInformacion,Partida duelo) {
 		
 		final ImageView yugiView = new ImageView();
     	yugiView.setFitWidth(150);
