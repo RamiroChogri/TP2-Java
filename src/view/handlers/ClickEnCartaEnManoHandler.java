@@ -5,6 +5,7 @@ import cartas.CartaMagica;
 import cartas.CartaTrampa;
 import cartas.Colocable;
 import estadoCarta.*;
+import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ContextMenu;
@@ -82,15 +83,19 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	    public void handle(ActionEvent event) {
     	        Modo modoACambiar = new ModoDefensa();
     	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaArriba();
-    	    	carta.cambiarA(modoACambiar);
-    	    	jugador.colocar(carta, estadoACambiar);
-    	    	jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-    	    	duelo.setSeJugoCartaMonstruo();
-    	    	if (duelo.estaYugiEnTurno()) {
-        			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        		} else {
-        			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        		}
+    	        try {
+    	        	carta.cambiarA(modoACambiar);
+    	        	jugador.colocar(carta, estadoACambiar);
+    	        	jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+    	        	duelo.setSeJugoCartaMonstruo();
+    	        	if (duelo.estaYugiEnTurno()) {
+    	        		cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    	        	} else {
+    	        		cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    	        	}
+    	        } catch (NoHaySuficientesMonstruosParaSacrificarException e) {
+    	    		
+    	    	}
     	    }
     	});
     	bocaAbajoModoDefensa.setOnAction(new EventHandler<ActionEvent>() {
@@ -98,15 +103,19 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	    public void handle(ActionEvent event) {
     	        Modo modoACambiar = new ModoDefensa();
     	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaAbajo();
-    	    	carta.cambiarA(modoACambiar);
-    	    	jugador.colocar(carta, estadoACambiar);
-    	    	jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-    	    	duelo.setSeJugoCartaMonstruo();
-    	    	if (duelo.estaYugiEnTurno()) {
-        			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        		} else {
-        			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        		}
+    	    	try {
+    	    		carta.cambiarA(modoACambiar);
+    	    		jugador.colocar(carta, estadoACambiar);
+    	    		jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+    	    		duelo.setSeJugoCartaMonstruo();
+    	    		if (duelo.estaYugiEnTurno()) {
+    	    			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    	    		} else {
+    	    			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    	    		}
+    	    	} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
+    	    		
+    	    	}    	    
     	    }
     	});
     	cancelar.setOnAction(new EventHandler<ActionEvent>() {
