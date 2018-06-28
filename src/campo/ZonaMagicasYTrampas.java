@@ -12,7 +12,7 @@ import cartas.CartaTrampa;
 import cartas.Colocable;
 import exceptions.NoHayCartasTrampaException;
 import exceptions.NoHayLugarVacioException;
-import exceptions.NoHayMonstruoException;
+import exceptions.NoHayCartasException;
 
 public class ZonaMagicasYTrampas extends Zona{
 
@@ -136,7 +136,7 @@ public class ZonaMagicasYTrampas extends Zona{
 				encontrado = true;
 			}
 		}
-		if( !encontrado ) { throw new NoHayMonstruoException(); };
+		if( !encontrado ) { throw new NoHayCartasException(); };
 			return carta;
 	}
 
