@@ -6,13 +6,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import jugador.Jugador;
 import viewSupportFiles.PathArchivos;
 
 public class CajaJugadores extends VBox implements PathArchivos{
 
 	 String pathImagenYugi = pathDeImagenes+"yugiPerfil.png";
 	 String pathImagenKaiba = pathDeImagenes+"kaiba%20perfil.png";
-	    
+	 VistaJugador perfilJugador1;   
+	 VistaJugador perfilJugador2;
+	 
 	    
 	public CajaJugadores(CajaInformacion cajaInformacion) {
 		
@@ -29,9 +32,9 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	
     	Image yugi = new Image(pathImagenYugi);
     	yugiView.setImage(yugi);
-		VistaJugador perfilJugador1 = new VistaJugador(yugiView,cajaInformacion); 
+		this.perfilJugador1 = new VistaJugador(yugiView,cajaInformacion); 
     	perfilJugador1.setAlignment(Pos.BOTTOM_LEFT);
-    	VistaJugador perfilJugador2 = new VistaJugador(kaibaView,cajaInformacion); 
+    	this.perfilJugador2 = new VistaJugador(kaibaView,cajaInformacion); 
     	perfilJugador2.setAlignment(Pos.TOP_RIGHT);
     	
     	Button botonFinalizarTurno = new Button("Finalizar Turno");
@@ -45,5 +48,10 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	VBox.setVgrow(perfilJugador2, Priority.ALWAYS);
     	this.getChildren().addAll(perfilJugador2,botonSiguienteFase,botonFinalizarTurno,perfilJugador1);
     	this.setStyle("-fx-background-color: linear-gradient(DARKRED, DARKVIOLET);");
+	}
+	
+	public void actualizarVida(Jugador yugi, Jugador kaiba) {
+		this.perfilJugador1.updateVida(Integer.toString(yugi.obtenerVida()));
+		this.perfilJugador2.updateVida(Integer.toString(kaiba.obtenerVida()));
 	}
 }
