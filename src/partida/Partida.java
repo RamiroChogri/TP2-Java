@@ -115,4 +115,12 @@ public class Partida {
 		return jugadorQueComienza;
 	}
 	
+	public Jugador getJugadorYugi() {
+		return this.jugadorYugi;
+	}
+	
+	public Jugador getJugadorKaiba() {
+		return this.jugadorKaiba;
+	}
+	
 }

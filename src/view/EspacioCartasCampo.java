@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import partida.Partida;
 
 public class EspacioCartasCampo extends GridPane{
 	
@@ -25,7 +26,7 @@ public class EspacioCartasCampo extends GridPane{
 	Rectangle espacioCampo;
 	Rectangle espacioRelleno;
 	
-	public EspacioCartasCampo(CajaInformacion cajaInformacion) {
+	public EspacioCartasCampo(CajaInformacion cajaInformacion, Partida duelo) {
 		
 		this.cajaInformacion = cajaInformacion;
 		
@@ -39,7 +40,7 @@ public class EspacioCartasCampo extends GridPane{
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	public EspacioCartasCampo(int gradosDeRotacion,CajaInformacion cajaInformacion) {
+	public EspacioCartasCampo(int gradosDeRotacion,CajaInformacion cajaInformacion,Partida duelo) {
 		
 		this.cajaInformacion = cajaInformacion;
 		
