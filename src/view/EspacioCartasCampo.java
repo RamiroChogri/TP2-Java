@@ -41,6 +41,8 @@ public class EspacioCartasCampo extends GridPane{
 	
 	public EspacioCartasCampo(int gradosDeRotacion,CajaInformacion cajaInformacion) {
 		
+		this.cajaInformacion = cajaInformacion;
+		
 		this.setEspaciosDeCampo();
 		
 		this.setHgap(10);
