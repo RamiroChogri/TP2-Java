@@ -2,6 +2,7 @@ package campo;
 
 import java.util.LinkedList;
 
+import cartas.Colocable;
 import cartas.Destruible;
 
 public class Cementerio {
@@ -22,5 +23,10 @@ public class Cementerio {
 	
 	public int obtenerCantidadDeCartas() {
 		return this.cementerio.size();
+	}
+
+	public String obtenerNombreDeLaImagenDeLaUltimaCarta() {
+		
+		return this.cementerio.getLast().getNombreDeLaImagen();
 	}
 }

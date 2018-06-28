@@ -299,5 +299,9 @@ public class Jugador {
 		
 		return this.campoPropio.obtenerCartaCampoColocada();
 	}
+
+	public String obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio() {
+		return this.campoPropio.obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio();
+	}
 	
 }

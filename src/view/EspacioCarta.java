@@ -6,20 +6,24 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import jugador.Jugador;
 import view.handlers.MouseArribaDeImagenHandler;
+import view.handlers.MouseClickeadoEnImagenAbreMenuHandler;
 import view.handlers.MouseSalirArribaDeImagenHandler;
 import viewSupportFiles.PathArchivos;
 
 public class EspacioCarta extends StackPane implements PathArchivos{
 	
 	
-	ImageView imagenCarta;
-	Image cardBack;
-	CajaInformacion cajaInformacion;
+	private ImageView imagenCarta;
+	private Image cardBack;
+	private	CajaInformacion cajaInformacion;
+	private	Jugador jugadorDuenio;
 	
-		public EspacioCarta(CajaInformacion cajaInformacion) {
+		public EspacioCarta(CajaInformacion cajaInformacion, Jugador jugadorDuenio) {
 			
 			this.cajaInformacion = cajaInformacion;
+			this.jugadorDuenio = jugadorDuenio;
 			
 			Rectangle rectanguloAtaque = new Rectangle();
 			rectanguloAtaque.setWidth(60);
@@ -36,6 +40,7 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 			
 			this.getChildren().addAll(rectanguloAtaque,rectanguloDefensa);
 			this.setAlignment(Pos.CENTER);
+			
 		}
 		
 		public void pintarCartaEnModoAtaque(Image imagen) {
@@ -48,7 +53,7 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 			 
 			MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
 			imagenCarta.setOnMouseExited(sacarDeZoom);
-			 
+			
 			this.getChildren().add(imagenCarta);
 		}
 		

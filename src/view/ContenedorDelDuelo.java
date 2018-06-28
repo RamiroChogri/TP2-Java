@@ -20,11 +20,6 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 		
 	    public ContenedorDelDuelo(Stage stage , Partida duelo) {
 	    	super();
-	    	
-	    	this.cajaCentro=null;
-	    	this.cajaDerecha=null;
-	    	this.cajaIzquierda=null;
-	    	
 	    	this.cajaDerecha = new CajaInformacion();
 			this.setRight(cajaDerecha);
 	    	

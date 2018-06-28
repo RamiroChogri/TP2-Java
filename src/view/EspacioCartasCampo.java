@@ -4,33 +4,37 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import jugador.Jugador;
 import partida.Partida;
 
 public class EspacioCartasCampo extends GridPane{
 	
-	CajaInformacion cajaInformacion;
-	EspacioCarta espacioMosntruo1;
-	EspacioCarta espacioMosntruo2;
-	EspacioCarta espacioMosntruo3;
-	EspacioCarta espacioMosntruo4;
-	EspacioCarta espacioMosntruo5;
+	private	CajaInformacion cajaInformacion;
+	private EspacioCarta espacioMosntruo1;
+	private EspacioCarta espacioMosntruo2;
+	private	EspacioCarta espacioMosntruo3;
+	private	EspacioCarta espacioMosntruo4;
+	private	EspacioCarta espacioMosntruo5;
 	
-	EspacioCartaMagica espacioMagico1;
-	EspacioCartaMagica espacioMagico2;
-	EspacioCartaMagica espacioMagico3;
-	EspacioCartaMagica espacioMagico4;
-	EspacioCartaMagica espacioMagico5;
+	private	EspacioCartaMagica espacioMagico1;
+	private	EspacioCartaMagica espacioMagico2;
+	private	EspacioCartaMagica espacioMagico3;
+	private	EspacioCartaMagica espacioMagico4;
+	private	EspacioCartaMagica espacioMagico5;
 	
-	EspacioCementerio espacioCementerio;
-	Rectangle espacioMazo;
-	Rectangle espacioCampo;
-	Rectangle espacioRelleno;
+	private	EspacioCementerio espacioCementerio;
+	private	Rectangle espacioMazo;
+	private	Rectangle espacioCampo;
+	private	Rectangle espacioRelleno;
+	private Jugador jugador;
 	
-	public EspacioCartasCampo(CajaInformacion cajaInformacion, Partida duelo) {
+	
+	public EspacioCartasCampo(CajaInformacion cajaInformacion, Jugador jugadorYugi) {
 		
 		this.cajaInformacion = cajaInformacion;
+		this.jugador = jugadorYugi;
 		
-		this.setEspaciosDeCampo();
+		this.setEspaciosDeCampo(jugadorYugi);
 		
 		this.setHgap(10);
 		this.setVgap(10);
@@ -40,11 +44,12 @@ public class EspacioCartasCampo extends GridPane{
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	public EspacioCartasCampo(int gradosDeRotacion,CajaInformacion cajaInformacion,Partida duelo) {
+	public EspacioCartasCampo(int gradosDeRotacion,CajaInformacion cajaInformacion,Jugador jugadorKaiba) {
 		
 		this.cajaInformacion = cajaInformacion;
+		this.jugador = jugadorKaiba;
 		
-		this.setEspaciosDeCampo();
+		this.setEspaciosDeCampo(jugadorKaiba);
 		
 		this.setHgap(10);
 		this.setVgap(10);
@@ -54,18 +59,18 @@ public class EspacioCartasCampo extends GridPane{
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	private void setEspaciosDeCampo() {
-		this.espacioMosntruo1 = new EspacioCarta(cajaInformacion);
-		this.espacioMosntruo2 = new EspacioCarta(cajaInformacion);
-		this.espacioMosntruo3 = new EspacioCarta(cajaInformacion);
-		this.espacioMosntruo4 = new EspacioCarta(cajaInformacion);
-		this.espacioMosntruo5 = new EspacioCarta(cajaInformacion);
+	private void setEspaciosDeCampo(Jugador jugadorPerteneciente) {
+		this.espacioMosntruo1 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMosntruo2 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMosntruo3 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMosntruo4 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMosntruo5 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
 		
-		this.espacioMagico1 = new EspacioCartaMagica(cajaInformacion);
-		this.espacioMagico2 = new EspacioCartaMagica(cajaInformacion);
-		this.espacioMagico3 = new EspacioCartaMagica(cajaInformacion);
-		this.espacioMagico4 = new EspacioCartaMagica(cajaInformacion);
-		this.espacioMagico5 = new EspacioCartaMagica(cajaInformacion);
+		this.espacioMagico1 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
+		this.espacioMagico2 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
+		this.espacioMagico3 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
+		this.espacioMagico4 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
+		this.espacioMagico5 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
 		
 		this. espacioCementerio = new EspacioCementerio();
 		this. espacioMazo = new Rectangle(60,100,Color.BROWN);
@@ -118,7 +123,7 @@ public class EspacioCartasCampo extends GridPane{
 	}
 	
 	public void limpiarCampo() {
-		this.setEspaciosDeCampo();
+		this.setEspaciosDeCampo(this.jugador);
 	}
 	
 	

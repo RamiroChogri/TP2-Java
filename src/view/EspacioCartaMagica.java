@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import jugador.Jugador;
 import view.handlers.MouseArribaDeImagenHandler;
 import view.handlers.MouseSalirArribaDeImagenHandler;
 import viewSupportFiles.PathArchivos;
@@ -16,7 +17,7 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 	Image cardBack;
 	CajaInformacion cajaInformacion;
 	
-	public EspacioCartaMagica(CajaInformacion informacion) {
+	public EspacioCartaMagica(CajaInformacion informacion,Jugador jugadorDuenio) {
 		
 		this.cajaInformacion = informacion;
 		

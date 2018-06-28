@@ -195,6 +195,10 @@ public class Campo {
 		
 		return this.espacioCampo.obtenerCartaColocada();
 	}
+
+	public String obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio() {
+		return this.cementerio.obtenerNombreDeLaImagenDeLaUltimaCarta();
+	}
 	
 
 
