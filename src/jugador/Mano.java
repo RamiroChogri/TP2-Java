@@ -127,4 +127,8 @@ public class Mano {
 		
 	}
 	
+	public LinkedList<Colocable> obtenerCartas() {
+		return this.cartasEnMano;
+	}
+	
 }

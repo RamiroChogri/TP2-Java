@@ -1,44 +1,58 @@
 package view;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
+import cartas.Colocable;
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import jugador.Jugador;
+import viewSupportFiles.PathArchivos;
 
-public class ManoJugador extends HBox{
+public class ManoJugador extends HBox implements PathArchivos {
 
-		public ManoJugador() {
-			this.setAlignment(Pos.BOTTOM_CENTER);
-			this.setSpacing(15);
-			
-			Rectangle carta1 = new Rectangle();
-			carta1.setWidth(60);
-			carta1.setHeight(100);
-			carta1.setStroke(Color.WHITE);
-			
-			Rectangle carta2 = new Rectangle();
-			carta2.setWidth(60);
-			carta2.setHeight(100);
-			carta2.setStroke(Color.WHITE);
-			
-			Rectangle carta3 = new Rectangle();
-			carta3.setWidth(60);
-			carta3.setHeight(100);
-			carta3.setStroke(Color.WHITE);
-			
-			Rectangle carta4 = new Rectangle();
-			carta4.setWidth(60);
-			carta4.setHeight(100);
-			carta4.setStroke(Color.WHITE);
-			Rectangle carta5 = new Rectangle();
-			carta5.setWidth(60);
-			carta5.setHeight(100);
-			carta5.setStroke(Color.WHITE);
-			
-			this.getChildren().addAll(carta1, carta2,carta3,carta4,carta5);
+	private LinkedList<EspacioCartaEnMano> espaciosEnMano;
+	
+	public ManoJugador() {
+		this.setAlignment(Pos.BOTTOM_CENTER);
+		this.setSpacing(15);
+		this.espaciosEnMano = new LinkedList<EspacioCartaEnMano>();
+
+	}
+	
+	public void agregarCarta() {
+		
+	}
+	
+	
+	public void pintarCartasEnManoJugador(CajaInformacion cajaInformacion, LinkedList<Colocable> cartasEnMano) {
+		
+		this.limpiarPosiciones();
+		Colocable cartaActual = null;
+		Image imagen;
+		Iterator<Colocable> posicionesIterador = cartasEnMano.iterator();
+		while(posicionesIterador.hasNext()) {
+			cartaActual = posicionesIterador.next();
+			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
+			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion));
+			this.espaciosEnMano.getLast().pintarCartaBocaArriba(imagen);
+			this.getChildren().add(this.espaciosEnMano.getLast());
 		}
 		
-		public void agregarCarta() {
-			
+	}
+	
+	private void limpiarPosiciones() {
+		
+		Iterator<EspacioCartaEnMano> posicionesIterador = espaciosEnMano.iterator();
+		EspacioCartaEnMano espacioActual;
+		while(posicionesIterador.hasNext()) {
+			espacioActual = posicionesIterador.next();
+			this.getChildren().remove(espacioActual);
 		}
+		
+	}
+		
 }

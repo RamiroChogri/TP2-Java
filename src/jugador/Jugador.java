@@ -277,4 +277,8 @@ public class Jugador implements Daniable{
 		
 	}
 	
+	public LinkedList<Colocable> obtenerCartasEnMano() {
+		return this.mano.obtenerCartas();
+	}
+	
 }
