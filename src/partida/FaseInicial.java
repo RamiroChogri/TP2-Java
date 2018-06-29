@@ -12,6 +12,7 @@ public class FaseInicial extends Fase {
 		this.faseSiguiente = null;
 		this.nombreFase = "Fase Inicial";
 		this.jugadorEnTurno = jugadorRecibido;
+		jugadorEnTurno.tomarCartaDelMazo();
 	}
 	
 	public String getNombreFase() {
@@ -24,7 +25,6 @@ public class FaseInicial extends Fase {
 		String nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
 		System.out.println("Turno del jugador " + nombreJugadorEnTurno);
 		
-		jugadorEnTurno.tomarCartaDelMazo();
 		EstadoPartida estadoPartidaADevolver = estadoPartidaActual;
 		
 		if ((jugadorEnTurno.estaDerrotado()) || (jugadorEnTurno.obtenerJugadorEnemigo()).estaDerrotado()) {

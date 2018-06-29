@@ -79,64 +79,17 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaArribaModoAtaque, bocaArribaModoDefensa, bocaAbajoModoDefensa, cancelar);    	
     	
-    	BotonModoAtaqueBocaArribaHandler modoAtaqueBocaArriba = new BotonModoAtaqueBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
-    	bocaArribaModoAtaque.setOnAction(modoAtaqueBocaArriba);
+    	BotonModoAtaqueBocaArribaHandler modoAtaqueBocaArribaHandler = new BotonModoAtaqueBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	bocaArribaModoAtaque.setOnAction(modoAtaqueBocaArribaHandler);
     	
+    	BotonModoDefensaBocaArribaHandler modoDefensaBocaArribaHandler = new BotonModoDefensaBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	bocaArribaModoDefensa.setOnAction(modoDefensaBocaArribaHandler);
     	
-    	bocaArribaModoDefensa.setOnAction(new EventHandler<ActionEvent>() {
-    	    @Override
-    	    public void handle(ActionEvent event) {
-    	        Modo modoACambiar = new ModoDefensa();
-    	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaArriba();
-    	        try {
-    	        	try {
-    	        		carta.cambiarA(modoACambiar);
-    	        		jugador.colocar(carta, estadoACambiar);
-    	        		jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-    	        		duelo.setSeJugoCartaMonstruo();
-    	        		if (duelo.estaYugiEnTurno()) {
-    	        			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-    	        		} else {
-    	        			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-    	        		}
-    	        	} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
-    	        	
-    	        	} 
-    	        }catch (NoHayLugarVacioException e) {
-    	    	
-    	        }
-    	    }
-    	});
-    	bocaAbajoModoDefensa.setOnAction(new EventHandler<ActionEvent>() {
-    	    @Override
-    	    public void handle(ActionEvent event) {
-    	        Modo modoACambiar = new ModoDefensa();
-    	        EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaAbajo();
-    	    	try {
-    	    		try {
-    	    			carta.cambiarA(modoACambiar);
-    	    			jugador.colocar(carta, estadoACambiar);
-    	    			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-    	    			duelo.setSeJugoCartaMonstruo();
-    	    			if (duelo.estaYugiEnTurno()) {
-    	    				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-    	    			} else {
-    	    				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-    	    			}
-    	    		} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
-    	    		
-    	    		}
-    	    	}  catch (NoHayLugarVacioException e) {
-    	    		
-    	    	}
-    	    }
-    	});
-    	cancelar.setOnAction(new EventHandler<ActionEvent>() {
-    		@Override
-    		public void handle(ActionEvent event) {
-    			//no hace nada
-    		}
-    	});
+    	BotonModoDefensaBocaAbajoHandler modoDefensaBocaAbajoHandler = new BotonModoDefensaBocaAbajoHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	bocaAbajoModoDefensa.setOnAction(modoDefensaBocaAbajoHandler);
+    	
+    	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
+    	cancelar.setOnAction(cancelarHandler);
     	
     	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
 	}
@@ -147,46 +100,17 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	MenuItem bocaAbajo = new MenuItem("Boca Abajo");
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaArriba, bocaAbajo, cancelar);
-    	bocaArriba.setOnAction(new EventHandler<ActionEvent>() {
-    	    @Override
-    	    public void handle(ActionEvent event) {
-    	    	EstadoCarta estadoCarta = new EstadoCartaColocadaBocaArriba();
-        		try {
-        			jugador.colocar(carta, estadoCarta);
-        			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-        			if (duelo.estaYugiEnTurno()) {
-        				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        			} else {
-        				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        			}
-        		} catch (NoHayLugarVacioException e) {
-        			
-        		}
-    	    }
-    	});
-    	bocaAbajo.setOnAction(new EventHandler<ActionEvent>() {
-    	    @Override
-    	    public void handle(ActionEvent event) {
-    	    	EstadoCarta estadoCarta = new EstadoCartaColocadaBocaAbajo();
-        		try {
-        			jugador.colocar(carta, estadoCarta);
-        			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-        			if (duelo.estaYugiEnTurno()) {
-        				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        			} else {
-        				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-        			}
-        		} catch (NoHayLugarVacioException e) {
-        			
-        		}
-    	    }
-    	});
-    	cancelar.setOnAction(new EventHandler<ActionEvent>() {
-    		@Override
-    		public void handle(ActionEvent event) {
-    			//no hace nada
-    		}
-    	});
+    	
+    	BotonBocaArribaHandler bocaArribaHandler = new BotonBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	bocaArriba.setOnAction(bocaArribaHandler);
+    	
+    	BotonBocaAbajoHandler bocaAbajoHandler = new BotonBocaAbajoHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	bocaAbajo.setOnAction(bocaAbajoHandler);
+    	
+    	
+    	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
+    	cancelar.setOnAction(cancelarHandler);
+    	
       	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
     }
 }
