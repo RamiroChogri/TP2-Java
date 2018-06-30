@@ -10,14 +10,14 @@ import jugador.Jugador;
 import partida.Partida;
 import viewSupportFiles.PathArchivos;
 
-public class EspacioCartasCampo extends GridPane implements PathArchivos{
+public class EspaciosDelCampo extends GridPane implements PathArchivos{
 	
 	private	CajaInformacion cajaInformacion;
-	private EspacioCarta espacioMonstruo1;
-	private EspacioCarta espacioMonstruo2;
-	private	EspacioCarta espacioMonstruo3;
-	private	EspacioCarta espacioMonstruo4;
-	private	EspacioCarta espacioMonstruo5;
+	private EspacioCartaMonstruo espacioMonstruo1;
+	private EspacioCartaMonstruo espacioMonstruo2;
+	private	EspacioCartaMonstruo espacioMonstruo3;
+	private	EspacioCartaMonstruo espacioMonstruo4;
+	private	EspacioCartaMonstruo espacioMonstruo5;
 	
 	private	EspacioCartaMagica espacioMagico1;
 	private	EspacioCartaMagica espacioMagico2;
@@ -33,7 +33,7 @@ public class EspacioCartasCampo extends GridPane implements PathArchivos{
 	private CajaCampo cajaCampo;
 	private Partida duelo;
 	
-	public EspacioCartasCampo(CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorYugi, CajaCampo cajaCampoRecibida) {
+	public EspaciosDelCampo(CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorYugi, CajaCampo cajaCampoRecibida) {
 		
 		this.duelo = duelo;
 		this.cajaInformacion = cajaInformacion;
@@ -50,7 +50,7 @@ public class EspacioCartasCampo extends GridPane implements PathArchivos{
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	public EspacioCartasCampo(int gradosDeRotacion,CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorKaiba, CajaCampo cajaCampoRecibida) {
+	public EspaciosDelCampo(int gradosDeRotacion,CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorKaiba, CajaCampo cajaCampoRecibida) {
 		
 		this.duelo = duelo;
 		this.cajaInformacion = cajaInformacion;
@@ -68,11 +68,11 @@ public class EspacioCartasCampo extends GridPane implements PathArchivos{
 	}
 	
 	private void setEspaciosDeCampo(Jugador jugadorPerteneciente) {
-		this.espacioMonstruo1 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMonstruo2 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMonstruo3 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMonstruo4 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMonstruo5 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo1 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo2 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo3 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo4 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo5 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
 		
 		this.espacioMagico1 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
 		this.espacioMagico2 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
@@ -86,8 +86,8 @@ public class EspacioCartasCampo extends GridPane implements PathArchivos{
 		this.espacioRelleno = new Rectangle(60,100,Color.BLACK);
 	}
 
-	public EspacioCarta getEspacioCartaMonstruo(int posicionDeCartaMonstruo) {
-		EspacioCarta cartaBuscada = null;
+	public EspacioCartaMonstruo getEspacioCartaMonstruo(int posicionDeCartaMonstruo) {
+		EspacioCartaMonstruo cartaBuscada = null;
 
 	    //No hay manera de hacerlo sin if
 	  if(posicionDeCartaMonstruo == 1)
@@ -136,7 +136,7 @@ public class EspacioCartasCampo extends GridPane implements PathArchivos{
 	
 	public void limpiarCampo() {
 		for(int i = 1; i<=5;i++) {
-			EspacioCarta espacioActual = this.getEspacioCartaMonstruo(i);
+			EspacioCartaMonstruo espacioActual = this.getEspacioCartaMonstruo(i);
 			espacioActual.limpiar();
 		}
 		for(int i = 1; i<=5;i++) {

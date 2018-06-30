@@ -17,8 +17,8 @@ public class CajaCampo extends VBox implements PathArchivos{
 
 	CajaInformacion cajaInformacion;
 	
-	EspacioCartasCampo campoJ1;
-	EspacioCartasCampo campoJ2;
+	EspaciosDelCampo campoJ1;
+	EspaciosDelCampo campoJ2;
 	ManoJugador manoYugi;
 	ManoJugador manoKaiba;
 	Partida duelo;
@@ -34,8 +34,8 @@ public class CajaCampo extends VBox implements PathArchivos{
 		this.manoKaiba = new ManoJugador(duelo,duelo.getJugadorKaiba(), this);
 		this.manoKaiba.setAlignment(Pos.TOP_CENTER);
 		
-		this.campoJ1 = new EspacioCartasCampo(cajaInformacion, duelo, duelo.getJugadorYugi(), this);
-		this.campoJ2 = new EspacioCartasCampo(180,cajaInformacion, duelo, duelo.getJugadorKaiba(), this);
+		this.campoJ1 = new EspaciosDelCampo(cajaInformacion, duelo, duelo.getJugadorYugi(), this);
+		this.campoJ2 = new EspaciosDelCampo(180,cajaInformacion, duelo, duelo.getJugadorKaiba(), this);
 		
 		this.setSpacing(15);
 		this.setAlignment(Pos.CENTER);
@@ -100,7 +100,7 @@ public class CajaCampo extends VBox implements PathArchivos{
 		
 	}
 	
-	public void pintarCartasEnZonaMonstruos(LinkedList<Atacable> monstruosYugi, EspacioCartasCampo campo) {
+	public void pintarCartasEnZonaMonstruos(LinkedList<Atacable> monstruosYugi, EspaciosDelCampo campo) {
 		
 		Iterator<Atacable> posicionesIterador = monstruosYugi.iterator();
 		int posicionActual = 0;
@@ -122,7 +122,7 @@ public class CajaCampo extends VBox implements PathArchivos{
 		}
 	}
 	
-	public void pintarCartasEnZonaMagicasYTrampas(LinkedList<Activable> activablesYugi, EspacioCartasCampo campo) {
+	public void pintarCartasEnZonaMagicasYTrampas(LinkedList<Activable> activablesYugi, EspaciosDelCampo campo) {
 		
 		Iterator<Activable> posicionesIterador = activablesYugi.iterator();
 		int posicionActual = 0;
@@ -142,7 +142,7 @@ public class CajaCampo extends VBox implements PathArchivos{
 		}
 	}
 		
-	public void pintarCartaZonaCampo(LinkedList<Activable> activableYugi, EspacioCartasCampo campo) {
+	public void pintarCartaZonaCampo(LinkedList<Activable> activableYugi, EspaciosDelCampo campo) {
 		Iterator<Activable> posicionesIterador = activableYugi.iterator();
 		Activable cartaActual;
 		Image imagen;

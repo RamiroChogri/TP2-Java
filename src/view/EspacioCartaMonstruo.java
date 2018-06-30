@@ -17,7 +17,7 @@ import view.handlers.MouseClickeadoEnImagenAbreMenuHandler;
 import view.handlers.MouseSalirArribaDeImagenHandler;
 import viewSupportFiles.PathArchivos;
 
-public class EspacioCarta extends StackPane implements PathArchivos{
+public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 	
 	
 	private ImageView imagenCarta;
@@ -28,7 +28,7 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 	private Partida partida;
 	private CajaCampo cajaCampo;
 	
-		public EspacioCarta(CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorDuenio, CajaCampo cajaCampoRecibida) {
+		public EspacioCartaMonstruo(CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorDuenio, CajaCampo cajaCampoRecibida) {
 			
 			this.cajaInformacion = cajaInformacion;
 			this.jugadorDuenio = jugadorDuenio;
