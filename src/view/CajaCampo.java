@@ -89,18 +89,18 @@ public class CajaCampo extends VBox implements PathArchivos{
 		
 		this.campoJ1.limpiarCampo();
 		this.campoJ2.limpiarCampo();
-		this.pintarCartasEnZonaMonstruosJugador1(yugi.obtenerMonstruosColocados());
-		this.pintarCartasEnZonaMonstruosJugador2(kaiba.obtenerMonstruosColocados());
+		this.pintarCartasEnZonaMonstruos(yugi.obtenerMonstruosColocados(), campoJ1);
+		this.pintarCartasEnZonaMonstruos(kaiba.obtenerMonstruosColocados(), campoJ2);
 		
-		this.pintarCartasEnZonaMagicasYTrampasJugador1(yugi.obtenerMagicasYTrampasColocadas());
-		this.pintarCartasEnZonaMagicasYTrampasJugador2(kaiba.obtenerMagicasYTrampasColocadas());
+		this.pintarCartasEnZonaMagicasYTrampas(yugi.obtenerMagicasYTrampasColocadas(), campoJ1);
+		this.pintarCartasEnZonaMagicasYTrampas(kaiba.obtenerMagicasYTrampasColocadas(), campoJ2);
 		
-		this.pintarCartaZonaCampoJugador1(yugi.obtenerCartaCampoColocada());
-		this.pintarCartaZonaCampoJugador2(kaiba.obtenerCartaCampoColocada());
+		this.pintarCartaZonaCampo(yugi.obtenerCartaCampoColocada(), campoJ1);
+		this.pintarCartaZonaCampo(kaiba.obtenerCartaCampoColocada(), campoJ2);
 		
 	}
 	
-	public void pintarCartasEnZonaMonstruosJugador1(LinkedList<Atacable> monstruosYugi) {
+	public void pintarCartasEnZonaMonstruos(LinkedList<Atacable> monstruosYugi, EspacioCartasCampo campo) {
 		
 		Iterator<Atacable> posicionesIterador = monstruosYugi.iterator();
 		int posicionActual = 0;
@@ -112,40 +112,17 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen, cartaActual);
+				campo.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen, cartaActual);
 			} else if (cartaActual.estaEnModoAtaque()) {
-				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoAtaque(imagen, cartaActual);
+				campo.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoAtaque(imagen, cartaActual);
 			} else {
-				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen, cartaActual);
+				campo.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen, cartaActual);
 			}
 		
 		}
 	}
 	
-	
-	public void pintarCartasEnZonaMonstruosJugador2(LinkedList<Atacable> monstruosKaiba) {
-		
-		Iterator<Atacable> posicionesIterador = monstruosKaiba.iterator();
-		int posicionActual = 0;
-		Atacable cartaActual;
-		Image imagen;
-		while(posicionesIterador.hasNext()) {
-		
-			posicionActual++;
-			cartaActual = posicionesIterador.next();
-			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			if (cartaActual.estaColocadaBocaAbajo()) {
-				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen, cartaActual);
-			} else if (cartaActual.estaEnModoAtaque()) {
-				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoAtaque(imagen, cartaActual);
-			} else {
-				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen, cartaActual);
-			}
-		
-		}
-	}
-	
-	public void pintarCartasEnZonaMagicasYTrampasJugador1(LinkedList<Activable> activablesYugi) {
+	public void pintarCartasEnZonaMagicasYTrampas(LinkedList<Activable> activablesYugi, EspacioCartasCampo campo) {
 		
 		Iterator<Activable> posicionesIterador = activablesYugi.iterator();
 		int posicionActual = 0;
@@ -157,56 +134,24 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaAbajo(imagen, cartaActual);
+				campo.getEspacioCartaMagica(posicionActual).pintarCartaBocaAbajo(imagen, cartaActual);
 			} else {
-				campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen, cartaActual);
+				campo.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen, cartaActual);
 			}
 		
 		}
 	}
-	
-	public void pintarCartasEnZonaMagicasYTrampasJugador2(LinkedList<Activable> activablesKaiba) {
 		
-		Iterator<Activable> posicionesIterador = activablesKaiba.iterator();
-		int posicionActual = 0;
-		Activable cartaActual;
-		Image imagen;
-		while(posicionesIterador.hasNext()) {
-		
-			posicionActual++;
-			cartaActual = posicionesIterador.next();
-			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			if (cartaActual.estaColocadaBocaAbajo()) {
-				campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaAbajo(imagen, cartaActual);
-			} else {
-				campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen, cartaActual);
-			}
-		
-		}
-	}
-	
-	public void pintarCartaZonaCampoJugador1(LinkedList<Activable> activableYugi) {
+	public void pintarCartaZonaCampo(LinkedList<Activable> activableYugi, EspacioCartasCampo campo) {
 		Iterator<Activable> posicionesIterador = activableYugi.iterator();
 		Activable cartaActual;
 		Image imagen;
 		while(posicionesIterador.hasNext()) {
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			campoJ1.getEspacioCartaCampo().pintarCartaBocaArriba(imagen);
+			campo.getEspacioCartaCampo().pintarCartaBocaArriba(imagen);
 		}
 	}
-	
-	public void pintarCartaZonaCampoJugador2(LinkedList<Activable> activableKaiba) {
-		Iterator<Activable> posicionesIterador = activableKaiba.iterator();
-		Activable cartaActual;
-		Image imagen;
-		while(posicionesIterador.hasNext()) {
-			cartaActual = posicionesIterador.next();
-			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			campoJ2.getEspacioCartaCampo().pintarCartaBocaArriba(imagen);
-		}
-	}
-	
 	
 	public void actualizarCaja() {
 		this.manoYugi.pintarCartasEnManoJugador(cajaInformacion);
