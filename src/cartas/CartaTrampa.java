@@ -6,6 +6,10 @@ import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaColocadaBocaAbajo;
 import estadoCarta.EstadoCartaColocadaBocaArriba;
 import exceptions.CartaTrampaNoPuedeVoltearseException;
+import javafx.scene.image.ImageView;
+import jugador.Jugador;
+import partida.Partida;
+import view.CajaCampo;
 
 public class CartaTrampa extends CartaMagica{
 	
@@ -51,6 +55,11 @@ public class CartaTrampa extends CartaMagica{
 		EstadoCarta estadoADevolver = new EstadoCartaColocadaBocaAbajo();
 		return estadoADevolver;
 		
+	}
+	
+	@Override
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta) {
+		//No hace nada
 	}
 	
 }

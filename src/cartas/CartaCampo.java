@@ -11,7 +11,10 @@ import estadoCarta.EstadoCartaColocadaBocaAbajo;
 import estadoCarta.EstadoCartaColocadaBocaArriba;
 import estadoCarta.EstadoCartaNoJugada;
 import exceptions.CartaBocaAbajoNoPuedeActivarEfectoException;
+import javafx.scene.image.ImageView;
 import jugador.Jugador;
+import partida.Partida;
+import view.CajaCampo;
 
 public class CartaCampo extends CartaMagica {
 	
@@ -76,6 +79,11 @@ public class CartaCampo extends CartaMagica {
 		EstadoCarta estadoADevolver = new EstadoCartaColocadaBocaArriba();
 		return estadoADevolver;
 		
+	}
+	
+	@Override
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta) {
+		//No hace nada
 	}
 
 	// Considerar si conviene que se devuelva el estado y que lo maneje el jugador

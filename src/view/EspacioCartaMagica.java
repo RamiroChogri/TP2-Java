@@ -1,5 +1,6 @@
 package view;
 
+import cartas.Colocable;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -7,19 +8,27 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import jugador.Jugador;
+import partida.Partida;
 import view.handlers.MouseArribaDeImagenHandler;
 import view.handlers.MouseSalirArribaDeImagenHandler;
 import viewSupportFiles.PathArchivos;
 
 public class EspacioCartaMagica extends StackPane implements PathArchivos{
 	
-	ImageView imagenCarta;
-	ImageView cardBack;
-	CajaInformacion cajaInformacion;
+	private ImageView imagenCarta;
+	private ImageView cardBack;
+	private CajaInformacion cajaInformacion;
+	private	Jugador jugadorDuenio;
+	private Colocable carta;
+	private Partida partida;
+	private CajaCampo cajaCampo;
 	
-	public EspacioCartaMagica(CajaInformacion informacion,Jugador jugadorDuenio) {
+	public EspacioCartaMagica(CajaInformacion informacion, Partida duelo, Jugador jugadorDuenio, CajaCampo cajaCampoRecibida) {
 		
 		this.cajaInformacion = informacion;
+		this.jugadorDuenio = jugadorDuenio;
+		this.partida = duelo;
+		this.cajaCampo = cajaCampoRecibida;
 		
 		Rectangle rectanguloAtaque = new Rectangle();
 		rectanguloAtaque.setWidth(60);
@@ -34,10 +43,11 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	public void pintarCartaBocaAbajo(Image imagen) {
+	public void pintarCartaBocaAbajo(Image imagen, Colocable cartaRecibida) {
 		
 		this.cardBack.setFitWidth(60);
 		this.cardBack.setFitHeight(100);
+		this.carta = cartaRecibida;
 		
 		this.imagenCarta = new ImageView(imagen);
 		
@@ -47,10 +57,14 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(this.cajaInformacion);
 		this.cardBack.setOnMouseExited(sacarDeZoom);
 		
+		this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaCampo, this.imagenCarta);
+		
 		this.getChildren().add(this.cardBack);
 	}
 	
-	public void pintarCartaBocaArriba(Image imagen) {
+	public void pintarCartaBocaArriba(Image imagen, Colocable cartaRecibida) {
+		this.carta = cartaRecibida;
+		
 		this.imagenCarta = new ImageView(imagen);
 		this.imagenCarta.setFitWidth(60);
 		this.imagenCarta.setFitHeight(100);
@@ -68,5 +82,7 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 		if(this.getChildren().contains(this.imagenCarta))
 		this.getChildren().remove(this.imagenCarta);
 		else this.getChildren().remove(this.cardBack);
+		
+		this.carta = null;
 	}
 }

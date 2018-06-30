@@ -6,8 +6,12 @@ import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
 import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaColocadaBocaArriba;
+import javafx.scene.image.ImageView;
 import jugador.Jugador;
 import modos.Modo;
+import partida.Partida;
+import view.CajaCampo;
+import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 
 public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 
@@ -215,5 +219,11 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 	@Override
 	public void eliminarModificadorDeDefensa() {
 		getAtacable().eliminarModificadorDeDefensa();
+	}
+	
+	@Override
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta) {
+		ClickEnCartaEnZonaMonstruoHandler verMenu = new ClickEnCartaEnZonaMonstruoHandler(partida, this, jugadorDuenio, cajaCampo);
+		imagenCarta.setOnContextMenuRequested(verMenu);
 	}
 }

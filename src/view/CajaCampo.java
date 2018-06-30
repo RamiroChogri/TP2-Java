@@ -34,8 +34,8 @@ public class CajaCampo extends VBox implements PathArchivos{
 		this.manoKaiba = new ManoJugador(duelo,duelo.getJugadorKaiba(), this);
 		this.manoKaiba.setAlignment(Pos.TOP_CENTER);
 		
-		this.campoJ1 = new EspacioCartasCampo(cajaInformacion,duelo.getJugadorYugi());
-		this.campoJ2 = new EspacioCartasCampo(180,cajaInformacion,duelo.getJugadorKaiba());
+		this.campoJ1 = new EspacioCartasCampo(cajaInformacion, duelo, duelo.getJugadorYugi(), this);
+		this.campoJ2 = new EspacioCartasCampo(180,cajaInformacion, duelo, duelo.getJugadorKaiba(), this);
 		
 		this.setSpacing(15);
 		this.setAlignment(Pos.CENTER);
@@ -112,11 +112,11 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
+				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen, cartaActual);
 			} else if (cartaActual.estaEnModoAtaque()) {
-				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoAtaque(imagen);
+				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoAtaque(imagen, cartaActual);
 			} else {
-				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
+				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen, cartaActual);
 			}
 		
 		}
@@ -135,11 +135,11 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
+				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen, cartaActual);
 			} else if (cartaActual.estaEnModoAtaque()) {
-				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoAtaque(imagen);
+				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoAtaque(imagen, cartaActual);
 			} else {
-				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
+				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen, cartaActual);
 			}
 		
 		}
@@ -157,9 +157,9 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaAbajo(imagen);
+				campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaAbajo(imagen, cartaActual);
 			} else {
-				campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen);
+				campoJ1.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen, cartaActual);
 			}
 		
 		}
@@ -177,9 +177,9 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaAbajo(imagen);
+				campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaAbajo(imagen, cartaActual);
 			} else {
-				campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen);
+				campoJ2.getEspacioCartaMagica(posicionActual).pintarCartaBocaArriba(imagen, cartaActual);
 			}
 		
 		}
