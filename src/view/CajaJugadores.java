@@ -59,13 +59,13 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	this.perfilJugador2 = new VistaJugador(kaibaView,cajaInformacion, nombreFase); 
     	perfilJugador2.setAlignment(Pos.TOP_RIGHT);
     	
-    	Button botonFinalizarTurno = new Button("Finalizar Turno");
+    	Button botonFinalizarTurno = new Button("Finalizar Turno ");
     	botonFinalizarTurno.getStylesheets().add("view/StyleButtonCajaJugador.css");
     	BotonFinalizarTurnoHandler finalizarTurno = new BotonFinalizarTurnoHandler(this.duelo, this.jugador, this.contenedorDelDuelo);
         botonFinalizarTurno.setOnAction(finalizarTurno);
     	
     	
-    	Button botonSiguienteFase = new Button("Siguiente fase");
+    	Button botonSiguienteFase = new Button("Siguiente fase  ");
     	botonSiguienteFase.getStylesheets().add("view/StyleButtonCajaJugador.css");
     	BotonSiguienteFaseHandler siguienteFase = new BotonSiguienteFaseHandler(this.duelo, this.jugador, this.contenedorDelDuelo);
     	botonSiguienteFase.setOnAction(siguienteFase);
@@ -75,7 +75,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	this.setAlignment(Pos.TOP_LEFT);
     	VBox.setVgrow(perfilJugador1, Priority.ALWAYS);
     	VBox.setVgrow(perfilJugador2, Priority.ALWAYS);
-    	this.getChildren().addAll(perfilJugador2,botonSiguienteFase,fase,botonFinalizarTurno,perfilJugador1);
+    	this.getChildren().addAll(perfilJugador2,fase,botonSiguienteFase,botonFinalizarTurno,perfilJugador1);
     	this.setStyle("-fx-background-color: linear-gradient(DARKRED, DARKVIOLET);");
 	}
 	

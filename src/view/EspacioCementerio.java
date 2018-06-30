@@ -10,6 +10,7 @@ public class EspacioCementerio extends StackPane{
 
 		public EspacioCementerio() {
 			Rectangle espacioCementerio = new Rectangle(60,100,Color.GREY);
+			espacioCementerio.setStroke(Color.WHITE);
 			this.getChildren().add(espacioCementerio);
 			this.setAlignment(Pos.CENTER);
 		}

@@ -83,6 +83,7 @@ public class CajaCampo extends VBox implements PathArchivos{
 		
 		this.manoYugi.pintarCartasEnManoJugador(cajaInformacion);
 		this.manoKaiba.darVueltaCartasEnManoJugador(this.cajaInformacion);
+		this.campoJ1.actualizarCantidadDeCartasEnMazo();
 		
 	}
 	
@@ -92,6 +93,7 @@ public class CajaCampo extends VBox implements PathArchivos{
 		
 		this.manoYugi.darVueltaCartasEnManoJugador(this.cajaInformacion);
 		this.manoKaiba.pintarCartasEnManoJugador(cajaInformacion);
+		this.campoJ2.actualizarCantidadDeCartasEnMazo();
 		
 		
 	}
@@ -123,11 +125,11 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				this.campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
+				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
 			} else if (cartaActual.estaEnModoAtaque()) {
-				this.campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoAtaque(imagen);
+				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoAtaque(imagen);
 			} else {
-				this.campoJ1.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
+				this.campoJ1.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
 			}
 		
 		}
@@ -146,11 +148,11 @@ public class CajaCampo extends VBox implements PathArchivos{
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
 			if (cartaActual.estaColocadaBocaAbajo()) {
-				this.campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
+				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaAbajo(imagen);
 			} else if (cartaActual.estaEnModoAtaque()) {
-				this.campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoAtaque(imagen);
+				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoAtaque(imagen);
 			} else {
-				this.campoJ2.getEspacioCartaMosntruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
+				this.campoJ2.getEspacioCartaMonstruo(posicionActual).pintarCartaEnModoDefensaBocaArriba(imagen);
 			}
 		
 		}

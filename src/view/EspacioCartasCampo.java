@@ -10,11 +10,11 @@ import partida.Partida;
 public class EspacioCartasCampo extends GridPane{
 	
 	private	CajaInformacion cajaInformacion;
-	private EspacioCarta espacioMosntruo1;
-	private EspacioCarta espacioMosntruo2;
-	private	EspacioCarta espacioMosntruo3;
-	private	EspacioCarta espacioMosntruo4;
-	private	EspacioCarta espacioMosntruo5;
+	private EspacioCarta espacioMonstruo1;
+	private EspacioCarta espacioMonstruo2;
+	private	EspacioCarta espacioMonstruo3;
+	private	EspacioCarta espacioMonstruo4;
+	private	EspacioCarta espacioMonstruo5;
 	
 	private	EspacioCartaMagica espacioMagico1;
 	private	EspacioCartaMagica espacioMagico2;
@@ -23,8 +23,8 @@ public class EspacioCartasCampo extends GridPane{
 	private	EspacioCartaMagica espacioMagico5;
 	
 	private	EspacioCementerio espacioCementerio;
-	private	Rectangle espacioMazo;
-	private	EspacioCartaMagica espacioCampo;
+	private	EspacioMazo espacioMazo;
+	private	EspacioCartaCampo espacioCampo;
 	private	Rectangle espacioRelleno;
 	private Jugador jugador;
 	
@@ -38,7 +38,7 @@ public class EspacioCartasCampo extends GridPane{
 		
 		this.setHgap(10);
 		this.setVgap(10);
-		this.addRow(0, espacioCampo,espacioMosntruo1,espacioMosntruo2,espacioMosntruo3,espacioMosntruo4,espacioMosntruo5,espacioCementerio);
+		this.addRow(0, espacioCampo,espacioMonstruo1,espacioMonstruo2,espacioMonstruo3,espacioMonstruo4,espacioMonstruo5,espacioCementerio);
 		this.addRow(1,espacioRelleno, espacioMagico1,espacioMagico2,espacioMagico3,espacioMagico4,espacioMagico5,espacioMazo);
 		
 		this.setAlignment(Pos.CENTER);
@@ -53,18 +53,18 @@ public class EspacioCartasCampo extends GridPane{
 		
 		this.setHgap(10);
 		this.setVgap(10);
-		this.addRow(1,espacioCementerio,espacioMosntruo5,espacioMosntruo4,espacioMosntruo3,espacioMosntruo2,espacioMosntruo1,espacioCampo);
+		this.addRow(1,espacioCementerio,espacioMonstruo5,espacioMonstruo4,espacioMonstruo3,espacioMonstruo2,espacioMonstruo1,espacioCampo);
 		this.addRow(0,espacioMazo,espacioMagico5,espacioMagico4,espacioMagico3,espacioMagico2,espacioMagico1,espacioRelleno);
 		
 		this.setAlignment(Pos.CENTER);
 	}
 	
 	private void setEspaciosDeCampo(Jugador jugadorPerteneciente) {
-		this.espacioMosntruo1 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
-		this.espacioMosntruo2 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
-		this.espacioMosntruo3 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
-		this.espacioMosntruo4 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
-		this.espacioMosntruo5 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMonstruo1 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMonstruo2 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMonstruo3 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMonstruo4 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMonstruo5 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
 		
 		this.espacioMagico1 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
 		this.espacioMagico2 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
@@ -73,25 +73,25 @@ public class EspacioCartasCampo extends GridPane{
 		this.espacioMagico5 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
 		
 		this. espacioCementerio = new EspacioCementerio();
-		this. espacioMazo = new Rectangle(60,100,Color.BROWN);
-		this. espacioCampo = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
+		this. espacioMazo = new EspacioMazo(jugadorPerteneciente);
+		this. espacioCampo = new EspacioCartaCampo(cajaInformacion,jugadorPerteneciente);
 		this.espacioRelleno = new Rectangle(60,100,Color.BLACK);
 	}
 
-	public EspacioCarta getEspacioCartaMosntruo(int posicionDeCartaMonstruo) {
+	public EspacioCarta getEspacioCartaMonstruo(int posicionDeCartaMonstruo) {
 		EspacioCarta cartaBuscada = null;
 
 	    //No hay manera de hacerlo sin if
 	  if(posicionDeCartaMonstruo == 1)
-		  cartaBuscada = this.espacioMosntruo1;
+		  cartaBuscada = this.espacioMonstruo1;
 	  else if(posicionDeCartaMonstruo == 2)
-	  	cartaBuscada = this.espacioMosntruo2;
+	  	cartaBuscada = this.espacioMonstruo2;
 	  else if(posicionDeCartaMonstruo == 3)
-		  cartaBuscada = this.espacioMosntruo3;
+		  cartaBuscada = this.espacioMonstruo3;
 	  else if(posicionDeCartaMonstruo == 4)
-		  	cartaBuscada = this.espacioMosntruo4;
+		  	cartaBuscada = this.espacioMonstruo4;
 	  else if(posicionDeCartaMonstruo == 5)
-		  	cartaBuscada = this.espacioMosntruo5;
+		  	cartaBuscada = this.espacioMonstruo5;
 	  else
 		  cartaBuscada = null;
 
@@ -122,19 +122,23 @@ public class EspacioCartasCampo extends GridPane{
 	    return cartaBuscada;
 	}
 	
-	public EspacioCartaMagica getEspacioCartaCampo() {
+	public EspacioCartaCampo getEspacioCartaCampo() {
 		return this.espacioCampo;
 	}
 	
 	public void limpiarCampo() {
 		for(int i = 1; i<=5;i++) {
-			EspacioCarta espacioActual = this.getEspacioCartaMosntruo(i);
+			EspacioCarta espacioActual = this.getEspacioCartaMonstruo(i);
 			espacioActual.limpiar();
 		}
 		for(int i = 1; i<=5;i++) {
 			EspacioCartaMagica espacioActual = this.getEspacioCartaMagica(i);
 			espacioActual.limpiar();
 		}
+	}
+	
+	public void actualizarCantidadDeCartasEnMazo() {
+		this.espacioMazo.actualizarCartasEnMazo();
 	}
 	
 	
