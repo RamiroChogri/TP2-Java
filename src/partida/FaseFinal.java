@@ -8,13 +8,11 @@ import jugador.Jugador;
 public class FaseFinal extends Fase {
 
 		private Scanner teclado;
-		private Fase faseSiguiente;
 		private Jugador jugadorEnTurno;
 		private String nombreFase;
 		
 		public FaseFinal(Jugador jugadorRecibido) {
 			this.teclado = new Scanner(System.in);
-			this.faseSiguiente = null;
 			this.nombreFase = "Fase Final";
 			this.jugadorEnTurno = jugadorRecibido;
 		}
@@ -78,7 +76,7 @@ public class FaseFinal extends Fase {
 
 		@Override
 		public Fase obtenerFaseSiguiente() {
-			Fase faseADevolver = new FaseInicial(jugadorEnTurno.obtenerJugadorEnemigo());
+			Fase faseADevolver = new FasePreparacion(jugadorEnTurno.obtenerJugadorEnemigo());
 			return faseADevolver;
 		}
 		
