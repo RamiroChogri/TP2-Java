@@ -25,6 +25,8 @@ public class CajaConsola extends HBox {
 		this.agregarMensaje("Massuh gato");
 		this.agregarMensaje("Se aplico el efecto Rayo Peronizador");
 		this.agregarMensaje("Ola ke ase");
+	//	this.limpiar();
+
 	}
 	
 	private void prepararBoton() {
@@ -57,5 +59,10 @@ public class CajaConsola extends HBox {
 		this.areaTextoConsola.appendText( mensaje );
 		this.areaTextoConsola.appendText( "\n" );
 	}
-
+	
+	public void limpiar() {
+		
+		this.areaTextoConsola.setText("");
+	}
+	
 }
