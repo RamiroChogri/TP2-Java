@@ -5,10 +5,8 @@ import java.util.LinkedList;
 
 import cartas.Activable;
 import cartas.Atacable;
-import cartas.Colocable;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import jugador.Jugador;
@@ -60,21 +58,8 @@ public class CajaCampo extends VBox implements PathArchivos{
 	
 	public void enviarCartasAlCementerio() {
 		
-		String ultimaCartaCementerioYugi = this.duelo.getJugadorYugi().obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio();
-		ImageView imagenCementerioDeYugi = new ImageView(new Image(pathDePackCartas+ ultimaCartaCementerioYugi));
-		imagenCementerioDeYugi.setFitWidth(60);
-		imagenCementerioDeYugi.setFitHeight(100);
-		
-		String ultimaCartaCementerioKaiba = this.duelo.getJugadorKaiba().obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio();
-		ImageView imagenCementerioDeKaiba = new ImageView(new Image(pathDePackCartas+ ultimaCartaCementerioKaiba));
-		imagenCementerioDeKaiba.setFitWidth(60);
-		imagenCementerioDeKaiba.setFitHeight(100);
-		
-		EspacioCementerio cementerioYugi = this.campoJ1.getCementerio();
-		EspacioCementerio cementerioKaiba = this.campoJ2.getCementerio();
-		
-		cementerioYugi.recibirCarta(imagenCementerioDeYugi);
-		cementerioKaiba.recibirCarta(imagenCementerioDeKaiba);
+		this.campoJ1.actualizarCementerio();
+		this.campoJ2.actualizarCementerio();
 	}
 	
 	public void actualizarVistaYugiEnTurno(Jugador yugi, Jugador kaiba) {
@@ -84,6 +69,7 @@ public class CajaCampo extends VBox implements PathArchivos{
 		this.manoYugi.pintarCartasEnManoJugador(cajaInformacion);
 		this.manoKaiba.darVueltaCartasEnManoJugador(this.cajaInformacion);
 		this.campoJ1.actualizarCantidadDeCartasEnMazo();
+		this.enviarCartasAlCementerio();
 		
 	}
 	
@@ -94,6 +80,7 @@ public class CajaCampo extends VBox implements PathArchivos{
 		this.manoYugi.darVueltaCartasEnManoJugador(this.cajaInformacion);
 		this.manoKaiba.pintarCartasEnManoJugador(cajaInformacion);
 		this.campoJ2.actualizarCantidadDeCartasEnMazo();
+		this.enviarCartasAlCementerio();
 		
 		
 	}

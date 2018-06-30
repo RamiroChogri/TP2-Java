@@ -1,13 +1,15 @@
 package view;
 
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import jugador.Jugador;
-import partida.Partida;
+import viewSupportFiles.PathArchivos;
 
-public class EspacioCartasCampo extends GridPane{
+public class EspacioCartasCampo extends GridPane implements PathArchivos{
 	
 	private	CajaInformacion cajaInformacion;
 	private EspacioCarta espacioMonstruo1;
@@ -139,6 +141,16 @@ public class EspacioCartasCampo extends GridPane{
 	
 	public void actualizarCantidadDeCartasEnMazo() {
 		this.espacioMazo.actualizarCartasEnMazo();
+	}
+
+	public void actualizarCementerio() {
+		if(jugador.obtenerCantidadDeCartasEnCementerio() >0) {
+		String ultimaCartaCementerio = jugador.obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio();
+		ImageView imagenUltimaCartaEnCementerio = new ImageView(new Image(pathDePackCartas + ultimaCartaCementerio));
+		imagenUltimaCartaEnCementerio.setFitWidth(60);
+		imagenUltimaCartaEnCementerio.setFitHeight(100);
+		this.espacioCementerio.recibirCarta(imagenUltimaCartaEnCementerio);
+		}
 	}
 	
 	
