@@ -1,0 +1,10 @@
+.text-area .content{
+
+	-fx-background-color: GREY;
+	-fx-background-size: cover;
+	-fx-font-family: "Arial";
+	
+  	width: 300px;
+  	height: 150px;
+
+}

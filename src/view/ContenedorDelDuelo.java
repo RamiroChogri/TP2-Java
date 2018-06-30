@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import cartas.*;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import jugador.*;
@@ -17,6 +18,7 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 		private CajaInformacion cajaDerecha;
 		private CajaCampo cajaCentro;
 		private CajaJugadores cajaIzquierda;
+		private CajaConsola consola;
 		Partida duelo;
 		
 	    public ContenedorDelDuelo(Stage stage , Partida duelo) {
@@ -40,6 +42,9 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
             
 	    	this.cajaCentro = new CajaCampo(cajaDerecha,duelo);
 	    	this.setCenter(cajaCentro);
+	    	
+	    	this.consola = new CajaConsola();
+	    	this.setBottom(consola);
 	    }
 	    
 	    public MenuDelDuelo getBarraDeMenu() {
@@ -68,5 +73,10 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	this.cajaCentro.actualizarCaja();
 	    	this.cajaIzquierda.actualizarVida(this.duelo.getJugadorYugi(), this.duelo.getJugadorKaiba());
 	    }
+
+		public void loggearMensaje(String string) {
+			
+			consola.agregarMensaje(string);		
+		}
 	    
 }
