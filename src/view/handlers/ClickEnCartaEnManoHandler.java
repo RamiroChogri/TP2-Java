@@ -1,6 +1,7 @@
 package view.handlers;
 
 import cartas.Activable;
+import cartas.CartaCampo;
 import cartas.CartaMagica;
 import cartas.CartaTrampa;
 import cartas.Colocable;
@@ -57,7 +58,7 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
         		} catch (NoHayLugarVacioException e) {
         			
         		}
-        	} else {
+        	} else if (this.carta.getClass() == CartaCampo.class) {
         		EstadoCarta estadoCarta = new EstadoCartaColocadaBocaArriba();
         		this.jugador.colocar(carta, estadoCarta);
         		this.jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
