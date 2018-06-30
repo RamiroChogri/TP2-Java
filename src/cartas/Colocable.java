@@ -2,8 +2,11 @@ package cartas;
 
 import campo.*;
 import estadoCarta.EstadoCarta;
+import javafx.scene.image.ImageView;
 import jugador.Jugador;
 import modos.Modo;
+import partida.Partida;
+import view.CajaCampo;
 
 public interface Colocable {
 	
@@ -36,4 +39,6 @@ public interface Colocable {
 	public String getNombreDeLaImagen();
 
 	public void cambiarA(Modo modoACambiar);
+	
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta);
 }

@@ -72,11 +72,10 @@ public class ContenedorDeBienvenida extends VBox implements PathArchivos {
         botonPlay.setOnAction(playMusic);
 
         Button botonPausa = new Button("Pausa");
-        BotonPausaMusicaDeFondoHandler pauseMusic = new BotonPausaMusicaDeFondoHandler(this.musicaDeFondo,this.reproductor,botonPlay);
+        BotonPausaMusicaDeFondoHandler pauseMusic = new BotonPausaMusicaDeFondoHandler(this.musicaDeFondo,this.reproductor);
         botonPausa.setOnAction(pauseMusic);
-        playMusic.setBotonPausa(botonPausa);
        
-        BotonStopMusicaDeFondoHandler stopMusic = new BotonStopMusicaDeFondoHandler(this.musicaDeFondo,this.reproductor,botonPlay);
+        BotonStopMusicaDeFondoHandler stopMusic = new BotonStopMusicaDeFondoHandler(this.musicaDeFondo,this.reproductor);
         Button botonStop = new Button("Stop");
         botonStop.setOnAction(stopMusic);
         

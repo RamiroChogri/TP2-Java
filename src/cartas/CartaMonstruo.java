@@ -6,8 +6,12 @@ import exceptions.MonstruoEnModoDefensaNoPuedeAtacarException;
 import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.ZonaMonstruoLlenaException;
 import invocacionStrategy.*;
+import javafx.scene.image.ImageView;
 import jugador.Jugador;
 import modos.*;
+import partida.Partida;
+import view.CajaCampo;
+import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -301,6 +305,12 @@ public class CartaMonstruo implements Atacable{
 	
 	public boolean esActivable() {
 		return false;
+	}
+	
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta) {
+		ClickEnCartaEnZonaMonstruoHandler verMenu = new ClickEnCartaEnZonaMonstruoHandler(partida, this, jugadorDuenio, cajaCampo);
+		imagenCarta.setOnContextMenuRequested(verMenu);
+		
 	}
  	
 }

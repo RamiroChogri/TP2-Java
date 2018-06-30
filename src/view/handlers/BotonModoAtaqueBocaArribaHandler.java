@@ -3,6 +3,7 @@ package view.handlers;
 import cartas.Colocable;
 import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaColocadaBocaArriba;
+import exceptions.NoHayLugarVacioException;
 import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,19 +32,22 @@ public class BotonModoAtaqueBocaArribaHandler implements EventHandler<ActionEven
     public void handle(ActionEvent event) {
         Modo modoACambiar = new ModoAtaque();
         EstadoCarta estadoACambiar = new EstadoCartaColocadaBocaArriba();
-    	carta.cambiarA(modoACambiar);
     	try {
-    		jugador.colocar(carta, estadoACambiar);
-    	
-    		jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
-    		duelo.setSeJugoCartaMonstruo(); //Se reinicia cada fase
-    		if (duelo.estaYugiEnTurno()) {
-    			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
-    		} else {
-    			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    		try {
+    			carta.cambiarA(modoACambiar);
+    			jugador.colocar(carta, estadoACambiar);
+    			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+    			duelo.setSeJugoCartaMonstruo();
+    			if (duelo.estaYugiEnTurno()) {
+    				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    			} else {
+    				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    			}
+    		} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
+    		
     		}
-    	} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
+    	}  catch (NoHayLugarVacioException e) {
     		
     	}
-	}
+    }
 }

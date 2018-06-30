@@ -9,8 +9,12 @@ import campo.ZonaMonstruos;
 import cartas.*;
 import estadoCarta.EstadoCarta;
 import exceptions.CartaBocaArribaNoSePuedeVoltearException;
+import javafx.scene.image.ImageView;
 import jugador.*;
 import modos.Modo;
+import partida.Partida;
+import view.CajaCampo;
+import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 
 public class AtacaComoJinzo7 extends CartaMonstruoDecorator { 
 	
@@ -211,6 +215,12 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 	@Override
 	public void eliminarModificadorDeDefensa() {
 		getAtacable().eliminarModificadorDeDefensa();
+	}
+
+	@Override
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta) {
+		ClickEnCartaEnZonaMonstruoHandler verMenu = new ClickEnCartaEnZonaMonstruoHandler(partida, this, jugadorDuenio, cajaCampo);
+		imagenCarta.setOnContextMenuRequested(verMenu);
 	}
 
 }

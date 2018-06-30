@@ -11,14 +11,12 @@ import jugador.Jugador;
 public class FaseAtaqueYTrampas extends Fase {
 	
 	private Scanner teclado;
-	private Fase faseSiguiente;
 	public static boolean esPrimerTurno;
 	private String nombreFase;
 	private Jugador jugadorEnTurno;
 	
 	public FaseAtaqueYTrampas(Jugador jugadorRecibido) {
 		this.teclado = new Scanner(System.in);
-		this.faseSiguiente = null;
 		this.nombreFase = "Fase Ataque y Trampas";
 		this.jugadorEnTurno = jugadorRecibido;
 	}

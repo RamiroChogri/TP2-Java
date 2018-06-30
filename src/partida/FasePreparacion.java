@@ -18,15 +18,19 @@ import modos.ModoDefensa;
 public class FasePreparacion extends Fase {
 
 	private Scanner teclado;
-	private Fase faseSiguiente;
 	private String nombreFase;
 	private Jugador jugadorEnTurno;
 	
 	public FasePreparacion(Jugador jugadorRecibido) {
 		this.teclado = new Scanner(System.in);
-		this.faseSiguiente = null;
 		this.nombreFase = "Fase Preparacion";
 		this.jugadorEnTurno = jugadorRecibido;
+		this.jugadorEnTurno.tomarCartaDelMazo();
+		
+		String nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
+		System.out.println("Turno del jugador " + nombreJugadorEnTurno);
+		
+		
 	}
 	
 	public String getNombreFase() {

@@ -41,9 +41,8 @@ public class Partida {
 		
 		FaseAtaqueYTrampas.esPrimerTurno = true;
 		
-		this.faseActual = new FaseInicial(this.jugadorEnTurno);
+		this.faseActual = new FasePreparacion(this.jugadorEnTurno);
 		
-		this.estado = this.faseActual.ejecutarFase(this.estado);
 		
 		
 	}
@@ -144,14 +143,14 @@ public class Partida {
 	
 	public void avanzarFase() {
 		this.faseActual = faseActual.obtenerFaseSiguiente();
-		if (faseActual.getNombreFase().equals("Fase Inicial")) {
+		if (faseActual.getNombreFase().equals("Fase Preparacion")) {
 			this.seJugoCartaMonstruo = false;
 		}
 	}
 	
 	public void finalizarTurno() {
 		this.jugadorEnTurno = this.jugadorEnTurno.obtenerJugadorEnemigo();
-		this.faseActual = new FaseInicial(this.jugadorEnTurno);
+		this.faseActual = new FasePreparacion(this.jugadorEnTurno);
 		this.seJugoCartaMonstruo = false;
 	}
 	

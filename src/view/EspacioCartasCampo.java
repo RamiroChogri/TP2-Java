@@ -1,13 +1,16 @@
 package view;
 
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import jugador.Jugador;
 import partida.Partida;
+import viewSupportFiles.PathArchivos;
 
-public class EspacioCartasCampo extends GridPane{
+public class EspacioCartasCampo extends GridPane implements PathArchivos{
 	
 	private	CajaInformacion cajaInformacion;
 	private EspacioCarta espacioMonstruo1;
@@ -27,12 +30,15 @@ public class EspacioCartasCampo extends GridPane{
 	private	EspacioCartaCampo espacioCampo;
 	private	Rectangle espacioRelleno;
 	private Jugador jugador;
+	private CajaCampo cajaCampo;
+	private Partida duelo;
 	
-	
-	public EspacioCartasCampo(CajaInformacion cajaInformacion, Jugador jugadorYugi) {
+	public EspacioCartasCampo(CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorYugi, CajaCampo cajaCampoRecibida) {
 		
+		this.duelo = duelo;
 		this.cajaInformacion = cajaInformacion;
 		this.jugador = jugadorYugi;
+		this.cajaCampo = cajaCampoRecibida;
 		
 		this.setEspaciosDeCampo(jugadorYugi);
 		
@@ -44,10 +50,12 @@ public class EspacioCartasCampo extends GridPane{
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	public EspacioCartasCampo(int gradosDeRotacion,CajaInformacion cajaInformacion,Jugador jugadorKaiba) {
+	public EspacioCartasCampo(int gradosDeRotacion,CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorKaiba, CajaCampo cajaCampoRecibida) {
 		
+		this.duelo = duelo;
 		this.cajaInformacion = cajaInformacion;
 		this.jugador = jugadorKaiba;
+		this.cajaCampo = cajaCampoRecibida;
 		
 		this.setEspaciosDeCampo(jugadorKaiba);
 		
@@ -60,17 +68,17 @@ public class EspacioCartasCampo extends GridPane{
 	}
 	
 	private void setEspaciosDeCampo(Jugador jugadorPerteneciente) {
-		this.espacioMonstruo1 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
-		this.espacioMonstruo2 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
-		this.espacioMonstruo3 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
-		this.espacioMonstruo4 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
-		this.espacioMonstruo5 = new EspacioCarta(cajaInformacion,jugadorPerteneciente);
+		this.espacioMonstruo1 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo2 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo3 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo4 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo5 = new EspacioCarta(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
 		
-		this.espacioMagico1 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
-		this.espacioMagico2 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
-		this.espacioMagico3 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
-		this.espacioMagico4 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
-		this.espacioMagico5 = new EspacioCartaMagica(cajaInformacion,jugadorPerteneciente);
+		this.espacioMagico1 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMagico2 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMagico3 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMagico4 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMagico5 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
 		
 		this. espacioCementerio = new EspacioCementerio();
 		this. espacioMazo = new EspacioMazo(jugadorPerteneciente);
@@ -139,6 +147,16 @@ public class EspacioCartasCampo extends GridPane{
 	
 	public void actualizarCantidadDeCartasEnMazo() {
 		this.espacioMazo.actualizarCartasEnMazo();
+	}
+
+	public void actualizarCementerio() {
+		if(jugador.obtenerCantidadDeCartasEnCementerio() >0) {
+		String ultimaCartaCementerio = jugador.obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio();
+		ImageView imagenUltimaCartaEnCementerio = new ImageView(new Image(pathDePackCartas + ultimaCartaCementerio));
+		imagenUltimaCartaEnCementerio.setFitWidth(60);
+		imagenUltimaCartaEnCementerio.setFitHeight(100);
+		this.espacioCementerio.recibirCarta(imagenUltimaCartaEnCementerio);
+		}
 	}
 	
 	
