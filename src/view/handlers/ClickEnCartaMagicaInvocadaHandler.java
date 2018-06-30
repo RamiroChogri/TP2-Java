@@ -33,11 +33,11 @@ public class ClickEnCartaMagicaInvocadaHandler implements EventHandler<ContextMe
 	
 	public void menuCartaMagica(ContextMenuEvent t) {
 		ContextMenu contextMenu = new ContextMenu();
-    	MenuItem bocaArriba = new MenuItem("Boca Arriba");
+    	MenuItem bocaArriba = new MenuItem("Voltear");
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaArriba, cancelar);
     	
-    	BotonBocaArribaHandler bocaArribaHandler = new BotonBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonVoltearCartaMagicaHandler bocaArribaHandler = new BotonVoltearCartaMagicaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
     	bocaArriba.setOnAction(bocaArribaHandler);
     	
     	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();

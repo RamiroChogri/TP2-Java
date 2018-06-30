@@ -50,7 +50,7 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
     	BotonAtacarHandler atacarHandler = new BotonAtacarHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
     	atacar.setOnAction(atacarHandler);
     	
-    	BotonModoDefensaBocaArribaHandler modoDefensaBocaArribaHandler = new BotonModoDefensaBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonRotarMonstruoHandler modoDefensaBocaArribaHandler = new BotonRotarMonstruoHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
     	bocaArribaModoDefensa.setOnAction(modoDefensaBocaArribaHandler);
     	
     	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
@@ -65,7 +65,7 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaArribaModoAtaque, cancelar);    	
     	
-    	BotonModoAtaqueBocaArribaHandler modoAtaqueBocaArribaHandler = new BotonModoAtaqueBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonRotarMonstruoHandler modoAtaqueBocaArribaHandler = new BotonRotarMonstruoHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
     	bocaArribaModoAtaque.setOnAction(modoAtaqueBocaArribaHandler);
     	
     	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
@@ -81,10 +81,10 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaArribaModoAtaque, bocaArribaModoDefensa, cancelar);    	
     	
-    	BotonModoAtaqueBocaArribaHandler modoAtaqueBocaArribaHandler = new BotonModoAtaqueBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonVoltearMonstruoAModoAtaqueHandler modoAtaqueBocaArribaHandler = new BotonVoltearMonstruoAModoAtaqueHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
     	bocaArribaModoAtaque.setOnAction(modoAtaqueBocaArribaHandler);
     	
-    	BotonModoDefensaBocaArribaHandler modoDefensaBocaArribaHandler = new BotonModoDefensaBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonVoltearMonstruoAModoDefensaHandler modoDefensaBocaArribaHandler = new BotonVoltearMonstruoAModoDefensaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
     	bocaArribaModoDefensa.setOnAction(modoDefensaBocaArribaHandler);
     	
     	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
