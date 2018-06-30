@@ -16,6 +16,7 @@ public class EspacioCementerio extends StackPane{
 		}
 		
 		public void recibirCarta(ImageView imagenCarta) {
+			imagenCarta.setOpacity(0.5);
 			this.getChildren().add(imagenCarta);
 		}
 }
