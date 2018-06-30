@@ -16,7 +16,7 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 	
 	
 	private ImageView imagenCarta;
-	private Image cardBack;
+	private ImageView cardBack;
 	private	CajaInformacion cajaInformacion;
 	private	Jugador jugadorDuenio;
 	
@@ -36,7 +36,7 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 			rectanguloDefensa.setStroke(Color.WHITE);
 			
 			this.imagenCarta = null;
-			this.cardBack = new Image(pathDePackCartas+"cardBackAlgo.png");
+			this.cardBack = new ImageView(new Image(pathDePackCartas+"cardBackAlgo.png"));
 			
 			this.getChildren().addAll(rectanguloAtaque,rectanguloDefensa);
 			this.setAlignment(Pos.CENTER);
@@ -78,23 +78,23 @@ public class EspacioCarta extends StackPane implements PathArchivos{
 		
 		public void pintarCartaEnModoDefensaBocaAbajo(Image imagen) {
 			this.getChildren().remove(imagenCarta);
-			
-			ImageView cardBackImagen = new ImageView(cardBack);
-			cardBackImagen.setFitWidth(60);
-			cardBackImagen.setFitHeight(100);
-			cardBackImagen.setRotate(90);
+			this.cardBack.setFitWidth(60);
+			this.cardBack.setFitHeight(100);
+			this.cardBack.setRotate(90);
 			this.imagenCarta = new ImageView(imagen);
 			
 			MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(imagenCarta,cajaInformacion);
-			cardBackImagen.setOnMouseEntered(ponerEnZoom);
+			this.cardBack.setOnMouseEntered(ponerEnZoom);
 			 
 			 MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
-			cardBackImagen.setOnMouseExited(sacarDeZoom);
-			this.getChildren().add(cardBackImagen);
+			 this.cardBack.setOnMouseExited(sacarDeZoom);
+			this.getChildren().add(this.cardBack);
 		}
 		
 		public void limpiar() {
-			this.getChildren().remove(imagenCarta);
+			if(this.getChildren().contains(this.imagenCarta))
+			this.getChildren().remove(this.imagenCarta);
+			else this.getChildren().remove(this.cardBack);
 		}
 		
 		public void enviarAl(EspacioCementerio cementerio) {
