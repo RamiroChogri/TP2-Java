@@ -19,6 +19,7 @@ public class BotonMinimizarConsolaHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent actionEvent) {
 		
 		consola.setPrefHeight( 15 );
+		consola.actualizarLineaAlMinimizar();
 		BotonMaximizarConsolaHandler maximizarConsola = new BotonMaximizarConsolaHandler( consola, botonConsola );
 		botonConsola.setText( "+" );
 		botonConsola.setOnAction(maximizarConsola);

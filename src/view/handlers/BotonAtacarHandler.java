@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
+import view.CajaConsola;
 
 public class BotonAtacarHandler implements EventHandler<ActionEvent> {
 
@@ -16,13 +17,13 @@ public class BotonAtacarHandler implements EventHandler<ActionEvent> {
 	private Partida duelo;
 	private Jugador jugador;
 	private CajaCampo cajaCampo;
+	private CajaConsola consola;
 	
 	public BotonAtacarHandler(Atacable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo) {
 		this.carta = carta;
 		this.duelo = duelo;
 		this.jugador = jugador;
 		this.cajaCampo = cajaCampo;
-		
 	}
 	
 	@Override
@@ -33,6 +34,7 @@ public class BotonAtacarHandler implements EventHandler<ActionEvent> {
 	    if (posicionesIterador.hasNext()) {
 	    	cartaMonstruoActual = posicionesIterador.next();
 	    	this.jugador.atacar(this.carta, cartaMonstruoActual);
+	    	CajaConsola.agregarMensaje(this.carta.obtenerNombre()+" atacó a "+cartaMonstruoActual.obtenerNombre());
 	    }
 	    if (duelo.estaYugiEnTurno()) {
 			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
