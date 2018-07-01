@@ -5,14 +5,14 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import jugador.Jugador;
-import view.EspacioCarta;
+import view.EspacioCartaMonstruo;
 
 public class MouseClickeadoEnImagenAbreMenuHandler implements EventHandler<ContextMenuEvent> {
 
 	ContextMenu opcionesCartaEnCampo;
-	EspacioCarta espacioCarta;
+	EspacioCartaMonstruo espacioCarta;
 	
-	public MouseClickeadoEnImagenAbreMenuHandler(Jugador jugador, EspacioCarta espacioCarta) {
+	public MouseClickeadoEnImagenAbreMenuHandler(Jugador jugador, EspacioCartaMonstruo espacioCarta) {
 		this.opcionesCartaEnCampo = new ContextMenu();	
 		this.espacioCarta = espacioCarta;
 		MenuItem ponerEnModoAtaque = new MenuItem("Poner en modo ataque");
