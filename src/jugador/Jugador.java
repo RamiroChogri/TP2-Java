@@ -6,6 +6,7 @@ import campo.*;
 import cartas.*;
 import exceptions.*;
 import modos.*;
+import view.CajaConsola;
 import efectos.Efecto;
 import estadoCarta.*;
 
@@ -166,6 +167,7 @@ public class Jugador {
 	
 	public void recibirAtaque(int danioRecibido) {
 		this.vida -= danioRecibido;
+		//CajaConsola.agregarMensaje("Jugador recibe "+danioRecibido+" puntos de daño");
 	}
 	
 	public Jugador obtenerJugadorEnemigo() {

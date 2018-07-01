@@ -14,6 +14,7 @@ import jugador.*;
 import modos.Modo;
 import modos.ModoAtaque;
 import modos.ModoDefensa;
+import view.CajaConsola;
 
 public class FasePreparacion extends Fase {
 

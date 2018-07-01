@@ -37,6 +37,7 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
             	jugadorEnTurno = duelo.getJugadorKaiba();
             }
             
+           
             this.cajaIzquierda = new CajaJugadores(this.cajaDerecha,duelo,jugadorEnTurno, this);
 	    	this.setLeft(cajaIzquierda);
             
@@ -45,6 +46,7 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	
 	    	this.consola = new CajaConsola();
 	    	this.setBottom(consola);
+	    	CajaConsola.agregarMensaje("Es el turno de "+jugadorEnTurno.obtenerNombre());
 	    }
 	    
 	    public MenuDelDuelo getBarraDeMenu() {
