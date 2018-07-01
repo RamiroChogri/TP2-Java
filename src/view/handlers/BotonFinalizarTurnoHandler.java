@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import jugador.Jugador;
 import partida.Partida;
+import view.CajaConsola;
 import view.ContenedorDelDuelo;
 
 public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
@@ -27,5 +28,6 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
         } else {
         	this.contenedorDelDuelo.actualizarVistaKaibaEnTurno(this.jugadorEnTurno, this.jugadorEnTurno.obtenerJugadorEnemigo());
         }
+        CajaConsola.agregarMensaje("Es el turno de "+jugadorEnTurno.obtenerNombre());
     }
 }
