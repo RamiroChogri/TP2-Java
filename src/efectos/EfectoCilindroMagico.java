@@ -4,6 +4,7 @@ import campo.Campo;
 import cartas.Atacable;
 import modos.Modo;
 import modos.ModoNegacionDeAtaque;
+import view.CajaConsola;
 
 public class EfectoCilindroMagico extends Efecto {
 
@@ -18,7 +19,8 @@ public class EfectoCilindroMagico extends Efecto {
 		
 		Modo modoAnterior = atacado.obtenerModo();
 		ModoNegacionDeAtaque modoNegacion = new ModoNegacionDeAtaque( modoAnterior );
-		
+		CajaConsola.agregarMensaje("Se aplica efecto Cilindro Magico");
+
 		campoPropio.hacerDanioAlJugador( atacante.obtenerPuntosAtaque() );
 		atacado.cambiarA( modoNegacion );
 	}

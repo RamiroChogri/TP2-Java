@@ -3,6 +3,7 @@ package efectos;
 import campo.Campo;
 import cartas.Atacable;
 import cartas.Puntos;
+import view.CajaConsola;
 
 public class EfectoRefuerzos extends Efecto {
 
@@ -18,7 +19,8 @@ public class EfectoRefuerzos extends Efecto {
 		
 		this.puntosAumentar = new Puntos( 500 );
 		atacado.aumentarAtaqueEn( puntosAumentar );
-		
+		CajaConsola.agregarMensaje("Se aplica efecto Refuerzos");
+
 	}
 
 }

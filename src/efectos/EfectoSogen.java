@@ -3,6 +3,7 @@ package efectos;
 import campo.Campo;
 import cartas.Atacable;
 import cartas.Puntos;
+import view.CajaConsola;
 
 public class EfectoSogen extends Efecto {
 
@@ -12,6 +13,8 @@ public class EfectoSogen extends Efecto {
 		Puntos puntosDeDefensaExtra = new Puntos(500);
 		campoPropio.aumentarDefensaMonstruosPorEfectoCampo(puntosDeDefensaExtra);
 		campoEnemigo.aumentarAtaqueMonstruosPorEfectoCampo(puntosDeAtaqueExtra);
+		CajaConsola.agregarMensaje("Se aplica efecto Sogen");
+
 	}
 
 	@Override

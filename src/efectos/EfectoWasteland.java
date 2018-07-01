@@ -2,6 +2,7 @@ package efectos;
 
 import campo.Campo;
 import cartas.*;
+import view.CajaConsola;
 
 public class EfectoWasteland extends Efecto {
 	
@@ -11,6 +12,8 @@ public class EfectoWasteland extends Efecto {
 		Puntos puntosDeDefensaExtra = new Puntos(300);
 		campoPropio.aumentarAtaqueMonstruosPorEfectoCampo(puntosDeAtaqueExtra);
 		campoEnemigo.aumentarDefensaMonstruosPorEfectoCampo(puntosDeDefensaExtra);
+		CajaConsola.agregarMensaje("Se aplica efecto Wasteland");
+
 	}
 
 	@Override

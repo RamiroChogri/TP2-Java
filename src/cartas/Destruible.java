@@ -7,4 +7,6 @@ public interface Destruible {
 	public boolean estaDestruida();
 	
 	public String getNombreDeLaImagen();
+
+	public String obtenerNombre();
 }

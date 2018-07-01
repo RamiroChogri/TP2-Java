@@ -34,7 +34,6 @@ public class BotonAtacarHandler implements EventHandler<ActionEvent> {
 	    if (posicionesIterador.hasNext()) {
 	    	cartaMonstruoActual = posicionesIterador.next();
 	    	this.jugador.atacar(this.carta, cartaMonstruoActual);
-	    	CajaConsola.agregarMensaje(this.carta.obtenerNombre()+" atacó a "+cartaMonstruoActual.obtenerNombre());
 	    }
 	    if (duelo.estaYugiEnTurno()) {
 			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());

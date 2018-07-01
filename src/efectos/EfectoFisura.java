@@ -3,6 +3,7 @@ package efectos;
 import campo.Campo;
 import cartas.Atacable;
 import exceptions.NoHayMonstruoParaSacrificarException;
+import view.CajaConsola;
 
 public class EfectoFisura extends Efecto {
 
@@ -11,6 +12,7 @@ public class EfectoFisura extends Efecto {
 		try {
 			Atacable cartaConMenorAtaque = campoEnemigo.obtenerCartaMonstruoConMenorAtaque();
 			cartaConMenorAtaque.destruirCarta();
+			CajaConsola.agregarMensaje("Se aplica el efecto Fisura");
 			campoEnemigo.enviarCartasDestruidasAlCementerio();
 		} catch (NoHayMonstruoParaSacrificarException noHayCartasEnLaZonaMonstruoEnemiga) {
 			//No se destruye nada

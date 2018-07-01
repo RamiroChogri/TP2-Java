@@ -5,6 +5,7 @@ import cartas.*;
 import exceptions.NoHayLugarVacioException;
 import exceptions.NoHayCartasException;
 import exceptions.ZonaMonstruoLlenaException;
+import view.CajaConsola;
 
 public class ZonaMonstruos extends Zona {
 	
@@ -52,6 +53,7 @@ public class ZonaMonstruos extends Zona {
 	    	if(cartaMonstruoActual.estaDestruida()) {
 	    	
 	    		Destruible cartaActual = cartaMonstruoActual;
+	    		CajaConsola.agregarMensaje(cartaActual.obtenerNombre()+" ha sido destruida ");
 	    		cartasDestruidas.add(cartaActual);
 	    		posicionesIterador.remove();
 	    	

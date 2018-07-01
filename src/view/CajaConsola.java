@@ -18,7 +18,7 @@ public class CajaConsola extends HBox {
 		
 		HBox.setHgrow( areaTextoConsola, Priority.ALWAYS );
 		this.getChildren().addAll( boton, areaTextoConsola );
-		this.setPrefSize( 15, 15 );
+		this.setPrefSize( 5, 5 );
 		
 	//	this.limpiar();
 
@@ -40,7 +40,7 @@ public class CajaConsola extends HBox {
 	private void prepararAreaTexto() {
 		
 		areaTextoConsola = new TextArea();
-		
+		areaTextoConsola.setPrefSize(5, 5);
 		areaTextoConsola.setEditable( false );
 		areaTextoConsola.setWrapText( true );
 		areaTextoConsola.getStylesheets().add( "view/StyleConsola.css" );

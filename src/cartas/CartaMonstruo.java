@@ -11,6 +11,7 @@ import jugador.Jugador;
 import modos.*;
 import partida.Partida;
 import view.CajaCampo;
+import view.CajaConsola;
 import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 
 import java.util.LinkedList;
@@ -117,7 +118,7 @@ public class CartaMonstruo implements Atacable{
 		if (this.estaEnModoDefensa()) {
 			throw new MonstruoEnModoDefensaNoPuedeAtacarException();
 		}
-		
+		CajaConsola.agregarMensaje(this.obtenerNombre()+" atacó a "+cartaAtacableEnemiga.obtenerNombre());
 		cartaAtacableEnemiga.recibirAtaque(this);
 	}
 	
