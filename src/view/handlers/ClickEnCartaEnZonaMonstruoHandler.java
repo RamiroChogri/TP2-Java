@@ -70,6 +70,12 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
 	    
 	    }
 		
+		MenuItem cancelar = new MenuItem("Cancelar");
+		contextMenu.getItems().add(cancelar);
+		
+		BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
+    	cancelar.setOnAction(cancelarHandler);
+    	
     	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
 	}
 	
