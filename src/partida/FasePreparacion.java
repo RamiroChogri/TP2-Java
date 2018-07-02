@@ -28,9 +28,7 @@ public class FasePreparacion extends Fase {
 		this.jugadorEnTurno = jugadorRecibido;
 		this.jugadorEnTurno.tomarCartaDelMazo();
 		
-		String nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
-		System.out.println("Turno del jugador " + nombreJugadorEnTurno);
-		
+
 		
 	}
 	

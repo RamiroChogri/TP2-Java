@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
+import view.CajaConsola;
 import view.ContenedorDelDuelo;
 
 public class BotonVoltearCartaMagicaHandler implements EventHandler<ActionEvent> {
@@ -27,7 +28,8 @@ public class BotonVoltearCartaMagicaHandler implements EventHandler<ActionEvent>
 	@Override
     public void handle(ActionEvent event) {
 		this.jugador.voltearCarta(this.carta);
-    	if (duelo.estaYugiEnTurno()) {
+		CajaConsola.agregarMensaje("Se activo el efecto de la carta " + this.carta.obtenerNombre());
+		if (duelo.estaYugiEnTurno()) {
     		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	} else {
     		cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());

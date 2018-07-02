@@ -13,6 +13,7 @@ import modos.Modo;
 import modos.ModoDefensa;
 import partida.Partida;
 import view.CajaCampo;
+import view.CajaConsola;
 import view.ContenedorDelDuelo;
 
 public class BotonModoDefensaBocaAbajoHandler implements EventHandler<ActionEvent>{
@@ -40,6 +41,7 @@ public class BotonModoDefensaBocaAbajoHandler implements EventHandler<ActionEven
     			jugador.colocar(carta, estadoACambiar);
     			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
     			duelo.setSeJugoCartaMonstruo();
+    			CajaConsola.agregarMensaje("Se coloco la carta " + this.carta.obtenerNombre() + " boca abajo en " + modoACambiar.obtenerNombre());
     			if (duelo.estaYugiEnTurno()) {
     				cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     			} else {

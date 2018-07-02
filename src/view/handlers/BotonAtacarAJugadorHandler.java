@@ -35,6 +35,8 @@ public class BotonAtacarAJugadorHandler implements EventHandler<ActionEvent> {
 			
 			this.carta.setAtacoEsteTurno(true);
 			
+			CajaConsola.agregarMensaje("La carta " + this.carta.obtenerNombre() + " ataco al jugador " + this.jugadorEnemigo.obtenerNombre());
+			
 			if (duelo.estaYugiEnTurno()) {
 				cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
 			} else {

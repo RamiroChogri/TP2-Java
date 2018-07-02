@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
+import view.CajaConsola;
 import view.ContenedorDelDuelo;
 
 public class BotonVoltearMonstruoAModoDefensaHandler implements EventHandler<ActionEvent> {
@@ -27,7 +28,8 @@ public class BotonVoltearMonstruoAModoDefensaHandler implements EventHandler<Act
     public void handle(ActionEvent event) {
 		this.jugador.voltearCarta(this.carta);
 		this.carta.setSeCambioElEstadoEsteTurno(true);
-    	if (duelo.estaYugiEnTurno()) {
+		CajaConsola.agregarMensaje("Se volteo la carta " + this.carta.obtenerNombre() + " y se coloco en modo defensa");
+		if (duelo.estaYugiEnTurno()) {
     		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	} else {
     		cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());

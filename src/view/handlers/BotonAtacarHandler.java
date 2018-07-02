@@ -34,6 +34,8 @@ public class BotonAtacarHandler implements EventHandler<ActionEvent> {
 		
 		this.jugador.atacar(this.carta, this.cartaMonstruoEnemiga);
 		
+		CajaConsola.agregarMensaje("La carta " + this.carta.obtenerNombre() + " ataco a la carta " + this.cartaMonstruoEnemiga.obtenerNombre());
+		
 		if (!carta.estaDestruida()) {
 			this.carta.setAtacoEsteTurno(true);
 		}

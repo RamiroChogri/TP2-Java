@@ -9,6 +9,7 @@ import modos.ModoAtaque;
 import modos.ModoDefensa;
 import partida.Partida;
 import view.CajaCampo;
+import view.CajaConsola;
 import view.ContenedorDelDuelo;
 
 public class BotonVoltearMonstruoAModoAtaqueHandler implements EventHandler<ActionEvent> {
@@ -33,7 +34,8 @@ public class BotonVoltearMonstruoAModoAtaqueHandler implements EventHandler<Acti
         carta.cambiarA(modoACambiar);
         this.jugador.voltearCarta(this.carta);
         this.carta.setSeCambioElEstadoEsteTurno(true);
-    	if (duelo.estaYugiEnTurno()) {
+        CajaConsola.agregarMensaje("Se volteo la carta " + this.carta.obtenerNombre() + " y se coloco en " + modoACambiar.obtenerNombre());
+        if (duelo.estaYugiEnTurno()) {
     		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	} else {
     		cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());

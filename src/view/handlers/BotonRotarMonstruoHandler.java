@@ -12,6 +12,7 @@ import jugador.Jugador;
 import modos.*;
 import partida.Partida;
 import view.CajaCampo;
+import view.CajaConsola;
 import view.ContenedorDelDuelo;
 
 public class BotonRotarMonstruoHandler implements EventHandler<ActionEvent> {
@@ -35,9 +36,11 @@ public class BotonRotarMonstruoHandler implements EventHandler<ActionEvent> {
         if (this.carta.estaEnModoAtaque()) {
         	modoACambiar = new ModoDefensa();
     		carta.cambiarA(modoACambiar);
+    		CajaConsola.agregarMensaje("Se roto la carta " + this.carta.obtenerNombre() + " a " + modoACambiar.obtenerNombre());
         } else {
         	modoACambiar = new ModoAtaque();
         	carta.cambiarA(modoACambiar);
+        	CajaConsola.agregarMensaje("Se roto la carta " + this.carta.obtenerNombre() + " a " + modoACambiar.obtenerNombre());
         }
         
         this.carta.setSeCambioElEstadoEsteTurno(true);

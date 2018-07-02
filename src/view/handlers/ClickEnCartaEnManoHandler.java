@@ -41,6 +41,8 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
 	}
 	
 	public void handle(ContextMenuEvent t) {
+		//Desde la mano son indistinguibles las cartas (son todas colocables y solo pueden
+		//usar metodos declarados en la interfaz colocable)
         if (duelo.estaEnFaseDePreparacion()) {
         	if (this.carta.esAtacable() && !this.duelo.seJugoUnaCartaMonstruoEsteTurno()) {
         		this.menuCartaAtacable(t);

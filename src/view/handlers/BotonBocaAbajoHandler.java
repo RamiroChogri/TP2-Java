@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
+import view.CajaConsola;
 import view.ContenedorDelDuelo;
 
 public class BotonBocaAbajoHandler implements EventHandler<ActionEvent> {
@@ -32,6 +33,7 @@ public class BotonBocaAbajoHandler implements EventHandler<ActionEvent> {
 		try {
 			jugador.colocar(carta, estadoCarta);
 			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
+			CajaConsola.agregarMensaje("Se coloco la carta " + this.carta.obtenerNombre() + " boca abajo");
 			if (duelo.estaYugiEnTurno()) {
 				cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
 			} else {
