@@ -18,23 +18,21 @@ public class BotonAtacarHandler implements EventHandler<ActionEvent> {
 	private Jugador jugador;
 	private CajaCampo cajaCampo;
 	private CajaConsola consola;
+	private Atacable cartaMonstruoEnemiga;
 	
-	public BotonAtacarHandler(Atacable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo) {
+	public BotonAtacarHandler(Atacable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo, Atacable cartaMonstruoAAtacar) {
 		this.carta = carta;
 		this.duelo = duelo;
 		this.jugador = jugador;
 		this.cajaCampo = cajaCampo;
+		this.cartaMonstruoEnemiga = cartaMonstruoAAtacar;
 	}
 	
 	@Override
     public void handle(ActionEvent event) {
-		LinkedList<Atacable> cartasEnemigo = jugador.obtenerJugadorEnemigo().obtenerMonstruosColocados();
-		Iterator<Atacable> posicionesIterador = cartasEnemigo.iterator();		
-		Atacable cartaMonstruoActual;
-	    if (posicionesIterador.hasNext()) {
-	    	cartaMonstruoActual = posicionesIterador.next();
-	    	this.jugador.atacar(this.carta, cartaMonstruoActual);
-	    }
+		
+		this.jugador.atacar(this.carta, this.cartaMonstruoEnemiga);
+	    
 	    if (duelo.estaYugiEnTurno()) {
 			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
 		} else {
