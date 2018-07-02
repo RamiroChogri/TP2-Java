@@ -26,6 +26,7 @@ public class BotonVoltearMonstruoAModoDefensaHandler implements EventHandler<Act
 	@Override
     public void handle(ActionEvent event) {
 		this.jugador.voltearCarta(this.carta);
+		this.carta.setSeCambioElEstadoEsteTurno(true);
     	if (duelo.estaYugiEnTurno()) {
     		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	} else {

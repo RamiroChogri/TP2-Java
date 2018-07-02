@@ -241,7 +241,6 @@ public class ZonaMonstruos extends Zona {
 	
 	public void reiniciarAtaquesMonstruos() {
 		
-		LinkedList<Atacable> cartasColocadas = new LinkedList<Atacable>();
 		Atacable cartaActual;
 		
 		Iterator<Atacable> posicionesIterator = this.posiciones.iterator();
@@ -249,6 +248,20 @@ public class ZonaMonstruos extends Zona {
 			
 			cartaActual = posicionesIterator.next();
 			cartaActual.setAtacoEsteTurno(false);
+		
+		}
+		
+	}
+	
+	public void reiniciarSeCambioElEstadoEsteTurno() {
+		
+		Atacable cartaActual;
+		
+		Iterator<Atacable> posicionesIterator = this.posiciones.iterator();
+		while(posicionesIterator.hasNext()) {
+			
+			cartaActual = posicionesIterator.next();
+			cartaActual.setSeCambioElEstadoEsteTurno(false);
 		
 		}
 		

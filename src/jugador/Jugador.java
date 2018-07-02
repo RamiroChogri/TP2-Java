@@ -310,4 +310,8 @@ public class Jugador {
 		this.campoPropio.reiniciarAtaquesMonstruosColocados();
 	}
 	
+	public void reiniciarSeCambioElEstadoEsteTurnoMonstruosColocados() {
+		this.campoPropio.reiniciarSeCambioElEstadoEsteTurnoMonstruosColocados();
+	}
+	
 }

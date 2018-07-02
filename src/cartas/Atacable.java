@@ -51,5 +51,9 @@ public interface Atacable extends Destruible, Colocable{
 	public boolean atacoEsteTurno();
 	
 	public void setAtacoEsteTurno(boolean ataco);
+	
+	public boolean seCambioElEstadoEsteTurno();
+	
+	public void setSeCambioElEstadoEsteTurno(boolean seCambioElEstado);
 
 }

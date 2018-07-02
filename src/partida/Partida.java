@@ -157,6 +157,7 @@ public class Partida {
 		if (faseActual.getNombreFase().equals("Fase Preparacion")) {
 			this.seJugoCartaMonstruo = false;
 			this.jugadorEnTurno.reiniciarAtaquesMonstruosColocados();
+			this.jugadorEnTurno.reiniciarSeCambioElEstadoEsteTurnoMonstruosColocados();
 			if (!esPrimerTurno) {
 				contadorDeTurnos++;
 			}
@@ -172,6 +173,7 @@ public class Partida {
 		this.faseActual = new FasePreparacion(this.jugadorEnTurno);
 		this.seJugoCartaMonstruo = false;
 		this.jugadorEnTurno.reiniciarAtaquesMonstruosColocados();
+		this.jugadorEnTurno.reiniciarSeCambioElEstadoEsteTurnoMonstruosColocados();
 		this.contadorDeTurnos++;
 		this.esPrimerTurno = false;
 	}

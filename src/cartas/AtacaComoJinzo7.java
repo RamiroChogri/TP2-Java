@@ -236,4 +236,16 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 		getAtacable().setAtacoEsteTurno(ataco);
 	}
 
+	@Override
+	public boolean seCambioElEstadoEsteTurno() {
+		return getAtacable().seCambioElEstadoEsteTurno();
+	}
+
+
+	@Override
+	public void setSeCambioElEstadoEsteTurno(boolean seCambioElEstado) {
+		getAtacable().setSeCambioElEstadoEsteTurno(seCambioElEstado);
+	}
+	
+	
 }

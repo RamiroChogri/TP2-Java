@@ -32,6 +32,7 @@ public class CartaMonstruo implements Atacable{
 	private Scanner teclado;
 	private String nombreImagen;
 	private boolean atacoEsteTurno;
+	private boolean seCambioElEstadoEsteTurno;
 	
 	public CartaMonstruo() {
 		
@@ -45,6 +46,7 @@ public class CartaMonstruo implements Atacable{
 		this.teclado = new Scanner(System.in);
 		this.nombreImagen = " ";
 		this.atacoEsteTurno = false;
+		this.seCambioElEstadoEsteTurno = false;
 	}
 	
 	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar, int estrellasAColocar) {
@@ -58,6 +60,7 @@ public class CartaMonstruo implements Atacable{
 		this.nombreImagen = " ";
 		this.teclado = new Scanner(System.in);
 		this.atacoEsteTurno = false;
+		this.seCambioElEstadoEsteTurno = false;
 	}
 	
 	///////constructor que recibe la regla para colocarse ////////
@@ -73,20 +76,22 @@ public class CartaMonstruo implements Atacable{
 		this.nombreImagen = " ";
 		this.teclado = new Scanner(System.in);
 		this.atacoEsteTurno = false;
+		this.seCambioElEstadoEsteTurno = false;
 	}
 	//Constructor que recibe todo lo anterior + el nombre
 	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar,
 			int estrellasAColocar, ReglaDeInvocacionStrategy reglaDeInvocacion, String nombreAColocar) {
-	this.puntosDeAtaque = puntosDeAtaqueAColocar;
-	this.puntosDeDefensa = puntosDeDefensaAColocar;
-	this.estado = new EstadoCartaNoJugada();
-	this.estrellas = estrellasAColocar;
-	this.nombre = nombreAColocar;
-	this.modo = new ModoAtaque();
-	this.regla = reglaDeInvocacion;
-	this.nombreImagen = " ";
-	this.teclado = new Scanner(System.in);
-	this.atacoEsteTurno = false;
+			this.puntosDeAtaque = puntosDeAtaqueAColocar;
+			this.puntosDeDefensa = puntosDeDefensaAColocar;
+			this.estado = new EstadoCartaNoJugada();
+			this.estrellas = estrellasAColocar;
+			this.nombre = nombreAColocar;
+			this.modo = new ModoAtaque();
+			this.regla = reglaDeInvocacion;
+			this.nombreImagen = " ";
+			this.teclado = new Scanner(System.in);
+			this.atacoEsteTurno = false;
+			this.seCambioElEstadoEsteTurno = false;
 	}
 
 	public void setNombreDeLaImagen(String nombreDeLaImagen) {
@@ -254,8 +259,7 @@ public class CartaMonstruo implements Atacable{
 			throw new CartaBocaArribaNoSePuedeVoltearException();
 		}
 		
-		this.estado.colocarCartaBocaArriba();	
-		this.modo = this.modo.colocarEnModoAtaque();
+		this.estado = new EstadoCartaColocadaBocaArriba();	
 		
 	}
 
@@ -328,6 +332,18 @@ public class CartaMonstruo implements Atacable{
 	
 	public void setAtacoEsteTurno(boolean ataco) {
 		this.atacoEsteTurno = ataco;
+	}
+
+	@Override
+	public boolean seCambioElEstadoEsteTurno() {
+		return this.seCambioElEstadoEsteTurno;
+	}
+
+	@Override
+	public void setSeCambioElEstadoEsteTurno(boolean seCambioElEstado) {
+		
+		this.seCambioElEstadoEsteTurno = seCambioElEstado;
+		
 	}
 	
 	

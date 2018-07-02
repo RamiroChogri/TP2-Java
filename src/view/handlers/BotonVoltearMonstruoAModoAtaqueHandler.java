@@ -32,6 +32,7 @@ public class BotonVoltearMonstruoAModoAtaqueHandler implements EventHandler<Acti
         modoACambiar = new ModoAtaque();	
         carta.cambiarA(modoACambiar);
         this.jugador.voltearCarta(this.carta);
+        this.carta.setSeCambioElEstadoEsteTurno(true);
     	if (duelo.estaYugiEnTurno()) {
     		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	} else {

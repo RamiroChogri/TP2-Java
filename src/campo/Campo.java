@@ -206,5 +206,9 @@ public class Campo {
 	
 	}
 
-
+	public void reiniciarSeCambioElEstadoEsteTurnoMonstruosColocados() {
+		this.monstruos.reiniciarSeCambioElEstadoEsteTurno();
+	}
+	
+	
 }

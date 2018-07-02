@@ -38,11 +38,11 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
 				!this.carta.atacoEsteTurno() && !this.duelo.esPrimerTurno()) {
 			
     		this.menuCartaAtacar(t);
-		} else if (this.carta.estaEnModoAtaque() && this.duelo.estaEnFaseDePreparacion()) {
+		} else if (this.carta.estaEnModoAtaque() && this.duelo.estaEnFaseDePreparacion() && !this.carta.seCambioElEstadoEsteTurno()) {
 			this.menuCartaEnModoAtaque(t);
-    	} else if (this.carta.estaColocadaBocaArriba() && this.duelo.estaEnFaseDePreparacion()) {
+    	} else if (this.carta.estaColocadaBocaArriba() && this.duelo.estaEnFaseDePreparacion() && !this.carta.seCambioElEstadoEsteTurno()) {
     		this.menuCartaBocaArribaEnModoDefensa(t);
-    	} else if (this.duelo.estaEnFaseDePreparacion()) {
+    	} else if (this.duelo.estaEnFaseDePreparacion() && !this.carta.seCambioElEstadoEsteTurno()) {
     		this.menuCartaBocaAbajoEnModoDefensa(t);
     	}
 	}

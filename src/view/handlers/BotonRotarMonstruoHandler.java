@@ -39,6 +39,8 @@ public class BotonRotarMonstruoHandler implements EventHandler<ActionEvent> {
         	modoACambiar = new ModoAtaque();
         	carta.cambiarA(modoACambiar);
         }
+        
+        this.carta.setSeCambioElEstadoEsteTurno(true);
         			
     	if (duelo.estaYugiEnTurno()) {
     		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
