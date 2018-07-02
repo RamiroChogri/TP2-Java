@@ -4,6 +4,7 @@ import jugador.Jugador;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.CajaConsola;
 import view.ContenedorDeBienvenida;
 import view.ContenedorDelDuelo;
 import view.handlers.EscOnKeyPressedHandler;
@@ -155,9 +156,11 @@ public class Partida {
 	public void avanzarFase() {
 		this.faseActual = faseActual.obtenerFaseSiguiente();
 		if (faseActual.getNombreFase().equals("Fase Preparacion")) {
+			this.jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno();
 			this.seJugoCartaMonstruo = false;
 			this.jugadorEnTurno.reiniciarAtaquesMonstruosColocados();
 			this.jugadorEnTurno.reiniciarSeCambioElEstadoEsteTurnoMonstruosColocados();
+			CajaConsola.agregarMensaje("Es el turno de " + this.jugadorEnTurno.obtenerNombre());
 			if (!esPrimerTurno) {
 				contadorDeTurnos++;
 			}
@@ -176,6 +179,7 @@ public class Partida {
 		this.jugadorEnTurno.reiniciarSeCambioElEstadoEsteTurnoMonstruosColocados();
 		this.contadorDeTurnos++;
 		this.esPrimerTurno = false;
+		CajaConsola.agregarMensaje("Es el turno de " + this.jugadorEnTurno.obtenerNombre());
 	}
 	
 	public String getNombreFase() {

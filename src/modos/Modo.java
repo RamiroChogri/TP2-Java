@@ -13,7 +13,7 @@ public abstract class Modo {
 		
 		public abstract boolean estaEnModoAtaque();
 		public abstract boolean estaEnModoDefensa();
-
+		public abstract String obtenerNombre();
 		public abstract void recibirAtaque(Atacable cartaAtacante, Atacable cartaAtacada);
 
 }

@@ -44,5 +44,10 @@ public class ModoNegacionDeAtaque extends Modo {
 	
 		cartaAtacada.cambiarA(this.colocarEnModoAnterior());
 	}
+	
+	public String obtenerNombre() {
+		return "Modo Ataque Negado";
+	}
+
 
 }

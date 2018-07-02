@@ -36,4 +36,9 @@ public class ModoDefensa extends Modo {
 		
 	}
 	
+	public String obtenerNombre() {
+		return "Modo Defensa";
+	}
+
+	
 }

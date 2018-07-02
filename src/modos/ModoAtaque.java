@@ -43,5 +43,9 @@ public class ModoAtaque extends Modo {
 		}
 			
 	}
+	
+	public String obtenerNombre() {
+		return "Modo Ataque";
+	}
 
 }
