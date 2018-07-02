@@ -57,8 +57,10 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(this.cajaInformacion);
 		this.cardBack.setOnMouseExited(sacarDeZoom);
 		
-		this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.imagenCarta);
-		
+		if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno() && this.partida.estaEnFaseFinal()) {
+			this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.cardBack);
+		}
+			
 		this.getChildren().add(this.cardBack);
 	}
 	
