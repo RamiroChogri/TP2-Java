@@ -17,7 +17,7 @@ import jugador.*;
 public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 	
 	private ImageView imagenCarta;
-	private Image cardBack;
+	private ImageView cardBack;
 	private CajaInformacion cajaInformacion;
 	private Partida partida;
 	private Colocable carta;
@@ -34,9 +34,20 @@ public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 		rectanguloAtaque.setStroke(Color.WHITE);
 		
 		this.imagenCarta = null;
-		this.cardBack = new Image( pathDePackCartas + "cardBackAlgo.png" );
-		this.cajaCampo = cajaCampoRecibida;
+		this.cardBack = new ImageView (new Image( pathDePackCartas + "cardBackAlgo.png" ));
+		this.cardBack.setFitWidth(60);
+		this.cardBack.setFitHeight(100);
+		this.cardBack = new ImageView (new Image( pathDePackCartas + "cardBackAlgo.png" ));
+		this.cardBack.setFitWidth(60);
+		this.cardBack.setFitHeight(100);
 		
+		MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(this.cardBack,this.cajaInformacion);
+		this.cardBack.setOnMouseEntered(ponerEnZoom);
+		 
+		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(this.cajaInformacion);
+		this.cardBack.setOnMouseExited(sacarDeZoom);
+		
+		this.cajaCampo = cajaCampoRecibida;
 		this.partida = duelo;
 		this.carta = cartaActual;
 		this.jugador = jugadorAColocar;
@@ -46,22 +57,21 @@ public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 	}
 	
 	public void pintarCartaBocaAbajo(Image imagen) {
-		ImageView imagenCarta = new ImageView(this.cardBack);
-		imagenCarta.setFitWidth(60);
-		imagenCarta.setFitHeight(100);
-		
-		MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(imagenCarta,this.cajaInformacion);
-		imagenCarta.setOnMouseEntered(ponerEnZoom);
-		 
-		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(this.cajaInformacion);
-		imagenCarta.setOnMouseExited(sacarDeZoom);
-		
-		
-		this.getChildren().add(imagenCarta);
+//		ImageView imagenCarta = new ImageView(this.cardBack);
+//		imagenCarta.setFitWidth(60);
+//		imagenCarta.setFitHeight(100);
+//		
+//		MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(imagenCarta,this.cajaInformacion);
+//		imagenCarta.setOnMouseEntered(ponerEnZoom);
+//		 
+//		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(this.cajaInformacion);
+//		imagenCarta.setOnMouseExited(sacarDeZoom);
+//		
+		this.getChildren().add(this.cardBack);
 	}
 	
 	public void pintarCartaBocaArriba(Image imagen) {
-		ImageView imagenCarta = new ImageView(imagen);
+		this.imagenCarta = new ImageView(imagen);
 		imagenCarta.setFitWidth(60);
 		imagenCarta.setFitHeight(100);
 		

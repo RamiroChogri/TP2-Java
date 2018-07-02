@@ -79,8 +79,10 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 	}
 
 	public void limpiar() {
-		if(this.getChildren().contains(this.imagenCarta))
+		if(this.getChildren().contains(this.imagenCarta)) {
 		this.getChildren().remove(this.imagenCarta);
+		this.imagenCarta = null;
+		}
 		else this.getChildren().remove(this.cardBack);
 		
 		this.carta = null;

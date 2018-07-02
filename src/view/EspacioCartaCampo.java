@@ -51,5 +51,6 @@ public class EspacioCartaCampo extends StackPane implements PathArchivos{
 	
 	public void limpiar() {
 		this.getChildren().remove(this.imagenCarta);
+		this.imagenCarta = null;
 	}
 }

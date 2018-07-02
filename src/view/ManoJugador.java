@@ -91,7 +91,7 @@ public class ManoJugador extends ScrollPane implements PathArchivos {
 			espacioActual = posicionesIterador.next();
 			this.mano.getChildren().remove(espacioActual);
 		}
-		
+		this.espaciosEnMano.clear();
 	}
 		
 }
