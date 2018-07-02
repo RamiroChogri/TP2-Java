@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import jugador.Jugador;
 import partida.Partida;
 import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
@@ -44,10 +45,13 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			rectanguloDefensa.setHeight(60);
 			rectanguloDefensa.setStroke(Color.WHITE);
 			
+			Text textoZona = new Text("Monstruos");
+			textoZona.setStroke(Color.WHITE);
+			
 			this.imagenCarta = null;
 			this.cardBack = new ImageView(new Image(pathDePackCartas+"cardBackAlgo.png"));
 			
-			this.getChildren().addAll(rectanguloAtaque,rectanguloDefensa);
+			this.getChildren().addAll(rectanguloAtaque,rectanguloDefensa,textoZona);
 			this.setAlignment(Pos.CENTER);
 			
 		}
