@@ -66,7 +66,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
 			imagenCarta.setOnMouseExited(sacarDeZoom);
 			
-			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno() && this.partida.estaEnFaseDeAtaqueYTrampas()) {
+			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
 				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaCampo, this.imagenCarta);
 			}
 			
@@ -88,7 +88,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
 			this.imagenCarta.setOnMouseExited(sacarDeZoom);
 			
-			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno() && this.partida.estaEnFaseDeAtaqueYTrampas()) {
+			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
 				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaCampo, this.imagenCarta);
 			}
 			
@@ -111,7 +111,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			this.cardBack.setOnMouseExited(sacarDeZoom);
 			this.getChildren().add(this.cardBack);
 			
-			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno() && this.partida.estaEnFaseDeAtaqueYTrampas()) {
+			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
 				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaCampo, this.imagenCarta);
 			}
 			

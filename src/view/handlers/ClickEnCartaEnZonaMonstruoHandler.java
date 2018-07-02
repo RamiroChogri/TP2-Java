@@ -33,19 +33,26 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
 	
 	
 	public void handle(ContextMenuEvent t) {
-		if (this.carta.estaEnModoAtaque()) {
-    		this.menuCartaEnModoAtaque(t);
-    	} else if (this.carta.estaColocadaBocaArriba()) {
+		if (this.carta.estaEnModoAtaque() && this.duelo.estaEnFaseDeAtaqueYTrampas()) {
+    		this.menuCartaAtacar(t);
+		} else if (this.carta.estaEnModoAtaque() && this.duelo.estaEnFaseDePreparacion()) {
+			this.menuCartaEnModoAtaque(t);
+    	} else if (this.carta.estaColocadaBocaArriba() && this.duelo.estaEnFaseDePreparacion()) {
     		this.menuCartaBocaArribaEnModoDefensa(t);
-    	} else if (this.carta.getClass() == CartaTrampa.class) {
-    		this.menuCartaBocaArribaEnModoDefensa(t);
+    	} else if (this.duelo.estaEnFaseDePreparacion()) {
+    		this.menuCartaBocaAbajoEnModoDefensa(t);
     	}
 	}
 	
 	
-	public void menuCartaEnModoAtaque(ContextMenuEvent t) {
+	public void menuCartaAtacar(ContextMenuEvent t) {
 		ContextMenu contextMenu = new ContextMenu();
-    	MenuItem atacar;
+    	MenuItem atacar = new MenuItem("Intentar atacar a " + this.jugador.obtenerJugadorEnemigo().obtenerNombre());
+    	
+    	BotonAtacarAJugadorHandler atacarAJugadorHandler = new BotonAtacarAJugadorHandler(this.carta, this.duelo, this.jugador, this.cajaCampo, this.jugador.obtenerJugadorEnemigo());
+    	atacar.setOnAction(atacarAJugadorHandler);
+    			
+    	contextMenu.getItems().add(atacar);
     	
     	LinkedList<Atacable> cartasEnemigo = jugador.obtenerJugadorEnemigo().obtenerMonstruosColocados();
 		Iterator<Atacable> posicionesIterador = cartasEnemigo.iterator();		
@@ -62,7 +69,12 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
 	    	contextMenu.getItems().add(atacar);
 	    
 	    }
-    	
+		
+    	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
+	}
+	
+	public void menuCartaEnModoAtaque(ContextMenuEvent t) {
+		ContextMenu contextMenu = new ContextMenu();
     	
     	MenuItem bocaArribaModoDefensa = new MenuItem("Cambiar a Modo Defensa");
     	MenuItem cancelar = new MenuItem("Cancelar");
