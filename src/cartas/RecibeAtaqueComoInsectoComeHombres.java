@@ -61,6 +61,7 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 		
 		getAtacable().ponerEn(estadoAColocar);
 		zonaMonstruos.colocarCarta(this);
+		getAtacable().setSeCambioElEstadoEsteTurno(true);
 	}	
 
 	@Override
