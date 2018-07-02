@@ -112,7 +112,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			this.getChildren().add(this.cardBack);
 			
 			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
-				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.imagenCarta);
+				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.cardBack);
 			}
 			
 		}
