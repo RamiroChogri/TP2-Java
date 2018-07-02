@@ -84,4 +84,9 @@ public class FaseFinal extends Fase {
 		public Jugador obtenerJugadorEnTurno() {
 			return this.jugadorEnTurno;
 		}
+		
+		@Override
+		public boolean esFaseFinal() {
+			return true;
+		}
 }

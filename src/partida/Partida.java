@@ -105,6 +105,13 @@ public class Partida {
 		return this.faseActual.esFasePreparacion();
 	}
 	
+	public boolean estaEnFaseDeAtaqueYTrampas() {
+		return this.faseActual.esFaseAtaqueYTrampas();
+	}
+	
+	public boolean estaEnFaseFinal() {
+		return this.faseActual.esFaseFinal();
+	}
 	
 	public Jugador elegirQuienComienza(Jugador unJugador, Jugador otroJugador) {
 		

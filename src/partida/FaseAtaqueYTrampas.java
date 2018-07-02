@@ -168,4 +168,9 @@ public class FaseAtaqueYTrampas extends Fase {
 		return this.jugadorEnTurno;
 	}
 	
+	@Override
+	public boolean esFaseAtaqueYTrampas() {
+		return true;
+	}
+	
 }
