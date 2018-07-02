@@ -3,6 +3,7 @@ import java.util.*;
 
 import cartas.*;
 import exceptions.NoHayLugarVacioException;
+import exceptions.NoHayMonstruoParaSacrificarException;
 import exceptions.NoHayCartasException;
 import exceptions.ZonaMonstruoLlenaException;
 import view.CajaConsola;
@@ -126,7 +127,7 @@ public class ZonaMonstruos extends Zona {
 
 	public Atacable obtenerMonstruoConMenorAtaque() {
 		
-		if( posiciones.isEmpty() ) { throw new NoHayCartasException(); };
+		if( posiciones.isEmpty() ) { throw new NoHayMonstruoParaSacrificarException(); };
 		
 		Iterator<Atacable> posicionesIterador = this.posiciones.iterator();		
 		Atacable cartaMonstruoMenorPuntaje = posicionesIterador.next();
