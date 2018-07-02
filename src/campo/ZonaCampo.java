@@ -47,8 +47,13 @@ public class ZonaCampo extends Zona{
 			cartaCampoADestruir = this.cartaCampo;
 			this.cartaCampo = null;
 		}
+
 		LinkedList<Destruible> cartasDestruidas = new LinkedList<Destruible>();
+		
+		if(cartaCampoADestruir != null) {
 		cartasDestruidas.add(cartaCampoADestruir);
+		}
+		
 	    return cartasDestruidas;
 	}
 
@@ -61,7 +66,9 @@ public class ZonaCampo extends Zona{
 	}
 
 	public void enviarCampoAlCementerio(Cementerio cementerio) {
+		if(this.cartaCampo != null) {
 		cementerio.agregarCarta(this.cartaCampo);
+		}
 	}
 
 	public LinkedList<Activable> obtenerCartaColocada() {

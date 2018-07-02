@@ -13,7 +13,6 @@ import partida.Partida;
 import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 import view.handlers.ClickEnCartaEnManoHandler;
 import view.handlers.MouseArribaDeImagenHandler;
-import view.handlers.MouseClickeadoEnImagenAbreMenuHandler;
 import view.handlers.MouseSalirArribaDeImagenHandler;
 import viewSupportFiles.PathArchivos;
 
