@@ -62,8 +62,11 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
 		while (posicionesIterador.hasNext()) {
 	    	
 	    	cartaMonstruoActual = posicionesIterador.next();
-	    	atacar = new MenuItem("Atacar a " + cartaMonstruoActual.obtenerNombre());
-	    	
+	    	if (cartaMonstruoActual.estaColocadaBocaArriba()) {
+	    		atacar = new MenuItem("Atacar a " + cartaMonstruoActual.obtenerNombre());
+	    	} else {
+	    		atacar = new MenuItem("Atacar a monstruo boca abajo");
+	    	}
 	    	BotonAtacarHandler atacarHandler = new BotonAtacarHandler(this.carta, this.duelo, this.jugador, this.cajaDuelo, cartaMonstruoActual);
 	    	atacar.setOnAction(atacarHandler);
 	    			
