@@ -30,6 +30,7 @@ public class CartaMonstruo implements Atacable{
 	private ReglaDeInvocacionStrategy regla;
 	private Scanner teclado;
 	private String nombreImagen;
+	private boolean atacoEsteTurno;
 	
 	public CartaMonstruo() {
 		
@@ -42,6 +43,7 @@ public class CartaMonstruo implements Atacable{
 		this.regla = new ReglaDeMonstruoChicoStrategy();
 		this.teclado = new Scanner(System.in);
 		this.nombreImagen = " ";
+		this.atacoEsteTurno = false;
 	}
 	
 	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar, int estrellasAColocar) {
@@ -54,6 +56,7 @@ public class CartaMonstruo implements Atacable{
 		this.regla = new ReglaDeMonstruoChicoStrategy();
 		this.nombreImagen = " ";
 		this.teclado = new Scanner(System.in);
+		this.atacoEsteTurno = false;
 	}
 	
 	///////constructor que recibe la regla para colocarse ////////
@@ -68,6 +71,7 @@ public class CartaMonstruo implements Atacable{
 		this.regla = reglaDeInvocacion;	
 		this.nombreImagen = " ";
 		this.teclado = new Scanner(System.in);
+		this.atacoEsteTurno = false;
 	}
 	//Constructor que recibe todo lo anterior + el nombre
 	public CartaMonstruo(Puntos puntosDeAtaqueAColocar, Puntos puntosDeDefensaAColocar,
@@ -81,9 +85,12 @@ public class CartaMonstruo implements Atacable{
 	this.regla = reglaDeInvocacion;
 	this.nombreImagen = " ";
 	this.teclado = new Scanner(System.in);
+	this.atacoEsteTurno = false;
 	}
+
 	public void setNombreDeLaImagen(String nombreDeLaImagen) {
 		this.nombreImagen = nombreDeLaImagen;
+		this.atacoEsteTurno = false;
 	}
 	
 	public String getNombreDeLaImagen() {
@@ -314,4 +321,13 @@ public class CartaMonstruo implements Atacable{
 		
 	}
  	
+	public boolean atacoEsteTurno() {
+		return this.atacoEsteTurno;
+	}
+	
+	public void setAtacoEsteTurno(boolean ataco) {
+		this.atacoEsteTurno = ataco;
+	}
+	
+	
 }

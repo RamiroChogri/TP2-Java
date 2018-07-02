@@ -306,4 +306,8 @@ public class Jugador {
 		return this.campoPropio.obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio();
 	}
 	
+	public void reiniciarAtaquesMonstruosColocados() {
+		this.campoPropio.reiniciarAtaquesMonstruosColocados();
+	}
+	
 }

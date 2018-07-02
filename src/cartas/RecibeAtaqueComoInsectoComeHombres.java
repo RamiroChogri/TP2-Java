@@ -226,4 +226,19 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 		ClickEnCartaEnZonaMonstruoHandler verMenu = new ClickEnCartaEnZonaMonstruoHandler(partida, this, jugadorDuenio, cajaCampo);
 		imagenCarta.setOnContextMenuRequested(verMenu);
 	}
+
+
+	@Override
+	public boolean atacoEsteTurno() {
+	
+		return getAtacable().atacoEsteTurno();
+
+	}
+
+
+	@Override
+	public void setAtacoEsteTurno(boolean ataco) {
+		getAtacable().setAtacoEsteTurno(ataco);
+	}
+	
 }

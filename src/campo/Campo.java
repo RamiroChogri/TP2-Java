@@ -200,6 +200,11 @@ public class Campo {
 		return this.cementerio.obtenerNombreDeLaImagenDeLaUltimaCarta();
 	}
 	
+	public void reiniciarAtaquesMonstruosColocados() {
+
+		this.monstruos.reiniciarAtaquesMonstruos();
+	
+	}
 
 
 }
