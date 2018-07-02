@@ -32,7 +32,11 @@ public class BotonAtacarHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 		
 		this.jugador.atacar(this.carta, this.cartaMonstruoEnemiga);
-	    
+		
+		if (!carta.estaDestruida()) {
+			this.carta.setAtacoEsteTurno(true);
+		}
+		
 	    if (duelo.estaYugiEnTurno()) {
 			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
 		} else {

@@ -47,5 +47,9 @@ public interface Atacable extends Destruible, Colocable{
 	public void eliminarModificadorDeDefensa();
 
 	public void recibirAtaque(Atacable atacante);
+	
+	public boolean atacoEsteTurno();
+	
+	public void setAtacoEsteTurno(boolean ataco);
 
 }

@@ -152,6 +152,7 @@ public class Partida {
 		this.faseActual = faseActual.obtenerFaseSiguiente();
 		if (faseActual.getNombreFase().equals("Fase Preparacion")) {
 			this.seJugoCartaMonstruo = false;
+			this.jugadorEnTurno.reiniciarAtaquesMonstruosColocados();
 		}
 	}
 	
@@ -159,6 +160,7 @@ public class Partida {
 		this.jugadorEnTurno = this.jugadorEnTurno.obtenerJugadorEnemigo();
 		this.faseActual = new FasePreparacion(this.jugadorEnTurno);
 		this.seJugoCartaMonstruo = false;
+		this.jugadorEnTurno.reiniciarAtaquesMonstruosColocados();
 	}
 	
 	public String getNombreFase() {
