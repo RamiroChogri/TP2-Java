@@ -78,7 +78,7 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 
 		public void loggearMensaje(String string) {
 			
-			consola.agregarMensaje(string);		
+			CajaConsola.agregarMensaje(string);		
 		}
 	    
 }
