@@ -115,7 +115,6 @@ public class CartaMonstruo implements Atacable{
 	
 	public void cambiarA(Modo modoRecibido) {
 		this.modo = modoRecibido;
-		CajaConsola.agregarMensaje("Se coloco la carta " + this.nombre + " en " + modoRecibido.obtenerNombre());
 	}
 		
 	public void colocarse(Jugador jugador, ZonaMonstruos zonaMonstruos, ZonaMagicasYTrampas zonaMagicasYTrampas, ZonaCampo zonaCampo, Cementerio cementerio, EstadoCarta estadoAColocar) {
@@ -133,7 +132,6 @@ public class CartaMonstruo implements Atacable{
 		if (this.estaEnModoDefensa()) {
 			throw new MonstruoEnModoDefensaNoPuedeAtacarException();
 		}
-		CajaConsola.agregarMensaje(this.obtenerNombre()+" atacó a "+cartaAtacableEnemiga.obtenerNombre());
 		cartaAtacableEnemiga.recibirAtaque(this);
 	}
 	
@@ -251,9 +249,7 @@ public class CartaMonstruo implements Atacable{
 
 	@Override
 	public void voltear() {
-		
 		this.colocarBocaArriba();
-		CajaConsola.agregarMensaje("Se volteo la carta " + this.nombre);
 	}
 
 	@Override

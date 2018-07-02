@@ -268,7 +268,10 @@ public class JugadorTest {
 			jugador1.colocar(atacado, new EstadoCartaColocadaBocaArriba(), new ModoAtaque());
 			jugador2.colocar(atacante, new EstadoCartaColocadaBocaAbajo(), new ModoDefensa());
 			
+			ModoAtaque modoataque = new ModoAtaque();
+			
 			jugador2.voltearCarta(atacante);
+			atacante.cambiarA(modoataque);
 			jugador2.atacar(atacante, atacado);
 			
 			int vidaEsperada = 8000 - 200;

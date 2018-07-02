@@ -8,7 +8,6 @@ public class EfectoAgujeroNegro extends Efecto {
 	public void aplicarEfecto(Campo campoPropio, Campo campoEnemigo) {
 		campoPropio.vaciarZonaMonstruos();
 		campoEnemigo.vaciarZonaMonstruos();
-		CajaConsola.agregarMensaje("Se aplica efecto Agujero Negro");
 	}
 
 	@Override

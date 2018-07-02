@@ -19,7 +19,6 @@ public class EfectoCilindroMagico extends Efecto {
 		
 		Modo modoAnterior = atacado.obtenerModo();
 		ModoNegacionDeAtaque modoNegacion = new ModoNegacionDeAtaque( modoAnterior );
-		CajaConsola.agregarMensaje("Se aplica efecto Cilindro Magico");
 
 		campoPropio.hacerDanioAlJugador( atacante.obtenerPuntosAtaque() );
 		atacado.cambiarA( modoNegacion );

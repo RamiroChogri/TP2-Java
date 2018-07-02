@@ -54,7 +54,6 @@ public class ZonaMonstruos extends Zona {
 	    	if(cartaMonstruoActual.estaDestruida()) {
 	    	
 	    		Destruible cartaActual = cartaMonstruoActual;
-	    		CajaConsola.agregarMensaje(cartaActual.obtenerNombre()+" ha sido destruida ");
 	    		cartasDestruidas.add(cartaActual);
 	    		posicionesIterador.remove();
 	    	
