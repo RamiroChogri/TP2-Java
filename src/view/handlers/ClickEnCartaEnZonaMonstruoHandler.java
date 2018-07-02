@@ -34,17 +34,19 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
 	
 	
 	public void handle(ContextMenuEvent t) {
-		if (this.carta.estaEnModoAtaque() && this.duelo.estaEnFaseDeAtaqueYTrampas() && 
-				!this.carta.atacoEsteTurno() && !this.duelo.esPrimerTurno()) {
+		if(this.jugador == this.duelo.obtenerJugadorEnTurno()) {
+			if (this.carta.estaEnModoAtaque() && this.duelo.estaEnFaseDeAtaqueYTrampas() && 
+					!this.carta.atacoEsteTurno() && !this.duelo.esPrimerTurno()) {
 			
-    		this.menuCartaAtacar(t);
-		} else if (this.carta.estaEnModoAtaque() && this.duelo.estaEnFaseDePreparacion() && !this.carta.seCambioElEstadoEsteTurno()) {
-			this.menuCartaEnModoAtaque(t);
-    	} else if (this.carta.estaColocadaBocaArriba() && this.duelo.estaEnFaseDePreparacion() && !this.carta.seCambioElEstadoEsteTurno()) {
-    		this.menuCartaBocaArribaEnModoDefensa(t);
-    	} else if (this.duelo.estaEnFaseDePreparacion() && !this.carta.seCambioElEstadoEsteTurno()) {
-    		this.menuCartaBocaAbajoEnModoDefensa(t);
-    	}
+				this.menuCartaAtacar(t);
+			} else if (this.carta.estaEnModoAtaque() && this.duelo.estaEnFaseDePreparacion() && !this.carta.seCambioElEstadoEsteTurno()) {
+				this.menuCartaEnModoAtaque(t);
+			} else if (this.carta.estaColocadaBocaArriba() && this.duelo.estaEnFaseDePreparacion() && !this.carta.seCambioElEstadoEsteTurno()) {
+				this.menuCartaBocaArribaEnModoDefensa(t);
+			} else if (this.duelo.estaEnFaseDePreparacion() && !this.carta.seCambioElEstadoEsteTurno()) {
+				this.menuCartaBocaAbajoEnModoDefensa(t);
+			}
+		}
 	}
 	
 	
