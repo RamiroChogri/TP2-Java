@@ -11,6 +11,7 @@ import jugador.Jugador;
 import modos.Modo;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 
 public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
@@ -222,8 +223,8 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 	}
 	
 	@Override
-	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta) {
-		ClickEnCartaEnZonaMonstruoHandler verMenu = new ClickEnCartaEnZonaMonstruoHandler(partida, this, jugadorDuenio, cajaCampo);
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, ContenedorDelDuelo cajaDuelo, ImageView imagenCarta) {
+		ClickEnCartaEnZonaMonstruoHandler verMenu = new ClickEnCartaEnZonaMonstruoHandler(partida, this, jugadorDuenio, cajaDuelo);
 		imagenCarta.setOnContextMenuRequested(verMenu);
 	}
 

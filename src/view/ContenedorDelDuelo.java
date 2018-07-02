@@ -38,10 +38,10 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
             }
             
            
-            this.cajaIzquierda = new CajaJugadores(this.cajaDerecha,duelo,jugadorEnTurno, this);
+            this.cajaIzquierda = new CajaJugadores(this.cajaDerecha, duelo, jugadorEnTurno, this);
 	    	this.setLeft(cajaIzquierda);
             
-	    	this.cajaCentro = new CajaCampo(cajaDerecha,duelo);
+	    	this.cajaCentro = new CajaCampo(cajaDerecha, duelo, this);
 	    	this.setCenter(cajaCentro);
 	    	
 	    	this.consola = new CajaConsola();

@@ -12,19 +12,20 @@ import jugador.Jugador;
 import modos.*;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 
 public class BotonRotarMonstruoHandler implements EventHandler<ActionEvent> {
 
 	private Atacable carta;
 	private Partida duelo;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public BotonRotarMonstruoHandler(Atacable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo) {
+	public BotonRotarMonstruoHandler(Atacable carta, Partida duelo, Jugador jugador, ContenedorDelDuelo cajaDuelo) {
 		this.carta = carta;
 		this.duelo = duelo;
 		this.jugador = jugador;
-		this.cajaCampo = cajaCampo;
+		this.cajaDuelo = cajaDuelo;
 		
 	}
 	
@@ -40,9 +41,9 @@ public class BotonRotarMonstruoHandler implements EventHandler<ActionEvent> {
         }
         			
     	if (duelo.estaYugiEnTurno()) {
-    		cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	} else {
-    		cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    		cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	}
     }
 }

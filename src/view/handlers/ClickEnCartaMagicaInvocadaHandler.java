@@ -10,19 +10,20 @@ import javafx.scene.input.ContextMenuEvent;
 import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 
 public class ClickEnCartaMagicaInvocadaHandler implements EventHandler<ContextMenuEvent> {
 
 	private Partida duelo;
 	private Activable carta;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public ClickEnCartaMagicaInvocadaHandler(Partida partidaAColocar, Activable cartaAColocar, Jugador jugadorEnTurno, CajaCampo cajaCampoRecibida) {
+	public ClickEnCartaMagicaInvocadaHandler(Partida partidaAColocar, Activable cartaAColocar, Jugador jugadorEnTurno, ContenedorDelDuelo cajaDueloRecibida) {
 		this.duelo = partidaAColocar;
 		this.carta = cartaAColocar;
 		this.jugador = jugadorEnTurno;
-		this.cajaCampo = cajaCampoRecibida;
+		this.cajaDuelo = cajaDueloRecibida;
 	}
 	
 	public void handle(ContextMenuEvent t) {
@@ -37,13 +38,13 @@ public class ClickEnCartaMagicaInvocadaHandler implements EventHandler<ContextMe
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaArriba, cancelar);
     	
-    	BotonVoltearCartaMagicaHandler bocaArribaHandler = new BotonVoltearCartaMagicaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonVoltearCartaMagicaHandler bocaArribaHandler = new BotonVoltearCartaMagicaHandler(this.carta, this.duelo, this.jugador, this.cajaDuelo);
     	bocaArriba.setOnAction(bocaArribaHandler);
     	
     	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
     	cancelar.setOnAction(cancelarHandler);
     	
-      	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
+      	contextMenu.show(cajaDuelo, t.getSceneX(), t.getSceneY());
     }
 	
 }

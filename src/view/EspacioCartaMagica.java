@@ -21,14 +21,14 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 	private	Jugador jugadorDuenio;
 	private Colocable carta;
 	private Partida partida;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public EspacioCartaMagica(CajaInformacion informacion, Partida duelo, Jugador jugadorDuenio, CajaCampo cajaCampoRecibida) {
+	public EspacioCartaMagica(CajaInformacion informacion, Partida duelo, Jugador jugadorDuenio, ContenedorDelDuelo cajaDueloRecibida) {
 		
 		this.cajaInformacion = informacion;
 		this.jugadorDuenio = jugadorDuenio;
 		this.partida = duelo;
-		this.cajaCampo = cajaCampoRecibida;
+		this.cajaDuelo = cajaDueloRecibida;
 		
 		Rectangle rectanguloAtaque = new Rectangle();
 		rectanguloAtaque.setWidth(60);
@@ -57,7 +57,7 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(this.cajaInformacion);
 		this.cardBack.setOnMouseExited(sacarDeZoom);
 		
-		this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaCampo, this.imagenCarta);
+		this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.imagenCarta);
 		
 		this.getChildren().add(this.cardBack);
 	}

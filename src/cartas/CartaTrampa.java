@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 
 public class CartaTrampa extends CartaMagica{
 	
@@ -58,7 +59,7 @@ public class CartaTrampa extends CartaMagica{
 	}
 	
 	@Override
-	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta) {
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, ContenedorDelDuelo cajaDuelo, ImageView imagenCarta) {
 		//No hace nada
 	}
 	

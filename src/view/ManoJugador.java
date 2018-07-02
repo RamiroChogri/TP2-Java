@@ -18,10 +18,10 @@ public class ManoJugador extends ScrollPane implements PathArchivos {
 	private LinkedList<EspacioCartaEnMano> espaciosEnMano;
 	private Jugador jugadorDeLaMano;
 	private Partida partida;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	private HBox mano;
 	
-	public ManoJugador(Partida duelo, Jugador jugadorDeLaMano, CajaCampo cajaCampoRecibida) {
+	public ManoJugador(Partida duelo, Jugador jugadorDeLaMano, ContenedorDelDuelo cajaDueloRecibida) {
 //		this.setAlignment(Pos.BOTTOM_CENTER);
 //		this.setSpacing(15);
 		this.mano = new HBox();
@@ -41,7 +41,7 @@ public class ManoJugador extends ScrollPane implements PathArchivos {
 		this.espaciosEnMano = new LinkedList<EspacioCartaEnMano>();
 		this.jugadorDeLaMano = jugadorDeLaMano;
 		this.partida = duelo; 
-		this.cajaCampo = cajaCampoRecibida;
+		this.cajaDuelo = cajaDueloRecibida;
 	}
 	
 	
@@ -56,7 +56,7 @@ public class ManoJugador extends ScrollPane implements PathArchivos {
 		while(posicionesIterador.hasNext()) {
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion, this.partida, cartaActual, this.jugadorDeLaMano ,this.cajaCampo));
+			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion, this.partida, cartaActual, this.jugadorDeLaMano ,this.cajaDuelo));
 			this.espaciosEnMano.getLast().pintarCartaBocaAbajo(imagen);
 			this.mano.getChildren().add(this.espaciosEnMano.getLast());
 		}
@@ -76,7 +76,7 @@ public class ManoJugador extends ScrollPane implements PathArchivos {
 		while(posicionesIterador.hasNext()) {
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion, this.partida, cartaActual, this.jugadorDeLaMano ,this.cajaCampo));
+			this.espaciosEnMano.add(new EspacioCartaEnMano(cajaInformacion, this.partida, cartaActual, this.jugadorDeLaMano ,this.cajaDuelo));
 			this.espaciosEnMano.getLast().pintarCartaBocaArriba(imagen);
 			this.mano.getChildren().add(this.espaciosEnMano.getLast());
 		}

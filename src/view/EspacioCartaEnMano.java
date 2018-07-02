@@ -22,9 +22,9 @@ public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 	private Partida partida;
 	private Colocable carta;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public EspacioCartaEnMano(CajaInformacion informacion, Partida duelo, Colocable cartaActual, Jugador jugadorAColocar, CajaCampo cajaCampoRecibida) {
+	public EspacioCartaEnMano(CajaInformacion informacion, Partida duelo, Colocable cartaActual, Jugador jugadorAColocar, ContenedorDelDuelo cajaDueloRecibida) {
 		
 		this.cajaInformacion = informacion;
 		
@@ -47,7 +47,7 @@ public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(this.cajaInformacion);
 		this.cardBack.setOnMouseExited(sacarDeZoom);
 		
-		this.cajaCampo = cajaCampoRecibida;
+		this.cajaDuelo = cajaDueloRecibida;
 		this.partida = duelo;
 		this.carta = cartaActual;
 		this.jugador = jugadorAColocar;
@@ -81,7 +81,7 @@ public class EspacioCartaEnMano extends StackPane implements PathArchivos{
 		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
 		imagenCarta.setOnMouseExited(sacarDeZoom);
 		
-		ClickEnCartaEnManoHandler verOpcionesDeColocacion = new ClickEnCartaEnManoHandler(this.cajaInformacion, this.partida, this.carta, this.jugador, this.cajaCampo);
+		ClickEnCartaEnManoHandler verOpcionesDeColocacion = new ClickEnCartaEnManoHandler(this.cajaInformacion, this.partida, this.carta, this.jugador, this.cajaDuelo);
 		imagenCarta.setOnContextMenuRequested(verOpcionesDeColocacion);
 		
 		

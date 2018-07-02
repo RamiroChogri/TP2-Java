@@ -9,19 +9,20 @@ import modos.ModoAtaque;
 import modos.ModoDefensa;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 
 public class BotonVoltearMonstruoAModoAtaqueHandler implements EventHandler<ActionEvent> {
 
 	private Atacable carta;
 	private Partida duelo;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public BotonVoltearMonstruoAModoAtaqueHandler(Atacable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo) {
+	public BotonVoltearMonstruoAModoAtaqueHandler(Atacable carta, Partida duelo, Jugador jugador, ContenedorDelDuelo cajaDuelo) {
 		this.carta = carta;
 		this.duelo = duelo;
 		this.jugador = jugador;
-		this.cajaCampo = cajaCampo;
+		this.cajaDuelo = cajaDuelo;
 		
 	}
 	
@@ -32,9 +33,9 @@ public class BotonVoltearMonstruoAModoAtaqueHandler implements EventHandler<Acti
         carta.cambiarA(modoACambiar);
         this.jugador.voltearCarta(this.carta);
     	if (duelo.estaYugiEnTurno()) {
-    		cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	} else {
-    		cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    		cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	}
     }
 }

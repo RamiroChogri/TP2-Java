@@ -9,19 +9,20 @@ import javafx.event.EventHandler;
 import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 
 public class BotonBocaAbajoHandler implements EventHandler<ActionEvent> {
 
 	private Colocable carta;
 	private Partida duelo;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public BotonBocaAbajoHandler(Colocable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo) {
+	public BotonBocaAbajoHandler(Colocable carta, Partida duelo, Jugador jugador, ContenedorDelDuelo cajaDuelo) {
 		this.carta = carta;
 		this.duelo = duelo;
 		this.jugador = jugador;
-		this.cajaCampo = cajaCampo;
+		this.cajaDuelo = cajaDuelo;
 		
 	}
 	
@@ -32,9 +33,9 @@ public class BotonBocaAbajoHandler implements EventHandler<ActionEvent> {
 			jugador.colocar(carta, estadoCarta);
 			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
 			if (duelo.estaYugiEnTurno()) {
-				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+				cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
 			} else {
-				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+				cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
 			}
 		} catch (NoHayLugarVacioException e) {
 			

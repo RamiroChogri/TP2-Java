@@ -25,14 +25,14 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 	private	Jugador jugadorDuenio;
 	private Colocable carta;
 	private Partida partida;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-		public EspacioCartaMonstruo(CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorDuenio, CajaCampo cajaCampoRecibida) {
+		public EspacioCartaMonstruo(CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorDuenio, ContenedorDelDuelo cajaDueloRecibida) {
 			
 			this.cajaInformacion = cajaInformacion;
 			this.jugadorDuenio = jugadorDuenio;
 			this.partida = duelo;
-			this.cajaCampo = cajaCampoRecibida;
+			this.cajaDuelo = cajaDueloRecibida;
 			
 			Rectangle rectanguloAtaque = new Rectangle();
 			rectanguloAtaque.setWidth(60);
@@ -67,7 +67,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			imagenCarta.setOnMouseExited(sacarDeZoom);
 			
 			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
-				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaCampo, this.imagenCarta);
+				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.imagenCarta);
 			}
 			
 			this.getChildren().add(imagenCarta);
@@ -89,7 +89,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			this.imagenCarta.setOnMouseExited(sacarDeZoom);
 			
 			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
-				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaCampo, this.imagenCarta);
+				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.imagenCarta);
 			}
 			
 			this.getChildren().add(imagenCarta);
@@ -112,7 +112,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			this.getChildren().add(this.cardBack);
 			
 			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
-				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaCampo, this.imagenCarta);
+				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.imagenCarta);
 			}
 			
 		}

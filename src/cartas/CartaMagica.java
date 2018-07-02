@@ -21,6 +21,7 @@ import modos.Modo;
 import modos.ModoDefensa;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 import view.handlers.ClickEnCartaMagicaInvocadaHandler;
 
@@ -190,8 +191,8 @@ public class CartaMagica implements Activable{
 	}
 	
 	@Override
-	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta) {
-		ClickEnCartaMagicaInvocadaHandler verMenu = new ClickEnCartaMagicaInvocadaHandler(partida, this, jugadorDuenio, cajaCampo);
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, ContenedorDelDuelo cajaDuelo, ImageView imagenCarta) {
+		ClickEnCartaMagicaInvocadaHandler verMenu = new ClickEnCartaMagicaInvocadaHandler(partida, this, jugadorDuenio, cajaDuelo);
 		imagenCarta.setOnContextMenuRequested(verMenu);
 	}
 	

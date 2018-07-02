@@ -20,6 +20,7 @@ import modos.*;
 import partida.Partida;
 import view.CajaCampo;
 import view.CajaInformacion;
+import view.ContenedorDelDuelo;
 import view.ManoJugador;
 import view.handlers.*;
 
@@ -28,14 +29,14 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
 	private Partida duelo;
 	private Colocable carta;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	private CajaInformacion cajaInf;
 	
-	public ClickEnCartaEnManoHandler(CajaInformacion cajaInfRecibida, Partida partidaAColocar, Colocable cartaAColocar, Jugador jugadorEnTurno, CajaCampo cajaCampoRecibida) {
+	public ClickEnCartaEnManoHandler(CajaInformacion cajaInfRecibida, Partida partidaAColocar, Colocable cartaAColocar, Jugador jugadorEnTurno, ContenedorDelDuelo cajaDueloRecibida) {
 		this.duelo = partidaAColocar;
 		this.carta = cartaAColocar;
 		this.jugador = jugadorEnTurno;
-		this.cajaCampo = cajaCampoRecibida;
+		this.cajaDuelo = cajaDueloRecibida;
 		this.cajaInf = cajaInfRecibida;
 	}
 	
@@ -62,19 +63,19 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaArribaModoAtaque, bocaArribaModoDefensa, bocaAbajoModoDefensa, cancelar);    	
     	
-    	BotonModoAtaqueBocaArribaHandler modoAtaqueBocaArribaHandler = new BotonModoAtaqueBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonModoAtaqueBocaArribaHandler modoAtaqueBocaArribaHandler = new BotonModoAtaqueBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaDuelo);
     	bocaArribaModoAtaque.setOnAction(modoAtaqueBocaArribaHandler);
     	
-    	BotonModoDefensaBocaArribaHandler modoDefensaBocaArribaHandler = new BotonModoDefensaBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonModoDefensaBocaArribaHandler modoDefensaBocaArribaHandler = new BotonModoDefensaBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaDuelo);
     	bocaArribaModoDefensa.setOnAction(modoDefensaBocaArribaHandler);
     	
-    	BotonModoDefensaBocaAbajoHandler modoDefensaBocaAbajoHandler = new BotonModoDefensaBocaAbajoHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonModoDefensaBocaAbajoHandler modoDefensaBocaAbajoHandler = new BotonModoDefensaBocaAbajoHandler(this.carta, this.duelo, this.jugador, this.cajaDuelo);
     	bocaAbajoModoDefensa.setOnAction(modoDefensaBocaAbajoHandler);
     	
     	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
     	cancelar.setOnAction(cancelarHandler);
     	
-    	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
+    	contextMenu.show(cajaDuelo, t.getSceneX(), t.getSceneY());
 	}
 	
 	public void menuCartaMagica(ContextMenuEvent t) {
@@ -84,17 +85,17 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaArriba, bocaAbajo, cancelar);
     	
-    	BotonBocaArribaHandler bocaArribaHandler = new BotonBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonBocaArribaHandler bocaArribaHandler = new BotonBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaDuelo);
     	bocaArriba.setOnAction(bocaArribaHandler);
     	
-    	BotonBocaAbajoHandler bocaAbajoHandler = new BotonBocaAbajoHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonBocaAbajoHandler bocaAbajoHandler = new BotonBocaAbajoHandler(this.carta, this.duelo, this.jugador, this.cajaDuelo);
     	bocaAbajo.setOnAction(bocaAbajoHandler);
     	
     	
     	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
     	cancelar.setOnAction(cancelarHandler);
     	
-      	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
+      	contextMenu.show(cajaDuelo, t.getSceneX(), t.getSceneY());
     }
 	
 	public void menuCartaTrampa(ContextMenuEvent t) {
@@ -103,13 +104,13 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaAbajo, cancelar);
     	
-    	BotonBocaAbajoHandler bocaAbajoHandler = new BotonBocaAbajoHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonBocaAbajoHandler bocaAbajoHandler = new BotonBocaAbajoHandler(this.carta, this.duelo, this.jugador, this.cajaDuelo);
     	bocaAbajo.setOnAction(bocaAbajoHandler);
     	
     	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
     	cancelar.setOnAction(cancelarHandler);
     	
-      	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());
+      	contextMenu.show(cajaDuelo, t.getSceneX(), t.getSceneY());
 	}
 	
 	public void menuCartaCampo(ContextMenuEvent t) {
@@ -118,12 +119,12 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
     	MenuItem cancelar = new MenuItem("Cancelar");
     	contextMenu.getItems().addAll(bocaArriba, cancelar);
     	
-    	BotonBocaArribaHandler bocaArribaHandler = new BotonBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaCampo);
+    	BotonBocaArribaHandler bocaArribaHandler = new BotonBocaArribaHandler(this.carta, this.duelo, this.jugador, this.cajaDuelo);
     	bocaArriba.setOnAction(bocaArribaHandler);
     	
     	BotonCancelarHandler cancelarHandler = new BotonCancelarHandler();
     	cancelar.setOnAction(cancelarHandler);
     	
-      	contextMenu.show(cajaCampo, t.getSceneX(), t.getSceneY());		
+      	contextMenu.show(cajaDuelo, t.getSceneX(), t.getSceneY());		
 	}
 }

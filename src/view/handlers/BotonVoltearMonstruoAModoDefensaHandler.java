@@ -6,19 +6,20 @@ import javafx.event.EventHandler;
 import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 
 public class BotonVoltearMonstruoAModoDefensaHandler implements EventHandler<ActionEvent> {
 
 	private Atacable carta;
 	private Partida duelo;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public BotonVoltearMonstruoAModoDefensaHandler(Atacable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo) {
+	public BotonVoltearMonstruoAModoDefensaHandler(Atacable carta, Partida duelo, Jugador jugador, ContenedorDelDuelo cajaDuelo) {
 		this.carta = carta;
 		this.duelo = duelo;
 		this.jugador = jugador;
-		this.cajaCampo = cajaCampo;
+		this.cajaDuelo = cajaDuelo;
 		
 	}
 	
@@ -26,9 +27,9 @@ public class BotonVoltearMonstruoAModoDefensaHandler implements EventHandler<Act
     public void handle(ActionEvent event) {
 		this.jugador.voltearCarta(this.carta);
     	if (duelo.estaYugiEnTurno()) {
-    		cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	} else {
-    		cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    		cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	}
     }
 }

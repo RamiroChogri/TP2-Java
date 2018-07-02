@@ -10,21 +10,22 @@ import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
 import view.CajaConsola;
+import view.ContenedorDelDuelo;
 
 public class BotonAtacarHandler implements EventHandler<ActionEvent> {
 
 	private Atacable carta;
 	private Partida duelo;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	private CajaConsola consola;
 	private Atacable cartaMonstruoEnemiga;
 	
-	public BotonAtacarHandler(Atacable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo, Atacable cartaMonstruoAAtacar) {
+	public BotonAtacarHandler(Atacable carta, Partida duelo, Jugador jugador, ContenedorDelDuelo cajaDuelo, Atacable cartaMonstruoAAtacar) {
 		this.carta = carta;
 		this.duelo = duelo;
 		this.jugador = jugador;
-		this.cajaCampo = cajaCampo;
+		this.cajaDuelo = cajaDuelo;
 		this.cartaMonstruoEnemiga = cartaMonstruoAAtacar;
 	}
 	
@@ -38,9 +39,9 @@ public class BotonAtacarHandler implements EventHandler<ActionEvent> {
 		}
 		
 	    if (duelo.estaYugiEnTurno()) {
-			cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+			cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
 		} else {
-			cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+			cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
 		}
 	
 	}

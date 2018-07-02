@@ -12,19 +12,20 @@ import modos.Modo;
 import modos.ModoAtaque;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 
 public class BotonModoAtaqueBocaArribaHandler implements EventHandler<ActionEvent> {
 
 	private Colocable carta;
 	private Partida duelo;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public BotonModoAtaqueBocaArribaHandler(Colocable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo) {
+	public BotonModoAtaqueBocaArribaHandler(Colocable carta, Partida duelo, Jugador jugador, ContenedorDelDuelo cajaDuelo) {
 		this.carta = carta;
 		this.duelo = duelo;
 		this.jugador = jugador;
-		this.cajaCampo = cajaCampo;
+		this.cajaDuelo = cajaDuelo;
 		
 	}
 	
@@ -39,9 +40,9 @@ public class BotonModoAtaqueBocaArribaHandler implements EventHandler<ActionEven
     			jugador.eliminarCartaDeLaMano(carta.obtenerNombre());
     			duelo.setSeJugoCartaMonstruo();
     			if (duelo.estaYugiEnTurno()) {
-    				cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    				cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     			} else {
-    				cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    				cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     			}
     		} catch (NoHaySuficientesMonstruosParaSacrificarException e) {
     		

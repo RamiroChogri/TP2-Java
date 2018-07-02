@@ -30,15 +30,15 @@ public class EspaciosDelCampo extends GridPane implements PathArchivos{
 	private	EspacioCartaCampo espacioCampo;
 	private	Rectangle espacioRelleno;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	private Partida duelo;
 	
-	public EspaciosDelCampo(CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorYugi, CajaCampo cajaCampoRecibida) {
+	public EspaciosDelCampo(CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorYugi, ContenedorDelDuelo cajaDueloRecibida) {
 		
 		this.duelo = duelo;
 		this.cajaInformacion = cajaInformacion;
 		this.jugador = jugadorYugi;
-		this.cajaCampo = cajaCampoRecibida;
+		this.cajaDuelo = cajaDueloRecibida;
 		
 		this.setEspaciosDeCampo(jugadorYugi);
 		
@@ -50,12 +50,12 @@ public class EspaciosDelCampo extends GridPane implements PathArchivos{
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	public EspaciosDelCampo(int gradosDeRotacion,CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorKaiba, CajaCampo cajaCampoRecibida) {
+	public EspaciosDelCampo(int gradosDeRotacion,CajaInformacion cajaInformacion, Partida duelo, Jugador jugadorKaiba, ContenedorDelDuelo cajaDueloRecibida) {
 		
 		this.duelo = duelo;
 		this.cajaInformacion = cajaInformacion;
 		this.jugador = jugadorKaiba;
-		this.cajaCampo = cajaCampoRecibida;
+		this.cajaDuelo = cajaDueloRecibida;
 		
 		this.setEspaciosDeCampo(jugadorKaiba);
 		
@@ -68,17 +68,17 @@ public class EspaciosDelCampo extends GridPane implements PathArchivos{
 	}
 	
 	private void setEspaciosDeCampo(Jugador jugadorPerteneciente) {
-		this.espacioMonstruo1 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMonstruo2 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMonstruo3 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMonstruo4 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMonstruo5 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMonstruo1 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
+		this.espacioMonstruo2 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
+		this.espacioMonstruo3 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
+		this.espacioMonstruo4 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
+		this.espacioMonstruo5 = new EspacioCartaMonstruo(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
 		
-		this.espacioMagico1 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMagico2 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMagico3 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMagico4 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
-		this.espacioMagico5 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaCampo);
+		this.espacioMagico1 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
+		this.espacioMagico2 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
+		this.espacioMagico3 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
+		this.espacioMagico4 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
+		this.espacioMagico5 = new EspacioCartaMagica(this.cajaInformacion,this.duelo,jugadorPerteneciente, this.cajaDuelo);
 		
 		this. espacioCementerio = new EspacioCementerio();
 		this. espacioMazo = new EspacioMazo(jugadorPerteneciente);

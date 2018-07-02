@@ -15,27 +15,29 @@ import viewSupportFiles.PathArchivos;
 
 public class CajaCampo extends VBox implements PathArchivos{
 
-	CajaInformacion cajaInformacion;
+	private CajaInformacion cajaInformacion;
 	
-	EspaciosDelCampo campoJ1;
-	EspaciosDelCampo campoJ2;
-	ManoJugador manoYugi;
-	ManoJugador manoKaiba;
-	Partida duelo;
+	private EspaciosDelCampo campoJ1;
+	private EspaciosDelCampo campoJ2;
+	private ManoJugador manoYugi;
+	private ManoJugador manoKaiba;
+	private Partida duelo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public CajaCampo(CajaInformacion cajaInformacion,Partida duelo) {
+	public CajaCampo(CajaInformacion cajaInformacion,Partida duelo, ContenedorDelDuelo cajaDueloRecibida) {
 		
 		this.duelo = duelo;
 		this.cajaInformacion = cajaInformacion;
+		this.cajaDuelo = cajaDueloRecibida;
 		
-		this.manoYugi = new ManoJugador(duelo,duelo.getJugadorYugi(), this);
+		this.manoYugi = new ManoJugador(duelo,duelo.getJugadorYugi(), this.cajaDuelo);
 //		this.manoYugi.setAlignment(Pos.BOTTOM_CENTER);
 		
-		this.manoKaiba = new ManoJugador(duelo,duelo.getJugadorKaiba(), this);
+		this.manoKaiba = new ManoJugador(duelo,duelo.getJugadorKaiba(), this.cajaDuelo);
 //		this.manoKaiba.setAlignment(Pos.TOP_CENTER);
 		
-		this.campoJ1 = new EspaciosDelCampo(cajaInformacion, duelo, duelo.getJugadorYugi(), this);
-		this.campoJ2 = new EspaciosDelCampo(180,cajaInformacion, duelo, duelo.getJugadorKaiba(), this);
+		this.campoJ1 = new EspaciosDelCampo(cajaInformacion, duelo, duelo.getJugadorYugi(), this.cajaDuelo);
+		this.campoJ2 = new EspaciosDelCampo(180,cajaInformacion, duelo, duelo.getJugadorKaiba(), this.cajaDuelo);
 		
 		this.setSpacing(15);
 		this.setAlignment(Pos.CENTER);

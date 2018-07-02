@@ -7,19 +7,20 @@ import javafx.event.EventHandler;
 import jugador.Jugador;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 
 public class BotonVoltearCartaMagicaHandler implements EventHandler<ActionEvent> {
 
 	private Activable carta;
 	private Partida duelo;
 	private Jugador jugador;
-	private CajaCampo cajaCampo;
+	private ContenedorDelDuelo cajaDuelo;
 	
-	public BotonVoltearCartaMagicaHandler(Activable carta, Partida duelo, Jugador jugador, CajaCampo cajaCampo) {
+	public BotonVoltearCartaMagicaHandler(Activable carta, Partida duelo, Jugador jugador, ContenedorDelDuelo cajaDuelo) {
 		this.carta = carta;
 		this.duelo = duelo;
 		this.jugador = jugador;
-		this.cajaCampo = cajaCampo;
+		this.cajaDuelo = cajaDuelo;
 		
 	}
 	
@@ -27,9 +28,9 @@ public class BotonVoltearCartaMagicaHandler implements EventHandler<ActionEvent>
     public void handle(ActionEvent event) {
 		this.jugador.voltearCarta(this.carta);
     	if (duelo.estaYugiEnTurno()) {
-    		cajaCampo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    		cajaDuelo.actualizarVistaYugiEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	} else {
-    		cajaCampo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
+    		cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
     	}
     }
 }

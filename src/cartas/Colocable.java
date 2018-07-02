@@ -7,6 +7,7 @@ import jugador.Jugador;
 import modos.Modo;
 import partida.Partida;
 import view.CajaCampo;
+import view.ContenedorDelDuelo;
 
 public interface Colocable {
 	
@@ -40,5 +41,5 @@ public interface Colocable {
 
 	public void cambiarA(Modo modoACambiar);
 	
-	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta);
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, ContenedorDelDuelo cajaDuelo, ImageView imagenCarta);
 }

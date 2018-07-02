@@ -12,6 +12,7 @@ import modos.*;
 import partida.Partida;
 import view.CajaCampo;
 import view.CajaConsola;
+import view.ContenedorDelDuelo;
 import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 
 import java.util.LinkedList;
@@ -315,8 +316,8 @@ public class CartaMonstruo implements Atacable{
 		return false;
 	}
 	
-	public void clickEnZona(Partida partida, Jugador jugadorDuenio, CajaCampo cajaCampo, ImageView imagenCarta) {
-		ClickEnCartaEnZonaMonstruoHandler verMenu = new ClickEnCartaEnZonaMonstruoHandler(partida, this, jugadorDuenio, cajaCampo);
+	public void clickEnZona(Partida partida, Jugador jugadorDuenio, ContenedorDelDuelo cajaDuelo, ImageView imagenCarta) {
+		ClickEnCartaEnZonaMonstruoHandler verMenu = new ClickEnCartaEnZonaMonstruoHandler(partida, this, jugadorDuenio, cajaDuelo);
 		imagenCarta.setOnContextMenuRequested(verMenu);
 		
 	}
