@@ -14,12 +14,14 @@ public class Partida {
 	private Fase faseActual;
 	private EstadoPartida estado;
 	private boolean seJugoCartaMonstruo;
-	Jugador jugadorEnTurno;
-	String nombreJugadorEnTurno;
-	Jugador jugadorYugi;
-	Jugador jugadorKaiba;
-	String ganador;
-	int vidaDeJugadorEnTurno;
+	private Jugador jugadorEnTurno;
+	private String nombreJugadorEnTurno;
+	private Jugador jugadorYugi;
+	private Jugador jugadorKaiba;
+	private String ganador;
+	private int vidaDeJugadorEnTurno;
+	private int contadorDeTurnos;
+	private boolean esPrimerTurno;
 	
 	public Partida() {
 		
@@ -43,7 +45,9 @@ public class Partida {
 		
 		this.faseActual = new FasePreparacion(this.jugadorEnTurno);
 		
+		this.contadorDeTurnos = 0;
 		
+		this.esPrimerTurno = true;
 		
 	}
 	
@@ -153,6 +157,13 @@ public class Partida {
 		if (faseActual.getNombreFase().equals("Fase Preparacion")) {
 			this.seJugoCartaMonstruo = false;
 			this.jugadorEnTurno.reiniciarAtaquesMonstruosColocados();
+			if (!esPrimerTurno) {
+				contadorDeTurnos++;
+			}
+			
+			if (esPrimerTurno) {
+				esPrimerTurno = false;
+			}
 		}
 	}
 	
@@ -161,6 +172,8 @@ public class Partida {
 		this.faseActual = new FasePreparacion(this.jugadorEnTurno);
 		this.seJugoCartaMonstruo = false;
 		this.jugadorEnTurno.reiniciarAtaquesMonstruosColocados();
+		this.contadorDeTurnos++;
+		this.esPrimerTurno = false;
 	}
 	
 	public String getNombreFase() {
@@ -170,5 +183,9 @@ public class Partida {
 	public Jugador obtenerJugadorEnTurno() {
 		this.jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno();
 		return this.jugadorEnTurno;
+	}
+	
+	public boolean esPrimerTurno() {
+		return this.contadorDeTurnos == 0;
 	}
 }
