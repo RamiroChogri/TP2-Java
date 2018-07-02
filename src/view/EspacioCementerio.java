@@ -7,8 +7,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class EspacioCementerio extends StackPane{
+	
+	ImageView imagenCarta;
 
 		public EspacioCementerio() {
+			this.imagenCarta = null;
 			Rectangle espacioCementerio = new Rectangle(60,100,Color.GREY);
 			espacioCementerio.setStroke(Color.WHITE);
 			this.getChildren().add(espacioCementerio);
@@ -16,7 +19,11 @@ public class EspacioCementerio extends StackPane{
 		}
 		
 		public void recibirCarta(ImageView imagenCarta) {
+			if(this.imagenCarta != null)
+				this.getChildren().remove(this.imagenCarta);
+			
 			imagenCarta.setOpacity(0.5);
-			this.getChildren().add(imagenCarta);
+			this.imagenCarta = imagenCarta;
+			this.getChildren().add(this.imagenCarta);
 		}
 }
