@@ -104,9 +104,16 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			this.cardBack.setRotate(90);
 			this.imagenCarta = new ImageView(imagen);
 			
-			MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(imagenCarta,cajaInformacion);
-			this.cardBack.setOnMouseEntered(ponerEnZoom);
-			 
+			
+			if(this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
+				MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(imagenCarta,cajaInformacion);
+				this.cardBack.setOnMouseEntered(ponerEnZoom);
+				
+			}else{
+				MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(cardBack , cajaInformacion);
+				this.cardBack.setOnMouseEntered(ponerEnZoom);
+			}
+			
 			MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
 			this.cardBack.setOnMouseExited(sacarDeZoom);
 			this.getChildren().add(this.cardBack);
