@@ -15,7 +15,7 @@ public class ContenedorVictoria extends BorderPane{
 	
 	
 	public ContenedorVictoria(String nombreDelGanador, Image imagenDelGanador, Boolean ganoYugi) {
-		Label textoVictoria = new Label("Felicidades!! El jugador "+nombreDelGanador+" a ganado la partida!!");
+		Label textoVictoria = new Label("Felicidades!! El jugador "+nombreDelGanador+" ha ganado la partida!!");
 		textoVictoria.setAlignment(Pos.CENTER);
 		textoVictoria.setFont(Font.font("Arial", FontWeight.BOLD,30 ));
 		textoVictoria.setTextFill(Color.web("#FFFAF0"));
@@ -27,7 +27,7 @@ public class ContenedorVictoria extends BorderPane{
 		if(ganoYugi)
 			this.setStyle("-fx-background-color: linear-gradient(BLACK, DARKVIOLET);");
 		else
-			this.setStyle("-fx-background-color: linear-gradient(BLACK, RED)");
+			this.setStyle("-fx-background-color: linear-gradient(BLACK, RED);");
 		
 		BotonSalirHandler salir = new BotonSalirHandler();
 		Button botonSalir = new Button("Salir");
