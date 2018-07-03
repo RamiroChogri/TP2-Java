@@ -1,6 +1,7 @@
 package view;
 
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -17,7 +18,7 @@ public class EspacioMazo extends StackPane implements PathArchivos{
 	
 	public EspacioMazo(Jugador jugadorDelMazo) {
 		this.jugadorDelMazo = jugadorDelMazo;
-		this.imagenMazo = new ImageView(pathDePackCartas+"CardBackAlgo.png");
+		this.imagenMazo = new ImageView(new Image( pathDePackCartas + "cardBackAlgo.png" ));
 		this.imagenMazo.setFitHeight(100);
 		this.imagenMazo.setFitWidth(60);
 		int cantidadDeCartasEnMazo = this.jugadorDelMazo.obtenerCartasMazo();
