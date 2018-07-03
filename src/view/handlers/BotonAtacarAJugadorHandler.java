@@ -43,7 +43,7 @@ public class BotonAtacarAJugadorHandler implements EventHandler<ActionEvent> {
 				cajaDuelo.actualizarVistaKaibaEnTurno(jugador, jugador.obtenerJugadorEnemigo());
 			}
 		} catch (NoSePuedeAtacarAlJugadorDirectamenteException e) {
-			//No hace nada
+			CajaConsola.agregarMensaje("La carta " + this.carta.obtenerNombre() + " no pudo atacar al jugador " + this.jugadorEnemigo.obtenerNombre());
 		}
 	
 	}
