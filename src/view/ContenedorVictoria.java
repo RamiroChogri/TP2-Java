@@ -31,7 +31,7 @@ public class ContenedorVictoria extends BorderPane{
 		
 		BotonSalirHandler salir = new BotonSalirHandler();
 		Button botonSalir = new Button("Salir");
-		botonSalir.getStylesheets().add("view/Style.css");
+		botonSalir.getStylesheets().add("viewSupportFiles/Style.css");
 		botonSalir.setStyle("-fx-font-size: 40px;");
 		botonSalir.setOnAction(salir);
 		botonSalir.setAlignment(Pos.BOTTOM_LEFT);
