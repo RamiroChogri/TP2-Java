@@ -6,8 +6,6 @@ import estadoCarta.EstadoCartaColocadaBocaArriba;
 import estadoCarta.EstadoCartaDestruida;
 import estadoCarta.EstadoCartaNoJugada;
 
-import java.util.Scanner;
-
 import campo.Campo;
 import campo.Cementerio;
 import campo.ZonaCampo;
@@ -18,11 +16,8 @@ import exceptions.*;
 import javafx.scene.image.ImageView;
 import jugador.Jugador;
 import modos.Modo;
-import modos.ModoDefensa;
 import partida.Partida;
-import view.CajaCampo;
 import view.ContenedorDelDuelo;
-import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 import view.handlers.ClickEnCartaMagicaInvocadaHandler;
 
 public class CartaMagica implements Activable{
@@ -30,7 +25,7 @@ public class CartaMagica implements Activable{
 	protected EstadoCarta estado;
 	protected Efecto efecto;
 	private String nombre;
-	private Scanner teclado;
+
 	private String nombreImagen;
 	
 	public CartaMagica() {
@@ -39,7 +34,6 @@ public class CartaMagica implements Activable{
 		Efecto efectoNulo = new EfectoNulo();
 		this.efecto = efectoNulo;
 		this.nombre = " ";
-		this.teclado = new Scanner(System.in);
 		this.nombreImagen = " ";
 	}
 	
@@ -49,7 +43,6 @@ public class CartaMagica implements Activable{
 		this.efecto = efectoAColocar;
 		this.nombre = " ";
 		this.nombreImagen = " ";
-		this.teclado = new Scanner(System.in);
 		
 	}
 	
@@ -152,35 +145,6 @@ public class CartaMagica implements Activable{
 	}
 	
 	//////////////////////////////////////
-	
-	@Override
-	public EstadoCarta elegirComoColocar() {
-	
-		String estado = this.pedirEstadoCarta();
-		EstadoCarta estadoADevolver = null;
-		
-		if (estado.equals("arriba")) {
-			estadoADevolver = new EstadoCartaColocadaBocaArriba();
-		
-		} else {
-			estadoADevolver = new EstadoCartaColocadaBocaAbajo();
-		}
-		
-		return estadoADevolver;
-		
-	}
-	
-	public String pedirEstadoCarta() {
-		
-		System.out.println("Ingrese 'arriba' o ' abajo' para indicar como quiere colocar la carta");
-		String nombreEstado = teclado.nextLine();
-		while ((!nombreEstado.equals("arriba")) && (!nombreEstado.equals("abajo"))) {
-			System.out.println("Ingrese un estado valido");
-			nombreEstado = this.teclado.nextLine();
-		}
-		
-		return nombreEstado;
-	}
 	
 	public boolean esActivable() {
 		return true;

@@ -5,10 +5,6 @@ import java.util.LinkedList;
 
 import cartas.Destruible;
 import cartas.Activable;
-import cartas.Atacable;
-import cartas.CartaMagica;
-import cartas.CartaMonstruo;
-import cartas.CartaTrampa;
 import cartas.Colocable;
 import exceptions.NoHayCartasTrampaException;
 import exceptions.NoHayLugarVacioException;

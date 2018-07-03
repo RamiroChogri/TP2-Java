@@ -4,7 +4,6 @@ import campo.Campo;
 import cartas.Atacable;
 import modos.Modo;
 import modos.ModoNegacionDeAtaque;
-import view.CajaConsola;
 
 public class EfectoCilindroMagico extends Efecto {
 

@@ -1,7 +1,6 @@
 package efectos;
 import campo.*;
 import cartas.Atacable;
-import view.CajaConsola;
 
 public class EfectoAgujeroNegro extends Efecto {
 

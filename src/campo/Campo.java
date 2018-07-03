@@ -2,14 +2,11 @@ package campo;
 
 import java.util.LinkedList;
 
-import efectos.*;
 import cartas.*;
 import estadoCarta.EstadoCarta;
-import exceptions.NoHayEspacioEnElCampoException;
 import exceptions.NoHayLugarVacioException;
 import exceptions.NoHayMonstruoParaSacrificarException;
 import jugador.Jugador;
-import jugador.Mano;
 
 public class Campo {
 

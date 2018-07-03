@@ -1,8 +1,6 @@
 package campo;
 
 import java.util.LinkedList;
-
-import cartas.Colocable;
 import cartas.Destruible;
 
 public class Cementerio {

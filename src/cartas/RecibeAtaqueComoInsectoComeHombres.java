@@ -10,7 +10,6 @@ import javafx.scene.image.ImageView;
 import jugador.Jugador;
 import modos.Modo;
 import partida.Partida;
-import view.CajaCampo;
 import view.ContenedorDelDuelo;
 import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 
@@ -160,12 +159,6 @@ public class RecibeAtaqueComoInsectoComeHombres extends CartaMonstruoDecorator {
 		
 		getAtacable().colocarBocaArriba();
 		
-	}
-	
-	@Override
-	public EstadoCarta elegirComoColocar() {
-		EstadoCarta estadoADevolver = getAtacable().elegirComoColocar();
-		return estadoADevolver;
 	}
 	
 	@Override

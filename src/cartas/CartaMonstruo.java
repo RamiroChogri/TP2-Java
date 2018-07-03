@@ -3,20 +3,15 @@ package cartas;
 import estadoCarta.*;
 import exceptions.CartaBocaArribaNoSePuedeVoltearException;
 import exceptions.MonstruoEnModoDefensaNoPuedeAtacarException;
-import exceptions.NoHayEspacioEnElCampoException;
-import exceptions.ZonaMonstruoLlenaException;
 import invocacionStrategy.*;
 import javafx.scene.image.ImageView;
 import jugador.Jugador;
 import modos.*;
 import partida.Partida;
-import view.CajaCampo;
-import view.CajaConsola;
 import view.ContenedorDelDuelo;
 import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 
 import java.util.LinkedList;
-import java.util.Scanner;
 
 import campo.*;
 
@@ -29,7 +24,6 @@ public class CartaMonstruo implements Atacable{
 	private int estrellas;
 	private String nombre;
 	private ReglaDeInvocacionStrategy regla;
-	private Scanner teclado;
 	private String nombreImagen;
 	private boolean atacoEsteTurno;
 	private boolean seCambioElEstadoEsteTurno;
@@ -43,7 +37,6 @@ public class CartaMonstruo implements Atacable{
 		this.estrellas = 3;
 		this.nombre = "MonstruoGenericoACME";
 		this.regla = new ReglaDeMonstruoChicoStrategy();
-		this.teclado = new Scanner(System.in);
 		this.nombreImagen = " ";
 		this.atacoEsteTurno = false;
 		this.seCambioElEstadoEsteTurno = false;
@@ -58,7 +51,6 @@ public class CartaMonstruo implements Atacable{
 		this.modo = new ModoAtaque();
 		this.regla = new ReglaDeMonstruoChicoStrategy();
 		this.nombreImagen = " ";
-		this.teclado = new Scanner(System.in);
 		this.atacoEsteTurno = false;
 		this.seCambioElEstadoEsteTurno = false;
 	}
@@ -74,7 +66,6 @@ public class CartaMonstruo implements Atacable{
 		this.modo = new ModoAtaque();
 		this.regla = reglaDeInvocacion;	
 		this.nombreImagen = " ";
-		this.teclado = new Scanner(System.in);
 		this.atacoEsteTurno = false;
 		this.seCambioElEstadoEsteTurno = false;
 	}
@@ -89,7 +80,6 @@ public class CartaMonstruo implements Atacable{
 			this.modo = new ModoAtaque();
 			this.regla = reglaDeInvocacion;
 			this.nombreImagen = " ";
-			this.teclado = new Scanner(System.in);
 			this.atacoEsteTurno = false;
 			this.seCambioElEstadoEsteTurno = false;
 	}
@@ -263,53 +253,6 @@ public class CartaMonstruo implements Atacable{
 	}
 
 	//////////////////////////////////////////
-	
-	@Override
-	public EstadoCarta elegirComoColocar() {
-	
-		String estado = this.pedirEstadoCarta();
-		EstadoCarta estadoADevolver = null;
-		if (estado.equals("arriba")) {
-			estadoADevolver = new EstadoCartaColocadaBocaArriba();
-			this.pedirModo();
-		
-		} else {
-			estadoADevolver = new EstadoCartaColocadaBocaAbajo();
-			this.modo = new ModoDefensa();
-		}
-		
-		return estadoADevolver;
-
-	}
-	
-	public String pedirEstadoCarta() {
-		
-		System.out.println("Ingrese 'arriba' o ' abajo' para indicar como quiere colocar la carta");
-		String nombreEstado = teclado.nextLine();
-		while ((!nombreEstado.equals("arriba")) && (!nombreEstado.equals("abajo"))) {
-			System.out.println("Ingrese un estado valido");
-			nombreEstado = this.teclado.nextLine();
-		}
-		
-		return nombreEstado;
-	}
-	
-	public void pedirModo() {
-		
-		System.out.println("Ingrese 'ataque' o 'defensa' para indicar el modo de la carta");
-		String nombreModo = this.teclado.nextLine();
-		while ((!nombreModo.equals("ataque")) && (!nombreModo.equals("defensa"))) {
-			System.out.println("Ingrese un modo valido");
-			nombreModo = this.teclado.nextLine();
-		}
-		
-		if (nombreModo.equals("ataque")) {
-			this.modo = new ModoAtaque();
-		} else {
-			this.modo = new ModoDefensa();
-		}
-		
-	}
 	
 	public boolean esAtacable() {
 		return true;

@@ -3,7 +3,6 @@ package efectos;
 import campo.Campo;
 import cartas.Atacable;
 import cartas.Puntos;
-import view.CajaConsola;
 
 public class EfectoRefuerzos extends Efecto {
 

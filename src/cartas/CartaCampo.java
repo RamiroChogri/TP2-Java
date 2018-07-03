@@ -7,14 +7,10 @@ import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
 import efectos.Efecto;
 import estadoCarta.EstadoCarta;
-import estadoCarta.EstadoCartaColocadaBocaAbajo;
-import estadoCarta.EstadoCartaColocadaBocaArriba;
-import estadoCarta.EstadoCartaNoJugada;
 import exceptions.CartaBocaAbajoNoPuedeActivarEfectoException;
 import javafx.scene.image.ImageView;
 import jugador.Jugador;
 import partida.Partida;
-import view.CajaCampo;
 import view.ContenedorDelDuelo;
 
 public class CartaCampo extends CartaMagica {
@@ -71,16 +67,7 @@ public class CartaCampo extends CartaMagica {
 		campo.enviarCartasDestruidasAlCementerio();
 		campoEnemigo.enviarCartasDestruidasAlCementerio();
 	}
-	
-	///////////////////////////////
-	
-	@Override
-	public EstadoCarta elegirComoColocar() {
-	
-		EstadoCarta estadoADevolver = new EstadoCartaColocadaBocaArriba();
-		return estadoADevolver;
-		
-	}
+
 	
 	@Override
 	public void clickEnZona(Partida partida, Jugador jugadorDuenio, ContenedorDelDuelo cajaDuelo, ImageView imagenCarta) {

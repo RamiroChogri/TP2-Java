@@ -6,8 +6,6 @@ import campo.*;
 import cartas.*;
 import exceptions.*;
 import modos.*;
-import view.CajaConsola;
-import efectos.Efecto;
 import estadoCarta.*;
 
 public class Jugador {

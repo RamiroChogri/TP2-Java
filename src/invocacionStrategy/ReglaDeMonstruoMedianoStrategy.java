@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import campo.ZonaMonstruos;
 import cartas.CartaMonstruo;
 import cartas.Destruible;
-import exceptions.NoHayMonstruoParaSacrificarException;
 import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 
 public class ReglaDeMonstruoMedianoStrategy extends ReglaDeInvocacionStrategy {

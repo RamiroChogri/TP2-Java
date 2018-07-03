@@ -2,7 +2,6 @@ package efectos;
 
 import campo.Campo;
 import cartas.*;
-import view.CajaConsola;
 
 public class EfectoWasteland extends Efecto {
 	

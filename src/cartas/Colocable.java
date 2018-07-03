@@ -6,7 +6,6 @@ import javafx.scene.image.ImageView;
 import jugador.Jugador;
 import modos.Modo;
 import partida.Partida;
-import view.CajaCampo;
 import view.ContenedorDelDuelo;
 
 public interface Colocable {
@@ -21,7 +20,6 @@ public interface Colocable {
 	
 	////////////////////////////////
 	
-	public EstadoCarta elegirComoColocar();
 	
 	public boolean esActivable();
 	

@@ -1,13 +1,6 @@
 package partida;
 
 import jugador.Jugador;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import view.CajaConsola;
-import view.ContenedorDeBienvenida;
-import view.ContenedorDelDuelo;
-import view.handlers.EscOnKeyPressedHandler;
 
 public class Partida {
 

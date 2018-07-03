@@ -2,13 +2,11 @@ package campo;
 
 import java.util.Collections;
 import java.util.EmptyStackException;
-import java.util.LinkedList;
 import java.util.Stack;
 
 import cartas.Colocable;
 import exceptions.NoQuedanCartasEnElMazoException;
 import factories.*;
-import cartas.CartaMonstruo;
 
 public class Mazo {
 

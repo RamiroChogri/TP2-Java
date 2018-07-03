@@ -2,7 +2,6 @@ package efectos;
 
 import campo.Campo;
 import cartas.Atacable;
-import view.CajaConsola;
 
 public class EfectoPotOfGreed extends Efecto {
 

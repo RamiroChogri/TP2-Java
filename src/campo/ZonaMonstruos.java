@@ -5,8 +5,6 @@ import cartas.*;
 import exceptions.NoHayLugarVacioException;
 import exceptions.NoHayMonstruoParaSacrificarException;
 import exceptions.NoHayCartasException;
-import exceptions.ZonaMonstruoLlenaException;
-import view.CajaConsola;
 
 public class ZonaMonstruos extends Zona {
 	

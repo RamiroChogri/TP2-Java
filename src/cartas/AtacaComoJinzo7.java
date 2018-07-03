@@ -1,19 +1,14 @@
 package cartas;
 
-import java.util.LinkedList;
-
 import campo.Cementerio;
 import campo.ZonaCampo;
 import campo.ZonaMagicasYTrampas;
 import campo.ZonaMonstruos;
-import cartas.*;
 import estadoCarta.EstadoCarta;
-import exceptions.CartaBocaArribaNoSePuedeVoltearException;
 import javafx.scene.image.ImageView;
 import jugador.*;
 import modos.Modo;
 import partida.Partida;
-import view.CajaCampo;
 import view.ContenedorDelDuelo;
 import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
 
@@ -160,14 +155,6 @@ public class AtacaComoJinzo7 extends CartaMonstruoDecorator {
 	public void colocarBocaArriba() {
 		
 		getAtacable().colocarBocaArriba();
-		
-	}
-	
-	@Override
-	public EstadoCarta elegirComoColocar() {
-		
-		EstadoCarta estadoADevolver = getAtacable().elegirComoColocar();
-		return estadoADevolver;
 		
 	}	
 	

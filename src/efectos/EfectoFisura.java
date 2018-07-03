@@ -3,7 +3,6 @@ package efectos;
 import campo.Campo;
 import cartas.Atacable;
 import exceptions.NoHayMonstruoParaSacrificarException;
-import view.CajaConsola;
 
 public class EfectoFisura extends Efecto {
 

@@ -3,9 +3,6 @@ package partida;
 import jugador.Jugador;
 
 public abstract class Fase {
-
-	private Fase faseSiguiente;
-	private Jugador jugadorEnTurno;
 	
 	public boolean esFasePreparacion() {
 		return false;

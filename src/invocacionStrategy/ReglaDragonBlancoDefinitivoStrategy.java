@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import campo.ZonaMonstruos;
 import cartas.CartaMonstruo;
 import cartas.Destruible;
-import exceptions.NoHaySuficientesDragonesBlancosParaSacrificarException;
 import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 
 public class ReglaDragonBlancoDefinitivoStrategy extends ReglaDeInvocacionStrategy {

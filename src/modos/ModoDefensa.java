@@ -1,7 +1,6 @@
 package modos;
 
 import cartas.Atacable;
-import cartas.CartaMonstruo;
 import cartas.Puntos;
 
 public class ModoDefensa extends Modo {
