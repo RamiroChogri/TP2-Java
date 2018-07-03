@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import jugador.Jugador;
 import partida.Partida;
 import view.handlers.MouseArribaDeImagenHandler;
@@ -35,11 +36,14 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 		rectanguloAtaque.setHeight(100);
 		rectanguloAtaque.setStroke(Color.WHITE);
 		
+		Text textoZona = new Text("Magicas\n      y \nTrampas");
+		textoZona.setStroke(Color.WHITE);
+		
 		this.imagenCarta = null;
 		this.cardBack = new ImageView(new Image( pathDePackCartas + "cardBackAlgo.png" ));
 		
 		
-		this.getChildren().addAll(rectanguloAtaque);
+		this.getChildren().addAll(rectanguloAtaque, textoZona);
 		this.setAlignment(Pos.CENTER);
 	}
 	

@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import jugador.Jugador;
 import view.handlers.MouseArribaDeImagenHandler;
 import view.handlers.MouseSalirArribaDeImagenHandler;
@@ -27,11 +28,14 @@ public class EspacioCartaCampo extends StackPane implements PathArchivos{
 		rectanguloAtaque.setStroke(Color.WHITE);
 		rectanguloAtaque.setFill(Color.GREEN);
 		
+		Text textoZona = new Text("Campo");
+		textoZona.setStroke(Color.WHITE);
+		
 		this.imagenCarta = null;
 		this.cardBack = new Image( pathDePackCartas + "cardBackAlgo.png" );
 		
 		
-		this.getChildren().addAll(rectanguloAtaque);
+		this.getChildren().addAll(rectanguloAtaque, textoZona);
 		this.setAlignment(Pos.CENTER);
 	}
 	

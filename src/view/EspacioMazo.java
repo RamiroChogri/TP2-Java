@@ -18,8 +18,8 @@ public class EspacioMazo extends StackPane implements PathArchivos{
 	public EspacioMazo(Jugador jugadorDelMazo) {
 		this.jugadorDelMazo = jugadorDelMazo;
 		this.imagenMazo = new ImageView(pathDePackCartas+"CardBackAlgo.png");
-		imagenMazo.setFitHeight(100);
-		imagenMazo.setFitWidth(60);
+		this.imagenMazo.setFitHeight(100);
+		this.imagenMazo.setFitWidth(60);
 		int cantidadDeCartasEnMazo = this.jugadorDelMazo.obtenerCartasMazo();
 		String cantidadCartas = String.valueOf(cantidadDeCartasEnMazo);
 		this.cartasEnMazo = new Label(cantidadCartas);

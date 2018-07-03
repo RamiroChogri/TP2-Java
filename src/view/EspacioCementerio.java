@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class EspacioCementerio extends StackPane{
 	
@@ -14,7 +15,11 @@ public class EspacioCementerio extends StackPane{
 			this.imagenCarta = null;
 			Rectangle espacioCementerio = new Rectangle(60,100,Color.GREY);
 			espacioCementerio.setStroke(Color.WHITE);
-			this.getChildren().add(espacioCementerio);
+			
+			Text textoZona = new Text(" Cartas\nMuertas");
+			textoZona.setStroke(Color.WHITE);
+			
+			this.getChildren().addAll(espacioCementerio, textoZona);
 			this.setAlignment(Pos.CENTER);
 		}
 		
