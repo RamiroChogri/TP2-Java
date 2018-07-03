@@ -6,9 +6,7 @@ import javafx.event.EventHandler;
 import jugador.Jugador;
 import modos.Modo;
 import modos.ModoAtaque;
-import modos.ModoDefensa;
 import partida.Partida;
-import view.CajaCampo;
 import view.CajaConsola;
 import view.ContenedorDelDuelo;
 

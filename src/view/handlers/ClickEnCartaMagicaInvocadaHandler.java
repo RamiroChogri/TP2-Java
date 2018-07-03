@@ -1,15 +1,12 @@
 package view.handlers;
 
 import cartas.Activable;
-import cartas.Atacable;
-import cartas.CartaTrampa;
 import javafx.event.EventHandler;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import jugador.Jugador;
 import partida.Partida;
-import view.CajaCampo;
 import view.ContenedorDelDuelo;
 
 public class ClickEnCartaMagicaInvocadaHandler implements EventHandler<ContextMenuEvent> {

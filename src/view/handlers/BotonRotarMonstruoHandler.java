@@ -1,17 +1,11 @@
 package view.handlers;
 
 import cartas.Atacable;
-import cartas.Colocable;
-import estadoCarta.EstadoCarta;
-import estadoCarta.EstadoCartaColocadaBocaArriba;
-import exceptions.NoHayLugarVacioException;
-import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import jugador.Jugador;
 import modos.*;
 import partida.Partida;
-import view.CajaCampo;
 import view.CajaConsola;
 import view.ContenedorDelDuelo;
 

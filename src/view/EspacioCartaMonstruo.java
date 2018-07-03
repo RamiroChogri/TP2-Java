@@ -1,6 +1,5 @@
 package view;
 
-import cartas.Atacable;
 import cartas.Colocable;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -11,8 +10,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import jugador.Jugador;
 import partida.Partida;
-import view.handlers.ClickEnCartaEnZonaMonstruoHandler;
-import view.handlers.ClickEnCartaEnManoHandler;
 import view.handlers.MouseArribaDeImagenHandler;
 import view.handlers.MouseSalirArribaDeImagenHandler;
 import viewSupportFiles.PathArchivos;

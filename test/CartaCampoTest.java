@@ -1,18 +1,14 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
-import campo.*;
 import cartas.*;
 import efectos.Efecto;
 import efectos.EfectoSogen;
 import efectos.EfectoWasteland;
 import estadoCarta.EstadoCarta;
-import estadoCarta.EstadoCartaColocadaBocaAbajo;
 import estadoCarta.EstadoCartaColocadaBocaArriba;
-import factories.CartaMonstruoFactory;
 import jugador.Jugador;
 import modos.Modo;
 import modos.ModoAtaque;
-import modos.ModoDefensa;
 
 public class CartaCampoTest {
 

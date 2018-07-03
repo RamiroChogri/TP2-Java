@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import jugador.Jugador;
 import partida.Partida;
 import view.handlers.BotonFinalizarTurnoHandler;
-import view.handlers.BotonPlayMusicaDeFondoHandler;
 import view.handlers.BotonSiguienteFaseHandler;
 import viewSupportFiles.PathArchivos;
 
@@ -25,14 +24,12 @@ public class CajaJugadores extends VBox implements PathArchivos{
 	private VistaJugador perfilJugador1;   
 	private VistaJugador perfilJugador2;
 	private Partida duelo;
-	private Jugador jugador; 
-	ContenedorDelDuelo contenedorDelDuelo;
+	private ContenedorDelDuelo contenedorDelDuelo;
 	private Label fase;
 	    
 	public CajaJugadores(CajaInformacion cajaInformacion, Partida dueloRecibido, Jugador jugadorEnTurno, ContenedorDelDuelo contenedorAColocar, Stage stage) {
 		
 		this.duelo = dueloRecibido;
-		this.jugador = jugadorEnTurno;
 		this.contenedorDelDuelo = contenedorAColocar;
 		final ImageView yugiView = new ImageView();
     	yugiView.setFitWidth(150);

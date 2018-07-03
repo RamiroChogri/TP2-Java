@@ -3,7 +3,6 @@ package view.handlers;
 import cartas.Colocable;
 import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaColocadaBocaAbajo;
-import estadoCarta.EstadoCartaColocadaBocaArriba;
 import exceptions.NoHayLugarVacioException;
 import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
 import javafx.event.ActionEvent;
@@ -12,7 +11,6 @@ import jugador.Jugador;
 import modos.Modo;
 import modos.ModoDefensa;
 import partida.Partida;
-import view.CajaCampo;
 import view.CajaConsola;
 import view.ContenedorDelDuelo;
 

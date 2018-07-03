@@ -1,28 +1,18 @@
 package view.handlers;
 
-import cartas.Activable;
+
 import cartas.CartaCampo;
 import cartas.CartaMagica;
 import cartas.CartaTrampa;
 import cartas.Colocable;
-import estadoCarta.*;
-import exceptions.NoHayLugarVacioException;
-import exceptions.NoHaySuficientesMonstruosParaSacrificarException;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.MouseEvent;
 import jugador.Jugador;
-import modos.*;
 import partida.Partida;
-import view.CajaCampo;
 import view.CajaInformacion;
 import view.ContenedorDelDuelo;
-import view.ManoJugador;
-import view.handlers.*;
 
 public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent> {
 	
@@ -30,14 +20,12 @@ public class ClickEnCartaEnManoHandler implements EventHandler<ContextMenuEvent>
 	private Colocable carta;
 	private Jugador jugador;
 	private ContenedorDelDuelo cajaDuelo;
-	private CajaInformacion cajaInf;
 	
 	public ClickEnCartaEnManoHandler(CajaInformacion cajaInfRecibida, Partida partidaAColocar, Colocable cartaAColocar, Jugador jugadorEnTurno, ContenedorDelDuelo cajaDueloRecibida) {
 		this.duelo = partidaAColocar;
 		this.carta = cartaAColocar;
 		this.jugador = jugadorEnTurno;
 		this.cajaDuelo = cajaDueloRecibida;
-		this.cajaInf = cajaInfRecibida;
 	}
 	
 	public void handle(ContextMenuEvent t) {

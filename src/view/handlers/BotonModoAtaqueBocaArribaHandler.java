@@ -11,7 +11,6 @@ import jugador.Jugador;
 import modos.Modo;
 import modos.ModoAtaque;
 import partida.Partida;
-import view.CajaCampo;
 import view.CajaConsola;
 import view.ContenedorDelDuelo;
 

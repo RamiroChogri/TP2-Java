@@ -4,10 +4,8 @@ import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaColocadaBocaAbajo;
 import estadoCarta.EstadoCartaColocadaBocaArriba;
 import factories.CartaMonstruoFactory;
-import jugador.Jugador;
 import modos.Modo;
 import modos.ModoAtaque;
-import modos.ModoDefensa;
 
 import static org.junit.Assert.*;
 import org.junit.Test;

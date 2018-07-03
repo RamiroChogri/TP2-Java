@@ -4,18 +4,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import cartas.Atacable;
-import cartas.CartaCampo;
-import cartas.CartaMagica;
-import cartas.CartaTrampa;
-import cartas.Colocable;
 import javafx.event.EventHandler;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import jugador.Jugador;
 import partida.Partida;
-import view.CajaCampo;
-import view.CajaInformacion;
 import view.ContenedorDelDuelo;
 
 public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMenuEvent> {

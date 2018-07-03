@@ -1,6 +1,5 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
-import campo.*;
 import cartas.*;
 import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaColocadaBocaAbajo;

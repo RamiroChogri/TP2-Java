@@ -1,6 +1,5 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
-import campo.*;
 import cartas.*;
 import estadoCarta.EstadoCarta;
 import estadoCarta.EstadoCartaColocadaBocaAbajo;
@@ -10,7 +9,6 @@ import factories.CartaTrampaFactory;
 import jugador.Jugador;
 import modos.Modo;
 import modos.ModoAtaque;
-import modos.ModoDefensa;
 
 public class CartaTrampaTest {
 
@@ -73,9 +71,6 @@ public class CartaTrampaTest {
 		jugador2.colocar(cilindroMagico, bocaAbajo);
 		
 		jugador1.atacar(monstruo1, monstruo2);
-		
-							/*8000 - 1700 = 6300*/
-		int vidaEsperada = 8000 - monstruo1.obtenerPuntosAtaque().obtenerPuntosActuales();
 		
 		assertTrue(cilindroMagico.estaDestruida());
 		
