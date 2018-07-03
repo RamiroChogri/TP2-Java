@@ -32,7 +32,9 @@ public class ZonaCampo extends Zona{
 	}
 	
 	public void destruirCarta() {
-		this.cartaCampo = null;
+		if (this.cartaCampo != null) {
+			this.cartaCampo.destruirCarta();
+		}
 		this.hayCartaCampo = false;
 	}
 	
@@ -51,7 +53,7 @@ public class ZonaCampo extends Zona{
 		LinkedList<Destruible> cartasDestruidas = new LinkedList<Destruible>();
 		
 		if(cartaCampoADestruir != null) {
-		cartasDestruidas.add(cartaCampoADestruir);
+			cartasDestruidas.add(cartaCampoADestruir);
 		}
 		
 	    return cartasDestruidas;
@@ -67,7 +69,9 @@ public class ZonaCampo extends Zona{
 
 	public void enviarCampoAlCementerio(Cementerio cementerio) {
 		if(this.cartaCampo != null) {
-		cementerio.agregarCarta(this.cartaCampo);
+			cementerio.agregarCarta(this.cartaCampo);
+			this.cartaCampo = null;
+			this.hayCartaCampo = false;
 		}
 	}
 

@@ -143,6 +143,7 @@ public class EspaciosDelCampo extends GridPane implements PathArchivos{
 			EspacioCartaMagica espacioActual = this.getEspacioCartaMagica(i);
 			espacioActual.limpiar();
 		}
+		this.espacioCampo.limpiar();
 	}
 	
 	public void actualizarCantidadDeCartasEnMazo() {

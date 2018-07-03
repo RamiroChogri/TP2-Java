@@ -151,7 +151,9 @@ public class CajaCampo extends VBox implements PathArchivos{
 		while(posicionesIterador.hasNext()) {
 			cartaActual = posicionesIterador.next();
 			imagen = new Image(pathDePackCartas + cartaActual.getNombreDeLaImagen());
-			campo.getEspacioCartaCampo().pintarCartaBocaArriba(imagen);
+			if (!cartaActual.estaDestruida()) {
+				campo.getEspacioCartaCampo().pintarCartaBocaArriba(imagen);
+			}
 		}
 	}
 	
