@@ -14,7 +14,7 @@ public class ZonaCampo extends Zona{
 	private Boolean hayCartaCampo;
 	
 	public ZonaCampo() {
-		this.cartaCampo = new CartaCampo();
+		this.cartaCampo = null;
 		this.hayCartaCampo = false;
 	}
 	
