@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import jugador.Jugador;
 import partida.Partida;
+import view.CajaConsola;
 import view.ContenedorDelDuelo;
 
 public class BotonSiguienteFaseHandler implements EventHandler<ActionEvent> {
@@ -23,6 +24,10 @@ public class BotonSiguienteFaseHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent actionEvent) {
         this.duelo.avanzarFase();
         this.jugadorEnTurno = this.duelo.obtenerJugadorEnTurno();
+        
+        if (duelo.estaEnFaseDePreparacion()) {
+        	CajaConsola.agregarMensaje("Es el turno de " + this.jugadorEnTurno.obtenerNombre());
+        }
         
         if (this.duelo.estaYugiEnTurno()) {
         	this.contenedorDelDuelo.actualizarVistaYugiEnTurno(this.jugadorEnTurno, this.jugadorEnTurno.obtenerJugadorEnemigo());

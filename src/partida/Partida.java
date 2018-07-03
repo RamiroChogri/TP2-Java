@@ -160,7 +160,6 @@ public class Partida {
 			this.seJugoCartaMonstruo = false;
 			this.jugadorEnTurno.reiniciarAtaquesMonstruosColocados();
 			this.jugadorEnTurno.reiniciarSeCambioElEstadoEsteTurnoMonstruosColocados();
-			CajaConsola.agregarMensaje("Es el turno de " + this.jugadorEnTurno.obtenerNombre());
 			if (!esPrimerTurno) {
 				contadorDeTurnos++;
 			}
@@ -179,7 +178,6 @@ public class Partida {
 		this.jugadorEnTurno.reiniciarSeCambioElEstadoEsteTurnoMonstruosColocados();
 		this.contadorDeTurnos++;
 		this.esPrimerTurno = false;
-		CajaConsola.agregarMensaje("Es el turno de " + this.jugadorEnTurno.obtenerNombre());
 	}
 	
 	public String getNombreFase() {
