@@ -28,6 +28,6 @@
 }
 
 .root{
-    -fx-background-image: url("file:///home/hellspawn/Algo3-Java/TP2-Java/src/viewSupportFiles/yugioh%20wpp.png");
+    -fx-background-image: url("file:src/viewSupportFiles/yugioh%20wpp.png");
     -fx-background-size: cover;
 }
