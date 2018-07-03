@@ -46,7 +46,7 @@ public class BotonSiguienteFaseHandler implements EventHandler<ActionEvent> {
         	
         	String ganador = "Ninguno";
     		if (this.jugadorYugi.estaDerrotado()) {
-    			ganador = jugadorKaiba.obtenerJugadorEnemigo().obtenerNombre();
+    			ganador = jugadorKaiba.obtenerNombre();
     		} else {
     			ganador = jugadorYugi.obtenerNombre();
     		}
