@@ -40,7 +40,7 @@ public class EspacioCartaCampo extends StackPane implements PathArchivos{
 	}
 	
 	public void pintarCartaBocaArriba(Image imagen) {
-		ImageView imagenCarta = new ImageView(imagen);
+		this.imagenCarta = new ImageView(imagen);
 		imagenCarta.setFitWidth(60);
 		imagenCarta.setFitHeight(100);
 		
