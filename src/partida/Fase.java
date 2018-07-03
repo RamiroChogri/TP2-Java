@@ -23,8 +23,6 @@ public abstract class Fase {
 	
 	public abstract Fase obtenerFaseSiguiente();
 	
-	public abstract EstadoPartida ejecutarFase(EstadoPartida estadoPartidaActual);
-	
 	public abstract Jugador obtenerJugadorEnTurno();
 	
 	

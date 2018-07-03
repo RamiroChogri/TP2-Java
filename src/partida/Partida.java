@@ -13,20 +13,14 @@ public class Partida {
 
 	
 	private Fase faseActual;
-	private EstadoPartida estado;
 	private boolean seJugoCartaMonstruo;
 	private Jugador jugadorEnTurno;
-	private String nombreJugadorEnTurno;
 	private Jugador jugadorYugi;
 	private Jugador jugadorKaiba;
-	private String ganador;
-	private int vidaDeJugadorEnTurno;
 	private int contadorDeTurnos;
 	private boolean esPrimerTurno;
 	
 	public Partida() {
-		
-		this.estado = new EstadoPartidaEnJuego();
 		
 		this.jugadorYugi = new Jugador();
 		this.jugadorKaiba = new Jugador();
@@ -38,8 +32,6 @@ public class Partida {
 		this.jugadorYugi.enfrentarseA(jugadorKaiba);
 		this.jugadorKaiba.enfrentarseA(jugadorYugi);
 		
-		this.vidaDeJugadorEnTurno = 8000;
-		
 		this.seJugoCartaMonstruo = false;
 		
 		FaseAtaqueYTrampas.esPrimerTurno = true;
@@ -49,60 +41,6 @@ public class Partida {
 		this.contadorDeTurnos = 0;
 		
 		this.esPrimerTurno = true;
-		
-	}
-	
-	public static void main(String[] args) {
-		Partida partida = new Partida();
-		partida.comienzaElDuelo();
-	}
-	
-	public void comienzaElDuelo() {
-//		Jugador jugadorEnTurno = null;
-//		String nombreJugadorEnTurno;
-//		Jugador jugadorYugi = new Jugador();
-//		Jugador jugadorKaiba = new Jugador();
-//		jugadorYugi.setName("Yugi");
-//		jugadorKaiba.setName("Kaiba");
-//		String ganador;
-//		
-//		jugadorEnTurno = this.elegirQuienComienza(jugadorYugi, jugadorKaiba);
-//		
-//		jugadorYugi.enfrentarseA(jugadorKaiba);
-//		jugadorKaiba.enfrentarseA(jugadorYugi);
-//		
-//		int vidaJugadorEnTurno;
-		
-		while (this.estado.continuaLaPartida()) {
-		
-			if (faseActual.esFasePreparacion()) {
-				this.seJugoCartaMonstruo = false;
-			}
-			
-			jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno();
-			nombreJugadorEnTurno = jugadorEnTurno.obtenerNombre();
-			
-			this.estado = this.faseActual.ejecutarFase(this.estado);
-			vidaDeJugadorEnTurno = jugadorEnTurno.obtenerVida();
-			System.out.println("Al jugador " + nombreJugadorEnTurno + " le quedan " + vidaDeJugadorEnTurno + " puntos de vida");
-			System.out.println("Al jugador " + jugadorEnTurno.obtenerJugadorEnemigo().obtenerNombre() + " le quedan " +jugadorEnTurno.obtenerJugadorEnemigo().obtenerVida() + " puntos de vida" );
-			
-			this.faseActual = this.faseActual.obtenerFaseSiguiente();
-		
-		}
-		
-		if (jugadorKaiba.estaDerrotado()) {
-			ganador = jugadorYugi.obtenerNombre();
-		} else {
-			ganador = jugadorKaiba.obtenerNombre();
-		}
-		
-		if (jugadorYugi.estaDerrotado()) {
-			System.out.println("No gano ninguno, son malisimos los dos.");
-		} else {
-			System.out.println("Gano el jugador " + ganador + ", el otro es malismo.");
-		}
-		
 		
 	}
 	
