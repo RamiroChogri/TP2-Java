@@ -45,11 +45,12 @@ public class ZonaCampo extends Zona{
 
 	public LinkedList<Destruible> recolectarCartasDestruidas() {
 		Destruible cartaCampoADestruir = null;
-		if(this.cartaCampo.estaDestruida()) {
-			cartaCampoADestruir = this.cartaCampo;
-			this.cartaCampo = null;
+		if(this.hayCartaCampo) {
+			if(this.cartaCampo.estaDestruida()) {
+				cartaCampoADestruir = this.cartaCampo;
+				this.cartaCampo = null;
+			}
 		}
-
 		LinkedList<Destruible> cartasDestruidas = new LinkedList<Destruible>();
 		
 		if(cartaCampoADestruir != null) {
