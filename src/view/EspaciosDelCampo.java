@@ -151,12 +151,14 @@ public class EspaciosDelCampo extends GridPane implements PathArchivos{
 	}
 
 	public void actualizarCementerio() {
-		if(jugador.obtenerCantidadDeCartasEnCementerio() >0) {
-		String ultimaCartaCementerio = jugador.obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio();
-		ImageView imagenUltimaCartaEnCementerio = new ImageView(new Image(pathDePackCartas + ultimaCartaCementerio));
-		imagenUltimaCartaEnCementerio.setFitWidth(60);
-		imagenUltimaCartaEnCementerio.setFitHeight(100);
-		this.espacioCementerio.recibirCarta(imagenUltimaCartaEnCementerio);
+		
+		if(jugador.obtenerCantidadDeCartasEnCementerio() > 0) {
+			String ultimaCartaCementerio = jugador.obtenerNombreDeLaImagenDeLaUltimaCartaDelCementerio();
+			
+			ImageView imagenUltimaCartaEnCementerio = new ImageView(new Image(pathDePackCartas + ultimaCartaCementerio));
+			imagenUltimaCartaEnCementerio.setFitWidth(60);
+			imagenUltimaCartaEnCementerio.setFitHeight(100);
+			this.espacioCementerio.recibirCarta(imagenUltimaCartaEnCementerio);
 		}
 	}
 	

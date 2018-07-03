@@ -1,5 +1,7 @@
 package view;
 
+import java.io.File;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -24,15 +26,22 @@ public class ContenedorDeBienvenida extends VBox implements PathArchivos {
 
     Stage stage;
     String pathAImagenDeFondo = pathDeImagenes+"yugioh%20wpp.png";
-    String pathAMusicaDeFondo = pathDeMusica+ "Hollow%20Knight%20OST%20-%20Greenpath.wav";
+    File direccionMusica;
     Media musicaDeFondo;
 	MediaPlayer reproductor;
 	
     public ContenedorDeBienvenida(Stage stage, Scene proximaEscena) {
 
         super();
-
-        this.musicaDeFondo = new Media(this.pathAMusicaDeFondo);
+        
+        this.direccionMusica = new File("src/viewSupportFiles/Hollow%20Knight%20OST%20-%20Greenpath.wav");
+        
+        String direccionArreglada = this.direccionMusica.toURI().toString();
+        
+        direccionArreglada = direccionArreglada.replaceAll("2520", "20");
+        
+        
+        this.musicaDeFondo = new Media(direccionArreglada);
         this.reproductor= new MediaPlayer(this.musicaDeFondo);
         this.reproductor.setAutoPlay(true);
         this.reproductor.setVolume(0.2);

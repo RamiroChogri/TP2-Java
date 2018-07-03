@@ -1,5 +1,7 @@
 package view;
 
+import java.io.File;
+
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -10,7 +12,7 @@ import viewSupportFiles.PathArchivos;
 public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 
 		private MenuDelDuelo barraMenu;
-		private  String pathMusicaDeBatalla = pathDeMusica+"Hollow%20Knight%20OST%20-%20False%20Knight.wav";
+		File direccionMusica;
 		private CajaInformacion cajaDerecha;
 		private CajaCampo cajaCentro;
 		private CajaJugadores cajaIzquierda;
@@ -24,7 +26,17 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	this.cajaDerecha = new CajaInformacion();
 			this.setRight(cajaDerecha);
 	    	
-			this.barraMenu = new MenuDelDuelo(stage,this.pathMusicaDeBatalla);
+			////////////
+			this.direccionMusica = new File("src/viewSupportFiles/Hollow%20Knight%20OST%20-%20False%20Knight.wav");
+	        
+	        String direccionArreglada = this.direccionMusica.toURI().toString();
+	        
+	        direccionArreglada = direccionArreglada.replaceAll("2520", "20");
+	        
+			//////////
+			
+			
+			this.barraMenu = new MenuDelDuelo(stage,direccionArreglada);
             this.setTop(barraMenu);
             Jugador jugadorEnTurno;
             if (duelo.estaYugiEnTurno()) {

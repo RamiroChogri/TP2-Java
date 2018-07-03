@@ -1,5 +1,7 @@
 package view.handlers;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -14,14 +16,25 @@ public class BotonComenzarElDueloHandler  implements EventHandler<ActionEvent> ,
 	    Scene nuevaEscena;
 	    Media musicaComienzoDelDuelo;
 	    MediaPlayer reproductor;
-	    String pathAHoraDelDuelo = pathDeMusica+ "ES%20HORA%20DE%20DE%20DE%20DE%20DE%20DEL%20DUELO!.wav";
+	    File direccionMusica;
 	    MediaPlayer reproductorDeMusicaDeFondo;
 	    MediaPlayer reproductorBatalla;
 	    
 	    public BotonComenzarElDueloHandler(Stage stage, Scene escenaSiguiente,MediaPlayer reproductorDeMusicaDeFondo) {
-	        this.stage = stage;
+	    	
+	    	this.stage = stage;
 	        this.nuevaEscena = escenaSiguiente;
-	        this.musicaComienzoDelDuelo = new Media(pathAHoraDelDuelo);
+	       
+	        ///////
+	        this.direccionMusica = new File("src/viewSupportFiles/ES%20HORA%20DE%20DE%20DE%20DE%20DE%20DEL%20DUELO!.wav");
+	        
+	        String direccionArreglada = this.direccionMusica.toURI().toString();
+	        
+	        direccionArreglada = direccionArreglada.replaceAll("2520", "20");
+	        ///////
+	        
+	        
+	        this.musicaComienzoDelDuelo = new Media(direccionArreglada);
 	        this.reproductor = new MediaPlayer(this.musicaComienzoDelDuelo);
 	        this.reproductor.setVolume(1);
 	        this.reproductorDeMusicaDeFondo = reproductorDeMusicaDeFondo;
