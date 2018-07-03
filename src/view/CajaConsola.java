@@ -31,7 +31,7 @@ public class CajaConsola extends HBox {
 		boton.setMaxHeight(Double.MAX_VALUE);
 		boton.setMaxWidth(Double.MAX_VALUE);
 		boton.setText("+");
-		boton.getStylesheets().add( "view/StyleButtonCajaJugador.css" );
+		boton.getStylesheets().add( "viewSupportFiles/StyleButtonCajaJugador.css" );
 		
 		BotonMaximizarConsolaHandler maximizarConsola = new BotonMaximizarConsolaHandler( this, boton );
 		boton.setOnAction( maximizarConsola );
@@ -43,7 +43,7 @@ public class CajaConsola extends HBox {
 		areaTextoConsola.setPrefSize(5, 5);
 		areaTextoConsola.setEditable( false );
 		areaTextoConsola.setWrapText( true );
-		areaTextoConsola.getStylesheets().add( "view/StyleConsola.css" );
+		areaTextoConsola.getStylesheets().add( "viewSupportFiles/StyleConsola.css" );
         areaTextoConsola.setStyle( "-fx-font-size: 20" );
 
 	}

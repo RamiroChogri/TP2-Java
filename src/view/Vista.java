@@ -30,7 +30,7 @@ public class Vista extends Application{
 		 stage.setScene(escenaDeBienvenida);
 	     stage.setFullScreenExitHint("Presione la tecla ESC para salir del modo pantalla completa");
 	     stage.setFullScreen(true);
-	     escenaDeBienvenida.getStylesheets().add("view/Style.css");
+	     escenaDeBienvenida.getStylesheets().add("viewSupportFiles/Style.css");
 		 stage.show();
 	 }
 }

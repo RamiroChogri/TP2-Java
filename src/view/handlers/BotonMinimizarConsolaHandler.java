@@ -23,6 +23,7 @@ public class BotonMinimizarConsolaHandler implements EventHandler<ActionEvent> {
 		BotonMaximizarConsolaHandler maximizarConsola = new BotonMaximizarConsolaHandler( consola, botonConsola );
 		botonConsola.setText( "+" );
 		botonConsola.setOnAction(maximizarConsola);
+		botonConsola.requestFocus();
     }
 }
 
