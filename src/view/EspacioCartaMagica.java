@@ -55,7 +55,7 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 		
 		this.imagenCarta = new ImageView(imagen);
 		
-		if(this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
+		if(this.partida.jugadorEstaEnTurno(this.jugadorDuenio)) {
 			MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(this.imagenCarta,this.cajaInformacion);
 			this.cardBack.setOnMouseEntered(ponerEnZoom);
 			
@@ -67,7 +67,7 @@ public class EspacioCartaMagica extends StackPane implements PathArchivos{
 		MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(this.cajaInformacion);
 		this.cardBack.setOnMouseExited(sacarDeZoom);
 		
-		if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno() && this.partida.estaEnFaseFinal()) {
+		if (this.partida.jugadorEstaEnTurno(this.jugadorDuenio) && this.partida.estaEnFaseFinal()) {
 			this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.cardBack);
 		}
 			

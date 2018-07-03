@@ -12,33 +12,35 @@ import view.ContenedorDelDuelo;
 public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 	
 	private Partida duelo;
-	private Jugador jugadorEnTurno;
+	private Jugador jugadorYugi;
+	private Jugador jugadorKaiba;
 	private ContenedorDelDuelo contenedorDelDuelo;
 	
-	public BotonFinalizarTurnoHandler(Partida partidaAColocar, Jugador jugadorAColocar, ContenedorDelDuelo contenedorAColocar) {
+	public BotonFinalizarTurnoHandler(Partida partidaAColocar, ContenedorDelDuelo contenedorAColocar) {
 		this.duelo = partidaAColocar;
-		this.jugadorEnTurno = jugadorAColocar;
+		this.jugadorYugi = this.duelo.getJugadorYugi();
+		this.jugadorKaiba = this.duelo.getJugadorKaiba();
 		this.contenedorDelDuelo = contenedorAColocar;
 	}
 	
 	public void handle(ActionEvent actionEvent) {
         this.duelo.finalizarTurno();
-        this.jugadorEnTurno = this.duelo.obtenerJugadorEnTurno();
         
         if (this.duelo.estaYugiEnTurno()) {
-        	this.contenedorDelDuelo.actualizarVistaYugiEnTurno(this.jugadorEnTurno, this.jugadorEnTurno.obtenerJugadorEnemigo());
+        	this.contenedorDelDuelo.actualizarVistaYugiEnTurno(this.jugadorYugi, this.jugadorKaiba);
+        	CajaConsola.agregarMensaje("Es el turno de "+ this.jugadorYugi.obtenerNombre());
         } else {
-        	this.contenedorDelDuelo.actualizarVistaKaibaEnTurno(this.jugadorEnTurno, this.jugadorEnTurno.obtenerJugadorEnemigo());
+        	this.contenedorDelDuelo.actualizarVistaKaibaEnTurno(this.jugadorKaiba, this.jugadorYugi);
+        	CajaConsola.agregarMensaje("Es el turno de "+ this.jugadorKaiba.obtenerNombre());
         }
-        CajaConsola.agregarMensaje("Es el turno de "+jugadorEnTurno.obtenerNombre());
         
-        if (this.jugadorEnTurno.estaDerrotado() || this.jugadorEnTurno.obtenerJugadorEnemigo().estaDerrotado()) {
+        if (this.jugadorYugi.estaDerrotado() || this.jugadorKaiba.estaDerrotado()) {
         	
         	String ganador = "Ninguno";
-    		if (this.jugadorEnTurno.estaDerrotado()) {
-    			ganador = jugadorEnTurno.obtenerJugadorEnemigo().obtenerNombre();
+    		if (this.jugadorYugi.estaDerrotado()) {
+    			ganador = jugadorKaiba.obtenerJugadorEnemigo().obtenerNombre();
     		} else {
-    			ganador = jugadorEnTurno.obtenerNombre();
+    			ganador = jugadorYugi.obtenerNombre();
     		}
     		
     		Alert alert = new Alert(AlertType.INFORMATION);

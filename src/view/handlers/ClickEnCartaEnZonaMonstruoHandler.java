@@ -34,7 +34,7 @@ public class ClickEnCartaEnZonaMonstruoHandler implements EventHandler<ContextMe
 	
 	
 	public void handle(ContextMenuEvent t) {
-		if(this.jugador == this.duelo.obtenerJugadorEnTurno()) {
+		if(this.duelo.jugadorEstaEnTurno(this.jugador)) {
 			if (this.carta.estaEnModoAtaque() && this.duelo.estaEnFaseDeAtaqueYTrampas() && 
 					!this.carta.atacoEsteTurno() && !this.duelo.esPrimerTurno()) {
 			

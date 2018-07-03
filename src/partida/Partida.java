@@ -184,9 +184,8 @@ public class Partida {
 		return this.faseActual.getNombreFase();
 	}
 	
-	public Jugador obtenerJugadorEnTurno() {
-		this.jugadorEnTurno = this.faseActual.obtenerJugadorEnTurno();
-		return this.jugadorEnTurno;
+	public boolean jugadorEstaEnTurno(Jugador jugadorRecibido) {
+		return (jugadorRecibido == this.jugadorEnTurno);
 	}
 	
 	public boolean esPrimerTurno() {

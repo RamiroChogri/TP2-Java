@@ -61,7 +61,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	
     	Button botonFinalizarTurno = new Button("Finalizar Turno ");
     	botonFinalizarTurno.getStylesheets().add("view/StyleButtonCajaJugador.css");
-    	BotonFinalizarTurnoHandler finalizarTurno = new BotonFinalizarTurnoHandler(this.duelo, this.jugador, this.contenedorDelDuelo);
+    	BotonFinalizarTurnoHandler finalizarTurno = new BotonFinalizarTurnoHandler(this.duelo, this.contenedorDelDuelo);
         botonFinalizarTurno.setOnAction(finalizarTurno);
         
         botonFinalizarTurno.setMaxWidth(250);
@@ -69,7 +69,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	
     	Button botonSiguienteFase = new Button("Siguiente Fase ");
     	botonSiguienteFase.getStylesheets().add("view/StyleButtonCajaJugador.css");
-    	BotonSiguienteFaseHandler siguienteFase = new BotonSiguienteFaseHandler(this.duelo, this.jugador, this.contenedorDelDuelo);
+    	BotonSiguienteFaseHandler siguienteFase = new BotonSiguienteFaseHandler(this.duelo, this.contenedorDelDuelo);
     	botonSiguienteFase.setOnAction(siguienteFase);
     	
     	botonSiguienteFase.setMaxWidth(250);

@@ -70,7 +70,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
 			imagenCarta.setOnMouseExited(sacarDeZoom);
 			
-			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
+			if (this.partida.jugadorEstaEnTurno(this.jugadorDuenio)) {
 				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.imagenCarta);
 			}
 			
@@ -92,7 +92,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			MouseSalirArribaDeImagenHandler sacarDeZoom = new MouseSalirArribaDeImagenHandler(cajaInformacion);
 			this.imagenCarta.setOnMouseExited(sacarDeZoom);
 			
-			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
+			if (this.partida.jugadorEstaEnTurno(this.jugadorDuenio)) {
 				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.imagenCarta);
 			}
 			
@@ -109,7 +109,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			this.imagenCarta = new ImageView(imagen);
 			
 			
-			if(this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
+			if(this.partida.jugadorEstaEnTurno(this.jugadorDuenio)) {
 				MouseArribaDeImagenHandler ponerEnZoom = new MouseArribaDeImagenHandler(imagenCarta,cajaInformacion);
 				this.cardBack.setOnMouseEntered(ponerEnZoom);
 				
@@ -122,7 +122,7 @@ public class EspacioCartaMonstruo extends StackPane implements PathArchivos{
 			this.cardBack.setOnMouseExited(sacarDeZoom);
 			this.getChildren().add(this.cardBack);
 			
-			if (this.jugadorDuenio == this.partida.obtenerJugadorEnTurno()) {
+			if (this.partida.jugadorEstaEnTurno(this.jugadorDuenio)) {
 				this.carta.clickEnZona(this.partida, this.jugadorDuenio, this.cajaDuelo, this.cardBack);
 			}
 			
