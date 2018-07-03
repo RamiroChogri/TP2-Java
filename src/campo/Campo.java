@@ -96,7 +96,7 @@ public class Campo {
 		LinkedList<Destruible> cartasAEnterrar = new LinkedList<Destruible>();
 		cartasAEnterrar.addAll(this.monstruos.recolectarCartasDestruidas());
 		cartasAEnterrar.addAll(this.magicasYTrampas.recolectarCartasDestruidas());
-		// this.enterrarCartaCampo(); Error, me agrega null a la lista y para ahorrar if lo comentamos por ahora
+		cartasAEnterrar.addAll(this.espacioCampo.recolectarCartasDestruidas());
 		this.cementerio.agregarCartas(cartasAEnterrar);
 		
 		this.jugador.recibirAtaque(danio);
