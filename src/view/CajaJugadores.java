@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 import jugador.Jugador;
 import partida.Partida;
 import view.handlers.BotonFinalizarTurnoHandler;
@@ -28,7 +29,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
 	ContenedorDelDuelo contenedorDelDuelo;
 	private Label fase;
 	    
-	public CajaJugadores(CajaInformacion cajaInformacion, Partida dueloRecibido, Jugador jugadorEnTurno, ContenedorDelDuelo contenedorAColocar) {
+	public CajaJugadores(CajaInformacion cajaInformacion, Partida dueloRecibido, Jugador jugadorEnTurno, ContenedorDelDuelo contenedorAColocar, Stage stage) {
 		
 		this.duelo = dueloRecibido;
 		this.jugador = jugadorEnTurno;
@@ -61,7 +62,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	
     	Button botonFinalizarTurno = new Button("Finalizar Turno ");
     	botonFinalizarTurno.getStylesheets().add("view/StyleButtonCajaJugador.css");
-    	BotonFinalizarTurnoHandler finalizarTurno = new BotonFinalizarTurnoHandler(this.duelo, this.contenedorDelDuelo);
+    	BotonFinalizarTurnoHandler finalizarTurno = new BotonFinalizarTurnoHandler(this.duelo, this.contenedorDelDuelo,stage);
         botonFinalizarTurno.setOnAction(finalizarTurno);
         
         botonFinalizarTurno.setMaxWidth(250);
@@ -69,7 +70,7 @@ public class CajaJugadores extends VBox implements PathArchivos{
     	
     	Button botonSiguienteFase = new Button("Siguiente Fase ");
     	botonSiguienteFase.getStylesheets().add("view/StyleButtonCajaJugador.css");
-    	BotonSiguienteFaseHandler siguienteFase = new BotonSiguienteFaseHandler(this.duelo, this.contenedorDelDuelo);
+    	BotonSiguienteFaseHandler siguienteFase = new BotonSiguienteFaseHandler(this.duelo, this.contenedorDelDuelo, stage);
     	botonSiguienteFase.setOnAction(siguienteFase);
     	
     	botonSiguienteFase.setMaxWidth(250);

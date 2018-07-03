@@ -1,10 +1,6 @@
 package view;
 
-import java.util.LinkedList;
-
-import cartas.*;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import jugador.*;
@@ -38,7 +34,7 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
             }
             
            
-            this.cajaIzquierda = new CajaJugadores(this.cajaDerecha, duelo, jugadorEnTurno, this);
+            this.cajaIzquierda = new CajaJugadores(this.cajaDerecha, duelo, jugadorEnTurno, this,stage);
 	    	this.setLeft(cajaIzquierda);
             
 	    	this.cajaCentro = new CajaCampo(cajaDerecha, duelo, this);
@@ -47,6 +43,7 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    	this.consola = new CajaConsola();
 	    	this.setBottom(consola);
 	    	CajaConsola.agregarMensaje("Es el turno de "+jugadorEnTurno.obtenerNombre());
+	    	
 	    }
 	    
 	    public MenuDelDuelo getBarraDeMenu() {
@@ -58,17 +55,13 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    }
 	    
 	    public void actualizarVistaYugiEnTurno(Jugador yugi, Jugador kaiba) {
-	    	
 	    	this.cajaCentro.actualizarVistaYugiEnTurno(yugi, kaiba);
 	    	this.cajaIzquierda.actualizarVida(yugi, kaiba);
-	    
 	    }
 	    
 	    public void actualizarVistaKaibaEnTurno(Jugador kaiba, Jugador yugi) {
-	    	
 	    	this.cajaCentro.actualizarVistaKaibaEnTurno(kaiba, yugi);
 	    	this.cajaIzquierda.actualizarVida(yugi, kaiba);
-	    	
 	    }
 	    
 	    public void actualizarCajas() {
@@ -77,7 +70,6 @@ public class ContenedorDelDuelo extends BorderPane implements PathArchivos{
 	    }
 
 		public void loggearMensaje(String string) {
-			
 			CajaConsola.agregarMensaje(string);		
 		}
 	    
