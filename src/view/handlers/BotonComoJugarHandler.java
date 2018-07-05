@@ -12,7 +12,7 @@ public class BotonComoJugarHandler implements EventHandler<ActionEvent> , PathAr
 	 public void handle(ActionEvent actionEvent) {
 	        Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.setTitle("Como Jugar");
-	        alert.setHeaderText("Pulse el boton seccundario del raton para interactuar con las cartas en la fase que corresponda.\n"
+	        alert.setHeaderText("Pulse el boton secundario del raton para interactuar con las cartas en la fase que corresponda.\n"
 	        		+ "-En la fase de preparacion se pueden colocar cartas de la mano y rotar los monstruos colocados.\n"
 	        		+ "(Aclaracion: Solo se puede jugar una carta monstruo por turno y no se puede rotar en el turno en que se coloca)\n"
 	        		+ "-En la fase de ataques y trampas se puede atacar al enemigo (Y se activaran las trampas en caso de que corresponda).\n"
